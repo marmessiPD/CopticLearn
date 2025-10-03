@@ -1,0 +1,7 @@
+{
+  "name": "Koptisch Lernen",
+  "description": "An interactive mobile application for learning the Coptic language, designed for the Coptic Orthodox Church. It features structured lessons, quizzes, and multimedia content to teach alphabet, grammar, and vocabulary.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
