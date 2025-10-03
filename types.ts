@@ -50,7 +50,7 @@ export interface Lesson {
 export interface Level {
     id: string;
     order: number;
-    kind: "letters" | "vocab" | "sentences" | "practice";
+    kind: "letters" | "vocab" | "sentences" | "pronunciation" | "practice";
     slides: string[]; // for letters, contains slideIds. For vocab, vocabItemIds, etc.
 }
 
@@ -72,6 +72,21 @@ export interface AlphabetSlide {
     emoji: string;
     spiritual: SpiritualContent;
 }
+
+export interface PronunciationExample {
+    coptic: string;
+    translit: string;
+    meaning: LocaleString;
+    audio: string;
+}
+
+export interface PronunciationSlide {
+    id: string;
+    title: LocaleString;
+    rule: LocaleString;
+    examples: PronunciationExample[];
+}
+
 
 export interface Letter {
     id: string;

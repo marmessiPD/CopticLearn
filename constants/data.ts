@@ -1,4 +1,4 @@
-import { Letter, Module, Lesson, Level, AlphabetSlide, Quiz, QuizQuestion, LessonType, QuizQuestionType, VocabItem, SentenceItem } from '../types';
+import { Letter, Module, Lesson, Level, AlphabetSlide, Quiz, QuizQuestion, LessonType, QuizQuestionType, VocabItem, SentenceItem, PronunciationSlide } from '../types';
 
 export const LETTERS: Record<string, Letter> = {
     'lt_alpha': { id: 'lt_alpha', name: { de: 'Alpha', en: 'Alpha', ar: 'ألفا' }, uppercase: 'Ⲁ', lowercase: 'ⲁ', pronunciation: { de: '"A" wie in "Apfel"', en: '"A" as in "father"', ar: '"أ" كما في "أب"' }, numeric: 1, exampleWord: { coptic: 'ⲁⲃⲃⲁ', translit: 'abba', meaning: { de: 'Vater', en: 'Father', ar: 'أب' } } },
@@ -275,6 +275,87 @@ export const ALPHABET_SLIDES: Record<string, AlphabetSlide> = letter_keys.reduce
     return acc;
 }, {} as Record<string, AlphabetSlide>);
 
+export const PRONUNCIATION_SLIDES: Record<string, PronunciationSlide> = {
+    'ps_ou': {
+        id: 'ps_ou',
+        title: { de: 'Vokal-Kombination: ⲟⲩ', en: 'Vowel Combination: ⲟⲩ', ar: 'تركيب الحروف المتحركة: ⲟⲩ' },
+        rule: { 
+            de: 'Die Buchstabenkombination ⲟⲩ wird immer wie ein langes "u" ausgesprochen, ähnlich wie "oo" im englischen Wort "moon".',
+            en: 'The letter combination ⲟⲩ is always pronounced like a long "u", similar to "oo" in the English word "moon".',
+            ar: 'تركيبة الحرفين ⲟⲩ تُنطق دائماً مثل الواو الممدودة، كما في كلمة "نور".'
+        },
+        examples: [
+            { coptic: 'ⲟⲩⲣⲟ', translit: 'ouro', meaning: { de: 'König', en: 'King', ar: 'ملك' }, audio: 'ouro.mp3' },
+            { coptic: 'ⲙⲟⲩⲧ', translit: 'mout', meaning: { de: 'tot', en: 'dead', ar: 'ميت' }, audio: 'mout.mp3' }
+        ]
+    },
+    'ps_au_eu': {
+        id: 'ps_au_eu',
+        title: { de: 'Diphthonge: ⲁⲩ & ⲉⲩ', en: 'Diphthongs: ⲁⲩ & ⲉⲩ', ar: 'الأصوات المزدوجة: ⲁⲩ و ⲉⲩ' },
+        rule: { 
+            de: 'Die Aussprache von ⲁⲩ und ⲉⲩ hängt vom nachfolgenden Laut ab. Vor stimmhaften Konsonanten (z.B. ⲃ, ⲅ, ⲇ) klingen sie wie "aw" bzw. "ew". Vor stimmlosen Konsonanten (z.B. ⲡ, ⲧ, ⲕ) und am Wortende klingen sie wie "av" bzw. "ev".',
+            en: 'The pronunciation of ⲁⲩ and ⲉⲩ depends on the following sound. Before voiced consonants (e.g., ⲃ, ⲅ, ⲇ), they sound like "av" and "ev". Before unvoiced consonants (e.g., ⲡ, ⲧ, ⲕ) and at the end of a word, they sound like "aw" and "ew".',
+            ar: 'نطق ⲁⲩ و ⲉⲩ يعتمد على الحرف التالي. قبل الحروف الصوتية (مثل ⲃ، ⲅ، ⲇ) يُنطقان "آڤ" و "إيڤ". قبل الحروف الصامتة (مثل ⲡ، ⲧ، ⲕ) وفي نهاية الكلمة، يُنطقان "آو" و "إيو".'
+        },
+        examples: [
+            { coptic: 'ⲁⲩⲧⲟⲥ', translit: 'avtos', meaning: { de: 'er selbst', en: 'he himself', ar: 'هو نفسه' }, audio: 'avtos.mp3' },
+            { coptic: 'ⲉⲩⲁⲅⲅⲉⲗⲓⲟⲛ', translit: 'evangelion', meaning: { de: 'Evangelium', en: 'Gospel', ar: 'إنجيل' }, audio: 'evangelion.mp3' }
+        ]
+    },
+    'ps_gamma': {
+        id: 'ps_gamma',
+        title: { de: 'Konsonanten-Variationen: Ⲅ', en: 'Consonant Variations: Ⲅ', ar: 'تنوع نطق الحروف الساكنة: Ⲅ' },
+        rule: { 
+            de: 'Der Buchstabe Ⲅ (Ghamma) hat drei Laute: 1. Wie "G" in "Garten" meistens. 2. Wie "N" in "singen" vor den Buchstaben ⲅ, ⲕ, ⲭ, ⲝ. 3. Ein weiches, kehliges "Gh" vor den Vokalen ⲉ, ⲏ, ⲓ, ⲩ.',
+            en: 'The letter Ⲅ (Ghamma) has three sounds: 1. Like "g" in "go" most of the time. 2. Like "n" in "sing" before the letters ⲅ, ⲕ, ⲭ, ⲝ. 3. A soft, throaty "gh" sound before the vowels ⲉ, ⲏ, ⲓ, ⲩ.',
+            ar: 'حرف Ⲅ (غما) له ثلاثة أصوات: ١. مثل الجيم المصرية في معظم الحالات. ٢. مثل النون في كلمة "إنجيل" عندما يأتي قبل الحروف ⲅ, ⲕ, ⲭ, ⲝ. ٣. صوت "غ" حلقي خفيف قبل الحروف المتحركة ⲉ, ⲏ, ⲓ, ⲩ.'
+        },
+        examples: [
+            { coptic: 'ⲁⲅⲅⲉⲗⲟⲥ', translit: 'angelos', meaning: { de: 'Engel', en: 'Angel', ar: 'ملاك' }, audio: 'angelos.mp3' },
+            { coptic: 'ⲅⲉ', translit: 'ge', meaning: { de: 'Ja', en: 'Yes', ar: 'نعم' }, audio: 'ge.mp3' }
+        ]
+    },
+    'ps_chi_theta': {
+        id: 'ps_chi_theta',
+        title: { de: 'Griechische Konsonanten: Ⲭ & Ⲑ', en: 'Greek Consonants: Ⲭ & Ⲑ', ar: 'الحروف الساكنة اليونانية: Ⲭ و Ⲑ' },
+        rule: { 
+            de: 'In Wörtern koptischen Ursprungs wird Ⲭ wie "Sch" und Ⲑ wie "T" ausgesprochen. In Wörtern griechischen Ursprungs behalten sie oft ihre ursprüngliche Aussprache: Ⲭ als "K" und Ⲑ als englisches "Th".',
+            en: 'In words of Coptic origin, Ⲭ is pronounced "sh" and Ⲑ is pronounced "t". In words of Greek origin, they often retain their original pronunciation: Ⲭ as "k" and Ⲑ as English "th".',
+            ar: 'في الكلمات ذات الأصل القبطي، يُنطق Ⲭ "ش" و Ⲑ "ت". في الكلمات ذات الأصل اليوناني، غالبًا ما يحتفظان بنطقهما الأصلي: Ⲭ مثل "ك" و Ⲑ مثل "ث".'
+        },
+        examples: [
+            { coptic: 'Ⲭⲣⲓⲥⲧⲟⲥ', translit: 'Christos', meaning: { de: 'Christus', en: 'Christ', ar: 'المسيح' }, audio: 'christos.mp3' },
+            { coptic: 'Ⲑⲉⲟⲥ', translit: 'Theos', meaning: { de: 'Gott (griech.)', en: 'God (Greek)', ar: 'الله (كلمة يونانية)' }, audio: 'theos.mp3' }
+        ]
+    },
+    'ps_special': {
+        id: 'ps_special',
+        title: { de: 'Spezialkombinationen', en: 'Special Combinations', ar: 'تركيبات خاصة' },
+        rule: { 
+            de: 'Einige Buchstaben haben im Koptischen einen einzigartigen zusammengesetzten Laut: ϫ klingt wie "Dsch" (in "Dschungel"), ϭ klingt wie "Tsch" (in "Deutsch") und ϯ klingt wie "Ti".',
+            en: 'Some letters in Coptic have a unique composite sound: ϫ sounds like "j" (in "jungle"), ϭ sounds like "ch" (in "church"), and ϯ sounds like "ti".',
+            ar: 'بعض الحروف في القبطية لها صوت مركب فريد: ϫ يُنطق "ج" (مثل "جمل")، ϭ يُنطق "تش" (مثل "تشرشل")، و ϯ يُنطق "تي".'
+        },
+        examples: [
+            { coptic: 'Ϫⲟⲉⲓⲥ', translit: 'jois', meaning: { de: 'Herr', en: 'Lord', ar: 'الرب' }, audio: 'jois.mp3' },
+            { coptic: 'ϯⲙⲉⲧⲣⲉ', translit: 'timetre', meaning: { de: 'Zeugnis', en: 'Witness', ar: 'شهادة' }, audio: 'timetre.mp3' }
+        ]
+    },
+    'ps_djinkim': {
+        id: 'ps_djinkim',
+        title: { de: 'Der Djinkim', en: 'The Djinkim', ar: 'الجنكم' },
+        rule: { 
+            de: 'Der Djinkim ist ein kleiner Strich über einem Buchstaben (z.B. `ⲛ̀`). Er zeigt an, dass vor diesem Buchstaben ein kurzes "E" gesprochen wird. Dies ist wichtig für die korrekte Silbenbildung.',
+            en: 'The Djinkim is a small stroke over a letter (e.g., `ⲛ̀`). It indicates that a short "e" sound is pronounced before that letter. This is important for correct syllabification.',
+            ar: 'الجنكم هو شرطة صغيرة فوق الحرف (مثل `ⲛ̀`). يشير إلى أن هناك صوت "إ" قصير يُنطق قبل هذا الحرف. هذا مهم لتكوين المقاطع الصوتية بشكل صحيح.'
+        },
+        examples: [
+            { coptic: 'ⲛ̀ⲧⲉ', translit: 'en-te', meaning: { de: 'von', en: 'of', ar: 'الـ' }, audio: 'ente.mp3' },
+            { coptic: 'ⲙ̀ⲫ̀ⲓⲱⲧ', translit: 'em-efiot', meaning: { de: 'des Vaters', en: 'of the Father', ar: 'الآب' }, audio: 'emefiot.mp3' }
+        ]
+    }
+};
+
 
 const slide_keys = Object.keys(ALPHABET_SLIDES);
 
@@ -289,7 +370,11 @@ export const LEVELS: Record<string, Level> = {
         return acc;
     }, {} as Record<string, Level>),
     'lev_m1_9': { id: 'lev_m1_9', order: 9, kind: 'vocab', slides: ['vb01', 'vb02'] },
-    'lev_m1_10': { id: 'lev_m1_10', order: 10, kind: 'sentences', slides: ['st01', 'st02'] }
+    'lev_m1_10': { id: 'lev_m1_10', order: 10, kind: 'sentences', slides: ['st01', 'st02'] },
+    // Module 2 Levels
+    'lev_m2_1': { id: 'lev_m2_1', order: 1, kind: 'pronunciation', slides: ['ps_ou', 'ps_au_eu'] },
+    'lev_m2_2': { id: 'lev_m2_2', order: 2, kind: 'pronunciation', slides: ['ps_gamma', 'ps_chi_theta'] },
+    'lev_m2_3': { id: 'lev_m2_3', order: 3, kind: 'pronunciation', slides: ['ps_special', 'ps_djinkim'] }
 };
 
 export const VOCAB_ITEMS: Record<string, VocabItem> = {
@@ -306,9 +391,14 @@ export const QUIZ_QUESTIONS: Record<string, QuizQuestion> = {
     'qq01': { id: 'qq01', type: QuizQuestionType.MCQ, prompt: { de: 'Welcher Buchstabe ist Alpha?', en: 'Which letter is Alpha?', ar: 'أي حرف هو ألفا؟' }, media: { audio: null, image: null }, options: ['Ⲁ', 'Ⲃ', 'Ⲇ', 'Ⲉ'], answer: [0], solution: { de: 'Ⲁ ist Alpha.', en: 'Ⲁ is Alpha.', ar: 'Ⲁ هو ألفا.' } },
     'qq02': { id: 'qq02', type: QuizQuestionType.LISTEN, prompt: { de: 'Höre den Laut und wähle den passenden Buchstaben.', en: 'Listen to the sound and choose the matching letter.', ar: 'استمع للصوت واختر الحرف المناسب.' }, media: { audio: 'd.mp3', image: null }, options: ['Ⲅ', 'Ⲇ', 'Ⲃ', 'Ⲁ'], answer: [1], solution: { de: 'Der Laut war "D", was dem Buchstaben Ⲇ (Dalda) entspricht.', en: 'The sound was "D", which corresponds to the letter Ⲇ (Dalda).', ar: 'الصوت كان "د"، وهو يوافق حرف Ⲇ (دالدا).' } },
     'qq03': { id: 'qq03', type: QuizQuestionType.MCQ, prompt: { de: 'Was bedeutet ⲃⲁⲗ?', en: 'What does ⲃⲁⲗ mean?', ar: 'ما معنى ⲃⲁⲗ؟' }, media: { audio: null, image: null }, options: ['Auge', 'Vater', 'Sohn', 'Ja'], answer: [0], solution: { de: 'ⲃⲁⲗ (bal) bedeutet Auge.', en: 'ⲃⲁⲗ (bal) means Eye.', ar: 'ⲃⲁⲗ (bal) تعني عين.' } },
+    // Module 2 Questions
+    'qq_m2_01': { id: 'qq_m2_01', type: QuizQuestionType.MCQ, prompt: { de: 'Wie wird ⲟⲩ im Wort ⲟⲩⲣⲟ (König) ausgesprochen?', en: 'How is ⲟⲩ pronounced in the word ⲟⲩⲣⲟ (King)?', ar: 'كيف يُنطق ⲟⲩ في كلمة ⲟⲩⲣⲟ (ملك)؟' }, media: { audio: null, image: null }, options: ['o-u', 'ou (wie in "out")', 'u (wie in "du")', 'o'], answer: [2], solution: { de: 'ⲟⲩ wird immer wie ein langes "u" ausgesprochen.', en: 'ⲟⲩ is always pronounced like a long "u" (oo).', ar: 'ⲟⲩ تُنطق دائماً مثل الواو الممدودة.' } },
+    'qq_m2_02': { id: 'qq_m2_02', type: QuizQuestionType.MCQ, prompt: { de: 'Welchen Laut hat Ⲅ im Wort ⲁⲅⲅⲉⲗⲟⲥ (Engel)?', en: 'What is the sound of Ⲅ in the word ⲁⲅⲅⲉⲗⲟⲥ (Angel)?', ar: 'ما هو صوت حرف Ⲅ في كلمة ⲁⲅⲅⲉⲗⲟⲥ (ملاك)؟' }, media: { audio: null, image: null }, options: ['G', 'N', 'Gh (kehlig)', 'K'], answer: [1], solution: { de: 'Vor einem anderen ⲅ, ⲕ, ⲭ oder ⲝ wird Ⲅ als "N" ausgesprochen.', en: 'Before another ⲅ, ⲕ, ⲭ, or ⲝ, Ⲅ is pronounced as "N".', ar: 'قبل حرف ⲅ, ⲕ, ⲭ, أو ⲝ، يُنطق حرف Ⲅ مثل النون.' } },
+    'qq_m2_03': { id: 'qq_m2_03', type: QuizQuestionType.MCQ, prompt: { de: 'Welcher Buchstabe klingt wie "Tsch" in "Deutsch"?', en: 'Which letter sounds like "ch" in "church"?', ar: 'أي حرف له صوت "تش" كما في "تشرشل"؟' }, media: { audio: null, image: null }, options: ['Ϫ', 'Ϭ', 'Ϯ', 'Ⲭ'], answer: [1], solution: { de: 'Ϭ (Shima) wird wie "Tsch" ausgesprochen.', en: 'Ϭ (Shima) is pronounced "ch".', ar: 'Ϭ (شيما) يُنطق "تش".' } },
 };
 
 export const QUIZZES: Record<string, Quiz> = {
+    // Module 1 Quizzes
     ...Array.from({ length: 10 }, (_, i) => ({
         id: `qz_m1_${i + 1}`,
         lessonId: `l_m1_${i + 1}`,
@@ -318,9 +408,15 @@ export const QUIZZES: Record<string, Quiz> = {
         acc[quiz.id] = quiz;
         return acc;
     }, {} as Record<string, Quiz>),
+    // Module 2 Quizzes
+    'qz_m2_1': { id: 'qz_m2_1', lessonId: 'l_m2_1', passScore: 0.8, questions: ['qq_m2_01'] },
+    'qz_m2_2': { id: 'qz_m2_2', lessonId: 'l_m2_2', passScore: 0.8, questions: ['qq_m2_02'] },
+    'qz_m2_3': { id: 'qz_m2_3', lessonId: 'l_m2_3', passScore: 0.8, questions: ['qq_m2_03'] },
 };
 
+
 export const LESSONS: Record<string, Lesson> = {
+    // Module 1 Lessons
     ...Array.from({ length: 8 }, (_, i) => {
         const letters = letter_keys.slice(i * 4, (i + 1) * 4).map(id => LETTERS[id].uppercase).join('-');
         return {
@@ -339,10 +435,14 @@ export const LESSONS: Record<string, Lesson> = {
     }, {} as Record<string, Lesson>),
     'l_m1_9': { id: 'l_m1_9', moduleId: 'm01', order: 9, type: LessonType.VOCAB, title: { de: 'Grund-Vokabeln', en: 'Basic Vocabulary', ar: 'المفردات الأساسية' }, levels: ['lev_m1_9'], quizId: 'qz_m1_9', prerequisites: ['l_m1_8'] },
     'l_m1_10': { id: 'l_m1_10', moduleId: 'm01', order: 10, type: LessonType.SENTENCES, title: { de: 'Einfache Sätze', en: 'Simple Sentences', ar: 'جمل بسيطة' }, levels: ['lev_m1_10'], quizId: 'qz_m1_10', prerequisites: ['l_m1_9'] },
-    'l03': { id: 'l03', moduleId: 'm02', order: 1, type: LessonType.PRONUNCIATION, title: { de: 'Grundlagen der Aussprache', en: 'Pronunciation Basics', ar: 'أساسيات النطق' }, levels: [], quizId: 'qz03', prerequisites: [] },
+    // Module 2 Lessons
+    'l_m2_1': { id: 'l_m2_1', moduleId: 'm02', order: 1, type: LessonType.PRONUNCIATION, title: { de: 'Vokal-Kombinationen', en: 'Vowel Combinations', ar: 'تركيبات الحروف المتحركة' }, levels: ['lev_m2_1'], quizId: 'qz_m2_1', prerequisites: ['l_m1_10'] },
+    'l_m2_2': { id: 'l_m2_2', moduleId: 'm02', order: 2, type: LessonType.PRONUNCIATION, title: { de: 'Konsonanten-Variationen', en: 'Consonant Variations', ar: 'تنوع نطق الحروف الساكنة' }, levels: ['lev_m2_2'], quizId: 'qz_m2_2', prerequisites: ['l_m2_1'] },
+    'l_m2_3': { id: 'l_m2_3', moduleId: 'm02', order: 3, type: LessonType.PRONUNCIATION, title: { de: 'Spezialkombinationen & Djinkim', en: 'Special Combinations & Djinkim', ar: 'التركيبات الخاصة والجنكم' }, levels: ['lev_m2_3'], quizId: 'qz_m2_3', prerequisites: ['l_m2_2'] },
 };
 
-const module1_lessons = Object.keys(LESSONS).filter(id => LESSONS[id].moduleId === 'm01').sort((a, b) => LESSONS[a].order - LESSONS[b].order);
+const module1_lessons = Object.values(LESSONS).filter(l => l.moduleId === 'm01').sort((a, b) => a.order - b.order).map(l => l.id);
+const module2_lessons = Object.values(LESSONS).filter(l => l.moduleId === 'm02').sort((a, b) => a.order - b.order).map(l => l.id);
 
 export const MODULES: Record<string, Module> = {
     'm01': {
@@ -355,6 +455,6 @@ export const MODULES: Record<string, Module> = {
         id: 'm02',
         order: 2,
         title: { de: 'Aussprache', en: 'Pronunciation', ar: 'النطق' },
-        lessons: ['l03']
+        lessons: module2_lessons
     },
 };

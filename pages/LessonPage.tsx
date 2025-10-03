@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { LESSONS, LEVELS, ALPHABET_SLIDES, LETTERS, VOCAB_ITEMS, SENTENCE_ITEMS } from '../constants/data';
+import { LESSONS, LEVELS, ALPHABET_SLIDES, LETTERS, VOCAB_ITEMS, SENTENCE_ITEMS, PRONUNCIATION_SLIDES } from '../constants/data';
 import { useAppContext } from '../context/AppContext';
 import AlphabetSlideCard from '../components/AlphabetSlideCard';
 import VocabCard from '../components/VocabCard';
 import SentenceCard from '../components/SentenceCard';
+import PronunciationRuleCard from '../components/PronunciationRuleCard';
 import { LessonType } from '../types';
 
 const LessonPage: React.FC = () => {
@@ -59,6 +60,11 @@ const LessonPage: React.FC = () => {
                 const sentenceData = SENTENCE_ITEMS[slideId];
                 if (!sentenceData) return <p>Sentence item not found.</p>;
                 return <SentenceCard item={sentenceData} />;
+            }
+            case LessonType.PRONUNCIATION: {
+                const slideData = PRONUNCIATION_SLIDES[slideId];
+                if (!slideData) return <p>Pronunciation rule not found.</p>;
+                return <PronunciationRuleCard slide={slideData} />;
             }
             default:
                 return <p className="text-center p-8 bg-light-primary dark:bg-dark-secondary rounded-lg">Lesson type '{lesson.type}' not yet implemented.</p>;
