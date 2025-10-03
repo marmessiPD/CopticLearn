@@ -69,7 +69,7 @@ export interface AlphabetSlide {
         letter: string;
         word: string;
     };
-    image: string;
+    emoji: string;
     spiritual: SpiritualContent;
 }
 
@@ -92,7 +92,7 @@ export interface VocabItem {
     coptic: string;
     translit: string;
     meaning: LocaleString;
-    image: string;
+    emoji: string;
     audio: string;
     tags: string[];
 }

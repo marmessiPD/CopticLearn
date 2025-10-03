@@ -11,6 +11,7 @@ interface AppContextType {
     progress: Record<string, number>; // quizId: score
     updateProgress: (quizId: string, score: number) => void;
     t: (localeString: { de: string; en: string; ar: string }) => string;
+    playSound: (text: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -20,6 +21,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const [theme, setTheme] = useState<Theme>('light');
     const [role, setRole] = useState<UserRole>('user');
     const [progress, setProgress] = useState<Record<string, number>>({});
+    const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
 
     useEffect(() => {
         const root = window.document.documentElement;
@@ -34,6 +36,48 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         root.dir = language === 'ar' ? 'rtl' : 'ltr';
 
     }, [theme, language]);
+    
+    useEffect(() => {
+        const synth = window.speechSynthesis;
+        if (!synth) return;
+
+        const updateVoices = () => {
+            setVoices(synth.getVoices());
+        };
+
+        updateVoices();
+        synth.onvoiceschanged = updateVoices;
+
+        return () => {
+            synth.onvoiceschanged = null;
+        };
+    }, []);
+
+    const playSound = (text: string) => {
+        const synth = window.speechSynthesis;
+        if (!synth) {
+            console.error("Speech Synthesis not supported");
+            return;
+        }
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        const langMap = {
+            de: 'de-DE',
+            en: 'en-US',
+            ar: 'ar-SA'
+        };
+        const targetLang = langMap[language];
+        utterance.lang = targetLang;
+
+        const voice = voices.find(v => v.lang === targetLang) || voices.find(v => v.lang.startsWith(language));
+        if (voice) {
+            utterance.voice = voice;
+        }
+        
+        synth.cancel();
+        synth.speak(utterance);
+    };
+
 
     const updateProgress = (quizId: string, score: number) => {
         setProgress(prev => ({ ...prev, [quizId]: score }));
@@ -52,8 +96,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         setRole,
         progress,
         updateProgress,
-        t
-    }), [language, theme, role, progress]);
+        t,
+        playSound
+    }), [language, theme, role, progress, voices]);
 
     return (
         <AppContext.Provider value={value}>

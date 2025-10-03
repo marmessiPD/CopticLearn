@@ -133,7 +133,7 @@ const spiritualContentData: Record<string, AlphabetSlide['spiritual']> = {
         fatherReference: { de: 'St. Kyrill von Jerusalem, Katechetische Vorlesungen', en: 'St. Cyril of Jerusalem, Catechetical Lectures', ar: 'القديس كيرلس الأورشليمي، محاضرات التعليم المسيحي' }
     },
      'lt_pi': {
-        bibleVerse: { de: 'Und als der Tag der Pfingsten erfüllt war, waren sie alle einmütig beisammen. Und es geschah plötzlich ein Brausen vom Himmel wie von einem gewaltigen Wind und erfüllte das ganze Haus, wo sie saßen.', en: 'And when the day of Pentecost was fully come, they were all with one accord in one place. And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.', ar: 'وَلَمَّا حَضَرَ يَوْمُ الْخَمْسِينَ كَانَ الْجَمِيعُ مَعًا بِنَفْسٍ وَاحِدَةٍ، وَصَارَ بَغْتَةً مِنَ السَّمَاءِ صَوْتٌ كَمَا مِنْ هُبُوبِ رِيحٍ عَاصِفَةٍ وَمَلأَ كُلَّ الْبَيْتِ حَيْثُ كَانُوا جَالِسِينَ.' },
+        bibleVerse: { de: 'Und als der Tag der Pfingsten erfüllt war, waren sie alle einmütig beisammen. Und es geschah plötzlich ein Brausen vom Himmel wie von einem gewaltigen Wind und erfüllte das ganze Haus, wo sie saßen.', en: 'And when the day of Pentecost was fully come, they were all with one accord in one place. And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.', ar: 'وَلَمَّا حَضَرَ يَوْمُ الْخَمْسِينَ كَانَ الْجَمِيعُ مَعًا بِنَفْسٍ وَاحِدَةٍ، وَصَارَ بَغْتَةً مِنَ السَّمَاءِ صَوْتٌ كَمَا مِنْ هُبُوبِ رِيحٍ عَاصِفَةٍ وَمَلأَ كُلَّ الْبَيْتِ حَيْثْ كَانُوا جَالِسِينَ.' },
         bibleReference: { de: 'Apostelgeschichte 2:1-2 (Schlachter 2000)', en: 'Acts 2:1-2 (KJV)', ar: 'أعمال الرسل ٢: ١-٢' },
         fatherQuote: { de: 'Der Heilige Geist kommt nicht, um zu verweilen, wo er Trägheit und Nachlässigkeit findet. Er sucht Seelen, die wachsam und feurig sind.', en: 'The Holy Spirit does not come to dwell where He finds sloth and negligence. He seeks souls that are vigilant and fervent.', ar: 'الروح القدس لا يأتي ليسكن حيث يجد الكسل والإهمال. إنه يبحث عن نفوس ساهرة ومتقدة.' },
         fatherReference: { de: 'St. Johannes Chrysostomus, Homilien zur Apostelgeschichte', en: 'St. John Chrysostom, Homilies on Acts', ar: 'القديس يوحنا الذهبي الفم، عظات على أعمال الرسل' }
@@ -230,19 +230,16 @@ const spiritualContentData: Record<string, AlphabetSlide['spiritual']> = {
     }
 };
 
-const imageSeeds: Record<string, string> = {
-    'lt_alpha': 'father-with-children-cartoon', 'lt_vida': 'close-up-of-an-eye-illustration', 'lt_ghamma': 'person-nodding-yes-illustration',
-    'lt_dalda': 'king-david-harp-illustration', 'lt_ei': 'person-walking-out-door-icon', 'lt_so': 'ancient-number-scroll-illustration',
-    'lt_zita': 'leather-belt-buckle-illustration', 'lt_hita': 'prophet-elias-icon-style', 'lt_thita': 'praying-hands-illustration',
-    'lt_iauda': 'icon-of-jesus-christ', 'lt_kapa': 'christ-pantocrator-icon', 'lt_laula': 'group-of-people-stylized',
-    'lt_mi': 'icon-of-theotokos-mary', 'lt_ni': 'bright-light-from-heaven-illustration', 'lt_xi': 'wooden-cross-illustration',
-    'lt_o': 'amen-in-calligraphy-stylized', 'lt_pi': 'dove-descending-illustration', 'lt_ro': 'silhouette-of-a-man-stylized',
-    'lt_sima': 'christ-the-savior-icon-style', 'lt_tau': 'people-worshipping-in-church-illustration', 'lt_epsilon': 'father-and-son-illustration',
-    'lt_phi': 'beam-of-light-illustration', 'lt_chi': 'chi-rho-symbol-illustration', 'lt_epsi': 'glowing-soul-abstract-art',
-    'lt_omega': 'tree-of-life-illustration', 'lt_shai': 'paschal-feast-table-illustration', 'lt_fai': 'carrying-a-cross-illustration',
-    'lt_khai': 'inside-a-coptic-church-illustration', 'lt_hori': 'working-in-field-ancient-style', 'lt_gangia': 'jesus-on-throne-icon-style',
-    'lt_shima': 'mountain-peak-illustration', 'lt_dei': 'martyr-witness-icon-stylized'
+const LETTER_EMOJIS: Record<string, string> = {
+    'lt_alpha': '👨‍👧', 'lt_vida': '👁️', 'lt_ghamma': '👍', 'lt_dalda': '👑', 'lt_ei': '📤',
+    'lt_so': '6️⃣', 'lt_zita': '🥋', 'lt_hita': '🔥', 'lt_thita': '🙏', 'lt_iauda': '✝️',
+    'lt_kapa': '👑', 'lt_laula': '👥', 'lt_mi': '👩‍👦', 'lt_ni': '✨', 'lt_xi': '🪵',
+    'lt_o': '✅', 'lt_pi': '🕊️', 'lt_ro': '🚶', 'lt_sima': '❤️‍🩹', 'lt_tau': '🙌',
+    'lt_epsilon': '👶', 'lt_phi': '💡', 'lt_chi': '✝️', 'lt_epsi': '🦋', 'lt_omega': '❤️',
+    'lt_shai': '🎉', 'lt_fai': '💪', 'lt_khai': '📥', 'lt_hori': '😓', 'lt_gangia': '👑',
+    'lt_shima': '🏔️', 'lt_dei': '📜'
 };
+
 
 const letter_keys = Object.keys(LETTERS);
 
@@ -264,7 +261,7 @@ export const ALPHABET_SLIDES: Record<string, AlphabetSlide> = letter_keys.reduce
         case 'lt_chi':
              explanation = { de: 'In koptischen Wörtern wie "Sch". In griechischen Wörtern wie "K".', en: 'In Coptic words, it sounds like "sh". In Greek words, it sounds like "k".', ar: 'في الكلمات القبطية، يُنطق "ش". في الكلمات اليونانية، يُنطق "ك".' }; break;
         default:
-            explanation = { de: `Der Buchstabe ${letter.name.de} wird wie "${letter.pronunciation.de}" ausgesprochen.`, en: `The letter ${letter.name.en} is pronounced like "${letter.pronunciation.en}".`, ar: `حرف ${letter.name.ar} يُنطق مثل "${letter.pronunciation.ar}".` };
+            explanation = { de: `Der Buchstabe ${letter.name.de} wird wie ${letter.pronunciation.de} ausgesprochen.`, en: `The letter ${letter.name.en} is pronounced like ${letter.pronunciation.en}.`, ar: `حرف ${letter.name.ar} يُنطق مثل ${letter.pronunciation.ar}.` };
     }
 
     acc[`sl${(index + 1).toString().padStart(2, '0')}`] = {
@@ -272,7 +269,7 @@ export const ALPHABET_SLIDES: Record<string, AlphabetSlide> = letter_keys.reduce
         letterId: letterId,
         explanation: explanation,
         audio: { letter: 'a.mp3', word: 'abba.mp3' },
-        image: `https://picsum.photos/seed/${imageSeeds[letterId] || letter.name.en.toLowerCase()}/400`,
+        emoji: LETTER_EMOJIS[letterId] || '❓',
         spiritual: spiritualContentData[letterId]
     };
     return acc;
@@ -296,8 +293,8 @@ export const LEVELS: Record<string, Level> = {
 };
 
 export const VOCAB_ITEMS: Record<string, VocabItem> = {
-    'vb01': { id: 'vb01', coptic: 'ⲣⲁⲛ', translit: 'ran', meaning: { de: 'Name', en: 'Name', ar: 'اسم' }, image: 'https://picsum.photos/seed/name/400', audio: 'ran.mp3', tags: ['grundlagen'] },
-    'vb02': { id: 'vb02', coptic: 'ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'ekklēsia', meaning: { de: 'Kirche', en: 'Church', ar: 'كنيسة' }, image: 'https://picsum.photos/seed/church/400', audio: 'ekklesia.mp3', tags: ['kirche'] },
+    'vb01': { id: 'vb01', coptic: 'ⲣⲁⲛ', translit: 'ran', meaning: { de: 'Name', en: 'Name', ar: 'اسم' }, emoji: '📛', audio: 'ran.mp3', tags: ['grundlagen'] },
+    'vb02': { id: 'vb02', coptic: 'ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'ekklēsia', meaning: { de: 'Kirche', en: 'Church', ar: 'كنيسة' }, emoji: '⛪️', audio: 'ekklesia.mp3', tags: ['kirche'] },
 };
 
 export const SENTENCE_ITEMS: Record<string, SentenceItem> = {
@@ -307,7 +304,7 @@ export const SENTENCE_ITEMS: Record<string, SentenceItem> = {
 
 export const QUIZ_QUESTIONS: Record<string, QuizQuestion> = {
     'qq01': { id: 'qq01', type: QuizQuestionType.MCQ, prompt: { de: 'Welcher Buchstabe ist Alpha?', en: 'Which letter is Alpha?', ar: 'أي حرف هو ألفا؟' }, media: { audio: null, image: null }, options: ['Ⲁ', 'Ⲃ', 'Ⲇ', 'Ⲉ'], answer: [0], solution: { de: 'Ⲁ ist Alpha.', en: 'Ⲁ is Alpha.', ar: 'Ⲁ هو ألفا.' } },
-    'qq02': { id: 'qq02', type: QuizQuestionType.LISTEN, prompt: { de: 'Höre den Laut und wähle den passenden Buchstaben.', en: 'Listen to the sound and choose the matching letter.', ar: 'استمع للصوت واختر الحرف المناسب.' }, media: { audio: 'd.mp3', image: null }, options: ['Ⲅ', 'Ⲇ', 'Ⲃ', 'Ⲁ'], answer: [1], solution: { de: 'Der Laut war /d/, was dem Buchstaben Ⲇ (Dalda) entspricht.', en: 'The sound was /d/, which corresponds to the letter Ⲇ (Dalda).', ar: 'الصوت كان /د/، وهو يوافق حرف Ⲇ (دالدا).' } },
+    'qq02': { id: 'qq02', type: QuizQuestionType.LISTEN, prompt: { de: 'Höre den Laut und wähle den passenden Buchstaben.', en: 'Listen to the sound and choose the matching letter.', ar: 'استمع للصوت واختر الحرف المناسب.' }, media: { audio: 'd.mp3', image: null }, options: ['Ⲅ', 'Ⲇ', 'Ⲃ', 'Ⲁ'], answer: [1], solution: { de: 'Der Laut war "D", was dem Buchstaben Ⲇ (Dalda) entspricht.', en: 'The sound was "D", which corresponds to the letter Ⲇ (Dalda).', ar: 'الصوت كان "د"، وهو يوافق حرف Ⲇ (دالدا).' } },
     'qq03': { id: 'qq03', type: QuizQuestionType.MCQ, prompt: { de: 'Was bedeutet ⲃⲁⲗ?', en: 'What does ⲃⲁⲗ mean?', ar: 'ما معنى ⲃⲁⲗ؟' }, media: { audio: null, image: null }, options: ['Auge', 'Vater', 'Sohn', 'Ja'], answer: [0], solution: { de: 'ⲃⲁⲗ (bal) bedeutet Auge.', en: 'ⲃⲁⲗ (bal) means Eye.', ar: 'ⲃⲁⲗ (bal) تعني عين.' } },
 };
 
@@ -340,8 +337,8 @@ export const LESSONS: Record<string, Lesson> = {
         acc[lesson.id] = lesson;
         return acc;
     }, {} as Record<string, Lesson>),
-    'l_m1_9': { id: 'l_m1_9', moduleId: 'm01', order: 9, type: LessonType.VOCAB, title: { de: 'Vokabeln', en: 'Vocabulary', ar: 'المفردات' }, levels: ['lev_m1_9'], quizId: 'qz_m1_9', prerequisites: ['l_m1_8'] },
-    'l_m1_10': { id: 'l_m1_10', moduleId: 'm01', order: 10, type: LessonType.SENTENCES, title: { de: 'Sätze', en: 'Sentences', ar: 'الجمل' }, levels: ['lev_m1_10'], quizId: 'qz_m1_10', prerequisites: ['l_m1_9'] },
+    'l_m1_9': { id: 'l_m1_9', moduleId: 'm01', order: 9, type: LessonType.VOCAB, title: { de: 'Grund-Vokabeln', en: 'Basic Vocabulary', ar: 'المفردات الأساسية' }, levels: ['lev_m1_9'], quizId: 'qz_m1_9', prerequisites: ['l_m1_8'] },
+    'l_m1_10': { id: 'l_m1_10', moduleId: 'm01', order: 10, type: LessonType.SENTENCES, title: { de: 'Einfache Sätze', en: 'Simple Sentences', ar: 'جمل بسيطة' }, levels: ['lev_m1_10'], quizId: 'qz_m1_10', prerequisites: ['l_m1_9'] },
     'l03': { id: 'l03', moduleId: 'm02', order: 1, type: LessonType.PRONUNCIATION, title: { de: 'Grundlagen der Aussprache', en: 'Pronunciation Basics', ar: 'أساسيات النطق' }, levels: [], quizId: 'qz03', prerequisites: [] },
 };
 

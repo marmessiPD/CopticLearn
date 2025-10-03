@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { LESSONS, LEVELS, ALPHABET_SLIDES, LETTERS } from '../constants/data';
+import { LESSONS, LEVELS, ALPHABET_SLIDES, LETTERS, VOCAB_ITEMS, SENTENCE_ITEMS } from '../constants/data';
 import { useAppContext } from '../context/AppContext';
 import AlphabetSlideCard from '../components/AlphabetSlideCard';
+import VocabCard from '../components/VocabCard';
+import SentenceCard from '../components/SentenceCard';
 import { LessonType } from '../types';
 
 const LessonPage: React.FC = () => {
@@ -42,15 +43,25 @@ const LessonPage: React.FC = () => {
         const slideId = slides[currentSlideIndex];
 
         switch (lesson.type) {
-            case LessonType.ALPHABET:
+            case LessonType.ALPHABET: {
                 const slideData = ALPHABET_SLIDES[slideId];
                 if (!slideData) return <p>Slide data not found.</p>;
                 const letterData = LETTERS[slideData.letterId];
                 if (!letterData) return <p>Letter data not found.</p>;
                 return <AlphabetSlideCard slide={slideData} letter={letterData} />;
-            // Other lesson types would be handled here
+            }
+            case LessonType.VOCAB: {
+                const vocabData = VOCAB_ITEMS[slideId];
+                if (!vocabData) return <p>Vocabulary item not found.</p>;
+                return <VocabCard item={vocabData} />;
+            }
+            case LessonType.SENTENCES: {
+                const sentenceData = SENTENCE_ITEMS[slideId];
+                if (!sentenceData) return <p>Sentence item not found.</p>;
+                return <SentenceCard item={sentenceData} />;
+            }
             default:
-                return <p>Lesson type '{lesson.type}' not yet implemented.</p>;
+                return <p className="text-center p-8 bg-light-primary dark:bg-dark-secondary rounded-lg">Lesson type '{lesson.type}' not yet implemented.</p>;
         }
     };
     

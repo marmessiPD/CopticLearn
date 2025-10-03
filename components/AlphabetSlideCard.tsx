@@ -27,7 +27,7 @@ const FatherIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 );
 
 const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({ slide, letter }) => {
-    const { t } = useAppContext();
+    const { t, playSound } = useAppContext();
 
     return (
         <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
@@ -40,15 +40,21 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({ slide, letter }) 
                 </div>
             </div>
 
-            {/* Image */}
-            <img src={slide.image} alt={t(letter.exampleWord.meaning)} className="w-full h-48 object-cover rounded-lg mb-4" />
-
+            {/* Emoji */}
+            <div className="w-full h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg mb-4">
+                <span className="text-8xl" role="img" aria-label={t(letter.exampleWord.meaning)}>{slide.emoji}</span>
+            </div>
+            
             {/* Example Word */}
             <div className="text-center mb-4 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                 <p className="text-4xl font-coptic">{letter.exampleWord.coptic}</p>
                 <p className="text-lg italic text-gray-600 dark:text-gray-400">{letter.exampleWord.translit}</p>
                 <p className="text-lg font-semibold">{t(letter.exampleWord.meaning)}</p>
-                <button className="mt-2 inline-flex items-center px-3 py-1 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue">
+                <button 
+                    onClick={() => playSound(t(letter.exampleWord.meaning))}
+                    className="mt-2 inline-flex items-center px-3 py-1 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue"
+                    aria-label={t({de: 'Wort anhören', en: 'Listen to word', ar: 'استمع للكلمة'})}
+                >
                     <SpeakerIcon className="mr-2 rtl:ml-2 rtl:mr-0"/> {t({de: 'Wort', en: 'Word', ar: 'الكلمة'})}
                 </button>
             </div>
@@ -68,7 +74,11 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({ slide, letter }) 
             {/* Explanation */}
             <div className="space-y-4">
                 <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                     <button className="flex-shrink-0 mt-1 text-coptic-blue dark:text-coptic-gold">
+                     <button 
+                        onClick={() => playSound(t(letter.name))}
+                        className="flex-shrink-0 mt-1 text-coptic-blue dark:text-coptic-gold"
+                        aria-label={t({de: 'Buchstabenname anhören', en: 'Listen to letter name', ar: 'استمع لاسم الحرف'})}
+                    >
                         <SpeakerIcon />
                      </button>
                      <p>{t(slide.explanation)}</p>

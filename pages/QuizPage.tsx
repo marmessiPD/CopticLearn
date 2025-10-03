@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { QUIZZES, QUIZ_QUESTIONS, LESSONS } from '../constants/data';
-import { QuizQuestion, QuizQuestionType } from '../types';
+import { QUIZZES, QUIZ_QUESTIONS, LESSONS, LETTERS } from '../constants/data';
+import { QuizQuestion, QuizQuestionType, Letter } from '../types';
 import { useAppContext } from '../context/AppContext';
 
 const CheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
@@ -21,7 +21,7 @@ const SpeakerIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const QuizPage: React.FC = () => {
     const { quizId } = useParams<{ quizId: string }>();
     const navigate = useNavigate();
-    const { t, role, updateProgress } = useAppContext();
+    const { t, role, updateProgress, playSound } = useAppContext();
     
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -51,13 +51,33 @@ const QuizPage: React.FC = () => {
         }
     };
     
+    const handlePlayListenQuestion = () => {
+        if (currentQuestion.type !== QuizQuestionType.LISTEN) return;
+        
+        const findLetterByCharacter = (char: string): Letter | undefined => {
+            return Object.values(LETTERS).find(l => l.uppercase === char || l.lowercase === char);
+        }
+
+        const answerIndex = currentQuestion.answer[0] as number;
+        const correctOption = currentQuestion.options[answerIndex] as string;
+        
+        const letterData = findLetterByCharacter(correctOption);
+
+        if (letterData) {
+            const pronunciationString = t(letterData.pronunciation);
+            const match = pronunciationString.match(/"([^"]+)"/);
+            const sound = match ? match[1] : letterData.lowercase;
+            playSound(sound);
+        }
+    };
+
     useEffect(() => {
         if (showResults && quiz) {
             const finalScore = score / questions.length;
             updateProgress(quiz.id, finalScore);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [showResults, quiz, score, questions.length, updateProgress]);
+    }, [showResults]);
 
     if (!quiz || questions.length === 0) {
         return <div>{t({ de: 'Quiz nicht gefunden', en: 'Quiz not found', ar: 'الاختبار غير موجود' })}</div>;
@@ -90,15 +110,11 @@ const QuizPage: React.FC = () => {
                 <h3 className="text-xl font-semibold">{t(currentQuestion.prompt)}</h3>
             </div>
 
-            {currentQuestion.type === QuizQuestionType.LISTEN && currentQuestion.media.audio && (
+            {currentQuestion.type === QuizQuestionType.LISTEN && (
                 <div className="my-4 text-center">
                     <button 
                         className="p-4 bg-coptic-blue dark:bg-coptic-gold text-white dark:text-coptic-blue rounded-full inline-flex items-center justify-center transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-coptic-blue dark:focus:ring-coptic-gold"
-                        onClick={() => {
-                            // In a real app, you would handle audio playback here.
-                            // For now, this is a visual placeholder to unblock the UI.
-                            console.log(`Simulating playback for: ${currentQuestion.media.audio}`);
-                        }}
+                        onClick={handlePlayListenQuestion}
                         aria-label={t({de: "Audio abspielen", en: "Play audio", ar: "تشغيل الصوت"})}
                     >
                         <SpeakerIcon className="h-8 w-8" />
