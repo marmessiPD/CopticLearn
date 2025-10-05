@@ -270,8 +270,8 @@ export const LESSONS: Record<string, Lesson> = {
         ]
     },
     // Module 2
-    'l3-1': {
-        id: 'l3-1', order: 1, moduleId: 'm2', title: { de: 'Zahlen', en: 'Numbers', ar: 'الأرقام' }, prerequisites: ['l2-6'], quizId: 'q3-1',
+    'm2-l1': {
+        id: 'm2-l1', order: 1, moduleId: 'm2', title: { de: 'Zahlen', en: 'Numbers', ar: 'الأرقام' }, prerequisites: ['l2-6'], quizId: 'q2-l1',
         slides: [
             { type: 'grammar', title: { de: 'Zahlen und Geschlecht', en: 'Numbers and Gender', ar: 'الأرقام والجنس' }, rule: { de: 'Koptische Zahlen haben oft eine maskuline und eine feminine Form. Das Geschlecht richtet sich nach dem Substantiv, das sie beschreiben. Zum Beispiel "drei Söhne" (maskulin) vs. "drei Töchter" (feminin).', en: 'Coptic numbers often have masculine and feminine forms. The gender depends on the noun they describe. For example, "three sons" (masculine) vs. "three daughters" (feminine).', ar: 'الأرقام القبطية غالبًا ما يكون لها صيغة مذكرة ومؤنثة. يعتمد الجنس على الاسم الذي يصفونه. على سبيل المثال، "ثلاثة أبناء" (مذكر) مقابل "ثلاث بنات" (مؤنث).' }, examples: [{ coptic: 'ϣⲟⲙⲧ ⲛ̀ϣⲏⲣⲓ', translit: 'shomt en-sheri', meaning: { de: 'drei Söhne', en: 'three sons', ar: 'ثلاثة أبناء' } }, { coptic: 'ϣⲟⲙϯ ⲛ̀ϣⲉⲉⲣⲓ', translit: 'shomti en-sheeri', meaning: { de: 'drei Töchter', en: 'three daughters', ar: 'ثلاث بنات' } }] },
             { type: 'number', number: 1, copticSymbol: 'ⲁ̅', copticName: 'ⲟⲩⲁⲓ', translit: 'ouai' },
@@ -285,7 +285,7 @@ export const LESSONS: Record<string, Lesson> = {
             { type: 'number', number: 9, copticSymbol: 'ⲑ̅', copticName: 'ⲯⲓⲧ', translit: 'psit' },
             { type: 'number', number: 10, copticSymbol: 'ⲓ̅', copticName: 'ⲙⲏⲧ', translit: 'meet' },
             { type: 'grammar', title: { de: 'Zahlen zählen', en: 'Counting with Numbers', ar: 'العد بالأرقام' }, rule: { de: 'Bei den Zahlen 1 und 2 steht die Zahl nach dem Substantiv. Ab 3 steht die Zahl vor dem Substantiv und wird mit "ⲛ̀" (en) verbunden.', en: 'For numbers 1 and 2, the number comes after the noun. From 3 onwards, the number comes before the noun and is connected with "ⲛ̀" (en).', ar: 'بالنسبة للرقمين 1 و 2، يأتي الرقم بعد الاسم. من 3 فصاعدًا، يأتي الرقم قبل الاسم ويرتبط بـ "ⲛ̀" (إن).' }, examples: [{ coptic: 'ⲟⲩⲣⲱⲙⲓ ⲛ̀ⲟⲩⲱⲧ', translit: 'ou-romi en-ouot', meaning: { de: 'ein Mann', en: 'one man', ar: 'رجل واحد' } }, { coptic: 'ⲣⲱⲙⲓ ⲥ̀ⲛⲁⲩ', translit: 'romi snau', meaning: { de: 'zwei Männer', en: 'two men', ar: 'رجلان' } }, { coptic: 'ϣⲟⲙⲧ ⲛ̀ⲣⲱⲙⲓ', translit: 'shomt en-romi', meaning: { de: 'drei Männer', en: 'three men', ar: 'ثلاثة رجال' } }] },
-            { type: 'grammar', title: { de: 'Ordnungszahlen', en: 'Ordinal Numbers', ar: 'الأعداد الترتيبية' }, rule: { de: 'Um Ordnungszahlen (erster, zweiter, dritter...) zu bilden, wird "ⲡⲓⲙⲁϩ-" (pimah-) vor die Grundzahl gesetzt.', en: 'To form ordinal numbers (first, second, third...), "ⲡⲓⲙⲁϩ-" (pimah-) is placed before the cardinal number.', ar: 'لتكوين الأعداد الترتيبية (الأول، الثاني، الثالث...)، يتم وضع "ⲡⲓⲙⲁϩ-" (بيماه-) قبل العدد الأصلي.' }, examples: [{ coptic: 'ⲡⲓⲙⲁϩⲥ̀ⲛⲁⲩ', translit: 'pimah-snau', meaning: { de: 'der zweite', en: 'the second', ar: 'الثاني' } }, { coptic: 'ⲡⲓⲙⲁϩϣⲟⲙⲧ', translit: 'pimah-shomt', meaning: { de: 'der dritte', en: 'the third', ar: 'الثالث' } }] },
+            { type: 'grammar', title: { de: 'Ordnungszahlen', en: 'Ordinal Numbers', ar: 'الأعداد الترتيبية' }, rule: { de: 'Um Ordnungszahlen (erster, zweiter, dritter...) zu bilden, wird "ⲡⲓⲙⲁϩ-" (pimah-) vor die Grundzahl gesetzt.', en: 'To form ordinal numbers (first, second, third...), "ⲡⲓⲙⲁϩ-" (pimah-) is placed before the cardinal number.', ar: 'لتكوين الأعداد الترتيبية (الأول، الثاني، الثالث...)، يتم وضع "ⲡⲓⲙⲁϩ-" (بيماه-) قبل العدد الأصلي.' }, examples: [{ coptic: 'ⲡⲓϣⲟⲣⲡ', translit: 'pishorp', meaning: { de: 'der erste', en: 'the first', ar: 'الأول' } }, { coptic: 'ⲡⲓⲙⲁϩⲥ̀ⲛⲁⲩ', translit: 'pimah-snau', meaning: { de: 'der zweite', en: 'the second', ar: 'الثاني' } }, { coptic: 'ⲡⲓⲙⲁϩϣⲟⲙⲧ', translit: 'pimah-shomt', meaning: { de: 'der dritte', en: 'the third', ar: 'الثالث' } }] },
             { type: 'number', number: 20, copticSymbol: 'ⲕ̅', copticName: 'ϫⲟⲩⲱⲧ', translit: 'jouot' },
             { type: 'number', number: 30, copticSymbol: 'ⲗ̅', copticName: 'ⲙⲁⲁⲃ', translit: 'maav' },
             { type: 'number', number: 40, copticSymbol: 'ⲙ̅', copticName: 'ϩ̀ⲙⲉ', translit: 'hme' },
@@ -294,8 +294,8 @@ export const LESSONS: Record<string, Lesson> = {
             { type: 'sentence', item: { text: 'ⲡⲓⲙⲁϩⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ', translit: 'pimah-sashf en-ehoou', meaning: { de: 'Der siebte Tag', en: 'The seventh day', ar: 'اليوم السابع' } } },
         ]
     },
-    'l3-2': {
-        id: 'l3-2', order: 2, moduleId: 'm2', title: { de: 'Nomen: Geschlecht & Artikel', en: 'Nouns: Gender & Articles', ar: 'الأسماء: الجنس والأدوات' }, prerequisites: ['l3-1'], quizId: 'q3-2',
+    'm2-l2': {
+        id: 'm2-l2', order: 2, moduleId: 'm2', title: { de: 'Nomen: Geschlecht & Artikel', en: 'Nouns: Gender & Articles', ar: 'الأسماء: الجنس والأدوات' }, prerequisites: ['m2-l1'], quizId: 'q2-l2',
         slides: [
             { type: 'grammar', title: { de: 'Der bestimmte Artikel (Singular)', en: 'The Definite Article (Singular)', ar: 'أداة التعريف (المفرد)' }, rule: { de: 'Es gibt "starke" Artikel (ⲡⲓ, ϯ) für Betonung und "schwache" Artikel (ⲡ̀/ⲫ, ⲧ̀/ⲑ̀) für den allgemeinen Gebrauch. Das Geschlecht des Nomens bestimmt den Artikel.', en: 'There are "strong" articles (ⲡⲓ, ϯ) for emphasis and "weak" articles (ⲡ̀/ⲫ, ⲧ̀/ⲑ̀) for general use. The gender of the noun determines the article.', ar: 'هناك أدوات "قوية" (ⲡⲓ، ϯ) للتأكيد وأدوات "ضعيفة" (ⲡ̀/ⲫ، ⲧ̀/ⲑ̀) للاستخدام العام. جنس الاسم يحدد الأداة.' }, examples: [{ coptic: 'ⲡⲓⲓⲱⲧ', translit: 'pi-iot', meaning: { de: 'dieser Vater (stark)', en: 'this very father (strong)', ar: 'هذا الآب (قوي)' } }, { coptic: 'ⲡ̀ⲣⲱⲙⲓ', translit: 'ep-romi', meaning: { de: 'der Mann (schwach)', en: 'the man (weak)', ar: 'الرجل (ضعيف)' } }] },
             { type: 'grammar', title: { de: 'Die Vilminor-Buchstaben', en: 'The Vilminor Letters', ar: 'الحروف الفيلمينورية' }, rule: { de: 'Die schwachen Artikel ändern sich vor den "Vilminor"-Buchstaben (ⲃ, ⲓ, ⲗ, ⲙ, ⲛ, ⲟ, ⲣ). ⲡ̀ wird zu ⲫ, und ⲧ̀ wird zu ⲑ̀.', en: 'The weak articles change before "Vilminor" letters (ⲃ, ⲓ, ⲗ, ⲙ, ⲛ, ⲟ, ⲣ). ⲡ̀ becomes ⲫ, and ⲧ̀ becomes ⲑ̀.', ar: 'تتغير الأدوات الضعيفة قبل حروف "الفيلمينور" (ⲃ، ⲓ، ⲗ، ⲙ، ⲛ، ⲟ، ⲣ). ⲡ̀ تصبح ⲫ، و ⲧ̀ تصبح ⲑ̀.' }, examples: [{ coptic: 'ⲫ̀ⲣⲁⲛ', translit: 'ev-ran', meaning: { de: 'der Name', en: 'the name', ar: 'الاسم' } }, { coptic: 'ⲑ̀ⲙⲁⲁⲩ', translit: 'eth-maav', meaning: { de: 'die Mutter', en: 'the mother', ar: 'الأم' } }] },
@@ -306,11 +306,72 @@ export const LESSONS: Record<string, Lesson> = {
         ]
     },
     // Module 3
-    'l3-3': {
-        id: 'l3-3', order: 1, moduleId: 'm3', title: { de: 'Der Unbestimmte Artikel', en: 'The Indefinite Article', ar: 'أداة النكرة' }, prerequisites: ['l3-2'], quizId: 'q3-3',
+    'l3-1': {
+        id: 'l3-1', order: 1, moduleId: 'm3', title: { de: 'Bestimmte & Unbestimmte Artikel', en: 'Definite & Indefinite Articles', ar: 'أدوات التعريف والتنكير' }, prerequisites: ['m2-l2'], quizId: 'q3-1',
         slides: [
-            { type: 'grammar', title: { de: 'Der unbestimmte Artikel (Singular)', en: 'The Indefinite Article (Singular)', ar: 'أداة النكرة (المفرد)' }, rule: { de: 'Der unbestimmte Artikel im Koptischen ist "ⲟⲩ" (ou) für "ein/eine". Er wird für alle Geschlechter im Singular verwendet.', en: 'The indefinite article in Coptic is "ⲟⲩ" (ou) for "a/an". It is used for all genders in the singular.', ar: 'أداة النكرة في القبطية هي "ⲟⲩ" (أو) وتعني "واحد/واحدة". تستخدم لجميع الأجناس في المفرد.' }, examples: [{ coptic: 'ⲟⲩⲣⲱⲙⲓ', translit: 'ou-romi', meaning: { de: 'ein Mann', en: 'a man', ar: 'رجل' } }, { coptic: 'ⲟⲩⲥ̀ϩⲓⲙⲓ', translit: 'ou-shimi', meaning: { de: 'eine Frau', en: 'a woman', ar: 'امرأة' } }] },
-            { type: 'grammar', title: { de: 'Der unbestimmte Artikel (Plural)', en: 'The Indefinite Article (Plural)', ar: 'أداة النكرة (الجمع)' }, rule: { de: 'Der unbestimmte Artikel im Plural ist "ϩⲁⲛ" (han) und bedeutet "einige". Er wird für alle Geschlechter im Plural verwendet.', en: 'The indefinite article in the plural is "ϩⲁⲛ" (han) and means "some". It is used for all genders in the plural.', ar: 'أداة النكرة في الجمع هي "ϩⲁⲛ" (هان) وتعني "بعض". تستخدم لجميع الأجناس في الجمع.' }, examples: [{ coptic: 'ϩⲁⲛⲣⲱⲙⲓ', translit: 'han-romi', meaning: { de: 'einige Männer', en: 'some men', ar: 'بعض الرجال' } }, { coptic: 'ϩⲁⲛⲥ̀ϩⲓⲟⲙⲓ', translit: 'han-shiomi', meaning: { de: 'einige Frauen', en: 'some women', ar: 'بعض النساء' } }] },
+            { type: 'grammar', title: { de: 'Unbestimmter Artikel', en: 'Indefinite Article', ar: 'أداة النكرة' }, rule: { de: 'Der unbestimmte Artikel ist "ⲟⲩ" (ou) für den Singular ("ein/eine") und "ϩⲁⲛ" (han) für den Plural ("einige"). Sie sind für alle Geschlechter gleich.', en: 'The indefinite article is "ⲟⲩ" (ou) for singular ("a/an") and "ϩⲁⲛ" (han) for plural ("some"). They are the same for all genders.', ar: 'أداة النكرة هي "ⲟⲩ" (أو) للمفرد و "ϩⲁⲛ" (هان) للجمع ("بعض"). وهي لا تتغير حسب الجنس.' }, examples: [
+                { coptic: 'ⲟⲩⲣⲱⲙⲓ', translit: 'ou-romi', meaning: { de: 'ein Mann', en: 'a man', ar: 'رجل' } }, 
+                { coptic: 'ϩⲁⲛⲣⲱⲙⲓ', translit: 'han-romi', meaning: { de: 'einige Männer', en: 'some men', ar: 'بعض الرجال' } }
+            ]},
+            { type: 'grammar', title: { de: 'Bestimmter Artikel: Singular', en: 'Definite Article: Singular', ar: 'أداة التعريف: المفرد' }, rule: { de: 'Es gibt 6 singuläre bestimmte Artikel. Starke (ⲡⲓ, ϯ) für Betonung und schwache (ⲡ̀, ⲫ̀, ⲧ̀, ⲑ̀) für den allgemeinen Gebrauch. Das Geschlecht des Substantivs entscheidet.', en: 'There are 6 singular definite articles. Strong (ⲡⲓ, ϯ) for emphasis, and weak (ⲡ̀, ⲫ̀, ⲧ̀, ⲑ̀) for general use. The noun\'s gender determines which to use.', ar: 'توجد 6 أدوات تعريف للمفرد. القوية (ⲡⲓ، ϯ) للتأكيد، والضعيفة (ⲡ̀، ⲫ̀، ⲧ̀، ⲑ̀) للاستخدام العام. جنس الاسم يحدد الأداة.' }, examples: [
+                { coptic: 'ⲡⲓⲣⲱⲙⲓ', translit: 'pi-romi', meaning: { de: 'dieser spezielle Mann', en: 'this specific man', ar: 'هذا الرجل المحدد' } },
+                { coptic: 'ⲡ̀ⲣⲱⲙⲓ', translit: 'ep-romi', meaning: { de: 'der Mann', en: 'the man', ar: 'الرجل' } }
+            ]},
+            { type: 'grammar', title: { de: 'Bestimmter Artikel: Vilminor Regel', en: 'Definite Article: Vilminor Rule', ar: 'أداة التعريف: قاعدة الفيلمينور' }, rule: { de: 'Vor den "Vilminor"-Buchstaben (ⲃ, ⲓ, ⲗ, ⲙ, ⲛ, ⲟ, ⲣ) wird der schwache maskuline Artikel ⲡ̀ zu ⲫ̀, und der schwache feminine Artikel ⲧ̀ wird zu ⲑ̀.', en: 'Before "Vilminor" letters (ⲃ, ⲓ, ⲗ, ⲙ, ⲛ, ⲟ, ⲣ), the weak masculine article ⲡ̀ becomes ⲫ̀, and the weak feminine article ⲧ̀ becomes ⲑ̀.', ar: 'قبل حروف "الفيلمينور" (ⲃ، ⲓ، ⲗ، ⲙ، ⲛ، ⲟ، ⲣ)، تتحول أداة المذكر الضعيفة ⲡ̀ إلى ⲫ̀، وأداة المؤنث الضعيفة ⲧ̀ إلى ⲑ̀.' }, examples: [
+                { coptic: 'ⲫ̀ⲣⲁⲛ', translit: 'ev-ran', meaning: { de: 'der Name', en: 'the name', ar: 'الاسم' } }
+            ]},
+             { type: 'grammar', title: { de: 'Bestimmter Artikel: Plural', en: 'Definite Article: Plural', ar: 'أداة التعريف: الجمع' }, rule: { de: 'Der allgemeine Pluralartikel ist ⲛⲓ. In "von"-Konstruktionen wird ⲛⲉⲛ verwendet (z.B. "die Söhne von Israel").', en: 'The general plural article is ⲛⲓ. In "of" constructions, ⲛⲉⲛ is used (e.g., "the sons of Israel").', ar: 'أداة الجمع العامة هي ⲛⲓ. في تراكيب الإضافة، تُستخدم ⲛⲉⲛ (مثل "أبناء إسرائيل").' }, examples: [
+                { coptic: 'ⲛⲓⲣⲱⲙⲓ', translit: 'ni-romi', meaning: { de: 'die Männer', en: 'the men', ar: 'الرجال' } },
+                { coptic: 'ⲛⲉⲛϣⲏⲣⲓ ⲙ̀ⲡ̀ⲓⲥⲣⲁⲏⲗ', translit: 'nen-sheri em-pisrael', meaning: { de: 'die Söhne Israels', en: 'the sons of Israel', ar: 'أبناء إسرائيل' } }
+            ]},
+            { type: 'grammar', title: { de: 'Der Vokativ', en: 'The Vocative', ar: 'النداء' }, rule: { de: 'Um jemanden anzurufen, kann der bestimmte Artikel oder das Wort ⲱ verwendet werden.', en: 'To call upon someone, you can use the definite article or the word ⲱ.', ar: 'لمناداة شخص ما، يمكنك استخدام أداة التعريف أو كلمة ⲱ.' }, examples: [
+                { coptic: 'Ⲡ̀ϭⲟⲓⲥ', translit: 'Epchois', meaning: { de: 'O Herr!', en: 'O Lord!', ar: 'يا رب!' } }
+            ]}
+        ]
+    },
+    'l3-2': {
+        id: 'l3-2', order: 2, moduleId: 'm3', title: { de: 'Possessivartikel', en: 'Possessive Articles', ar: 'أدوات الملكية' }, prerequisites: ['l3-1'], quizId: 'q3-2',
+        slides: [
+            { type: 'grammar', title: { de: 'Besitz anzeigen', en: 'Indicating Possession', ar: 'التعبير عن الملكية' }, rule: { de: 'Possessivartikel ("mein", "dein" usw.) werden direkt vor das Substantiv gesetzt. Ihre Form hängt vom Besitzer (Person, Zahl) und vom Geschlecht des besessenen Objekts ab.', en: 'Possessive articles ("my", "your", etc.) are placed directly before the noun. Their form depends on the possessor (person, number) and the gender of the possessed object.', ar: 'توضع أدوات الملكية ("لي"، "لك"، إلخ) مباشرة قبل الاسم. شكلها يعتمد على المالك (الشخص، العدد) وجنس الشيء المملوك.' }, examples: [
+                { coptic: 'ⲡⲁⲓⲱⲧ', translit: 'pa-iot', meaning: { de: 'mein Vater (mask. Objekt)', en: 'my father (masc. object)', ar: 'أبي (مفعول به مذكر)' } },
+                { coptic: 'ⲧⲁⲙⲁⲁⲩ', translit: 'ta-maav', meaning: { de: 'meine Mutter (fem. Objekt)', en: 'my mother (fem. object)', ar: 'أمي (مفعول به مؤنث)' } },
+                { coptic: 'ⲛⲁⲥ̀ⲛⲏⲟⲩ', translit: 'na-sneo-u', meaning: { de: 'meine Brüder (pl. Objekt)', en: 'my brothers (pl. object)', ar: 'إخوتي (مفعول به جمع)' } }
+            ] },
+            { type: 'grammar', title: { de: 'Tabelle der Possessivartikel', en: 'Table of Possessive Articles', ar: 'جدول أدوات الملكية' }, rule: { de: 'Beispiel für "dein" (zu einem Mann gesprochen): ⲡⲉⲕ- (pek) für maskuline Objekte, ⲧⲉⲕ- (tek) für feminine, ⲛⲉⲕ- (nek) für plurale.', en: 'Example for "your" (spoken to a male): ⲡⲉⲕ- (pek) for masculine objects, ⲧⲉⲕ- (tek) for feminine, ⲛⲉⲕ- (nek) for plural.', ar: 'مثال على "لك" (لمخاطبة مذكر): ⲡⲉⲕ- (بيك) للأشياء المذكرة، ⲧⲉⲕ- (تيك) للمؤنثة، و ⲛⲉⲕ- (نيك) للجمع.' }, examples: [
+                { coptic: 'ⲡⲉⲕⲓⲱⲧ', translit: 'pek-iot', meaning: { de: 'dein Vater', en: 'your father', ar: 'أبوك' } },
+                { coptic: 'ⲧⲉⲕⲙⲁⲁⲩ', translit: 'tek-maav', meaning: { de: 'deine Mutter', en: 'your mother', ar: 'أمك' } },
+            ] }
+        ]
+    },
+    'l3-3': {
+        id: 'l3-3', order: 3, moduleId: 'm3', title: { de: 'Demonstrativartikel', en: 'Demonstrative Articles', ar: 'أدوات الإشارة' }, prerequisites: ['l3-2'], quizId: 'q3-3',
+        slides: [
+             { type: 'grammar', title: { de: 'Demonstrativartikel: "Dieser"', en: 'Demonstrative Article: "This"', ar: 'أداة الإشارة: "هذا"' }, rule: { de: 'Um auf etwas Nahes zu zeigen ("dieser, diese, dieses"), werden die Artikel ⲡⲁⲓ (pai) für maskulin, ⲧⲁⲓ (tai) für feminin und ⲛⲁⲓ (nai) für plural verwendet. Sie stehen vor dem Substantiv.', en: 'To point to something near ("this, these"), use the articles ⲡⲁⲓ (pai) for masculine, ⲧⲁⲓ (tai) for feminine, and ⲛⲁⲓ (nai) for plural. They come before the noun.', ar: 'للإشارة إلى شيء قريب ("هذا، هذه، هؤلاء")، استخدم الأدوات ⲡⲁⲓ (باي) للمذكر، ⲧⲁⲓ (تاي) للمؤنث، و ⲛⲁⲓ (ناي) للجمع. تأتي قبل الاسم.' }, examples: [
+                { coptic: 'ⲡⲁⲓⲣⲱⲙⲓ', translit: 'pai-romi', meaning: { de: 'dieser Mann', en: 'this man', ar: 'هذا الرجل' } }
+            ]},
+            { type: 'grammar', title: { de: 'Demonstrativartikel: "Jener"', en: 'Demonstrative Article: "That"', ar: 'أداة الإشارة: "ذلك"' }, rule: { de: 'Um auf etwas Entferntes zu zeigen ("jener, jene, jenes"), wird die Phrase "ⲉ̀ⲧⲉ ⲙ̀ⲙⲁⲩ" (ete em-mau) nach dem Substantiv mit seinem bestimmten Artikel gestellt.', en: 'To point to something distant ("that, those"), the phrase "ⲉ̀ⲧⲉ ⲙ̀ⲙⲁⲩ" (ete em-mau) is placed after the noun with its definite article.', ar: 'للإشارة إلى شيء بعيد ("ذلك، تلك، أولئك")، توضع العبارة "ⲉ̀ⲧⲉ ⲙ̀ⲙⲁⲩ" (إيتي إم-ماو) بعد الاسم مع أداة التعريف الخاصة به.' }, examples: [
+                { coptic: 'ⲡ̀ⲣⲱⲙⲓ ⲉ̀ⲧⲉ ⲙ̀ⲙⲁⲩ', translit: 'ep-romi ete em-mau', meaning: { de: 'jener Mann', en: 'that man', ar: 'ذلك الرجل' } }
+            ]},
+            { type: 'grammar', title: { de: 'Demonstrativpronomen', en: 'Demonstrative Pronoun', ar: 'ضمير الإشارة' }, rule: { de: 'Wenn "dies" alleine steht (als Pronomen, nicht als Artikel), werden ⲫⲁⲓ (phai), ⲑⲁⲓ (thai) und ⲛⲁⲓ (nai) verwendet.', en: 'When "this" stands alone (as a pronoun, not an article), ⲫⲁⲓ (phai), ⲑⲁⲓ (thai), and ⲛⲁⲓ (nai) are used.', ar: 'عندما تأتي "هذا" بمفردها (كضمير وليس أداة)، تُستخدم ⲫⲁⲓ (فاي)، ⲑⲁⲓ (ثاي)، و ⲛⲁⲓ (ناي).' }, examples: [
+                { coptic: 'ⲫⲁⲓ ⲡⲉ ⲡ̀ϣⲏⲣⲓ ⲙ̀ⲫ̀ⲛⲟⲩϯ', translit: 'phai pe ep-sheri em-efnouti', meaning: { de: 'Dieser ist der Sohn Gottes', en: 'This is the Son of God', ar: 'هذا هو ابن الله' } }
+            ]}
+        ]
+    },
+    'l3-4': {
+        id: 'l3-4', order: 4, moduleId: 'm3', title: { de: 'Personalpronomen & Abkürzungen', en: 'Personal Pronouns & Abbreviations', ar: 'الضمائر الشخصية والاختصارات' }, prerequisites: ['l3-3'], quizId: 'q3-4',
+        slides: [
+            { type: 'grammar', title: { de: 'Unabhängige Personalpronomen', en: 'Independent Personal Pronouns', ar: 'الضمائر الشخصية المنفصلة' }, rule: { de: 'Diese Pronomen können alleine stehen, oft zur Betonung. Sie werden für Subjekt und Prädikat verwendet.', en: 'These pronouns can stand alone, often for emphasis. They are used for subjects and predicates.', ar: 'هذه الضمائر يمكن أن تأتي بمفردها، غالبًا للتأكيد. تستخدم للمبتدأ والخبر.' }, examples: [
+                { coptic: 'ⲁ̀ⲛⲟⲕ', translit: 'anok', meaning: { de: 'Ich', en: 'I', ar: 'أنا' } },
+                { coptic: 'ⲛ̀ⲑⲟⲕ', translit: 'enthok', meaning: { de: 'Du (m.)', en: 'You (m.)', ar: 'أنت' } },
+                { coptic: 'ⲁ̀ⲛⲟⲛ', translit: 'anon', meaning: { de: 'Wir', en: 'We', ar: 'نحن' } }
+            ]},
+            { type: 'sentence', item: { text: 'ⲁ̀ⲛⲟⲕ ⲡⲉ ⲡⲓⲭⲣⲓⲥⲧⲟⲥ', translit: 'anok pe pi-christos', meaning: { de: 'Ich bin der Christus', en: 'I am the Christ', ar: 'أنا هو المسيح' } } },
+            { type: 'grammar', title: { de: 'Heilige Abkürzungen (Nomina Sacra)', en: 'Sacred Abbreviations (Nomina Sacra)', ar: 'الاختصارات المقدسة' }, rule: { de: 'Wichtige Namen wie "Jesus", "Christus", "Gott" und "Herr" wurden in Manuskripten oft abgekürzt und mit einem Strich darüber markiert.', en: 'Important names like "Jesus," "Christ," "God," and "Lord" were often abbreviated in manuscripts and marked with a line above.', ar: 'الأسماء الهامة مثل "يسوع" و "المسيح" و "الله" و "الرب" كانت غالبًا ما تُختصر في المخطوطات وتُميز بخط فوقها.' }, examples: [
+                { coptic: 'Ⲓ̅ⲥ̅', translit: 'IS', meaning: { de: 'Jesus', en: 'Jesus', ar: 'يسوع' } },
+                { coptic: 'Ⲭ̅ⲥ̅', translit: 'CHS', meaning: { de: 'Christus', en: 'Christ', ar: 'المسيح' } },
+                { coptic: 'ⲫϯ', translit: 'FNouti', meaning: { de: 'Gott', en: 'God', ar: 'الله' } },
+                { coptic: 'Ⲡϭ̅ⲟ̅ⲓ̅ⲥ̅', translit: 'PCHOIS', meaning: { de: 'Der Herr', en: 'The Lord', ar: 'الرب' } }
+            ]}
         ]
     },
     'l4-1': {
@@ -330,7 +391,7 @@ export const LESSONS: Record<string, Lesson> = {
     },
     // Module 4
     'l5-1': {
-        id: 'l5-1', order: 1, moduleId: 'm4', title: { de: 'Verben: Präsens I', en: 'Verbs: Present Tense I', ar: 'الأفعال: المضارع الأول' }, prerequisites: ['l4-2'], quizId: 'q5-1',
+        id: 'l5-1', order: 1, moduleId: 'm4', title: { de: 'Verben: Präsens I', en: 'Verbs: Present Tense I', ar: 'الأفعال: المضارع الأول' }, prerequisites: ['l3-4'], quizId: 'q5-1',
         slides: [
             { type: 'grammar', title: { de: 'Präsenskonjugation', en: 'Present Tense Conjugation', ar: 'تصريف المضارع' }, rule: { de: 'Das Präsens wird mit einem Präfix gebildet. Hier sind die Singularformen:', en: 'The present tense is formed with a prefix. Here are the singular forms:', ar: 'يتم تكوين زمن المضارع ببادئة. إليك صيغ المفرد:' }, examples: [
                 { coptic: 'ϯⲥⲱⲧⲉⲙ', translit: 'ti-sotem', meaning: { de: 'ich höre', en: 'I hear', ar: 'أنا أسمع' } }, 
@@ -402,7 +463,7 @@ export const LESSONS: Record<string, Lesson> = {
                 { coptic: 'ⲧⲁⲙⲁⲁⲩ', translit: 'ta-maav', meaning: { de: 'meine Mutter', en: 'my mother', ar: 'أمي' } },
                 { coptic: 'ⲛⲁⲥ̀ⲛⲏⲟⲩ', translit: 'na-sneo-u', meaning: { de: 'meine Brüder', en: 'my brothers', ar: 'إخوتي' } }
             ] },
-             { type: 'grammar', title: { de: '"Dein" (m.)', en: '"Your" (m. sg.)', ar: '"خاصتك"' }, rule: { de: 'Um "dein" (zu einem Mann) auszudrücken, verwende ⲡⲉⲕ- (pek-), ⲧⲉⲕ- (tek-), ⲛⲉⲕ- (nek-).', en: 'To express "your" (to a male), use ⲡⲉⲕ- (pek-), ⲧⲉⲕ- (tek-), ⲛⲉⲕ- (nek-).', ar: 'للتعبير عن الملكية "لك" (للمذكر)، استخدم ⲡⲉⲕ- (بيك-)، ⲧⲉⲕ- (تيك-)، ⲛⲉⲕ- (نيك-).' }, examples: [
+             { type: 'grammar', title: { de: '"Dein" (m.)', en: '"Your" (m. sg.)', ar: '"خاصتك"' }, rule: { de: 'Um "dein" (zu einem Mann) auszudrücken, verwende ⲡⲉⲕ- (pek-), ⲧⲉⲕ- (tek-), ⲛⲉⲕ- (nek-).', en: 'To express "your" (to a male), use ⲡⲉⲕ- (pek-), ⲧⲉⲕ- (tek-), ⲛⲉⲕ- (nek-).', ar: 'للتعبير عن الملكية "لك" (للمذكر)، استخدم ⲡⲉⲕ- (بيك-)، ⲧⲉⲕ- (تيك-)، و ⲛⲉⲕ- (نيك-).' }, examples: [
                 { coptic: 'ⲡⲉⲕⲓⲱⲧ', translit: 'pek-iot', meaning: { de: 'dein Vater', en: 'your father', ar: 'أبوك' } }, 
                 { coptic: 'ⲧⲉⲕⲙⲁⲁⲩ', translit: 'tek-maav', meaning: { de: 'deine Mutter', en: 'your mother', ar: 'أمك' } },
             ] }
@@ -610,7 +671,7 @@ export const QUIZZES: Record<string, Quiz> = {
         questions: [
             { id: 'q2-3-1', type: 'multiple-choice', questionText: { de: 'Was ist der Laut von Ⲝ?', en: 'What is the sound of Ⲝ?', ar: 'ما هو صوت Ⲝ؟' }, options: [{ de: 'ps', en: 'ps', ar: 'بس' }, { de: 'ks', en: 'ks', ar: 'كس' }, { de: 'sk', en: 'sk', ar: 'سك' }], correctAnswerIndex: 1 },
             { id: 'q2-3-2', type: 'fill-in-the-blank', questionText: { de: 'Der Zahlenwert von Pe (Ⲡ) ist ___.', en: 'The numeric value of Pe (Ⲡ) is ___.', ar: 'القيمة العددية لـ بي (Ⲡ) هي ___.' }, correctAnswer: '80' },
-            { id: 'q2-3-3', type: 'multiple-choice', questionText: { de: 'Das Wort für "Name" ist ...', en: 'The word for "name" is ...', ar: 'كلمة "اسم" هي...' }, options: [{ de: 'ⲣⲟ', en: 'ro', ar: 'رو' }, { de: 'ⲣⲁⲛ', en: 'ran', ar: 'ران' }, { de: 'ⲣⲱⲙⲓ', en: 'romi', ar: 'رومي' }], correctAnswerIndex: 1 },
+            { id: 'q2-3-3', type: 'multiple-choice', questionText: { de: 'Das Wort für "Name" ist ...', en: 'The word for "name" is ...', ar: 'كلمة "اسم" هي...' }, options: [{ de: 'ⲣⲟ', en: 'ro', ar: 'رو' }, { de: 'ⲣⲁⲛ', en: 'ran', ar: 'ران' }, { de: 'ⲣⲱⲓ', en: 'romi', ar: 'رومي' }], correctAnswerIndex: 1 },
         ]
     },
      'q2-4': {
@@ -638,32 +699,56 @@ export const QUIZZES: Record<string, Quiz> = {
             { id: 'q2-6-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet das Wort "ϭⲟⲓⲥ"?', en: 'What does the word "ϭⲟⲓⲥ" mean?', ar: 'ما معنى كلمة "ϭⲟⲓⲥ"؟' }, options: [{ de: 'König', en: 'King', ar: 'ملك' }, { de: 'Herr', en: 'Lord', ar: 'الرب' }, { de: 'Priester', en: 'Priest', ar: 'كاهن' }], correctAnswerIndex: 1 },
         ]
     },
-    'q3-1': {
-        id: 'q3-1', lessonId: 'l3-1', title: { de: 'Test: Zahlen', en: 'Quiz: Numbers', ar: 'اختبار: الأرقام' }, passScore: 80,
+    'q2-l1': {
+        id: 'q2-l1', lessonId: 'm2-l1', title: { de: 'Test: Zahlen', en: 'Quiz: Numbers', ar: 'اختبار: الأرقام' }, passScore: 80,
         questions: [
-            { id: 'q3-1-1', type: 'multiple-choice', questionText: { de: 'Was ist die koptische Zahl für 12?', en: 'What is the Coptic number for 12?', ar: 'ما هو الرقم القبطي لـ ١٢؟' }, options: [{ de: 'ⲙⲏⲧ', en: 'meet', ar: 'ميت' }, { de: 'ⲙⲏⲧⲥ̀ⲛⲁⲩ', en: 'meetsnau', ar: 'ميتسناف' }, { de: 'ϫⲟⲩⲱⲧ', en: 'jouot', ar: 'جوت' }], correctAnswerIndex: 1 },
-            { id: 'q3-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für 100 ist ___.', en: 'The Coptic word for 100 is ___.', ar: 'الكلمة القبطية لـ ١٠٠ هي ___.' }, correctAnswer: 'ϣⲉ' },
-            { id: 'q3-1-3', type: 'multiple-choice', questionText: { de: 'Welches Symbol steht für die Zahl 20?', en: 'Which symbol represents the number 20?', ar: 'أي رمز يمثل الرقم ٢٠؟' }, options: [{ de: 'ⲓ̅', en: 'ⲓ̅', ar: 'ⲓ̅' }, { de: 'ⲕ̅', en: 'ⲕ̅', ar: 'ⲕ̅' }, { de: 'ⲗ̅', en: 'ⲗ̅', ar: 'ⲗ̅' }], correctAnswerIndex: 1 },
-            { id: 'q3-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ"?', en: 'What does "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ" mean?', ar: 'ما معنى "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ"؟' }, options: [{ de: 'Sieben Fische', en: 'Seven fish', ar: 'سبع سمكات' }, { de: 'Sieben Tage', en: 'Seven days', ar: 'سبعة أيام' }, { de: 'Sieben Brote', en: 'Seven loaves', ar: 'سبعة أرغفة' }], correctAnswerIndex: 1 },
-            { id: 'q3-1-5', type: 'fill-in-the-blank', questionText: { de: 'Die Zahl 72 auf Koptisch ist ___ ⲥ̀ⲛⲁⲩ.', en: 'The number 72 in Coptic is ___ ⲥ̀ⲛⲁⲩ.', ar: 'الرقم ٧٢ بالقبطية هو ___ ⲥ̀ⲛⲁⲩ.' }, correctAnswer: 'ⲥⲉⲃⲉ' },
+            { id: 'q2-l1-1', type: 'multiple-choice', questionText: { de: 'Was ist die koptische Zahl für 12?', en: 'What is the Coptic number for 12?', ar: 'ما هو الرقم القبطي لـ ١٢؟' }, options: [{ de: 'ⲙⲏⲧ', en: 'meet', ar: 'ميت' }, { de: 'ⲙⲏⲧⲥ̀ⲛⲁⲩ', en: 'meetsnau', ar: 'ميتسناف' }, { de: 'ϫⲟⲩⲱⲧ', en: 'jouot', ar: 'جوت' }], correctAnswerIndex: 1 },
+            { id: 'q2-l1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für 100 ist ___.', en: 'The Coptic word for 100 is ___.', ar: 'الكلمة القبطية لـ ١٠٠ هي ___.' }, correctAnswer: 'ϣⲉ' },
+            { id: 'q2-l1-3', type: 'multiple-choice', questionText: { de: 'Welches Symbol steht für die Zahl 20?', en: 'Which symbol represents the number 20?', ar: 'أي رمز يمثل الرقم ٢٠؟' }, options: [{ de: 'ⲓ̅', en: 'ⲓ̅', ar: 'ⲓ̅' }, { de: 'ⲕ̅', en: 'ⲕ̅', ar: 'ⲕ̅' }, { de: 'ⲗ̅', en: 'ⲗ̅', ar: 'ⲗ̅' }], correctAnswerIndex: 1 },
+            { id: 'q2-l1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ"?', en: 'What does "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ" mean?', ar: 'ما معنى "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ"؟' }, options: [{ de: 'Sieben Fische', en: 'Seven fish', ar: 'سبع سمكات' }, { de: 'Sieben Tage', en: 'Seven days', ar: 'سبعة أيام' }, { de: 'Sieben Brote', en: 'Seven loaves', ar: 'سبعة أرغفة' }], correctAnswerIndex: 1 },
+            { id: 'q2-l1-5', type: 'fill-in-the-blank', questionText: { de: 'Die Zahl 72 auf Koptisch ist ___ ⲥ̀ⲛⲁⲩ.', en: 'The number 72 in Coptic is ___ ⲥ̀ⲛⲁⲩ.', ar: 'الرقم ٧٢ بالقبطية هو ___ ⲥ̀ⲛⲁⲩ.' }, correctAnswer: 'ⲥⲉⲃⲉ' },
+        ]
+    },
+    'q2-l2': {
+        id: 'q2-l2', lessonId: 'm2-l2', title: { de: 'Test: Substantive', en: 'Quiz: Nouns', ar: 'اختبار: الأسماء' }, passScore: 80,
+        questions: [
+            { id: 'q2-l2-1', type: 'multiple-choice', questionText: { de: 'Welcher Artikel zeigt ein maskulines Substantiv an?', en: 'Which article indicates a masculine noun?', ar: 'أي أداة تشير إلى اسم مذكر؟' }, options: [{ de: 'ⲧ̀', en: 'ⲧ̀', ar: 'ⲧ̀' }, { de: 'ⲡ̀', en: 'ⲡ̀', ar: 'ⲡ̀' }, { de: 'ⲛⲓ', en: 'ⲛⲓ', ar: 'ⲛⲓ' }], correctAnswerIndex: 1 },
+            { id: 'q2-l2-2', type: 'fill-in-the-blank', questionText: { de: 'Der Pluralartikel im Koptischen ist ___.', en: 'The plural article in Coptic is ___.', ar: 'أداة الجمع في القبطية هي ___.' }, correctAnswer: 'ⲛⲓ' },
+            { id: 'q2-l2-3', type: 'multiple-choice', questionText: { de: 'Ist das Wort "ⲥⲱⲛⲓ" (Schwester) maskulin oder feminin?', en: 'Is the word "ⲥⲱⲛⲓ" (sister) masculine or feminine?', ar: 'هل كلمة "ⲥⲱⲛⲓ" (أخت) مذكرة أم مؤنثة؟' }, options: [{ de: 'Maskulin', en: 'Masculine', ar: 'مذكر' }, { de: 'Feminin', en: 'Feminine', ar: 'مؤنث' }], correctAnswerIndex: 1 },
+            { id: 'q2-l2-4', type: 'multiple-choice', questionText: { de: 'Wie sagt man "die Brüder"?', en: 'How do you say "the brothers"?', ar: 'كيف تقول "الإخوة"؟' }, options: [{ de: 'ⲡ̀ⲥⲟⲛ', en: 'pi-son', ar: 'بي-سون' }, { de: 'ⲛⲓⲥ̀ⲛⲏⲟⲩ', en: 'ni-sneo-u', ar: 'ني-سنيو' }], correctAnswerIndex: 1 },
+        ]
+    },
+    'q3-1': {
+        id: 'q3-1', lessonId: 'l3-1', title: { de: 'Test: Artikel', en: 'Quiz: Articles', ar: 'اختبار: الأدوات' }, passScore: 80,
+        questions: [
+             { id: 'q3-1-1', type: 'multiple-choice', questionText: { de: 'Was ist der unbestimmte Artikel Plural?', en: 'What is the indefinite plural article?', ar: 'ما هي أداة النكرة للجمع؟' }, options: [{de: 'ⲟⲩ', en: 'ou', ar: 'أو'}, {de: 'ⲛⲓ', en: 'ni', ar: 'ني'}, {de: 'ϩⲁⲛ', en: 'han', ar: 'هان'}], correctAnswerIndex: 2 },
+             { id: 'q3-1-2', type: 'multiple-choice', questionText: { de: 'Welcher ist der starke maskuline Artikel?', en: 'Which is the strong masculine article?', ar: 'أي أداة هي أداة التعريف المذكرة القوية؟' }, options: [{de: 'ⲡ̀', en: 'ep', ar: 'إب'}, {de: 'ⲡⲓ', en: 'pi', ar: 'بي'}, {de: 'ⲫ̀', en: 'eph', ar: 'إف'}], correctAnswerIndex: 1 },
+             { id: 'q3-1-3', type: 'fill-in-the-blank', questionText: { de: 'Vor einem Vilminor-Buchstaben wird ⲧ̀ zu ___.', en: 'Before a Vilminor letter, ⲧ̀ becomes ___.', ar: 'قبل حرف فيلمينور، ⲧ̀ تصبح ___.' }, correctAnswer: 'ⲑ̀' },
+             { id: 'q3-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet ⲱ ⲡⲁⲛⲟⲩϯ?', en: 'What does ⲱ ⲡⲁⲛⲟⲩϯ mean?', ar: 'ما معنى ⲱ ⲡⲁⲛⲟⲩϯ؟' }, options: [{de: 'mein Gott', en: 'my God', ar: 'إلهي'}, {de: 'der Gott', en: 'the God', ar: 'الإله'}, {de: 'O mein Gott!', en: 'O my God!', ar: 'يا إلهي!'}], correctAnswerIndex: 2 }
         ]
     },
     'q3-2': {
-        id: 'q3-2', lessonId: 'l3-2', title: { de: 'Test: Substantive', en: 'Quiz: Nouns', ar: 'اختبار: الأسماء' }, passScore: 80,
+        id: 'q3-2', lessonId: 'l3-2', title: { de: 'Test: Possessivartikel', en: 'Quiz: Possessive Articles', ar: 'اختبار: أدوات الملكية' }, passScore: 80,
         questions: [
-            { id: 'q3-2-1', type: 'multiple-choice', questionText: { de: 'Welcher Artikel zeigt ein maskulines Substantiv an?', en: 'Which article indicates a masculine noun?', ar: 'أي أداة تشير إلى اسم مذكر؟' }, options: [{ de: 'ⲧ̀', en: 'ⲧ̀', ar: 'ⲧ̀' }, { de: 'ⲡ̀', en: 'ⲡ̀', ar: 'ⲡ̀' }, { de: 'ⲛⲓ', en: 'ⲛⲓ', ar: 'ⲛⲓ' }], correctAnswerIndex: 1 },
-            { id: 'q3-2-2', type: 'fill-in-the-blank', questionText: { de: 'Der Pluralartikel im Koptischen ist ___.', en: 'The plural article in Coptic is ___.', ar: 'أداة الجمع في القبطية هي ___.' }, correctAnswer: 'ⲛⲓ' },
-            { id: 'q3-2-3', type: 'multiple-choice', questionText: { de: 'Ist das Wort "ⲥⲱⲛⲓ" (Schwester) maskulin oder feminin?', en: 'Is the word "ⲥⲱⲛⲓ" (sister) masculine or feminine?', ar: 'هل كلمة "ⲥⲱⲛⲓ" (أخت) مذكرة أم مؤنثة؟' }, options: [{ de: 'Maskulin', en: 'Masculine', ar: 'مذكر' }, { de: 'Feminin', en: 'Feminine', ar: 'مؤنث' }], correctAnswerIndex: 1 },
-            { id: 'q3-2-4', type: 'multiple-choice', questionText: { de: 'Wie sagt man "die Brüder"?', en: 'How do you say "the brothers"?', ar: 'كيف تقول "الإخوة"؟' }, options: [{ de: 'ⲡ̀ⲥⲟⲛ', en: 'pi-son', ar: 'بي-سون' }, { de: 'ⲛⲓⲥ̀ⲛⲏⲟⲩ', en: 'ni-sneo-u', ar: 'ني-سنيو' }], correctAnswerIndex: 1 },
+            { id: 'q3-2-1', type: 'multiple-choice', questionText: { de: 'Wie sagt man "sein Haus" (Haus = ⲏⲓ, mask.)?', en: 'How do you say "his house" (house = ⲏⲓ, masc.)?', ar: 'كيف تقول "بيته" (بيت = ⲏⲓ، مذكر)؟' }, options: [{de: 'ⲧⲉϥⲏⲓ', en: 'tef-ee', ar: 'تيف-إي'}, {de: 'ⲡⲉϥⲏⲓ', en: 'pef-ee', ar: 'بيف-إي'}, {de: 'ⲛⲉϥⲏⲓ', en: 'nef-ee', ar: 'نيف-إي'}], correctAnswerIndex: 1 },
+            { id: 'q3-2-2', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ___ⲙⲁⲁⲩ (unsere Mutter)', en: 'Complete: ___maav (our mother)', ar: 'أكمل: ___ماڤ (أمنا)' }, correctAnswer: 'ⲧⲉⲛ' },
+            { id: 'q3-2-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲛⲉⲕⲥ̀ⲛⲏⲟⲩ"?', en: 'What does "ⲛⲉⲕⲥ̀ⲛⲏⲟⲩ" mean?', ar: 'ما معنى "ⲛⲉⲕⲥ̀ⲛⲏⲟⲩ"؟' }, options: [{de: 'deine (m.) Brüder', en: 'your (m.) brothers', ar: 'إخوتك (للمذكر)'}, {de: 'deine (f.) Brüder', en: 'your (f.) brothers', ar: 'إخوتك (للمؤنث)'}], correctAnswerIndex: 0 }
         ]
     },
     'q3-3': {
-        id: 'q3-3', lessonId: 'l3-3', title: { de: 'Test: Unbestimmter Artikel', en: 'Quiz: Indefinite Article', ar: 'اختبار: أداة النكرة' }, passScore: 80,
+        id: 'q3-3', lessonId: 'l3-3', title: { de: 'Test: Demonstrativpronomen', en: 'Quiz: Demonstrative Pronouns', ar: 'اختبار: ضمائر الإشارة' }, passScore: 80,
         questions: [
-            { id: 'q3-3-1', type: 'multiple-choice', questionText: { de: 'Was ist der unbestimmte Artikel im Singular?', en: 'What is the indefinite article in the singular?', ar: 'ما هي أداة النكرة في المفرد؟' }, options: [{ de: 'ⲟⲩ', en: 'ou', ar: 'أو' }, { de: 'ϩⲁⲛ', en: 'han', ar: 'هان' }, { de: 'ⲡⲁ', en: 'pa', ar: 'با' }], correctAnswerIndex: 0 },
-            { id: 'q3-3-2', type: 'fill-in-the-blank', questionText: { de: 'Wie sagt man "eine Schwester" auf Koptisch?', en: 'How do you say "a sister" in Coptic?', ar: 'كيف تقول "أخت" بالقبطية؟' }, correctAnswer: 'ⲟⲩⲥⲱⲛⲓ' },
-            { id: 'q3-3-3', type: 'multiple-choice', questionText: { de: 'Welcher Artikel bedeutet "einige"?', en: 'Which article means "some"?', ar: 'أي أداة تعني "بعض"؟' }, options: [{ de: 'ⲟⲩ', en: 'ou', ar: 'أو' }, { de: 'ⲛⲓ', en: 'ni', ar: 'ني' }, { de: 'ϩⲁⲛ', en: 'han', ar: 'هان' }], correctAnswerIndex: 2 },
-            { id: 'q3-3-4', type: 'fill-in-the-blank', questionText: { de: 'Schreibe "einige Häuser" auf Koptisch.', en: 'Write "some houses" in Coptic.', ar: 'اكتب "بعض البيوت" بالقبطية.' }, correctAnswer: 'ϩⲁⲛⲏⲓ' },
+             { id: 'q3-3-1', type: 'multiple-choice', questionText: { de: 'Wie sagt man "diese Frau"?', en: 'How do you say "this woman"?', ar: 'كيف تقول "هذه المرأة"؟' }, options: [{de: 'ⲡⲁⲓ ⲥ̀ϩⲓⲙⲓ', en: 'pai shimi', ar: 'باي سيمي'}, {de: 'ⲧⲁⲓ ⲥ̀ϩⲓⲙⲓ', en: 'tai shimi', ar: 'تاي سيمي'}, {de: 'ⲛⲁⲓ ⲥ̀ϩⲓⲙⲓ', en: 'nai shimi', ar: 'ناي سيمي'}], correctAnswerIndex: 1 },
+             { id: 'q3-3-2', type: 'multiple-choice', questionText: { de: 'Was ist der Unterschied zwischen ⲡⲁⲓ und ⲫⲁⲓ?', en: 'What is the difference between ⲡⲁⲓ and ⲫⲁⲓ?', ar: 'ما الفرق بين ⲡⲁⲓ و ⲫⲁⲓ؟' }, options: [{de: 'Keiner', en: 'None', ar: 'لا يوجد فرق'}, {de: 'Artikel vs. Pronomen', en: 'Article vs. Pronoun', ar: 'أداة مقابل ضمير'}], correctAnswerIndex: 1 },
+             { id: 'q3-3-3', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ⲡ̀ⲏⲓ ___ (jenes Haus)', en: 'Complete: ⲡ̀ⲏⲓ ___ (that house)', ar: 'أكمل: ⲡ̀ⲏⲓ ___ (ذلك البيت)' }, correctAnswer: 'ⲉ̀ⲧⲉ ⲙ̀ⲙⲁⲩ' }
+        ]
+    },
+    'q3-4': {
+        id: 'q3-4', lessonId: 'l3-4', title: { de: 'Test: Pronomen & Abkürzungen', en: 'Quiz: Pronouns & Abbreviations', ar: 'اختبار: الضمائر والاختصارات' }, passScore: 80,
+        questions: [
+            { id: 'q3-4-1', type: 'multiple-choice', questionText: { de: 'Was ist das unabhängige Pronomen für "wir"?', en: 'What is the independent pronoun for "we"?', ar: 'ما هو الضمير المنفصل لـ "نحن"؟' }, options: [{de: 'ⲁ̀ⲛⲟⲕ', en: 'anok', ar: 'أنوك'}, {de: 'ⲁ̀ⲛⲟⲛ', en: 'anon', ar: 'أنون'}, {de: 'ⲛ̀ⲑⲱⲧⲉⲛ', en: 'entoten', ar: 'إنثوتين'}], correctAnswerIndex: 1 },
+            { id: 'q3-4-2', type: 'fill-in-the-blank', questionText: { de: 'Die Abkürzung für Jesus ist ___.', en: 'The abbreviation for Jesus is ___.', ar: 'اختصار اسم يسوع هو ___.' }, correctAnswer: 'Ⲓ̅ⲥ̅' },
+            { id: 'q3-4-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet Ⲡϭ̅ⲟ̅ⲓ̅ⲥ̅?', en: 'What does Ⲡϭ̅ⲟ̅ⲓ̅ⲥ̅ mean?', ar: 'ما معنى Ⲡϭ̅ⲟ̅ⲓ̅ⲥ̅؟' }, options: [{de: 'Gott', en: 'God', ar: 'الله'}, {de: 'Christus', en: 'Christ', ar: 'المسيح'}, {de: 'Der Herr', en: 'The Lord', ar: 'الرب'}], correctAnswerIndex: 2 }
         ]
     },
     'q4-1': {
@@ -795,8 +880,8 @@ export const QUIZZES: Record<string, Quiz> = {
 
 export const MODULES: Record<string, Module> = {
     'm1': { id: 'm1', order: 1, title: { de: 'Modul 1: Das Koptische Alphabet', en: 'Module 1: The Coptic Alphabet', ar: 'الوحدة 1: الأبجدية القبطية' }, lessons: ['l1-1', 'l1-2', 'l2-1', 'l2-2', 'l2-3', 'l2-4', 'l2-5', 'l2-6'] },
-    'm2': { id: 'm2', order: 2, title: { de: 'Modul 2: Grundlagen: Zahlen & Substantive', en: 'Module 2: Basics: Numbers & Nouns', ar: 'الوحدة 2: الأساسيات: الأرقام والأسماء' }, lessons: ['l3-1', 'l3-2'] },
-    'm3': { id: 'm3', order: 3, title: { de: 'Modul 3: Artikel', en: 'Module 3: Articles', ar: 'الوحدة 3: أدوات التعريف والتنكير' }, lessons: ['l3-3', 'l4-1', 'l4-2'] },
+    'm2': { id: 'm2', order: 2, title: { de: 'Modul 2: Grundlagen', en: 'Module 2: Basics', ar: 'الوحدة 2: الأساسيات' }, lessons: ['m2-l1', 'm2-l2'] },
+    'm3': { id: 'm3', order: 3, title: { de: 'Modul 3: Artikel & Besitz', en: 'Module 3: Articles & Possession', ar: 'الوحدة 3: الأدوات والملكية' }, lessons: ['l3-1', 'l3-2', 'l3-3', 'l3-4'] },
     'm4': { id: 'm4', order: 4, title: { de: 'Modul 4: Verben', en: 'Module 4: Verbs', ar: 'الوحدة 4: الأفعال' }, lessons: ['l5-1', 'l5-2', 'l5-3'] },
     'm5': { id: 'm5', order: 5, title: { de: 'Modul 5: Pronomen', en: 'Module 5: Pronouns', ar: 'الوحدة 5: الضمائر' }, lessons: ['l6-1', 'l6-2', 'l6-3'] },
     'm6': { id: 'm6', order: 6, title: { de: 'Modul 6: Adjektive', en: 'Module 6: Adjectives', ar: 'الوحدة 6: الصفات' }, lessons: ['l7-1'] },
