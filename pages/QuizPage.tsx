@@ -1,178 +1,193 @@
-import React, { useState, useEffect } from 'react';
+// FIX: Create QuizPage component to resolve module error.
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { QUIZZES, QUIZ_QUESTIONS, LESSONS, LETTERS } from '../constants/data';
-import { QuizQuestion, QuizQuestionType, Letter } from '../types';
+import { QUIZZES, LESSONS } from '../constants/data';
 import { useAppContext } from '../context/AppContext';
+import { Question, MultipleChoiceQuestion, FillInTheBlankQuestion } from '../types';
+import CopticKeyboard from '../components/CopticKeyboard';
 
-const CheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-);
-const XIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-);
-
-const SpeakerIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" {...props}>
-        <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.414z" clipRule="evenodd" />
-    </svg>
-);
-
+const containsCoptic = (text: string): boolean => {
+    // Coptic Unicode block range is U+2C80 to U+2CFF
+    // Also include the older block for compatibility U+0370 to U+03FF (Greek and Coptic)
+    const copticRegex = /[\u0370-\u03FF\u2C80-\u2CFF]/;
+    return copticRegex.test(text);
+};
 
 const QuizPage: React.FC = () => {
     const { quizId } = useParams<{ quizId: string }>();
+    const { t, updateProgress } = useAppContext();
     const navigate = useNavigate();
-    const { t, role, updateProgress, playSound } = useAppContext();
-    
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-    const [isAnswered, setIsAnswered] = useState(false);
-    const [score, setScore] = useState(0);
-    const [showResults, setShowResults] = useState(false);
-    
     const quiz = quizId ? QUIZZES[quizId] : undefined;
-    const questions: QuizQuestion[] = quiz ? quiz.questions.map(id => QUIZ_QUESTIONS[id]) : [];
-    const currentQuestion = questions[currentQuestionIndex];
+    const lesson = quiz ? LESSONS[quiz.lessonId] : undefined;
 
-    const handleAnswerSubmit = () => {
-        if (selectedAnswer === null) return;
-        setIsAnswered(true);
-        if (Array.isArray(currentQuestion.answer) && currentQuestion.answer.includes(selectedAnswer)) {
-            setScore(prev => prev + 1);
-        }
-    };
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number | string>>({});
+    const [isFinished, setIsFinished] = useState(false);
+    const [score, setScore] = useState(0);
 
-    const handleNextQuestion = () => {
-        setIsAnswered(false);
-        setSelectedAnswer(null);
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(prev => prev + 1);
-        } else {
-            setShowResults(true);
-        }
-    };
-    
-    const handlePlayListenQuestion = () => {
-        if (currentQuestion.type !== QuizQuestionType.LISTEN) return;
-        
-        const findLetterByCharacter = (char: string): Letter | undefined => {
-            return Object.values(LETTERS).find(l => l.uppercase === char || l.lowercase === char);
-        }
-
-        const answerIndex = currentQuestion.answer[0] as number;
-        const correctOption = currentQuestion.options[answerIndex] as string;
-        
-        const letterData = findLetterByCharacter(correctOption);
-
-        if (letterData) {
-            const pronunciationString = t(letterData.pronunciation);
-            const match = pronunciationString.match(/"([^"]+)"/);
-            const sound = match ? match[1] : letterData.lowercase;
-            playSound(sound);
-        }
-    };
-
-    useEffect(() => {
-        if (showResults && quiz) {
-            const finalScore = score / questions.length;
-            updateProgress(quiz.id, finalScore);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [showResults]);
-
-    if (!quiz || questions.length === 0) {
+    if (!quiz || !lesson) {
         return <div>{t({ de: 'Quiz nicht gefunden', en: 'Quiz not found', ar: 'الاختبار غير موجود' })}</div>;
     }
 
-    if (showResults) {
-        const finalScore = score / questions.length;
-        const passed = finalScore >= quiz.passScore;
-        const lesson = LESSONS[quiz.lessonId];
-        return (
-            <div className="text-center max-w-md mx-auto bg-light-primary dark:bg-dark-secondary p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold mb-4">{t({ de: 'Ergebnisse', en: 'Results', ar: 'النتائج' })}</h2>
-                <p className="text-lg mb-4">{t({ de: 'Du hast', en: 'You scored', ar: 'لقد حصلت على' })} {score} / {questions.length}</p>
-                <div className={`p-4 rounded-lg text-xl font-bold ${passed ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300' : 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300'}`}>
-                    {passed ? t({ de: 'Bestanden!', en: 'Passed!', ar: 'نجحت!' }) : t({ de: 'Nicht bestanden', en: 'Failed', ar: 'فشلت' })}
+    const handleAnswerSelect = (questionId: string, answer: number | string) => {
+        setSelectedAnswers(prev => ({ ...prev, [questionId]: answer }));
+    };
+    
+    const handleVirtualKeyPress = (key: string) => {
+        const question = quiz.questions[currentQuestionIndex];
+        if (question.type === 'fill-in-the-blank') {
+            const currentAnswer = (selectedAnswers[question.id] as string) || '';
+            handleAnswerSelect(question.id, currentAnswer + key);
+        }
+    };
+    
+    const handleVirtualBackspace = () => {
+        const question = quiz.questions[currentQuestionIndex];
+        if (question.type === 'fill-in-the-blank') {
+            const currentAnswer = (selectedAnswers[question.id] as string) || '';
+            if (currentAnswer.length > 0) {
+                handleAnswerSelect(question.id, currentAnswer.slice(0, -1));
+            }
+        }
+    };
+
+    const handleSubmit = () => {
+        let correctAnswers = 0;
+        quiz.questions.forEach(q => {
+            if (q.type === 'multiple-choice') {
+                if (selectedAnswers[q.id] === q.correctAnswerIndex) {
+                    correctAnswers++;
+                }
+            } else if (q.type === 'fill-in-the-blank') {
+                const answer = (selectedAnswers[q.id] as string) || '';
+                // Simple case-insensitive comparison
+                if (answer.trim().toLowerCase() === q.correctAnswer.toLowerCase()) {
+                    correctAnswers++;
+                }
+            }
+        });
+        const finalScore = Math.round((correctAnswers / quiz.questions.length) * 100);
+        setScore(finalScore);
+        updateProgress(quiz.id, finalScore);
+        setIsFinished(true);
+    };
+
+    const renderQuestion = (question: Question) => {
+        if (question.type === 'multiple-choice') {
+            const mcq = question as MultipleChoiceQuestion;
+            return (
+                <div key={mcq.id}>
+                    <p className="text-xl mb-4">{t(mcq.questionText)}</p>
+                    <div className="space-y-3">
+                        {mcq.options.map((option, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleAnswerSelect(mcq.id, index)}
+                                className={`w-full text-left p-3 rounded-lg border-2 transition-colors ${
+                                    selectedAnswers[mcq.id] === index
+                                        ? 'bg-coptic-blue/20 border-coptic-blue dark:bg-coptic-gold/20 dark:border-coptic-gold'
+                                        : 'bg-gray-100 dark:bg-gray-700 border-transparent hover:border-coptic-blue/50'
+                                }`}
+                            >
+                                {t(option)}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-                <button onClick={() => navigate(`/module/${lesson.moduleId}`)} className="mt-6 px-6 py-2 bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue rounded-lg font-bold">
-                   {t({ de: 'Zurück zum Modul', en: 'Back to Module', ar: 'العودة إلى الوحدة' })}
-                </button>
+            );
+        }
+        if (question.type === 'fill-in-the-blank') {
+            const fitb = question as FillInTheBlankQuestion;
+            const textParts = t(fitb.questionText).split('___');
+            const needsCopticKeyboard = containsCoptic(fitb.correctAnswer);
+
+            return (
+                <div key={fitb.id} className="w-full">
+                    <div className="text-xl mb-4 text-center p-4 bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+                        <label className="flex flex-wrap items-center justify-center">
+                            {textParts[0]}
+                            <input
+                                type="text"
+                                value={(selectedAnswers[fitb.id] as string) || ''}
+                                onChange={(e) => handleAnswerSelect(fitb.id, e.target.value)}
+                                className={`text-2xl text-center mx-2 p-1 w-40 border-b-2 border-gray-400 focus:border-coptic-blue dark:text-dark-text dark:bg-dark-primary dark:focus:border-coptic-gold outline-none ${needsCopticKeyboard ? 'font-coptic' : ''}`}
+                                placeholder="?"
+                                lang={needsCopticKeyboard ? "cop" : "auto"}
+                                autoCapitalize="off"
+                                autoCorrect="off"
+                                autoComplete="off"
+                            />
+                            {textParts[1]}
+                        </label>
+                    </div>
+                     {needsCopticKeyboard && <CopticKeyboard 
+                        onKeyPress={handleVirtualKeyPress}
+                        onBackspace={handleVirtualBackspace}
+                    />}
+                </div>
+            )
+        }
+        return <div>Unsupported question type</div>;
+    };
+    
+    if (isFinished) {
+        const passed = score >= quiz.passScore;
+        return (
+            <div className="container mx-auto max-w-2xl text-center p-8 bg-light-primary dark:bg-dark-secondary rounded-lg shadow-xl">
+                <h2 className="text-3xl font-bold mb-4">{t({de: "Ergebnis", en: "Result", ar: "النتيجة"})}</h2>
+                <p className="text-5xl font-bold mb-4">{score}%</p>
+                <p className={`text-2xl font-semibold mb-6 ${passed ? 'text-green-600' : 'text-red-600'}`}>
+                    {passed 
+                        ? t({de: "Bestanden!", en: "Passed!", ar: "نجحت!"}) 
+                        : t({de: "Nicht bestanden", en: "Failed", ar: "فشلت"})}
+                </p>
+                <p className="mb-6">{t({de: `Du benötigst ${quiz.passScore}% um zu bestehen.`, en: `You need ${quiz.passScore}% to pass.`, ar: `تحتاج إلى ${quiz.passScore}% للنجاح.`})}</p>
+                <div className="flex justify-center gap-4">
+                     <button onClick={() => {
+                        setIsFinished(false);
+                        setCurrentQuestionIndex(0);
+                        setSelectedAnswers({});
+                        setScore(0);
+                        navigate(`/lesson/${lesson.id}`);
+                     }} className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                        {t({de: "Lektion wiederholen", en: "Review Lesson", ar: "مراجعة الدرس"})}
+                     </button>
+                     <button onClick={() => navigate(`/module/${lesson.moduleId}`)} className="px-6 py-2 bg-coptic-blue text-white rounded-lg hover:bg-coptic-blue/80 dark:bg-coptic-gold dark:text-coptic-blue">
+                         {t({de: "Zurück zum Modul", en: "Back to Module", ar: "العودة للوحدة"})}
+                     </button>
+                </div>
             </div>
         );
     }
     
-    const isCorrect = isAnswered && Array.isArray(currentQuestion.answer) && currentQuestion.answer.includes(selectedAnswer!);
+    const currentQuestion = quiz.questions[currentQuestionIndex];
+    const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;
 
     return (
-        <div className="max-w-xl mx-auto bg-light-primary dark:bg-dark-secondary p-6 rounded-lg shadow-lg">
-            <div className="mb-4">
-                <p className="text-sm text-gray-500">{t({ de: 'Frage', en: 'Question', ar: 'سؤال' })} {currentQuestionIndex + 1}/{questions.length}</p>
-                <h3 className="text-xl font-semibold">{t(currentQuestion.prompt)}</h3>
+        <div className="container mx-auto max-w-2xl">
+            <h2 className="text-2xl font-bold mb-6 text-center">{t(quiz.title)}</h2>
+            <div className="bg-light-primary dark:bg-dark-secondary p-6 rounded-lg shadow-lg flex flex-col items-center justify-center">
+                {renderQuestion(currentQuestion)}
             </div>
-
-            {currentQuestion.type === QuizQuestionType.LISTEN && (
-                <div className="my-4 text-center">
-                    <button 
-                        className="p-4 bg-coptic-blue dark:bg-coptic-gold text-white dark:text-coptic-blue rounded-full inline-flex items-center justify-center transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-coptic-blue dark:focus:ring-coptic-gold"
-                        onClick={handlePlayListenQuestion}
-                        aria-label={t({de: "Audio abspielen", en: "Play audio", ar: "تشغيل الصوت"})}
+            <div className="flex justify-between items-center mt-6">
+                 <div>
+                    {t({de: "Frage", en: "Question", ar: "سؤال"})} {currentQuestionIndex + 1} / {quiz.questions.length}
+                </div>
+                {isLastQuestion ? (
+                    <button
+                        onClick={handleSubmit}
+                        disabled={selectedAnswers[currentQuestion.id] === undefined || selectedAnswers[currentQuestion.id] === ''}
+                        className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400"
                     >
-                        <SpeakerIcon className="h-8 w-8" />
-                    </button>
-                </div>
-            )}
-            
-            {(currentQuestion.type === QuizQuestionType.MCQ || currentQuestion.type === QuizQuestionType.LISTEN) && (
-                <div className="space-y-3">
-                    {currentQuestion.options.map((option, index) => {
-                        let buttonClass = "w-full text-left p-3 rounded-lg border-2 transition-colors font-coptic text-2xl ";
-                        if (isAnswered) {
-                            if (Array.isArray(currentQuestion.answer) && currentQuestion.answer.includes(index)) {
-                                buttonClass += "bg-green-100 dark:bg-green-900 border-green-500";
-                            } else if (selectedAnswer === index) {
-                                buttonClass += "bg-red-100 dark:bg-red-900 border-red-500";
-                            } else {
-                                buttonClass += "border-gray-300 dark:border-gray-600 opacity-60";
-                            }
-                        } else {
-                            if (selectedAnswer === index) {
-                                buttonClass += "bg-coptic-blue/20 dark:bg-coptic-gold/20 border-coptic-blue dark:border-coptic-gold";
-                            } else {
-                                buttonClass += "border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700";
-                            }
-                        }
-
-                        return (
-                            <button key={index} onClick={() => !isAnswered && setSelectedAnswer(index)} disabled={isAnswered} className={buttonClass}>
-                                {typeof option === 'string' ? option : t(option.meaning)}
-                            </button>
-                        );
-                    })}
-                </div>
-            )}
-            
-            {isAnswered && (
-                <div className={`mt-4 p-3 rounded-lg ${isCorrect ? 'bg-green-100 dark:bg-green-900' : 'bg-red-100 dark:bg-red-900'}`}>
-                    <div className="flex items-center">
-                        {isCorrect ? <CheckIcon className="text-green-600 dark:text-green-400 mr-2" /> : <XIcon className="text-red-600 dark:text-red-400 mr-2" />}
-                        <p className={`font-bold ${isCorrect ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'}`}>
-                            {isCorrect ? t({ de: 'Richtig!', en: 'Correct!', ar: 'صحيح!' }) : t({ de: 'Falsch', en: 'Incorrect', ar: 'خطأ' })}
-                        </p>
-                    </div>
-                    {(role === 'admin' || role === 'diener') && (
-                        <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">{t(currentQuestion.solution)}</p>
-                    )}
-                </div>
-            )}
-            
-            <div className="mt-6 text-right">
-                {isAnswered ? (
-                    <button onClick={handleNextQuestion} className="px-6 py-2 bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue rounded-lg font-bold">
-                        {currentQuestionIndex < questions.length - 1 ? t({ de: 'Nächste', en: 'Next', ar: 'التالي' }) : t({ de: 'Ergebnisse', en: 'Results', ar: 'النتائج' })}
+                       {t({de: "Abschließen", en: "Finish", ar: "إنهاء"})}
                     </button>
                 ) : (
-                    <button onClick={handleAnswerSubmit} disabled={selectedAnswer === null} className="px-6 py-2 bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue rounded-lg font-bold disabled:bg-gray-400 disabled:dark:bg-gray-600 disabled:cursor-not-allowed">
-                        {t({ de: 'Prüfen', en: 'Check', ar: 'تحقق' })}
+                    <button
+                         onClick={() => setCurrentQuestionIndex(i => i + 1)}
+                         disabled={selectedAnswers[currentQuestion.id] === undefined || selectedAnswers[currentQuestion.id] === ''}
+                         className="px-6 py-2 bg-coptic-blue text-white rounded-lg hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue disabled:bg-gray-400"
+                    >
+                        {t({de: "Nächste", en: "Next", ar: "التالي"})}
                     </button>
                 )}
             </div>

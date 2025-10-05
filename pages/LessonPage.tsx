@@ -1,113 +1,140 @@
+// FIX: Create LessonPage component to resolve module error.
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { LESSONS, LEVELS, ALPHABET_SLIDES, LETTERS, VOCAB_ITEMS, SENTENCE_ITEMS, PRONUNCIATION_SLIDES } from '../constants/data';
+import { LESSONS, LETTERS } from '../constants/data';
 import { useAppContext } from '../context/AppContext';
+import { Slide, AlphabetSlide, VocabSlide, SentenceSlide, PronunciationSlide, NumberSlide, GrammarSlide, ReadingSlide, ConversationSlide } from '../types';
+
 import AlphabetSlideCard from '../components/AlphabetSlideCard';
 import VocabCard from '../components/VocabCard';
 import SentenceCard from '../components/SentenceCard';
 import PronunciationRuleCard from '../components/PronunciationRuleCard';
-import { LessonType } from '../types';
+import NumberCard from '../components/NumberCard';
+import GrammarRuleCard from '../components/GrammarRuleCard';
+import ReadingCard from '../components/ReadingCard';
+import ConversationCard from '../components/ConversationCard';
+
+const ArrowLeftIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+);
+
+const ArrowRightIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+);
 
 const LessonPage: React.FC = () => {
     const { lessonId } = useParams<{ lessonId: string }>();
     const { t } = useAppContext();
     const navigate = useNavigate();
-    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-
     const lesson = lessonId ? LESSONS[lessonId] : undefined;
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
     if (!lesson) {
         return <div>{t({ de: 'Lektion nicht gefunden', en: 'Lesson not found', ar: 'الدرس غير موجود' })}</div>;
     }
-    
-    // For simplicity, we'll assume a lesson has one level, and we get all slides from it.
-    const level = lesson.levels.length > 0 ? LEVELS[lesson.levels[0]] : undefined;
-    const slides = level ? level.slides : [];
-    
+
     const goToNextSlide = () => {
-        if (currentSlideIndex < slides.length - 1) {
+        if (currentSlideIndex < lesson.slides.length - 1) {
             setCurrentSlideIndex(currentSlideIndex + 1);
         }
     };
-    
+
     const goToPrevSlide = () => {
         if (currentSlideIndex > 0) {
             setCurrentSlideIndex(currentSlideIndex - 1);
         }
     };
-
-    const renderSlideContent = () => {
-        if (slides.length === 0) {
-            return <p>This lesson has no content yet.</p>;
+    
+    const handleGoToQuiz = () => {
+        if (!lesson) return;
+        try {
+            const completedLessonsRaw = localStorage.getItem('coptic_completed_lessons');
+            const completedLessons = completedLessonsRaw ? JSON.parse(completedLessonsRaw) : [];
+            if (!completedLessons.includes(lesson.id)) {
+                completedLessons.push(lesson.id);
+                localStorage.setItem('coptic_completed_lessons', JSON.stringify(completedLessons));
+            }
+        } catch (error) {
+            console.error("Failed to update completed lessons in localStorage:", error);
         }
-        
-        const slideId = slides[currentSlideIndex];
+        navigate(`/quiz/${lesson.quizId}`);
+    };
 
-        switch (lesson.type) {
-            case LessonType.ALPHABET: {
-                const slideData = ALPHABET_SLIDES[slideId];
-                if (!slideData) return <p>Slide data not found.</p>;
-                const letterData = LETTERS[slideData.letterId];
-                if (!letterData) return <p>Letter data not found.</p>;
-                return <AlphabetSlideCard slide={slideData} letter={letterData} />;
-            }
-            case LessonType.VOCAB: {
-                const vocabData = VOCAB_ITEMS[slideId];
-                if (!vocabData) return <p>Vocabulary item not found.</p>;
-                return <VocabCard item={vocabData} />;
-            }
-            case LessonType.SENTENCES: {
-                const sentenceData = SENTENCE_ITEMS[slideId];
-                if (!sentenceData) return <p>Sentence item not found.</p>;
-                return <SentenceCard item={sentenceData} />;
-            }
-            case LessonType.PRONUNCIATION: {
-                const slideData = PRONUNCIATION_SLIDES[slideId];
-                if (!slideData) return <p>Pronunciation rule not found.</p>;
-                return <PronunciationRuleCard slide={slideData} />;
-            }
+    const renderSlide = (slide: Slide) => {
+        switch (slide.type) {
+            case 'alphabet':
+                const letter = LETTERS[(slide as AlphabetSlide).letterId];
+                if (!letter) return <div>Letter data missing</div>;
+                return <AlphabetSlideCard slide={slide as AlphabetSlide} letter={letter} />;
+            case 'vocab':
+                return <VocabCard item={(slide as VocabSlide).item} />;
+            case 'sentence':
+                return <SentenceCard item={(slide as SentenceSlide).item} />;
+            case 'pronunciation':
+                return <PronunciationRuleCard slide={slide as PronunciationSlide} />;
+            case 'number':
+                return <NumberCard slide={slide as NumberSlide} />;
+            case 'grammar':
+                return <GrammarRuleCard slide={slide as GrammarSlide} />;
+            case 'reading':
+                 return <ReadingCard slide={slide as ReadingSlide} />;
+            case 'conversation':
+                 return <ConversationCard slide={slide as ConversationSlide} />;
             default:
-                return <p className="text-center p-8 bg-light-primary dark:bg-dark-secondary rounded-lg">Lesson type '{lesson.type}' not yet implemented.</p>;
+                return <div>Unsupported slide type</div>;
         }
     };
-    
-    const progressPercentage = slides.length > 0 ? ((currentSlideIndex + 1) / slides.length) * 100 : 0;
+
+    const currentSlide = lesson.slides[currentSlideIndex];
+    const isFirstSlide = currentSlideIndex === 0;
+    const isLastSlide = currentSlideIndex === lesson.slides.length - 1;
 
     return (
-        <div className="container mx-auto max-w-2xl">
-            <h2 className="text-2xl font-bold mb-2 text-center text-coptic-blue dark:text-coptic-gold">{t(lesson.title)}</h2>
-            
-            {/* Progress Bar */}
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4">
-                <div className="bg-coptic-blue dark:bg-coptic-gold h-2.5 rounded-full" style={{ width: `${progressPercentage}%` }}></div>
+        <div className="container mx-auto max-w-4xl">
+            <div className="flex justify-between items-center mb-4">
+                <Link to={`/module/${lesson.moduleId}`} className="text-coptic-blue dark:text-coptic-gold hover:underline">
+                    &larr; {t({de: "Zurück zum Modul", en: "Back to Module", ar: "العودة إلى الوحدة"})}
+                </Link>
+                <h2 className="text-2xl font-bold text-center">{t(lesson.title)}</h2>
+                <div className="w-24 min-w-24"></div>
             </div>
 
-            {renderSlideContent()}
+            <div className="relative">
+                {renderSlide(currentSlide)}
+            </div>
 
-            {/* Navigation */}
             <div className="flex justify-between items-center mt-6">
-                <button 
-                    onClick={goToPrevSlide} 
-                    disabled={currentSlideIndex === 0}
-                    className="px-6 py-2 bg-gray-300 dark:bg-gray-600 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed">
-                    {t({ de: 'Zurück', en: 'Back', ar: 'السابق' })}
+                <button
+                    onClick={goToPrevSlide}
+                    disabled={isFirstSlide}
+                    className="flex items-center gap-2 px-4 py-2 bg-coptic-blue text-white rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed dark:bg-coptic-gold dark:text-coptic-blue dark:disabled:bg-gray-600"
+                >
+                    <ArrowLeftIcon /> {t({de: "Zurück", en: "Previous", ar: "السابق"})}
                 </button>
-                <span className="text-gray-600 dark:text-gray-400">{currentSlideIndex + 1} / {slides.length}</span>
-                {currentSlideIndex === slides.length - 1 ? (
-                     <Link to={`/quiz/${lesson.quizId}`} className="px-6 py-2 bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue rounded-lg font-bold">
-                        {t({ de: 'Zum Quiz', en: 'To Quiz', ar: 'إلى الاختبار' })}
-                    </Link>
+
+                <span>{t({de: "Folie", en: "Slide", ar: "شريحة"})} {currentSlideIndex + 1} / {lesson.slides.length}</span>
+                
+                {isLastSlide ? (
+                    <button
+                        onClick={handleGoToQuiz}
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                    >
+                        {t({de: "Zum Quiz", en: "Go to Quiz", ar: "إلى الاختبار"})} <ArrowRightIcon />
+                    </button>
                 ) : (
-                    <button 
+                    <button
                         onClick={goToNextSlide}
-                        className="px-6 py-2 bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue rounded-lg">
-                        {t({ de: 'Weiter', en: 'Next', ar: 'التالي' })}
+                        disabled={isLastSlide}
+                        className="flex items-center gap-2 px-4 py-2 bg-coptic-blue text-white rounded-lg disabled:bg-gray-400 disabled:cursor-not-allowed dark:bg-coptic-gold dark:text-coptic-blue dark:disabled:bg-gray-600"
+                    >
+                       {t({de: "Weiter", en: "Next", ar: "التالي"})} <ArrowRightIcon />
                     </button>
                 )}
             </div>
-             <button onClick={() => navigate(`/module/${lesson.moduleId}`)} className="mt-6 text-sm text-coptic-blue dark:text-coptic-gold hover:underline">
-                &larr; {t({de: 'Zurück zur Lektionsübersicht', en: 'Back to Lesson List', ar: 'العودة إلى قائمة الدروس'})}
-             </button>
         </div>
     );
 };

@@ -1,460 +1,813 @@
-import { Letter, Module, Lesson, Level, AlphabetSlide, Quiz, QuizQuestion, LessonType, QuizQuestionType, VocabItem, SentenceItem, PronunciationSlide } from '../types';
+import { Module, Lesson, Quiz, Letter } from '../types';
 
 export const LETTERS: Record<string, Letter> = {
-    'lt_alpha': { id: 'lt_alpha', name: { de: 'Alpha', en: 'Alpha', ar: 'ألفا' }, uppercase: 'Ⲁ', lowercase: 'ⲁ', pronunciation: { de: '"A" wie in "Apfel"', en: '"A" as in "father"', ar: '"أ" كما في "أب"' }, numeric: 1, exampleWord: { coptic: 'ⲁⲃⲃⲁ', translit: 'abba', meaning: { de: 'Vater', en: 'Father', ar: 'أب' } } },
-    'lt_vida': { id: 'lt_vida', name: { de: 'Vida', en: 'Vida', ar: 'ڤيتا' }, uppercase: 'Ⲃ', lowercase: 'ⲃ', pronunciation: { de: '"W" oder "B"', en: '"V" or "B"', ar: '"ڤ" أو "ب"' }, numeric: 2, exampleWord: { coptic: 'ⲃⲁⲗ', translit: 'bal', meaning: { de: 'Auge', en: 'Eye', ar: 'عين' } } },
-    'lt_ghamma': { id: 'lt_ghamma', name: { de: 'Ghamma', en: 'Ghamma', ar: 'غما' }, uppercase: 'Ⲅ', lowercase: 'ⲅ', pronunciation: { de: '"G", "N", oder "Gh"', en: '"G", "N", or "Gh"', ar: '"ج" أو "ن" أو "غ"' }, numeric: 3, exampleWord: { coptic: 'ⲅⲉ', translit: 'ge', meaning: { de: 'Ja', en: 'Yes', ar: 'نعم' } } },
-    'lt_dalda': { id: 'lt_dalda', name: { de: 'Dalda', en: 'Dalda', ar: 'دالدا' }, uppercase: 'Ⲇ', lowercase: 'ⲇ', pronunciation: { de: '"D" wie in "David"', en: '"D" as in "David"', ar: '"د" كما في "داود"' }, numeric: 4, exampleWord: { coptic: 'Ⲇⲁⲩⲓⲇ', translit: 'David', meaning: { de: 'David', en: 'David', ar: 'داود' } } },
-    'lt_ei': { id: 'lt_ei', name: { de: 'Ei', en: 'Ei', ar: 'إي' }, uppercase: 'Ⲉ', lowercase: 'ⲉ', pronunciation: { de: 'Kurzes "E"', en: 'Short "e" as in "bet"', ar: '"إ" مكسورة' }, numeric: 5, exampleWord: { coptic: 'Ⲉⲃⲟⲗ', translit: 'ebol', meaning: { de: 'Aus', en: 'Out of', ar: 'من' } } },
-    'lt_so': { id: 'lt_so', name: { de: 'So', en: 'So', ar: 'سو' }, uppercase: 'Ⲋ', lowercase: 'ⲋ', pronunciation: { de: 'Kein Laut', en: 'No sound', ar: 'لا يوجد صوت' }, numeric: 6, exampleWord: { coptic: '', translit: '', meaning: { de: 'Nur Zahl', en: 'Number only', ar: 'رقم فقط' } } },
-    'lt_zita': { id: 'lt_zita', name: { de: 'Zita', en: 'Zita', ar: 'زيتا' }, uppercase: 'Ⲍ', lowercase: 'ⲍ', pronunciation: { de: 'Stimmhaftes "S"', en: '"Z" as in "zoo"', ar: '"ز" كما في "زرافة"' }, numeric: 7, exampleWord: { coptic: 'Ⲍⲱⲛ', translit: 'zōn', meaning: { de: 'Gürtel', en: 'Belt', ar: 'حزام' } } },
-    'lt_hita': { id: 'lt_hita', name: { de: 'Hita', en: 'Hita', ar: 'هيتا' }, uppercase: 'Ⲏ', lowercase: 'ⲏ', pronunciation: { de: 'Langes "Ie"', en: 'Long "ee" as in "see"', ar: '"إي" طويلة' }, numeric: 8, exampleWord: { coptic: 'Ⲏⲗⲓⲁⲥ', translit: 'Ēlias', meaning: { de: 'Elias', en: 'Elias', ar: 'إلياس' } } },
-    'lt_thita': { id: 'lt_thita', name: { de: 'Thita', en: 'Thita', ar: 'ثيتا' }, uppercase: 'Ⲑ', lowercase: 'ⲑ', pronunciation: { de: '"T" oder "Th"', en: '"T" or "Th"', ar: '"ت" أو "ث"' }, numeric: 9, exampleWord: { coptic: 'Ⲑⲉⲗⲏⲙⲁ', translit: 'thelēma', meaning: { de: 'Wille', en: 'Will', ar: 'إرادة' } } },
-    'lt_iauda': { id: 'lt_iauda', name: { de: 'Iauda', en: 'Iauda', ar: 'يودا' }, uppercase: 'Ⲓ', lowercase: 'ⲓ', pronunciation: { de: '"I" oder "J"', en: '"I" or "Y"', ar: '"ي" كما في "يد"' }, numeric: 10, exampleWord: { coptic: 'Ⲓⲏⲥⲟⲩⲥ', translit: 'Iēsous', meaning: { de: 'Jesus', en: 'Jesus', ar: 'يسوع' } } },
-    'lt_kapa': { id: 'lt_kapa', name: { de: 'Kapa', en: 'Kapa', ar: 'كپا' }, uppercase: 'Ⲕ', lowercase: 'ⲕ', pronunciation: { de: '"K" wie in "König"', en: '"K" as in "king"', ar: '"ك" كما في "كنيسة"' }, numeric: 20, exampleWord: { coptic: 'Ⲕⲩⲣⲓⲟⲥ', translit: 'Kyrios', meaning: { de: 'Herr', en: 'Lord', ar: 'الرب' } } },
-    'lt_laula': { id: 'lt_laula', name: { de: 'Laula', en: 'Laula', ar: 'لولا' }, uppercase: 'Ⲗ', lowercase: 'ⲗ', pronunciation: { de: '"L" wie in "Licht"', en: '"L" as in "light"', ar: '"ل" كما في "لمبة"' }, numeric: 30, exampleWord: { coptic: 'Ⲗⲁⲟⲥ', translit: 'laos', meaning: { de: 'Volk', en: 'People', ar: 'شعب' } } },
-    'lt_mi': { id: 'lt_mi', name: { de: 'Mi', en: 'Mi', ar: 'مي' }, uppercase: 'Ⲙ', lowercase: 'ⲙ', pronunciation: { de: '"M" wie in "Mutter"', en: '"M" as in "mother"', ar: '"م" كما في "مريم"' }, numeric: 40, exampleWord: { coptic: 'Ⲙⲁⲣⲓⲁ', translit: 'Maria', meaning: { de: 'Maria', en: 'Mary', ar: 'مريم' } } },
-    'lt_ni': { id: 'lt_ni', name: { de: 'Ni', en: 'Ni', ar: 'ني' }, uppercase: 'Ⲛ', lowercase: 'ⲛ', pronunciation: { de: '"N" wie in "Nase"', en: '"N" as in "nose"', ar: '"ن" كما في "نور"' }, numeric: 50, exampleWord: { coptic: 'Ⲛⲟⲩⲧⲉ', translit: 'noute', meaning: { de: 'Gott', en: 'God', ar: 'الله' } } },
-    'lt_xi': { id: 'lt_xi', name: { de: 'Xi', en: 'Xi', ar: 'كسي' }, uppercase: 'Ⲝ', lowercase: 'ⲝ', pronunciation: { de: '"Ks" wie in "Axt"', en: '"Ks" as in "axe"', ar: '"كس" كما في "أكسجين"' }, numeric: 60, exampleWord: { coptic: 'Ⲝⲩⲗⲟⲛ', translit: 'xylon', meaning: { de: 'Holz', en: 'Wood', ar: 'خشب' } } },
-    'lt_o': { id: 'lt_o', name: { de: 'O', en: 'O', ar: 'أو' }, uppercase: 'Ⲟ', lowercase: 'ⲟ', pronunciation: { de: 'Kurzes "O"', en: 'Short "o" as in "lot"', ar: '"أو" قصيرة' }, numeric: 70, exampleWord: { coptic: 'Ⲟⲛ', translit: 'on', meaning: { de: 'Wahrlich', en: 'Truly', ar: 'حقاً' } } },
-    'lt_pi': { id: 'lt_pi', name: { de: 'Pi', en: 'Pi', ar: 'پي' }, uppercase: 'Ⲡ', lowercase: 'ⲡ', pronunciation: { de: '"P" wie in "Papa"', en: '"P" as in "paper"', ar: '"ب" كما في "بابا"' }, numeric: 80, exampleWord: { coptic: 'Ⲡⲛⲉⲩⲙⲁ', translit: 'pneuma', meaning: { de: 'Geist', en: 'Spirit', ar: 'روح' } } },
-    'lt_ro': { id: 'lt_ro', name: { de: 'Ro', en: 'Ro', ar: 'رو' }, uppercase: 'Ⲣ', lowercase: 'ⲣ', pronunciation: { de: '"R" wie in "Rose"', en: '"R" as in "rose"', ar: '"ر" كما في "رب"' }, numeric: 100, exampleWord: { coptic: 'Ⲣⲱⲙⲉ', translit: 'rōme', meaning: { de: 'Mensch', en: 'Man', ar: 'إنسان' } } },
-    'lt_sima': { id: 'lt_sima', name: { de: 'Sima', en: 'Sima', ar: 'سيما' }, uppercase: 'Ⲥ', lowercase: 'ⲥ', pronunciation: { de: '"S" wie in "Sonne"', en: '"S" as in "sun"', ar: '"س" كما في "سماء"' }, numeric: 200, exampleWord: { coptic: 'Ⲥⲱⲧⲏⲣ', translit: 'sōtēr', meaning: { de: 'Retter', en: 'Savior', ar: 'مخلص' } } },
-    'lt_tau': { id: 'lt_tau', name: { de: 'Tau', en: 'Tau', ar: 'تاڤ' }, uppercase: 'Ⲧ', lowercase: 'ⲧ', pronunciation: { de: '"T" oder "D"', en: '"T" or "D"', ar: '"ت" أو "د"' }, numeric: 300, exampleWord: { coptic: 'Ⲧⲉⲛⲟⲩⲱϣⲧ', translit: 'tenuosht', meaning: { de: 'Wir beten an', en: 'We worship', ar: 'نسجد' } } },
-    'lt_epsilon': { id: 'lt_epsilon', name: { de: 'Epsilon', en: 'Epsilon', ar: 'إپسيلون' }, uppercase: 'Ⲩ', lowercase: 'ⲩ', pronunciation: { de: '"U", "W", oder "I"', en: '"U", "V", or "I"', ar: '"أو" أو "ڤ" أو "ي"' }, numeric: 400, exampleWord: { coptic: 'Ⲩⲓⲟⲥ', translit: 'yios', meaning: { de: 'Sohn', en: 'Son', ar: 'ابن' } } },
-    'lt_phi': { id: 'lt_phi', name: { de: 'Phi', en: 'Phi', ar: 'في' }, uppercase: 'Ⲫ', lowercase: 'ⲫ', pronunciation: { de: '"F" wie in "Vater"', en: '"F" as in "father"', ar: '"ف" كما في "فيل"' }, numeric: 500, exampleWord: { coptic: 'Ⲫⲱⲥ', translit: 'phōs', meaning: { de: 'Licht', en: 'Light', ar: 'نور' } } },
-    'lt_chi': { id: 'lt_chi', name: { de: 'Chi', en: 'Chi', ar: 'كي' }, uppercase: 'Ⲭ', lowercase: 'ⲭ', pronunciation: { de: '"K" oder "Sch"', en: '"K" or "Sh"', ar: '"ك" أو "ش"' }, numeric: 600, exampleWord: { coptic: 'Ⲭⲣⲓⲥⲧⲟⲥ', translit: 'Christos', meaning: { de: 'Christus', en: 'Christ', ar: 'المسيح' } } },
-    'lt_epsi': { id: 'lt_epsi', name: { de: 'Epsi', en: 'Epsi', ar: 'إپسي' }, uppercase: 'Ⲯ', lowercase: 'ⲯ', pronunciation: { de: '"Ps" wie in "Psalm"', en: '"Ps" as in "psychology"', ar: '"بس" كما في "بصلمودية"' }, numeric: 700, exampleWord: { coptic: 'Ⲯⲩⲭⲏ', translit: 'psychē', meaning: { de: 'Seele', en: 'Soul', ar: 'نفس' } } },
-    'lt_omega': { id: 'lt_omega', name: { de: 'Omega', en: 'Omega', ar: 'أوميجا' }, uppercase: 'Ⲱ', lowercase: 'ⲱ', pronunciation: { de: 'Langes "O"', en: 'Long "o" as in "go"', ar: '"أو" طويلة' }, numeric: 800, exampleWord: { coptic: 'Ⲱⲛϩ', translit: 'onkh', meaning: { de: 'Leben', en: 'Life', ar: 'حياة' } } },
-    'lt_shai': { id: 'lt_shai', name: { de: 'Shai', en: 'Shai', ar: 'شاي' }, uppercase: 'Ϣ', lowercase: 'ϣ', pronunciation: { de: '"Sch" wie in "Schule"', en: '"Sh" as in "school"', ar: '"ش" كما في "شمس"' }, numeric: 90, exampleWord: { coptic: 'Ϣⲁ', translit: 'sha', meaning: { de: 'Fest', en: 'Feast', ar: 'عيد' } } },
-    'lt_fai': { id: 'lt_fai', name: { de: 'Fai', en: 'Fai', ar: 'فاي' }, uppercase: 'Ϥ', lowercase: 'ϥ', pronunciation: { de: '"F" wie in "Fest"', en: '"F" as in "feast"', ar: '"ف" كما في "فرح"' }, numeric: 90, exampleWord: { coptic: 'Ϥⲁⲓ', translit: 'fai', meaning: { de: 'Tragen', en: 'To carry', ar: 'يحمل' } } },
-    'lt_khai': { id: 'lt_khai', name: { de: 'Khai', en: 'Khai', ar: 'خاي' }, uppercase: 'Ϧ', lowercase: 'ϧ', pronunciation: { de: '"Ch" wie in "Bach"', en: '"Kh" (like "ch" in "Bach")', ar: '"خ" كما في "خبز"' }, numeric: 90, exampleWord: { coptic: 'Ϧⲉⲛ', translit: 'khen', meaning: { de: 'In', en: 'In', ar: 'في' } } },
-    'lt_hori': { id: 'lt_hori', name: { de: 'Hori', en: 'Hori', ar: 'هوري' }, uppercase: 'Ϩ', lowercase: 'ϩ', pronunciation: { de: '"H" wie in "Haus"', en: '"H" as in "house"', ar: '"هـ" كما في "هواء"' }, numeric: 90, exampleWord: { coptic: 'Ϩⲓⲥⲉ', translit: 'hise', meaning: { de: 'Mühe', en: 'Toil', ar: 'تعب' } } },
-    'lt_gangia': { id: 'lt_gangia', name: { de: 'Gangia', en: 'Gangia', ar: 'جانجا' }, uppercase: 'Ϫ', lowercase: 'ϫ', pronunciation: { de: '"Dsch" wie in "Dschungel"', en: '"J" as in "jungle"', ar: '"ج" كما في "جمل"' }, numeric: 90, exampleWord: { coptic: 'Ϫⲟⲉⲓⲥ', translit: 'jois', meaning: { de: 'Herr', en: 'Lord', ar: 'الرب' } } },
-    'lt_shima': { id: 'lt_shima', name: { de: 'Shima', en: 'Shima', ar: 'شيما' }, uppercase: 'Ϭ', lowercase: 'ϭ', pronunciation: { de: '"Tsch" wie in "Deutsch"', en: '"Ch" as in "church"', ar: '"تش"' }, numeric: 90, exampleWord: { coptic: 'Ϭⲁⲥⲓ', translit: 'chasi', meaning: { de: 'Hoch', en: 'High', ar: 'عال' } } },
-    'lt_dei': { id: 'lt_dei', name: { de: 'Dei', en: 'Dei', ar: 'دي' }, uppercase: 'Ϯ', lowercase: 'ϯ', pronunciation: { de: '"Ti" wie in "Partitur"', en: '"Ti" as in "tiara"', ar: '"تي"' }, numeric: 90, exampleWord: { coptic: 'Ϯⲙⲉⲧⲣⲉ', translit: 'timetre', meaning: { de: 'Zeugnis', en: 'Witness', ar: 'شهادة' } } },
-};
-
-const spiritualContentData: Record<string, AlphabetSlide['spiritual']> = {
-    'lt_alpha': {
-        bibleVerse: { de: 'Ehre deinen Vater und deine Mutter, damit deine Tage verlängert werden in dem Land, das der Herr, dein Gott, dir gibt.', en: 'Honour thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.', ar: 'أَكْرِمْ أَبَاكَ وَأُمَّكَ لِكَيْ تَطُولَ أَيَّامُكَ عَلَى الأَرْضِ الَّتِي يُعْطِيكَ الرَّبُّ إِلهُكَ.' },
-        bibleReference: { de: '2. Mose 20:12 (Schlachter 2000)', en: 'Exodus 20:12 (KJV)', ar: 'الخروج ٢٠: ١٢' },
-        fatherQuote: { de: 'Denn der Vater ist Vater und nicht Sohn; und der Sohn ist Sohn und nicht Vater.', en: 'For the Father is Father, and not a Son; and the Son is Son, and not a Father.', ar: 'لأن الآب هو آب وليس ابناً، والابن هو ابن وليس آباً.' },
-        fatherReference: { de: 'Athanasius, 4 Reden gegen die Arianer', en: 'St. Athanasius, Four Discourses Against the Arians', ar: 'القديس أثناسيوس، المقالات الأربع ضد الآريوسيين' }
+    'alpha': {
+        id: 'alpha', uppercase: 'Ⲁ', lowercase: 'ⲁ', name: { de: 'Alpha', en: 'Alpha', ar: 'ألفا' },
+        pronunciation: { de: 'wie "a" in "Vater"', en: 'like "a" in "father"', ar: 'مثل "ا" في "بابا"' },
+        numeric: 1,
+        exampleWord: { coptic: 'ⲁⲅⲁⲡⲏ', translit: 'agape', meaning: { de: 'Liebe', en: 'Love', ar: 'محبة' } }
     },
-    'lt_vida': {
-        bibleVerse: { de: 'Die Leuchte des Leibes ist das Auge. Wenn nun dein Auge lauter ist, so wird dein ganzer Leib licht sein.', en: 'The light of the body is the eye: if therefore thine eye be single, thy whole body shall be full of light.', ar: 'سِرَاجُ الْجَسَدِ هُوَ الْعَيْنُ، فَإِنْ كَانَتْ عَيْنُكَ بَسِيطَةً فَجَسَدُكَ كُلُّهُ يَكُونُ نَيِّرًا.' },
-        bibleReference: { de: 'Matthäus 6:22 (Schlachter 2000)', en: 'Matthew 6:22 (KJV)', ar: 'متى ٦: ٢٢' },
-        fatherQuote: { de: 'Das Auge der Seele ist der Verstand, und wie das leibliche Auge, wenn es gesund ist, das Licht sieht, so sieht auch der Verstand, wenn er rein ist, Gott.', en: 'The eye of the soul is the mind, and as the eye of the body, when it is sound, sees the light, so the mind, when it is pure, beholds God.', ar: 'عين النفس هي العقل، وكما أن عين الجسد، متى كانت سليمة، ترى النور، هكذا العقل، متى كان نقيًا، يعاين الله.' },
-        fatherReference: { de: 'St. Macarius der Große, Homilien', en: 'St. Macarius the Great, Homilies', ar: 'القديس مقاريوس الكبير، العظات' }
+    'beta': {
+        id: 'beta', uppercase: 'Ⲃ', lowercase: 'ⲃ', name: { de: 'Vita', en: 'Vita', ar: 'ڤيتا' },
+        pronunciation: { de: 'wie "w" vor Vokal, "b" sonst; in Eigennamen immer "b"', en: 'like "v" before a vowel, "b" otherwise; always "b" in proper nouns', ar: 'مثل "ڤ" قبل حرف متحرك، و"ب" في الحالات الأخرى؛ دائمًا "ب" في الأسماء الخاصة' },
+        numeric: 2,
+        exampleWord: { coptic: 'ⲃⲁⲗ', translit: 'val', meaning: { de: 'Auge', en: 'Eye', ar: 'عين' } }
     },
-    'lt_ghamma': {
-        bibleVerse: { de: 'Euer Ja sei ein Ja, und euer Nein ein Nein; was darüber ist, das ist vom Bösen.', en: 'But let your communication be, Yea, yea; Nay, nay: for whatsoever is more than these cometh of evil.', ar: 'بَلْ لِيَكُنْ كَلاَمُكُمْ: نَعَمْ نَعَمْ، لاَ لاَ. وَمَا زَادَ عَلَى ذلِكَ فَهُوَ مِنَ الشِّرِّيرِ.' },
-        bibleReference: { de: 'Matthäus 5:37 (Schlachter 2000)', en: 'Matthew 5:37 (KJV)', ar: 'متى ٥: ٣٧' },
-        fatherQuote: { de: 'Lasst uns zu Gott mit einem einfachen und wahren Ja Zuflucht nehmen, damit wir nicht unter das Urteil der Heuchelei fallen.', en: 'Let us flee to God with a simple and true yea, that we may not fall under the judgment of hypocrisy.', ar: 'لنهرب إلى الله بـ "نعم" بسيطة وصادقة، لئلا نسقط تحت دينونة الرياء.' },
-        fatherReference: { de: 'St. Johannes Chrysostomus, Homilien zu Matthäus', en: 'St. John Chrysostom, Homilies on Matthew', ar: 'القديس يوحنا الذهبي الفم، عظات على إنجيل متى' }
+    'gamma': {
+        id: 'gamma', uppercase: 'Ⲅ', lowercase: 'ⲅ', name: { de: 'Gamma', en: 'Gamma', ar: 'غما' },
+        pronunciation: { de: 'wie "gh" (Gurgeln) vor ⲁ,ⲟ,ⲱ; "g" (hart) vor ⲉ,ⲏ,ⲓ,ⲩ; "n" vor ⲅ,ⲕ,ⲭ,ⲝ', en: 'like "gh" (gargle) before ⲁ,ⲟ,ⲱ; hard "g" before ⲉ,ⲏ,ⲓ,ⲩ; "n" before ⲅ,ⲕ,ⲭ,ⲝ', ar: 'مثل "غ" قبل ⲁ,ⲟ,ⲱ؛ "ج" قوية قبل ⲉ,ⲏ,ⲓ,ⲩ؛ "ن" قبل ⲅ,ⲕ,ⲭ,ⲝ' },
+        numeric: 3,
+        exampleWord: { coptic: 'ⲅⲉ', translit: 'ge', meaning: { de: 'denn, für', en: 'because, for', ar: 'لأن' } }
     },
-    'lt_dalda': {
-        bibleVerse: { de: 'Denn David, nachdem er zu seiner Zeit dem Willen Gottes gedient hatte, ist entschlafen und wurde zu seinen Vätern versammelt.', en: 'For David, after he had served his own generation by the will of God, fell on sleep, and was laid unto his fathers.', ar: 'لأَنَّ دَاوُدَ، بَعْدَ مَا خَدَمَ جِيلَهُ بِمَشُورَةِ اللهِ، رَقَدَ وَانْضَمَّ إِلَى آبَائِهِ.' },
-        bibleReference: { de: 'Apostelgeschichte 13:36 (Schlachter 2000)', en: 'Acts 13:36 (KJV)', ar: 'أعمال الرسل ١٣: ٣٦' },
-        fatherQuote: { de: 'David ist ein Vorbild für den, der bereut. Obwohl er schwer sündigte, schrie sein Herz in wahrer Reue zu Gott, und ihm wurde vergeben.', en: 'David is a type of the one who repents. Though he sinned grievously, his heart cried out to God in true repentance and he was forgiven.', ar: 'داود هو مثال للتائب. رغم أنه أخطأ خطيئة عظيمة، إلا أن قلبه صرخ إلى الله بتوبة صادقة فنال المغفرة.' },
-        fatherReference: { de: 'St. Athanasius, Brief an Marcellinus über die Psalmen', en: 'St. Athanasius, Letter to Marcellinus on the Psalms', ar: 'القديس أثناسيوس، رسالة إلى مرسلينوس في تفسير المزامير' }
+     'delta': {
+        id: 'delta', uppercase: 'Ⲇ', lowercase: 'ⲇ', name: { de: 'Delta', en: 'Delta', ar: 'دلتا' },
+        pronunciation: { de: 'wie "d" in Eigennamen, sonst wie "th" in "this"', en: 'like "d" in proper nouns, otherwise like "th" in "this"', ar: 'مثل "د" في الأسماء الخاصة، وفيما عدا ذلك مثل "ذ"' },
+        numeric: 4,
+        exampleWord: { coptic: 'ⲇⲁⲩⲓⲇ', translit: 'David', meaning: { de: 'David', en: 'David', ar: 'داود' } }
     },
-    'lt_ei': {
-        bibleVerse: { de: 'Geht aus von ihnen und sondert euch ab, spricht der Herr, und rührt nichts Unreines an!', en: 'Wherefore come out from among them, and be ye separate, saith the Lord, and touch not the unclean thing.', ar: 'لِذلِكَ اخْرُجُوا مِنْ وَسْطِهِمْ وَاعْتَزِلُوا، يَقُولُ الرَّبُّ. وَلاَ تَمَسُّوا نَجِسًا.' },
-        bibleReference: { de: '2. Korinther 6:17 (Schlachter 2000)', en: '2 Corinthians 6:17 (KJV)', ar: 'كورنثوس الثانية ٦: ١٧' },
-        fatherQuote: { de: 'Wir kommen aus der Welt heraus, nicht durch den Ort, sondern durch den Glauben, die Hoffnung und die Liebe.', en: 'We come out from the world not by place, but by faith, hope, and love.', ar: 'نحن نخرج من العالم ليس بالمكان، بل بالإيمان والرجاء والمحبة.' },
-        fatherReference: { de: 'St. Augustinus, Predigten', en: 'St. Augustine, Sermons', ar: 'القديس أغسطينوس، العظات' }
+    'eie': {
+        id: 'eie', uppercase: 'Ⲉ', lowercase: 'ⲉ', name: { de: 'Eey', en: 'Eey', ar: 'إي' },
+        pronunciation: { de: 'wie kurzes "e" in "Bett"', en: 'like short "e" in "bet"', ar: 'مثل "إ" في "إبرة"' },
+        numeric: 5,
+        exampleWord: { coptic: 'ⲉⲃⲟⲗ', translit: 'evol', meaning: { de: 'aus', en: 'out of', ar: 'من' } }
     },
-     'lt_so': {
-        bibleVerse: { de: 'Und Gott sprach: Es sollen Lichter an der Himmelsausdehnung sein, zur Unterscheidung von Tag und Nacht, die sollen als Zeichen dienen und zur Bestimmung von Zeiten und Tagen und Jahren.', en: 'And God said, Let there be lights in the firmament of the heaven to divide the day from the night; and let them be for signs, and for seasons, and for days, and years.', ar: 'وَقَالَ اللهُ: «لِتَكُنْ أَنْوَارٌ فِي جَلَدِ السَّمَاءِ لِتَفْصِلَ بَيْنَ النَّهَارِ وَاللَّيْلِ، وَتَكُونَ لآيَاتٍ وَأَوْقَاتٍ وَأَيَّامٍ وَسِنِينٍ.' },
-        bibleReference: { de: '1. Mose 1:14 (Schlachter 2000)', en: 'Genesis 1:14 (KJV)', ar: 'تكوين ١: ١٤' },
-        fatherQuote: { de: 'Die Ordnung der Schöpfung selbst verkündet in einer Art stummen Beredsamkeit die Größe ihres Schöpfers.', en: 'The very order of creation proclaims in a kind of silent eloquence the greatness of its Creator.', ar: 'إن نظام الخليقة ذاته يعلن بنوع من البلاغة الصامتة عظمة خالقها.' },
-        fatherReference: { de: 'St. Athanasius, Gegen die Heiden', en: 'St. Athanasius, Against the Heathen', ar: 'القديس أثناسيوس، ضد الوثنيين' }
+    'so': {
+        id: 'so', uppercase: 'Ⲋ', lowercase: 'ⲋ', name: { de: 'So-ou', en: 'So-ou', ar: 'سو-أو' },
+        pronunciation: { de: 'Nur als Zahl verwendet', en: 'Only used as a number', ar: 'تستخدم كرقم فقط' },
+        numeric: 6,
+        exampleWord: { coptic: 'ⲋ̅', translit: 'so', meaning: { de: 'sechs', en: 'six', ar: 'ستة' } }
     },
-    'lt_zita': {
-        bibleVerse: { de: 'Steht nun fest, eure Lenden umgürtet mit Wahrheit, und angetan mit dem Brustpanzer der Gerechtigkeit,', en: 'Stand therefore, having your loins girt about with truth, and having on the breastplate of righteousness;', ar: 'فَاثْبُتُوا مُمَنْطِقِينَ أَحْقَاءَكُمْ بِالْحَقِّ، وَلاَبِسِينَ دِرْعَ الْبِرِّ،' },
-        bibleReference: { de: 'Epheser 6:14 (Schlachter 2000)', en: 'Ephesians 6:14 (KJV)', ar: 'أفسس ٦: ١٤' },
-        fatherQuote: { de: 'Der Gürtel der Wahrheit ist der Glaube, der unsere losen Gedanken zusammenhält und uns für den geistlichen Kampf bereit macht.', en: 'The belt of truth is faith, which gathers together our loose thoughts and makes us ready for spiritual combat.', ar: 'حزام الحق هو الإيمان، الذي يجمع أفكارنا المشتتة ويجعلنا مستعدين للقتال الروحي.' },
-        fatherReference: { de: 'St. Johannes Chrysostomus, Homilien zu den Ephesern', en: 'St. John Chrysostom, Homilies on Ephesians', ar: 'القديس يوحنا الذهبي الفم، عظات على رسالة أفسس' }
+    'zita': {
+        id: 'zita', uppercase: 'Ⲍ', lowercase: 'ⲍ', name: { de: 'Zeeta', en: 'Zeeta', ar: 'زيتا' },
+        pronunciation: { de: 'wie "s" in "Rose"', en: 'like "z" in "zoo"', ar: 'مثل "ز"' },
+        numeric: 7,
+        exampleWord: { coptic: 'ⲍⲱⲛ', translit: 'zon', meaning: { de: 'Gürtel', en: 'belt', ar: 'حزام' } }
     },
-    'lt_hita': {
-        bibleVerse: { de: 'Und Elia trat hin zu dem ganzen Volk und sprach: Wie lange hinkt ihr auf beiden Seiten? Wenn der Herr Gott ist, so folgt ihm nach; wenn aber der Baal, so folgt ihm nach!', en: 'And Elijah came unto all the people, and said, How long halt ye between two opinions? if the Lord be God, follow him: but if Baal, then follow him.', ar: 'فَتَقَدَّمَ إِيلِيَّا إِلَى جَمِيعِ الشَّعْبِ وَقَالَ: «حَتَّى مَتَى تَعْرُجُونَ بَيْنَ الْفِرْقَتَيْنِ؟ إِنْ كَانَ الرَّبُّ هُوَ اللهَ فَاتَّبِعُوهُ، وَإِنْ كَانَ الْبَعْلُ فَاتَّبِعُوهُ».' },
-        bibleReference: { de: '1. Könige 18:21 (Schlachter 2000)', en: '1 Kings 18:21 (KJV)', ar: 'ملوك الأول ١٨: ٢١' },
-        fatherQuote: { de: 'Wie Elia müssen auch wir das Herz des Volkes zu Gott zurückführen, indem wir die Wahrheit ohne Kompromisse verkünden.', en: 'Like Elijah, we too must turn the heart of the people back to God by proclaiming the Truth without compromise.', ar: 'مثل إيليا، يجب علينا أيضًا أن نرد قلب الشعب إلى الله، بإعلان الحق دون مساومة.' },
-        fatherReference: { de: 'St. Kyrill von Alexandria, Kommentar zu den kleinen Propheten', en: 'St. Cyril of Alexandria, Commentary on the Minor Prophets', ar: 'القديس كيرلس الإسكندري، تعليق على الأنبياء الصغار' }
+    'hita': {
+        id: 'hita', uppercase: 'Ⲏ', lowercase: 'ⲏ', name: { de: 'Eeta', en: 'Eeta', ar: 'إيتا' },
+        pronunciation: { de: 'wie langes "i" in "Biene"', en: 'like "ee" in "see"', ar: 'مثل "ي" طويلة' },
+        numeric: 8,
+        exampleWord: { coptic: 'ⲏⲓ', translit: 'ee', meaning: { de: 'Haus', en: 'house', ar: 'بيت' } }
     },
-     'lt_thita': {
-        bibleVerse: { de: 'Nicht mein Wille, sondern der deine geschehe!', en: 'not my will, but thine, be done.', ar: 'لَيْسَ إِرَادَتِي بَلْ إِرَادَتُكَ لِتَكُنْ.' },
-        bibleReference: { de: 'Lukas 22:42 (Schlachter 2000)', en: 'Luke 22:42 (KJV)', ar: 'لوقا ٢٢: ٤٢' },
-        fatherQuote: { de: 'Der menschliche Wille muss sich dem göttlichen Willen unterordnen, nicht durch Zwang, sondern aus Liebe, denn darin liegt unsere wahre Freiheit und unser Frieden.', en: 'The human will must be submitted to the divine will, not by force but out of love, for in this is our true freedom and peace.', ar: 'يجب أن تخضع الإرادة البشرية للإرادة الإلهية، لا بالإكراه بل بالحب، ففي هذا حريتنا وسلامنا الحقيقي.' },
-        fatherReference: { de: 'St. Antonius der Große, Briefe', en: 'St. Anthony the Great, Letters', ar: 'القديس أنطونيوس الكبير، الرسائل' }
+    'thita': {
+        id: 'thita', uppercase: 'Ⲑ', lowercase: 'ⲑ', name: { de: 'Theta', en: 'Theta', ar: 'ثيتا' },
+        pronunciation: { de: 'wie "th" in "thing", aber "t" nach ⲥ, ϣ, oder ⲧ', en: 'like "th" in "thing", but "t" after ⲥ, ϣ, or ⲧ', ar: 'مثل "ث"، ولكن "ت" بعد ⲥ, ϣ, أو ⲧ' },
+        numeric: 9,
+        exampleWord: { coptic: 'ⲑⲁⲗⲁⲥⲥⲁ', translit: 'thalassa', meaning: { de: 'Meer', en: 'sea', ar: 'بحر' } }
     },
-     'lt_iauda': {
-        bibleVerse: { de: 'Und es ist in keinem anderen das Heil; denn es ist auch kein anderer Name unter dem Himmel den Menschen gegeben, in dem wir gerettet werden sollen!', en: 'Neither is there salvation in any other: for there is none other name under heaven given among men, whereby we must be saved.', ar: 'وَلَيْسَ بِأَحَدٍ غَيْرِهِ الْخَلاَصُ. لأَنْ لَيْسَ اسْمٌ آخَرُ تَحْتَ السَّمَاءِ، قَدْ أُعْطِيَ بَيْنَ النَّاسِ، بِهِ يَنْبَغِي أَنْ نَخْلُصَ.' },
-        bibleReference: { de: 'Apostelgeschichte 4:12 (Schlachter 2000)', en: 'Acts 4:12 (KJV)', ar: 'أعمال الرسل ٤: ١٢' },
-        fatherQuote: { de: 'Der Name Jesus ist kein gewöhnlicher Name, sondern er ist die Macht Gottes zur Erlösung, eine Quelle der Heilung und ein Schrecken für die Dämonen.', en: 'The name of Jesus is not a common name, but it is the power of God unto salvation, a fount of healing, and a terror to the demons.', ar: 'اسم يسوع ليس اسمًا عاديًا، بل هو قوة الله للخلاص، وينبوع للشفاء، ورعب للشياطين.' },
-        fatherReference: { de: 'St. Athanasius, Über die Menschwerdung des Wortes', en: 'St. Athanasius, On the Incarnation of the Word', ar: 'القديس أثناسيوس، في تجسد الكلمة' }
+    'yota': {
+        id: 'yota', uppercase: 'Ⲓ', lowercase: 'ⲓ', name: { de: 'Yota', en: 'Yota', ar: 'يوتا' },
+        pronunciation: { de: 'wie kurzes "i" in "Mitte"', en: 'like short "i" in "sit"', ar: 'مثل "ي" قصيرة' },
+        numeric: 10,
+        exampleWord: { coptic: 'ⲓⲱⲧ', translit: 'iot', meaning: { de: 'Vater', en: 'father', ar: 'أب' } }
     },
-    'lt_kapa': {
-        bibleVerse: { de: 'Denn ein Kind ist uns geboren, ein Sohn ist uns gegeben, und die Herrschaft ruht auf seiner Schulter; und man nennt seinen Namen: Wunderbarer, Ratgeber, starker Gott, Ewig-Vater, Friedefürst.', en: 'For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace.', ar: 'لأَنَّهُ يُولَدُ لَنَا وَلَدٌ وَنُعْطَى ابْنًا، وَتَكُونُ الرِّيَاسَةُ عَلَى كَتِفِهِ، وَيُدْعَى اسْمُهُ عَجِيبًا، مُشِيرًا، إِلهًا قَدِيرًا، أَبًا أَبَدِيًّا، رَئِيسَ السَّلاَمِ.' },
-        bibleReference: { de: 'Jesaja 9:5 (Schlachter 2000)', en: 'Isaiah 9:6 (KJV)', ar: 'إشعياء ٩: ٦' },
-        fatherQuote: { de: 'Wenn wir ihn "Herr" nennen, bekennen wir seine Gottheit und seine Autorität über die gesamte Schöpfung und über unser eigenes Leben.', en: 'When we call Him "Lord," we confess His divinity and His authority over all creation and over our own lives.', ar: 'عندما ندعوه "ربًا"، فإننا نعترف بألوهيته وسلطانه على كل الخليقة وعلى حياتنا الخاصة.' },
-        fatherReference: { de: 'St. Kyrill von Alexandria, Kommentar zum Johannesevangelium', en: 'St. Cyril of Alexandria, Commentary on the Gospel of John', ar: 'القديس كيرلس الإسكندري، تعليق على إنجيل يوحنا' }
+    'kappa': {
+        id: 'kappa', uppercase: 'Ⲕ', lowercase: 'ⲕ', name: { de: 'Kappa', en: 'Kappa', ar: 'كبا' },
+        pronunciation: { de: 'wie "k"', en: 'like "k"', ar: 'مثل "ك"' },
+        numeric: 20,
+        exampleWord: { coptic: 'ⲕⲁϩⲓ', translit: 'kahi', meaning: { de: 'Erde', en: 'earth', ar: 'أرض' } }
     },
-    'lt_laula': {
-        bibleVerse: { de: 'Ihr aber seid ein auserwähltes Geschlecht, ein königliches Priestertum, ein heiliges Volk, ein Volk des Eigentums, damit ihr die Tugenden dessen verkündet, der euch aus der Finsternis berufen hat zu seinem wunderbaren Licht.', en: 'But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light.', ar: 'وَأَمَّا أَنْتُمْ فَجِنْسٌ مُخْتَارٌ، وَكَهَنُوتٌ مُلُوكِيٌّ، أُمَّةٌ مُقَدَّسَةٌ، شَعْبُ اقْتِنَاءٍ، لِكَيْ تُخْبِرُوا بِفَضَائِلِ الَّذِي دَعَاكُمْ مِنَ الظُّلْمَةِ إِلَى نُورِهِ الْعَجِيبِ.' },
-        bibleReference: { de: '1. Petrus 2:9 (Schlachter 2000)', en: '1 Peter 2:9 (KJV)', ar: 'بطرس الأولى ٢: ٩' },
-        fatherQuote: { de: 'Die Kirche ist das neue Volk Gottes, das nicht durch fleischliche Abstammung, sondern durch den Glauben an Christus und die Wiedergeburt aus Wasser und Geist versammelt wurde.', en: 'The Church is the new people of God, gathered not by fleshly descent but by faith in Christ and rebirth from water and Spirit.', ar: 'الكنيسة هي شعب الله الجديد، الذي لم يتجمع بالنسب الجسدي بل بالإيمان بالمسيح والولادة الجديدة من الماء والروح.' },
-        fatherReference: { de: 'St. Irenäus, Gegen die Häresien', en: 'St. Irenaeus, Against Heresies', ar: 'القديس إيرينيؤس، ضد الهرطقات' }
+    'laula': {
+        id: 'laula', uppercase: 'Ⲗ', lowercase: 'ⲗ', name: { de: 'Lola', en: 'Lola', ar: 'لولا' },
+        pronunciation: { de: 'wie "l"', en: 'like "l"', ar: 'مثل "ل"' },
+        numeric: 30,
+        exampleWord: { coptic: 'ⲗⲁⲥ', translit: 'las', meaning: { de: 'Zunge', en: 'tongue', ar: 'لسان' } }
     },
-    'lt_mi': {
-        bibleVerse: { de: 'Und der Engel sprach zu ihr: Fürchte dich nicht, Maria, denn du hast Gnade bei Gott gefunden!', en: 'And the angel said unto her, Fear not, Mary: for thou hast found favour with God.', ar: 'فَقَالَ لَهَا الْمَلاَكُ: «لاَ تَخَافِي يَا مَرْيَمُ، لأَنَّكِ قَدْ وَجَدْتِ نِعْمَةً عِنْدَ اللهِ.' },
-        bibleReference: { de: 'Lukas 1:30 (Schlachter 2000)', en: 'Luke 1:30 (KJV)', ar: 'لوقا ١: ٣٠' },
-        fatherQuote: { de: 'Durch Marias Gehorsam wurde der Knoten des Ungehorsams Evas gelöst.', en: 'Through Mary’s obedience, the knot of Eve’s disobedience was loosed.', ar: 'بطاعة مريم، حُلَّت عقدة عصيان حواء.' },
-        fatherReference: { de: 'St. Irenäus, Gegen die Häresien', en: 'St. Irenaeus, Against Heresies', ar: 'القديس إيرينيؤس، ضد الهرطقات' }
+    'mi': {
+        id: 'mi', uppercase: 'Ⲙ', lowercase: 'ⲙ', name: { de: 'Mey', en: 'Mey', ar: 'مي' },
+        pronunciation: { de: 'wie "m"', en: 'like "m"', ar: 'مثل "م"' },
+        numeric: 40,
+        exampleWord: { coptic: 'ⲙⲁⲁⲩ', translit: 'maav', meaning: { de: 'Mutter', en: 'mother', ar: 'أم' } }
     },
-    'lt_ni': {
-        bibleVerse: { de: 'Im Anfang schuf Gott die Himmel und die Erde.', en: 'In the beginning God created the heaven and the earth.', ar: 'فِي الْبَدْءِ خَلَقَ اللهُ السَّمَاوَاتِ وَالأَرْضَ.' },
-        bibleReference: { de: '1. Mose 1:1 (Schlachter 2000)', en: 'Genesis 1:1 (KJV)', ar: 'تكوين ١: ١' },
-        fatherQuote: { de: 'Wir glauben nicht an viele Götter, sondern an einen Gott: einen Gott, der Schöpfer, Bildner und Erhalter von allem ist.', en: 'We do not believe in many gods, but in one God: one God who is Creator, and Maker, and Preserver of all things.', ar: 'نحن لا نؤمن بآلهة كثيرة، بل بإله واحد: إله واحد هو الخالق والصانع والحافظ لكل الأشياء.' },
-        fatherReference: { de: 'St. Athanasius, Gegen die Heiden', en: 'St. Athanasius, Against the Heathen', ar: 'القديس أثناسيوس، ضد الوثنيين' }
+    'ni': {
+        id: 'ni', uppercase: 'Ⲛ', lowercase: 'ⲛ', name: { de: 'Ney', en: 'Ney', ar: 'ني' },
+        pronunciation: { de: 'wie "n"', en: 'like "n"', ar: 'مثل "ن"' },
+        numeric: 50,
+        exampleWord: { coptic: 'ⲛⲟⲩⲃ', translit: 'noub', meaning: { de: 'Gold', en: 'gold', ar: 'ذهب' } }
     },
-    'lt_xi': {
-        bibleVerse: { de: 'Denn das Wort vom Kreuz ist eine Torheit für die, welche verlorengehen; uns aber, die wir gerettet werden, ist es eine Gotteskraft.', en: 'For the preaching of the cross is to them that perish foolishness; but unto us which are saved it is the power of God.', ar: 'فَإِنَّ كَلِمَةَ الصَّلِيبِ عِنْدَ الْهَالِكِينَ جَهَالَةٌ، وَأَمَّا عِنْدَنَا نَحْنُ الْمُخَلَّصِينَ فَهِيَ قُوَّةُ اللهِ.' },
-        bibleReference: { de: '1. Korinther 1:18 (Schlachter 2000)', en: '1 Corinthians 1:18 (KJV)', ar: 'كورنثوس الأولى ١: ١٨' },
-        fatherQuote: { de: 'Das Kreuz, einst ein Instrument der Schande, ist nun zum Symbol unseres Sieges und zum Thron des Königs geworden.', en: 'The Cross, once an instrument of shame, has now become the symbol of our victory and the throne of the King.', ar: 'الصليب، الذي كان أداة عار، أصبح الآن رمز نصرتنا وعرش الملك.' },
-        fatherReference: { de: 'St. Johannes Chrysostomus, Homilien zum Kreuz', en: 'St. John Chrysostom, Homilies on the Cross', ar: 'القديس يوحنا الذهبي الفم، عظات عن الصليب' }
+    'eksi': {
+        id: 'eksi', uppercase: 'Ⲝ', lowercase: 'ⲝ', name: { de: 'Exi', en: 'Exi', ar: 'إكسي' },
+        pronunciation: { de: 'wie "ks"', en: 'like "x" in "box"', ar: 'مثل "كس"' },
+        numeric: 60,
+        exampleWord: { coptic: 'ⲝⲩⲗⲟⲛ', translit: 'xylon', meaning: { de: 'Holz', en: 'wood', ar: 'خشب' } }
     },
-    'lt_o': {
-        bibleVerse: { de: 'Denn so viele Verheißungen Gottes es auch gibt — in ihm ist das Ja, und in ihm auch das Amen, Gott zum Lob durch uns!', en: 'For all the promises of God in him are yea, and in him Amen, unto the glory of God by us.', ar: 'لأَنْ مَهْمَا كَانَتْ مَوَاعِيدُ اللهِ فَهُوَ فِيهِ «النَّعَمْ» وَفِيهِ «الآمِينُ»، لِمَجْدِ اللهِ، بِوَاسِطَتِنَا.' },
-        bibleReference: { de: '2. Korinther 1:20 (Schlachter 2000)', en: '2 Corinthians 1:20 (KJV)', ar: 'كورنثوس الثانية ١: ٢٠' },
-        fatherQuote: { de: 'Wenn wir "Amen" sagen, was "wahrlich" bedeutet, besiegeln wir in unseren Herzen das, was im Gebet gesprochen wurde.', en: 'When we say "Amen," which means "truly," we are sealing in our hearts that which has been spoken in prayer.', ar: 'عندما نقول "آمين"، والتي تعني "حقاً"، فإننا نختم في قلوبنا ما قيل في الصلاة.' },
-        fatherReference: { de: 'St. Kyrill von Jerusalem, Katechetische Vorlesungen', en: 'St. Cyril of Jerusalem, Catechetical Lectures', ar: 'القديس كيرلس الأورشليمي، محاضرات التعليم المسيحي' }
+    'o': {
+        id: 'o', uppercase: 'Ⲟ', lowercase: 'ⲟ', name: { de: 'O', en: 'O', ar: 'أو' },
+        pronunciation: { de: 'wie kurzes "o" in "offen"', en: 'like short "o" in "pot"', ar: 'مثل "و" قصيرة' },
+        numeric: 70,
+        exampleWord: { coptic: 'ⲟⲛ', translit: 'on', meaning: { de: 'wieder', en: 'again', ar: 'مرة أخرى' } }
     },
-     'lt_pi': {
-        bibleVerse: { de: 'Und als der Tag der Pfingsten erfüllt war, waren sie alle einmütig beisammen. Und es geschah plötzlich ein Brausen vom Himmel wie von einem gewaltigen Wind und erfüllte das ganze Haus, wo sie saßen.', en: 'And when the day of Pentecost was fully come, they were all with one accord in one place. And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.', ar: 'وَلَمَّا حَضَرَ يَوْمُ الْخَمْسِينَ كَانَ الْجَمِيعُ مَعًا بِنَفْسٍ وَاحِدَةٍ، وَصَارَ بَغْتَةً مِنَ السَّمَاءِ صَوْتٌ كَمَا مِنْ هُبُوبِ رِيحٍ عَاصِفَةٍ وَمَلأَ كُلَّ الْبَيْتِ حَيْثْ كَانُوا جَالِسِينَ.' },
-        bibleReference: { de: 'Apostelgeschichte 2:1-2 (Schlachter 2000)', en: 'Acts 2:1-2 (KJV)', ar: 'أعمال الرسل ٢: ١-٢' },
-        fatherQuote: { de: 'Der Heilige Geist kommt nicht, um zu verweilen, wo er Trägheit und Nachlässigkeit findet. Er sucht Seelen, die wachsam und feurig sind.', en: 'The Holy Spirit does not come to dwell where He finds sloth and negligence. He seeks souls that are vigilant and fervent.', ar: 'الروح القدس لا يأتي ليسكن حيث يجد الكسل والإهمال. إنه يبحث عن نفوس ساهرة ومتقدة.' },
-        fatherReference: { de: 'St. Johannes Chrysostomus, Homilien zur Apostelgeschichte', en: 'St. John Chrysostom, Homilies on Acts', ar: 'القديس يوحنا الذهبي الفم، عظات على أعمال الرسل' }
+    'pi': {
+        id: 'pi', uppercase: 'Ⲡ', lowercase: 'ⲡ', name: { de: 'Pe', en: 'Pe', ar: 'بي' },
+        pronunciation: { de: 'wie "p"', en: 'like "p"', ar: 'مثل "ب"' },
+        numeric: 80,
+        exampleWord: { coptic: 'ⲡⲉ', translit: 'pe', meaning: { de: 'ist', en: 'is', ar: 'هو' } }
     },
-    'lt_ro': {
-        bibleVerse: { de: 'Was ist der Mensch, dass du an ihn gedenkst, und des Menschen Sohn, dass du dich um ihn kümmerst?', en: 'What is man, that thou art mindful of him? and the son of man, that thou visitest him?', ar: 'مَنْ هُوَ الإِنْسَانُ حَتَّى تَذْكُرَهُ؟ وَابْنُ آدَمَ حَتَّى تَفْتَقِدَهُ؟' },
-        bibleReference: { de: 'Psalm 8:5 (Schlachter 2000)', en: 'Psalm 8:4 (KJV)', ar: 'مزمور ٨: ٤' },
-        fatherQuote: { de: 'Gott wurde Mensch, damit der Mensch Gott werden könne.', en: 'God became man, so that man might become God.', ar: 'الله صار إنسانًا، لكي يصير الإنسان إلهًا.' },
-        fatherReference: { de: 'St. Athanasius, Über die Menschwerdung des Wortes', en: 'St. Athanasius, On the Incarnation of the Word', ar: 'القديس أثناسيوس، في تجسد الكلمة' }
+    'ro': {
+        id: 'ro', uppercase: 'Ⲣ', lowercase: 'ⲣ', name: { de: 'Ro', en: 'Ro', ar: 'رو' },
+        pronunciation: { de: 'wie "r"', en: 'like "r"', ar: 'مثل "ر"' },
+        numeric: 100,
+        exampleWord: { coptic: 'ⲣⲁⲛ', translit: 'ran', meaning: { de: 'Name', en: 'name', ar: 'اسم' } }
     },
-    'lt_sima': {
-        bibleVerse: { de: 'Sie wird aber einen Sohn gebären, und du sollst ihm den Namen Jesus geben, denn er wird sein Volk erretten von ihren Sünden.', en: 'And she shall bring forth a son, and thou shalt call his name JESUS: for he shall save his people from their sins.', ar: 'فَسَتَلِدُ ابْنًا وَتَدْعُو اسْمَهُ يَسُوعَ. لأَنَّهُ يُخَلِّصُ شَعْبَهُ مِنْ خَطَايَاهُمْ.' },
-        bibleReference: { de: 'Matthäus 1:21 (Schlachter 2000)', en: 'Matthew 1:21 (KJV)', ar: 'متى ١: ٢١' },
-        fatherQuote: { de: 'Er wird Retter genannt, nicht weil er eine vorübergehende Befreiung gewährt, sondern weil er der Seele ewiges Heil schenkt.', en: 'He is called Savior, not because He grants a temporary deliverance, but because He bestows eternal salvation upon the soul.', ar: 'يُدعى مخلصًا، ليس لأنه يمنح خلاصًا مؤقتًا، بل لأنه يهب النفس خلاصًا أبديًا.' },
-        fatherReference: { de: 'St. Kyrill von Alexandria, Kommentar zum Lukasevangelium', en: 'St. Cyril of Alexandria, Commentary on Luke', ar: 'القديس كيرلس الإسكندري، تعليق على إنجيل لوقا' }
+    'sima': {
+        id: 'sima', uppercase: 'Ⲥ', lowercase: 'ⲥ', name: { de: 'Seema', en: 'Seema', ar: 'سيما' },
+        pronunciation: { de: 'wie "s"', en: 'like "s"', ar: 'مثل "س"' },
+        numeric: 200,
+        exampleWord: { coptic: 'ⲥⲱⲧⲉⲙ', translit: 'sotem', meaning: { de: 'hören', en: 'to hear', ar: 'يسمع' } }
     },
-    'lt_tau': {
-        bibleVerse: { de: 'Kommt, lasst uns anbeten und uns vor ihm beugen, lasst uns niederknien vor dem Herrn, unserem Schöpfer!', en: 'O come, let us worship and bow down: let us kneel before the Lord our maker.', ar: 'هَلُمَّ نَسْجُدُ وَنَرْكَعُ، وَنَجْثُو أَمَامَ الرَّبِّ خَالِقِنَا.' },
-        bibleReference: { de: 'Psalm 95:6 (Schlachter 2000)', en: 'Psalm 95:6 (KJV)', ar: 'مزمور ٩٥: ٦' },
-        fatherQuote: { de: 'Wahre Anbetung ist nicht nur eine äußere Haltung, sondern die innere Haltung des Herzens, das sich in Demut und Liebe Gott hingibt.', en: 'True worship is not merely an external posture, but the internal disposition of the heart, surrendering itself to God in humility and love.', ar: 'العبادة الحقيقية ليست مجرد وضع خارجي، بل هي ميل القلب الداخلي، الذي يسلم نفسه لله في تواضع ومحبة.' },
-        fatherReference: { de: 'St. Johannes Cassian, Konferenzen', en: 'St. John Cassian, Conferences', ar: 'القديس يوحنا كاسيان، المؤتمرات' }
+    'tav': {
+        id: 'tav', uppercase: 'Ⲧ', lowercase: 'ⲧ', name: { de: 'Tav', en: 'Tav', ar: 'تاڤ' },
+        pronunciation: { de: 'wie "t", aber "d" nach ⲛ in griechischen Wörtern', en: 'like "t", but "d" after ⲛ in Greek words', ar: 'مثل "ت"، ولكن "د" بعد ⲛ في الكلمات اليونانية' },
+        numeric: 300,
+        exampleWord: { coptic: 'ⲧⲁⲗϭⲟ', translit: 'talcho', meaning: { de: 'heilen', en: 'to heal', ar: 'يشفي' } }
     },
-    'lt_epsilon': {
-        bibleVerse: { de: 'Denn so sehr hat Gott die Welt geliebt, dass er seinen eingeborenen Sohn gab, damit jeder, der an ihn glaubt, nicht verlorengeht, sondern ewiges Leben hat.', en: 'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.', ar: 'لأَنَّهُ هكَذَا أَحَبَّ اللهُ الْعَالَمَ حَتَّى بَذَلَ ابْنَهُ الْوَحِيدَ، لِكَيْ لاَ يَهْلِكَ كُلُّ مَنْ يُؤْمِنُ بِهِ، بَلْ تَكُونُ لَهُ الْحَيَاةُ الأَبَدِيَّةُ.' },
-        bibleReference: { de: 'Johannes 3:16 (Schlachter 2000)', en: 'John 3:16 (KJV)', ar: 'يوحنا ٣: ١٦' },
-        fatherQuote: { de: 'Der Sohn ist aus dem Wesen des Vaters, nicht durch Teilung, sondern als wahrer Nachkomme, so wie das Licht von der Sonne ausgeht.', en: 'The Son is from the substance of the Father, not by division but as a true offspring, as light comes from the sun.', ar: 'الابن هو من جوهر الآب، ليس بالانقسام بل كنسل حقيقي، كما يصدر النور من الشمس.' },
-        fatherReference: { de: 'St. Athanasius, Erklärung des Glaubens', en: 'St. Athanasius, Statement of Faith', ar: 'القديس أثناسيوس، بيان الإيمان' }
+    'epsilon': {
+        id: 'epsilon', uppercase: 'Ⲩ', lowercase: 'ⲩ', name: { de: 'Epsilon (He)', en: 'Epsilon (He)', ar: 'إبسيلون (هي)' },
+        pronunciation: { de: 'wie "i" in "Mitte"; nach ⲁ/ⲉ als "v"; nach ⲟ als "u" (wie in "Suppe")', en: 'like "i" in "sit"; after ⲁ/ⲉ as "v"; after ⲟ as "oo" in "soup"', ar: 'مثل "ي" قصيرة؛ بعد ⲁ/ⲉ مثل "ڤ"؛ بعد ⲟ مثل "و" طويلة' },
+        numeric: 400,
+        exampleWord: { coptic: 'ⲟⲩⲁⲡ', translit: 'ouap', meaning: { de: 'heilig', en: 'holy', ar: 'قدوس' } }
     },
-    'lt_phi': {
-        bibleVerse: { de: 'Ich bin das Licht der Welt. Wer mir nachfolgt, wird nicht in der Finsternis wandeln, sondern wird das Licht des Lebens haben.', en: 'I am the light of the world: he that followeth me shall not walk in darkness, but shall have the light of life.', ar: 'أَنَا هُوَ نُورُ الْعَالَمِ. مَنْ يَتْبَعْنِي فَلاَ يَمْشِي فِي الظُّلْمَةِ بَلْ يَكُونُ لَهُ نُورُ الْحَيَاةِ.' },
-        bibleReference: { de: 'Johannes 8:12 (Schlachter 2000)', en: 'John 8:12 (KJV)', ar: 'يوحنا ٨: ١٢' },
-        fatherQuote: { de: 'Christus ist das wahre Licht, das jede Seele erleuchtet und die Finsternis der Unwissenheit und Sünde vertreibt.', en: 'Christ is the true light, who illuminates every soul, dispelling the darkness of ignorance and sin.', ar: 'المسيح هو النور الحقيقي، الذي ينير كل نفس، ويبدد ظلمة الجهل والخطية.' },
-        fatherReference: { de: 'St. Kyrill von Alexandria, Kommentar zum Johannesevangelium', en: 'St. Cyril of Alexandria, Commentary on the Gospel of John', ar: 'القديس كيرلس الإسكندري، تعليق على إنجيل يوحنا' }
+    'phi': {
+        id: 'phi', uppercase: 'Ⲫ', lowercase: 'ⲫ', name: { de: 'Phi', en: 'Phi', ar: 'في' },
+        pronunciation: { de: 'wie "f"', en: 'like "f"', ar: 'مثل "ف"' },
+        numeric: 500,
+        exampleWord: { coptic: 'ⲫⲱⲥ', translit: 'phos', meaning: { de: 'Licht', en: 'light', ar: 'نور' } }
     },
-    'lt_chi': {
-        bibleVerse: { de: 'Da sprach Jesus zu seinen Jüngern: Will jemand mir nachkommen, so verleugne er sich selbst und nehme sein Kreuz auf sich und folge mir nach!', en: 'Then said Jesus unto his disciples, If any man will come after me, let him deny himself, and take up his cross, and follow me.', ar: 'حِينَئِذٍ قَالَ يَسُوعُ لِتَلاَمِيذِهِ: «إِنْ أَرَادَ أَحَدٌ أَنْ يَأْتِيَ وَرَائِي فَلْيُنْكِرْ نَفْسَهُ وَيَحْمِلْ صَلِيبَهُ وَيَتْبَعْنِي.' },
-        bibleReference: { de: 'Matthäus 16:24 (Schlachter 2000)', en: 'Matthew 16:24 (KJV)', ar: 'متى ١٦: ٢٤' },
-        fatherQuote: { de: 'Er ist Christus, weil er nicht nur selbst gesalbt wurde, sondern weil durch ihn alle, die an ihn glauben, Priester und Könige werden, die mit dem Heiligen Geist gesalbt sind.', en: 'He is Christ because He was not only anointed Himself, but because through Him all who believe in Him become priests and kings, anointed with the Holy Spirit.', ar: 'هو المسيح لأنه لم يُمسح فقط بنفسه، بل لأنه به يصير كل المؤمنين به كهنة وملوكًا، ممسوحين بالروح القدس.' },
-        fatherReference: { de: 'St. Kyrill von Jerusalem, Katechetische Vorlesungen', en: 'St. Cyril of Jerusalem, Catechetical Lectures', ar: 'القديس كيرلس الأورشليمي، محاضرات التعليم المسيحي' }
+    'khi': {
+        id: 'khi', uppercase: 'Ⲭ', lowercase: 'ⲭ', name: { de: 'Key', en: 'Key', ar: 'كي' },
+        pronunciation: { de: '"k" in kopt. Wörtern. Griech.: "sch" vor ⲉ,ⲏ,ⲓ,ⲩ; "ch" (Bach) sonst.', en: '"k" in Coptic words. Greek: "sh" before ⲉ,ⲏ,ⲓ,ⲩ; "kh" otherwise.', ar: '"ك" في الكلمات القبطية. يوناني: "ش" قبل ⲉ,ⲏ,ⲓ,ⲩ؛ "خ" في الحالات الأخرى.' },
+        numeric: 600,
+        exampleWord: { coptic: 'ⲭⲟⲓⲁⲕ', translit: 'khoiak', meaning: { de: 'Khoiak (4. Monat)', en: 'Khoiak (4th month)', ar: 'كيهك' } }
     },
-    'lt_epsi': {
-        bibleVerse: { de: 'Denn was würde es einem Menschen helfen, wenn er die ganze Welt gewönne, aber an seiner Seele Schaden litte? Oder was könnte ein Mensch als Lösegeld für seine Seele geben?', en: 'For what is a man profited, if he shall gain the whole world, and lose his own soul? or what shall a man give in exchange for his soul?', ar: 'لأَنَّهُ مَاذَا يَنْتَفِعُ الإِنْسَانُ لَوْ رَبِحَ الْعَالَمَ كُلَّهُ وَخَسِرَ نَفْسَهُ؟ أَوْ مَاذَا يُعْطِي الإِنْسَانُ فِدَاءً عَنْ نَفْسِهِ؟' },
-        bibleReference: { de: 'Matthäus 16:26 (Schlachter 2000)', en: 'Matthew 16:26 (KJV)', ar: 'متى ١٦: ٢٦' },
-        fatherQuote: { de: 'Nichts ist kostbarer als die Seele. Kümmere dich daher um sie, damit sie nicht unrein vor Gott erscheine.', en: 'Nothing is more precious than the soul. Take care of it, therefore, lest it appear impure before God.', ar: 'لا شيء أثمن من النفس. فاعتني بها، لئلا تظهر دنسة أمام الله.' },
-        fatherReference: { de: 'St. Antonius der Große', en: 'St. Anthony the Great', ar: 'القديس أنطونيوس الكبير' }
+    'epsi': {
+        id: 'epsi', uppercase: 'Ⲯ', lowercase: 'ⲯ', name: { de: 'Epsi', en: 'Epsi', ar: 'إبسي' },
+        pronunciation: { de: 'wie "ps"', en: 'like "ps" in "lips"', ar: 'مثل "بس"' },
+        numeric: 700,
+        exampleWord: { coptic: 'ⲯⲁⲗⲙⲟⲥ', translit: 'psalmos', meaning: { de: 'Psalm', en: 'psalm', ar: 'مزمور' } }
     },
-    'lt_omega': {
-        bibleVerse: { de: 'Ich bin das Alpha und das Omega, der Anfang und das Ende, der Erste und der Letzte.', en: 'I am Alpha and Omega, the beginning and the end, the first and the last.', ar: 'أَنَا الأَلِفُ وَالْيَاءُ، الْبِدَايَةُ وَالنِّهَايَةُ، الأَوَّلُ وَالآخِرُ.' },
-        bibleReference: { de: 'Offenbarung 22:13 (Schlachter 2000)', en: 'Revelation 22:13 (KJV)', ar: 'رؤيا ٢٢: ١٣' },
-        fatherQuote: { de: 'Das wahre Leben wird nicht in der Länge der Tage gemessen, sondern in der Qualität des Lebens in Christus.', en: 'True life is not measured in length of days, but in the quality of one\'s life in Christ.', ar: 'الحياة الحقيقية لا تقاس بطول الأيام، بل بنوعية الحياة في المسيح.' },
-        fatherReference: { de: 'St. Johannes Chrysostomus', en: 'St. John Chrysostom', ar: 'القديس يوحنا الذهبي الفم' }
+    'oou': {
+        id: 'oou', uppercase: 'Ⲱ', lowercase: 'ⲱ', name: { de: 'Omega', en: 'Omega', ar: 'أوميغا' },
+        pronunciation: { de: 'wie langes "o" in "Boot"', en: 'like "o" in "go"', ar: 'مثل "و" طويلة' },
+        numeric: 800,
+        exampleWord: { coptic: 'ⲱⲛⲁⲓ', translit: 'onai', meaning: { de: 'Stein', en: 'stone', ar: 'حجر' } }
     },
-     'lt_shai': {
-        bibleVerse: { de: 'Dies sind die Feste des Herrn, die heiligen Versammlungen, die ihr zu ihrer festgesetzten Zeit ausrufen sollt.', en: 'These are the feasts of the Lord, even holy convocations, which ye shall proclaim in their seasons.', ar: 'هذِهِ هِيَ مَوَاسِمُ الرَّبِّ، الْمَحَافِلُ الْمُقَدَّسَةُ الَّتِي تُنَادُونَ بِهَا فِي أَوْقَاتِهَا.' },
-        bibleReference: { de: '3. Mose 23:4 (Schlachter 2000)', en: 'Leviticus 23:4 (KJV)', ar: 'لاويين ٢٣: ٤' },
-        fatherQuote: { de: 'Jeder Tag im Leben eines Christen ist ein Fest, wenn wir uns an die Auferstehung des Herrn erinnern und in ihr leben.', en: 'Every day in a Christian’s life is a feast, if we remember and live in the Lord’s resurrection.', ar: 'كل يوم في حياة المسيحي هو عيد، إذا تذكرنا وعشنا في قيامة الرب.' },
-        fatherReference: { de: 'St. Athanasius, Festbriefe', en: 'St. Athanasius, Festal Letters', ar: 'القديس أثناسيوس، رسائل الفصح' }
+    'shai': {
+        id: 'shai', uppercase: 'Ϣ', lowercase: 'ϣ', name: { de: 'Shai', en: 'Shai', ar: 'شاي' },
+        pronunciation: { de: 'wie "sch"', en: 'like "sh"', ar: 'مثل "ش"' },
+        numeric: 900,
+        exampleWord: { coptic: 'ϣⲏⲣⲓ', translit: 'sheri', meaning: { de: 'Sohn/Kind', en: 'son/child', ar: 'ابن/طفل' } }
     },
-     'lt_fai': {
-        bibleVerse: { de: 'Kommt her zu mir alle, die ihr mühselig und beladen seid, so will ich euch erquicken!', en: 'Come unto me, all ye that labour and are heavy laden, and I will give you rest.', ar: 'تَعَالَوْا إِلَيَّ يَا جَمِيعَ الْمُتْعَبِينَ وَالثَّقِيلِي الأَحْمَالِ، وَأَنَا أُرِيحُكُمْ.' },
-        bibleReference: { de: 'Matthäus 11:28 (Schlachter 2000)', en: 'Matthew 11:28 (KJV)', ar: 'متى ١١: ٢٨' },
-        fatherQuote: { de: 'Er, der das Universum trägt, bittet uns, unser Kreuz zu tragen, nicht weil er unsere Hilfe braucht, sondern weil er uns an seiner Herrlichkeit teilhaben lassen will.', en: 'He Who carries the universe asks us to carry our cross, not because He needs our help, but because He wants to make us partakers of His glory.', ar: 'هو الذي يحمل الكون يطلب منا أن نحمل صليبنا، ليس لأنه يحتاج إلى مساعدتنا، بل لأنه يريد أن يجعلنا شركاء في مجده.' },
-        fatherReference: { de: 'St. Kyrill von Alexandria, Kommentar zum Johannesevangelium', en: 'St. Cyril of Alexandria, Commentary on John', ar: 'القديس كيرلس الإسكندري، تعليق على إنجيل يوحنا' }
+    'fai': {
+        id: 'fai', uppercase: 'Ϥ', lowercase: 'ϥ', name: { de: 'Fai', en: 'Fai', ar: 'فاي' },
+        pronunciation: { de: 'wie "f"', en: 'like "f"', ar: 'مثل "ف"' },
+        numeric: 90,
+        exampleWord: { coptic: 'ϥⲁⲓ', translit: 'fai', meaning: { de: 'tragen', en: 'to carry', ar: 'يحمل' } }
     },
-    'lt_khai': {
-        bibleVerse: { de: 'Denn in ihm leben, weben und sind wir.', en: 'For in him we live, and move, and have our being.', ar: 'لأَنَّنَا بِهِ نَحْيَا وَنَتَحَرَّكُ وَنُوجَدُ.' },
-        bibleReference: { de: 'Apostelgeschichte 17:28 (Schlachter 2000)', en: 'Acts 17:28 (KJV)', ar: 'أعمال الرسل ١٧: ٢٨' },
-        fatherQuote: { de: 'Wenn du im Gebet stehst, bist du in Gott und Gott ist in dir. Verschließe die Türen deiner Sinne, damit deine Gebete nicht unterbrochen werden.', en: 'When you stand in prayer, you are in God and God is in you. Close the doors of your senses, so that your prayers are not interrupted.', ar: 'عندما تقف في الصلاة، فأنت في الله والله فيك. أغلق أبواب حواسك، حتى لا تنقطع صلواتك.' },
-        fatherReference: { de: 'St. Makarius der Große', en: 'St. Macarius the Great', ar: 'القديس مقاريوس الكبير' }
+    'khai': {
+        id: 'khai', uppercase: 'Ϧ', lowercase: 'ϧ', name: { de: 'Khai', en: 'Khai', ar: 'خاي' },
+        pronunciation: { de: 'wie "ch" in "Bach"', en: 'like "ch" in Scottish "loch"', ar: 'مثل "خ"' },
+        numeric: 0,
+        exampleWord: { coptic: 'ϧⲉⲛ', translit: 'khen', meaning: { de: 'in', en: 'in', ar: 'في' } }
     },
-    'lt_hori': {
-        bibleVerse: { de: 'Und alles, was ihr tut in Wort oder Werk, das tut alles im Namen des Herrn Jesus und dankt Gott, dem Vater, durch ihn.', en: 'And whatsoever ye do in word or deed, do all in the name of the Lord Jesus, giving thanks to God and the Father by him.', ar: 'وَكُلُّ مَا عَمِلْتُمْ بِقَوْل أَوْ فِعْل، فَاعْمَلُوا الْكُلَّ بِاسْمِ الرَّبِّ يَسُوعَ، شَاكِرِينَ اللهَ وَالآبَ بِهِ.' },
-        bibleReference: { de: 'Kolosser 3:17 (Schlachter 2000)', en: 'Colossians 3:17 (KJV)', ar: 'كولوسي ٣: ١٧' },
-        fatherQuote: { de: 'Die Mühe, die für Gott unternommen wird, ist niemals vergeblich. Selbst ein Becher kalten Wassers, der in Seinem Namen gegeben wird, wird seine Belohnung finden.', en: 'Toil undertaken for God is never in vain. Even a cup of cold water given in His name will find its reward.', ar: 'التعب المبذول من أجل الله لا يضيع أبدًا. حتى كوب الماء البارد المعطى باسمه سيجد مكافأته.' },
-        fatherReference: { de: 'St. Basilius der Große, Längere Regeln', en: 'St. Basil the Great, Longer Rules', ar: 'القديس باسيليوس الكبير، القوانين الطويلة' }
+    'hori': {
+        id: 'hori', uppercase: 'Ϩ', lowercase: 'ϩ', name: { de: 'Hori', en: 'Hori', ar: 'هوري' },
+        pronunciation: { de: 'wie "h"', en: 'like "h"', ar: 'مثل "ه"' },
+        numeric: 0,
+        exampleWord: { coptic: 'ϩⲏⲧ', translit: 'heet', meaning: { de: 'Herz', en: 'heart', ar: 'قلب' } }
     },
-    'lt_gangia': {
-        bibleVerse: { de: 'Der Herr ist mein Hirte, mir wird nichts mangeln.', en: 'The Lord is my shepherd; I shall not want.', ar: 'اَلرَّبُّ رَاعِيَّ فَلاَ يُعْوِزُنِي شَيْءٌ.' },
-        bibleReference: { de: 'Psalm 23:1 (Schlachter 2000)', en: 'Psalm 23:1 (KJV)', ar: 'مزمور ٢٣: ١' },
-        fatherQuote: { de: 'Wenn der Herr dein Meister ist, wovor solltest du dich dann fürchten? Wenn er dein Hirte ist, was könnte dir fehlen?', en: 'If the Lord is your master, what then shall you fear? If He is your shepherd, what could you lack?', ar: 'إذا كان الرب سيدك، فماذا تخاف؟ إذا كان هو راعيك، فماذا يمكن أن يعوزك؟' },
-        fatherReference: { de: 'St. Johannes Chrysostomus, Homilien zu den Psalmen', en: 'St. John Chrysostom, Homilies on the Psalms', ar: 'القديس يوحنا الذهبي الفم، عظات على المزامير' }
+    'janja': {
+        id: 'janja', uppercase: 'Ϫ', lowercase: 'ϫ', name: { de: 'Jenja', en: 'Jenja', ar: 'جانجا' },
+        pronunciation: { de: '"j" (dsch) vor ⲉ,ⲏ,ⲓ,ⲩ; "g" (hart) sonst.', en: '"j" (as in John) before ⲉ,ⲏ,ⲓ,ⲩ; hard "g" otherwise.', ar: '"ج" قبل ⲉ,ⲏ,ⲓ,ⲩ؛ "ج" قوية في الحالات الأخرى.' },
+        numeric: 0,
+        exampleWord: { coptic: 'ϫⲓϫ', translit: 'jij', meaning: { de: 'Hand', en: 'hand', ar: 'يد' } }
     },
-    'lt_shima': {
-        bibleVerse: { de: 'Jedes gute Tal soll ausgefüllt und jeder Berg und Hügel erniedrigt werden.', en: 'Every valley shall be filled, and every mountain and hill shall be brought low.', ar: 'كُلُّ وَادٍ يَمْتَلِئُ، وَكُلُّ جَبَل وَأَكَمَةٍ يَنْخَفِضُ.' },
-        bibleReference: { de: 'Lukas 3:5 (Schlachter 2000)', en: 'Luke 3:5 (KJV)', ar: 'لوقا ٣: ٥' },
-        fatherQuote: { de: 'Demut ist der hohe Weg zu Gott. Je tiefer du dich beugst, desto höher wirst du in Seinen Augen erhoben.', en: 'Humility is the high road to God. The lower you bow, the higher you are exalted in His sight.', ar: 'التواضع هو الطريق العالي إلى الله. كلما انحنيت أكثر، كلما ارتفعت في عينيه.' },
-        fatherReference: { de: 'St. Antonius der Große', en: 'St. Anthony the Great', ar: 'القديس أنطونيوس الكبير' }
+    'chima': {
+        id: 'chima', uppercase: 'Ϭ', lowercase: 'ϭ', name: { de: 'Cheema', en: 'Cheema', ar: 'تشيما' },
+        pronunciation: { de: 'wie "tsch" in "Deutsch"', en: 'like "ch" in "church"', ar: 'مثل "تش"' },
+        numeric: 0,
+        exampleWord: { coptic: 'ϭⲟⲓⲥ', translit: 'chois', meaning: { de: 'Herr', en: 'Lord', ar: 'الرب' } }
     },
-     'lt_dei': {
-        bibleVerse: { de: 'Ihr seid meine Zeugen, spricht der Herr, und mein Knecht, den ich erwählt habe.', en: 'Ye are my witnesses, saith the Lord, and my servant whom I have chosen.', ar: '«أَنْتُمْ شُهُودِي، يَقُولُ الرَّبُّ، وَعَبْدِي الَّذِي اخْتَرْتُهُ.' },
-        bibleReference: { de: 'Jesaja 43:10 (Schlachter 2000)', en: 'Isaiah 43:10 (KJV)', ar: 'إشعياء ٤٣: ١٠' },
-        fatherQuote: { de: 'Ein Märtyrer ist ein Zeuge, nicht nur mit seinen Lippen, sondern mit seinem Blut, der die Wahrheit der Auferstehung Christi bezeugt.', en: 'A martyr is a witness, not only with his lips but with his blood, testifying to the truth of Christ’s resurrection.', ar: 'الشهيد هو شاهد، ليس بشفتيه فقط بل بدمه، يشهد لحقيقة قيامة المسيح.' },
-        fatherReference: { de: 'St. Kyrill von Jerusalem, Katechetische Vorlesungen', en: 'St. Cyril of Jerusalem, Catechetical Lectures', ar: 'القديس كيرلس الأورشليمي، محاضرات التعليم المسيحي' }
+    'ti': {
+        id: 'ti', uppercase: 'Ϯ', lowercase: 'ϯ', name: { de: 'Ti', en: 'Ti', ar: 'تي' },
+        pronunciation: { de: 'wie "ti" in "Emotion"', en: 'like "ti" in "station"', ar: 'مثل "تي"' },
+        numeric: 0,
+        exampleWord: { coptic: 'ϯ', translit: 'ti', meaning: { de: 'geben / ich', en: 'to give / I', ar: 'يعطي / أنا' } }
     }
 };
 
-const LETTER_EMOJIS: Record<string, string> = {
-    'lt_alpha': '👨‍👧', 'lt_vida': '👁️', 'lt_ghamma': '👍', 'lt_dalda': '👑', 'lt_ei': '📤',
-    'lt_so': '6️⃣', 'lt_zita': '🥋', 'lt_hita': '🔥', 'lt_thita': '🙏', 'lt_iauda': '✝️',
-    'lt_kapa': '👑', 'lt_laula': '👥', 'lt_mi': '👩‍👦', 'lt_ni': '✨', 'lt_xi': '🪵',
-    'lt_o': '✅', 'lt_pi': '🕊️', 'lt_ro': '🚶', 'lt_sima': '❤️‍🩹', 'lt_tau': '🙌',
-    'lt_epsilon': '👶', 'lt_phi': '💡', 'lt_chi': '✝️', 'lt_epsi': '🦋', 'lt_omega': '❤️',
-    'lt_shai': '🎉', 'lt_fai': '💪', 'lt_khai': '📥', 'lt_hori': '😓', 'lt_gangia': '👑',
-    'lt_shima': '🏔️', 'lt_dei': '📜'
-};
-
-
-const letter_keys = Object.keys(LETTERS);
-
-export const ALPHABET_SLIDES: Record<string, AlphabetSlide> = letter_keys.reduce((acc, letterId, index) => {
-    const letter = LETTERS[letterId];
-    let explanation: { de: string, en: string, ar: string };
-
-    switch(letterId) {
-        case 'lt_vida': 
-            explanation = { de: 'Normalerweise wie "W" in "Wasser". In manchen griechischen Wörtern und Namen wie "B".', en: 'Usually like "V" in "Vase". In some Greek words and names, it\'s pronounced "B".', ar: 'عادةً يُنطق مثل حرف "ڤ" (في ڤيديو). في بعض الكلمات والأسماء اليونانية، يُنطق "ب".' }; break;
-        case 'lt_ghamma': 
-            explanation = { de: 'Normalerweise "G" (wie in "Garten"). Vor ⲅ, ⲕ, ⲭ, ⲝ wird es zu "N" (wie in "singen"). Vor ⲉ, ⲏ, ⲓ, ⲩ wird es zu einem weichen "Gh".', en: 'Usually "g" (as in "go"). Before ⲅ, ⲕ, ⲭ, ⲝ it becomes "n" (as in "sing"). Before ⲉ, ⲏ, ⲓ, ⲩ it becomes a soft "gh" sound.', ar: 'عادةً "ج" (مثل "جمل"). قبل الحروف ⲅ, ⲕ, ⲭ, ⲝ يصبح "ن" (مثل "أنجيل"). قبل الحروف ⲉ, ⲏ, ⲓ, ⲩ يصبح صوتاً حلقياً "غ".' }; break;
-        case 'lt_thita':
-            explanation = { de: 'Wie "T" in den meisten koptischen Wörtern. In griechischen Lehnwörtern oft wie das englische "Th" in "thing".', en: 'Like "t" in most Coptic words. In words of Greek origin, often like "th" in "thing".', ar: 'يُنطق "ت" في معظم الكلمات القبطية. في الكلمات ذات الأصل اليوناني، غالبًا ما يُنطق "ث".' }; break;
-        case 'lt_tau':
-            explanation = { de: 'Normalerweise "T". Am Wortende nach einem Vokal oft wie "D".', en: 'Usually "t". At the end of a word after a vowel, it often sounds like "d".', ar: 'عادةً "ت". في نهاية الكلمة بعد حرف متحرك، غالباً ما يُنطق "د".' }; break;
-        case 'lt_epsilon':
-             explanation = { de: 'Als Teil eines Diphthongs ⲁⲩ/ⲉⲩ wie "W". Alleinstehend oft wie "I" im Deutschen.', en: 'As part of a diphthong ⲁⲩ/ⲉⲩ, it sounds like "v". When standing alone, it often sounds like "i" in "fit".', ar: 'كجزء من صوت مزدوج مثل ⲁⲩ/ⲉⲩ، يُنطق "ڤ". عندما يأتي منفرداً، غالباً ما يُنطق مثل الياء.' }; break;
-        case 'lt_chi':
-             explanation = { de: 'In koptischen Wörtern wie "Sch". In griechischen Wörtern wie "K".', en: 'In Coptic words, it sounds like "sh". In Greek words, it sounds like "k".', ar: 'في الكلمات القبطية، يُنطق "ش". في الكلمات اليونانية، يُنطق "ك".' }; break;
-        default:
-            explanation = { de: `Der Buchstabe ${letter.name.de} wird wie ${letter.pronunciation.de} ausgesprochen.`, en: `The letter ${letter.name.en} is pronounced like ${letter.pronunciation.en}.`, ar: `حرف ${letter.name.ar} يُنطق مثل ${letter.pronunciation.ar}.` };
+export const LESSONS: Record<string, Lesson> = {
+    // Module 1: Alphabet
+    'l1-1': {
+        id: 'l1-1', order: 1, moduleId: 'm1', title: { de: 'Alphabet 1: Ⲁ bis Ⲇ', en: 'Alphabet 1: Ⲁ to Ⲇ', ar: 'الأبجدية 1: من Ⲁ إلى Ⲇ' }, prerequisites: [], quizId: 'q1-1',
+        slides: [
+            { type: 'alphabet', letterId: 'alpha', emoji: '❤️', explanation: { de: 'Alpha ist der erste Buchstabe des koptischen Alphabets.', en: 'Alpha is the first letter of the Coptic alphabet.', ar: 'ألفا هو الحرف الأول في الأبجدية القبطية.' }, spiritual: { bibleVerse: { de: '"Ich bin das Alpha und das Omega", sagt der Herr.', en: '"I am the Alpha and the Omega," says the Lord.', ar: '"أنا هو الألف والياء"، يقول الرب.' }, bibleReference: { de: 'Offenbarung 1:8', en: 'Revelation 1:8', ar: 'رؤيا ٨:١' }, fatherQuote: { de: 'Der Anfang aller Dinge ist Gott.', en: 'The beginning of all things is God.', ar: 'بداية كل الأشياء هو الله.' }, fatherReference: { de: 'Hl. Athanasius', en: 'St. Athanasius', ar: 'القديس أثناسيوس' } } },
+            { type: 'alphabet', letterId: 'beta', emoji: '👁️', explanation: { de: 'Vita kann als "w" oder "b" ausgesprochen werden, je nach Kontext.', en: 'Vita can be pronounced as "v" or "b" depending on the context.', ar: 'ڤيتا يمكن أن تنطق "ڤ" أو "ب" حسب السياق.' }, spiritual: { bibleVerse: { de: 'Dein Auge ist die Leuchte deines Leibes.', en: 'Your eye is the lamp of your body.', ar: 'سراج الجسد هو العين.' }, bibleReference: { de: 'Lukas 11:34', en: 'Luke 11:34', ar: 'لوقا ٣٤:١١' }, fatherQuote: { de: 'Wenn das Auge einfach ist, wird der ganze Körper hell sein.', en: 'If the eye is simple, the whole body will be full of light.', ar: 'إن كانت عينك بسيطة فجسدك كله يكون نيراً.' }, fatherReference: { de: 'Hl. Johannes Chrysostomos', en: 'St. John Chrysostom', ar: 'القديس يوحنا ذهبي الفم' } } },
+            { type: 'alphabet', letterId: 'gamma', emoji: '😇', explanation: {de: 'Gamma wird meistens wie "g" ausgesprochen, aber vor bestimmten Vokalen wie "n" oder "j".', en: 'Gamma is mostly pronounced like "g", but before certain vowels like "n" or "y".', ar: 'غما تنطق في الغالب مثل "ج"، ولكن قبل بعض الحروف المتحركة تنطق مثل "ن" أو "ي".'}, spiritual: { bibleVerse: {de: 'Denn Gott hat die Welt so sehr geliebt...', en: 'For God so loved the world...', ar: 'لأنه هكذا أحب الله العالم...'}, bibleReference: {de: 'Johannes 3:16', en: 'John 3:16', ar: 'يوحنا ١٦:٣'}, fatherQuote: {de: 'Gnade sei mit euch allen.', en: 'Grace be with you all.', ar: 'النعمة معكم أجمعين.'}, fatherReference: {de: 'Hl. Paulus', en: 'St. Paul', ar: 'القديس بولس'} }},
+            { type: 'alphabet', letterId: 'delta', emoji: '👑', explanation: {de: 'Delta steht für den Klang "d" oder "th".', en: 'Delta represents the "d" or "th" sound.', ar: 'دلتا يمثل صوت "د" أو "ذ".'}, spiritual: { bibleVerse: {de: 'David war ein Mann nach Gottes Herzen.', en: 'David was a man after God\'s own heart.', ar: 'كان داود رجلاً حسب قلب الله.'}, bibleReference: {de: 'Apostelgeschichte 13:22', en: 'Acts 13:22', ar: 'أعمال الرسل ٢٢:١٣'}, fatherQuote: {de: 'Demut ist die Krone der Tugenden.', en: 'Humility is the crown of virtues.', ar: 'التواضع هو إكليل الفضائل.'}, fatherReference: {de: 'Hl. Antonius', en: 'St. Anthony', ar: 'القديس أنطونيوس'} }},
+        ]
+    },
+    'l1-2': {
+        id: 'l1-2', order: 2, moduleId: 'm1', title: { de: 'Alphabet 2: Ⲉ bis Ⲏ', en: 'Alphabet 2: Ⲉ to Ⲏ', ar: 'الأبجدية 2: من Ⲉ إلى Ⲏ' }, prerequisites: ['l1-1'], quizId: 'q1-2',
+        slides: [
+            { type: 'alphabet', letterId: 'eie', emoji: '🥚', explanation: {de: 'Eey ist ein kurzer Vokal.', en: 'Eey is a short vowel.', ar: 'إي هو حرف متحرك قصير.'}, spiritual: { bibleVerse: {de: '... auf dass sie das Leben haben und es in Fülle haben.', en: '...that they may have life, and have it to the full.', ar: '...لتكون لهم حياة وليكون لهم أفضل.'}, bibleReference: {de: 'Johannes 10:10', en: 'John 10:10', ar: 'يوحنا ١٠:١٠'}, fatherQuote: {de: 'Durch das Kreuz kam Freude in die ganze Welt.', en: 'Through the Cross, joy has come into all the world.', ar: 'بالصليب دخل الفرح إلى كل العالم.'}, fatherReference: {de: 'Liturgie des Hl. Basilius', en: 'Liturgy of St. Basil', ar: 'قداس القديس باسيليوس'} }},
+            { type: 'alphabet', letterId: 'so', emoji: '6️⃣', explanation: {de: 'So-ou wird fast ausschließlich für den Zahlenwert 6 verwendet.', en: 'So-ou is almost exclusively used for the numeric value 6.', ar: 'سو-أو يستخدم بشكل حصري تقريبًا للقيمة العددية 6.'}, spiritual: { bibleVerse: {de: 'Sechs Tage sollst du arbeiten...', en: 'Six days you shall labor...', ar: 'ستة أيام تعمل...'}, bibleReference: {de: 'Exodus 20:9', en: 'Exodus 20:9', ar: 'خروج ٩:٢٠'}, fatherQuote: {de: 'Am sechsten Tag schuf Gott den Menschen.', en: 'On the sixth day, God created man.', ar: 'في اليوم السادس خلق الله الإنسان.'}, fatherReference: {de: 'Genesis 1', en: 'Genesis 1', ar: 'تكوين 1'} }},
+            { type: 'alphabet', letterId: 'zita', emoji: '🦓', explanation: {de: 'Zeeta kommt aus dem Griechischen und ist selten in rein koptischen Wörtern.', en: 'Zeeta comes from Greek and is rare in purely Coptic words.', ar: 'زيتا يأتي من اليونانية وهو نادر في الكلمات القبطية الأصيلة.'}, spiritual: { bibleVerse: {de: 'Suchet zuerst das Reich Gottes...', en: 'But seek first his kingdom...', ar: 'اطلبوا أولاً ملكوت الله...'}, bibleReference: {de: 'Matthäus 6:33', en: 'Matthew 6:33', ar: 'متى ٣٣:٦'}, fatherQuote: {de: 'Der Eifer für dein Haus hat mich verzehrt.', en: 'Zeal for your house has consumed me.', ar: 'غيرة بيتك أكلتني.'}, fatherReference: {de: 'Psalm 69:9', en: 'Psalm 69:9', ar: 'مزمور ٩:٦٩'} }},
+            { type: 'alphabet', letterId: 'hita', emoji: '🏠', explanation: {de: 'Eeta ist ein langer Vokal, der wie "ie" klingt.', en: 'Eeta is a long vowel that sounds like "ee".', ar: 'إيتا هو حرف متحرك طويل يُنطق مثل "ي" طويلة.'}, spiritual: { bibleVerse: {de: 'Ich aber und mein Haus, wir wollen dem HERRN dienen.', en: 'But as for me and my household, we will serve the Lord.', ar: 'أما أنا وبيتي فنعبد الرب.'}, bibleReference: {de: 'Josua 24:15', en: 'Joshua 24:15', ar: 'يشوع ١٥:٢٤'}, fatherQuote: {de: 'Das Haus Gottes ist die Kirche.', en: 'The house of God is the Church.', ar: 'بيت الله هو الكنيسة.'}, fatherReference: {de: 'Hl. Augustinus', en: 'St. Augustine', ar: 'القديس أغسطينوس'} }},
+        ]
+    },
+    'l2-1': {
+        id: 'l2-1', order: 3, moduleId: 'm1', title: { de: 'Alphabet 3: Ⲑ bis Ⲕ', en: 'Alphabet 3: Ⲑ to Ⲕ', ar: 'الأبجدية 3: من Ⲑ إلى Ⲕ' }, prerequisites: ['l1-2'], quizId: 'q2-1',
+        slides: [
+            { type: 'alphabet', letterId: 'thita', emoji: '🌊', explanation: {de: 'Theta wird oft in griechischen Lehnwörtern verwendet.', en: 'Theta is often used in Greek loanwords.', ar: 'ثيتا غالبًا ما يستخدم في الكلمات المستعارة من اليونانية.'}, spiritual: { bibleVerse: {de: 'Gott ist treu.', en: 'God is faithful.', ar: 'الله أمين.'}, bibleReference: {de: '1. Korinther 1:9', en: '1 Corinthians 1:9', ar: 'كورنثوس الأولى ٩:١'}, fatherQuote: {de: 'Durch den Glauben verstehen wir.', en: 'By faith we understand.', ar: 'بالإيمان نفهم.'}, fatherReference: {de: 'Hl. Clemens von Alexandria', en: 'St. Clement of Alexandria', ar: 'القديس إكليمندس الإسكندري'} }},
+            { type: 'alphabet', letterId: 'yota', emoji: '👨‍👧‍👦', explanation: {de: 'Yota ist ein weiterer kurzer Vokal.', en: 'Yota is another short vowel.', ar: 'يوتا هو حرف متحرك قصير آخر.'}, spiritual: { bibleVerse: {de: 'Im Anfang war das Wort...', en: 'In the beginning was the Word...', ar: 'في البدء كان الكلمة...'}, bibleReference: {de: 'Johannes 1:1', en: 'John 1:1', ar: 'يوحنا ١:١'}, fatherQuote: {de: 'Der Vater ist größer als ich.', en: 'The Father is greater than I.', ar: 'الآب أعظم مني.'}, fatherReference: {de: 'Johannes 14:28', en: 'John 14:28', ar: 'يوحنا ٢٨:١٤'} }},
+            { type: 'alphabet', letterId: 'kappa', emoji: '🌍', explanation: {de: 'Kappa wird wie ein "k" ausgesprochen.', en: 'Kappa is pronounced like a "k".', ar: 'كبا يُنطق مثل "ك".'}, spiritual: { bibleVerse: {de: 'Die Erde ist des HERRN und was darinnen ist.', en: 'The earth is the Lord’s, and everything in it.', ar: 'للرب الأرض وملؤها.'}, bibleReference: {de: 'Psalm 24:1', en: 'Psalm 24:1', ar: 'مزمور ١:٢٤'}, fatherQuote: {de: 'Wir sind nur Pilger auf dieser Erde.', en: 'We are but pilgrims on this earth.', ar: 'نحن مجرد غرباء على هذه الأرض.'}, fatherReference: {de: 'Hl. Kyrill von Alexandria', en: 'St. Cyril of Alexandria', ar: 'القديس كيرلس الإسكندري'} }},
+        ]
+    },
+    'l2-2': {
+        id: 'l2-2', order: 4, moduleId: 'm1', title: { de: 'Alphabet 4: Ⲗ bis Ⲛ', en: 'Alphabet 4: Ⲗ to Ⲛ', ar: 'الأبجدية 4: من Ⲗ إلى Ⲛ' }, prerequisites: ['l2-1'], quizId: 'q2-2',
+        slides: [
+            { type: 'alphabet', letterId: 'laula', emoji: '👅', explanation: {de: 'Lola steht für den Laut "l".', en: 'Lola represents the "l" sound.', ar: 'لولا يمثل صوت "ل".'}, spiritual: { bibleVerse: {de: 'Die Zunge der Weisen bringt heilsame Lehre.', en: 'The tongue of the wise brings healing.', ar: 'لسان الحكماء شفاء.'}, bibleReference: {de: 'Sprüche 12:18', en: 'Proverbs 12:18', ar: 'أمثال ١٨:١٢'}, fatherQuote: {de: 'Zähme deine Zunge.', en: 'Tame your tongue.', ar: 'ألجم لسانك.'}, fatherReference: {de: 'Hl. Makarius', en: 'St. Macarius', ar: 'القديس مقاريوس'} }},
+            { type: 'alphabet', letterId: 'mi', emoji: '👩‍👧‍👦', explanation: {de: 'Mey steht für den Laut "m".', en: 'Mey represents the "m" sound.', ar: 'مي يمثل صوت "م".'}, spiritual: { bibleVerse: {de: 'Ehre deine Mutter.', en: 'Honor your mother.', ar: 'أكرم أمك.'}, bibleReference: {de: 'Exodus 20:12', en: 'Exodus 20:12', ar: 'خروج ١٢:٢٠'}, fatherQuote: {de: 'Die Theotokos ist die Mutter von uns allen.', en: 'The Theotokos is the mother of us all.', ar: 'والدة الإله هي أمنا جميعًا.'}, fatherReference: {de: 'Hl. Kyrill von Alexandria', en: 'St. Cyril of Alexandria', ar: 'القديس كيرلس الإسكندري'} }},
+            { type: 'alphabet', letterId: 'ni', emoji: '✨', explanation: {de: 'Ney steht für den Laut "n".', en: 'Ney represents the "n" sound.', ar: 'ني يمثل صوت "ن".'}, spiritual: { bibleVerse: {de: 'Gott ist Licht, und in ihm ist keine Finsternis.', en: 'God is light; in him there is no darkness at all.', ar: 'الله نور وليس فيه ظلمة البتة.'}, bibleReference: {de: '1. Johannes 1:5', en: '1 John 1:5', ar: 'يوحنا الأولى ٥:١'}, fatherQuote: {de: 'Gold wird im Feuer geprüft.', en: 'Gold is tested in fire.', ar: 'الذهب يمتحن بالنار.'}, fatherReference: {de: 'Hl. Antonius', en: 'St. Anthony', ar: 'القديس أنطونيوس'} }},
+        ]
+    },
+     'l2-3': {
+        id: 'l2-3', order: 5, moduleId: 'm1', title: { de: 'Alphabet 5: Ⲝ bis Ⲣ', en: 'Alphabet 5: Ⲝ to Ⲣ', ar: 'الأبجدية 5: من Ⲝ إلى Ⲣ' }, prerequisites: ['l2-2'], quizId: 'q2-3',
+        slides: [
+            { type: 'alphabet', letterId: 'eksi', emoji: '🌳', explanation: {de: 'Exi ist ein Doppelkonsonant, "ks".', en: 'Exi is a double consonant, "ks".', ar: 'إكسي هو حرف ساكن مزدوج، "كس".'}, spiritual: { bibleVerse: {de: 'Das Holz des Kreuzes ist der Baum des Lebens.', en: 'The wood of the cross is the tree of life.', ar: 'خشبة الصليب هي شجرة الحياة.'}, bibleReference: {de: 'Liturgische Hymne', en: 'Liturgical Hymn', ar: 'لحن كنسي'}, fatherQuote: {de: 'Das Kreuz ist unsere Waffe.', en: 'The cross is our weapon.', ar: 'الصليب سلاحنا.'}, fatherReference: {de: 'Hl. Athanasius', en: 'St. Athanasius', ar: 'القديس أثناسيوس'} }},
+            { type: 'alphabet', letterId: 'o', emoji: '🔄', explanation: {de: 'O ist ein sehr kurzer "o"-Laut.', en: 'O is a very short "o" sound.', ar: 'أو هو صوت "و" قصير جدًا.'}, spiritual: { bibleVerse: {de: '...und erneuert werdet im Geist eures Gemüts...', en: '...to be made new in the attitude of your minds...', ar: '...وتتجددوا بروح ذهنكم...'}, bibleReference: {de: 'Epheser 4:23', en: 'Ephesians 4:23', ar: 'أفسس ٢٣:٤'}, fatherQuote: {de: 'Beginne jeden Tag von neuem.', en: 'Begin again each day.', ar: 'ابدأ من جديد كل يوم.'}, fatherReference: {de: 'Hl. Antonius', en: 'St. Anthony', ar: 'القديس أنطونيوس'} }},
+            { type: 'alphabet', letterId: 'pi', emoji: '🚪', explanation: {de: 'Pe wird wie ein "p" ausgesprochen.', en: 'Pe is pronounced like a "p".', ar: 'بي يُنطق مثل "ب".'}, spiritual: { bibleVerse: {de: 'Ich bin die Tür.', en: 'I am the door.', ar: 'أنا هو الباب.'}, bibleReference: {de: 'Johannes 10:9', en: 'John 10:9', ar: 'يوحنا ٩:١٠'}, fatherQuote: {de: 'Das Gebet ist die Tür zur Gnade.', en: 'Prayer is the door to grace.', ar: 'الصلاة هي باب النعمة.'}, fatherReference: {de: 'Hl. Johannes Klimakos', en: 'St. John Climacus', ar: 'القديس يوحنا السلمي'} }},
+            { type: 'alphabet', letterId: 'ro', emoji: '📛', explanation: {de: 'Ro steht für den Laut "r".', en: 'Ro represents the "r" sound.', ar: 'رو يمثل صوت "ر".'}, spiritual: { bibleVerse: {de: 'Ein guter Name ist köstlicher als großer Reichtum.', en: 'A good name is more desirable than great riches.', ar: 'الصيت أفضل من الغنى الجزيل.'}, bibleReference: {de: 'Sprüche 22:1', en: 'Proverbs 22:1', ar: 'أمثال ١:٢٢'}, fatherQuote: {de: 'Rufe den Namen Jesu an, und du wirst errettet werden.', en: 'Call upon the name of Jesus and you will be saved.', ar: 'ادعُ باسم يسوع فتخلص.'}, fatherReference: {de: 'Der Hirte des Hermas', en: 'The Shepherd of Hermas', ar: 'راعي هرماس'} }},
+        ]
+    },
+    'l2-4': {
+        id: 'l2-4', order: 6, moduleId: 'm1', title: { de: 'Alphabet 6: Ⲥ bis Ⲩ', en: 'Alphabet 6: Ⲥ to Ⲩ', ar: 'الأبجدية 6: من Ⲥ إلى Ⲩ' }, prerequisites: ['l2-3'], quizId: 'q2-4',
+        slides: [
+            { type: 'alphabet', letterId: 'sima', emoji: '👂', explanation: {de: 'Seema wird wie ein "s" ausgesprochen.', en: 'Seema is pronounced like an "s".', ar: 'سيما يُنطق مثل "س".'}, spiritual: { bibleVerse: {de: 'Wer Ohren hat zu hören, der höre!', en: 'Whoever has ears to hear, let them hear.', ar: 'من له أذنان للسمع فليسمع!'}, bibleReference: {de: 'Markus 4:9', en: 'Mark 4:9', ar: 'مرقس ٩:٤'}, fatherQuote: {de: 'Höre auf den Rat der Ältesten.', en: 'Listen to the counsel of the elders.', ar: 'استمع إلى مشورة الشيوخ.'}, fatherReference: {de: 'Hl. Antonius', en: 'St. Anthony', ar: 'القديس أنطونيوس'} }},
+            { type: 'alphabet', letterId: 'tav', emoji: '🩹', explanation: {de: 'Tav wird wie "t" ausgesprochen, kann aber nach "n" wie "d" klingen.', en: 'Tav is pronounced "t", but can sound like "d" after "n".', ar: 'تاڤ يُنطق "ت"، ولكن يمكن أن يبدو مثل "د" بعد "ن".'}, spiritual: { bibleVerse: {de: 'Er heilt, die zerbrochenen Herzens sind.', en: 'He heals the brokenhearted.', ar: 'يشفي المنكسري القلوب.'}, bibleReference: {de: 'Psalm 147:3', en: 'Psalm 147:3', ar: 'مزمور ٣:١٤٧'}, fatherQuote: {de: 'Christus ist der wahre Arzt unserer Seelen.', en: 'Christ is the true physician of our souls.', ar: 'المسيح هو طبيب نفوسنا الحقيقي.'}, fatherReference: {de: 'Hl. Ignatius von Antiochien', en: 'St. Ignatius of Antioch', ar: 'القديس أغناطيوس الأنطاكي'} }},
+            { type: 'alphabet', letterId: 'epsilon', emoji: '😇', explanation: {de: 'Epsilon wird als Vokal "u" oder als Teil eines Diphthongs (z.B. "au", "eu") verwendet.', en: 'Epsilon is used as the vowel "u" or as part of a diphthong (e.g., "au", "eu").', ar: 'إبسيلون يستخدم كحرف متحرك "و" أو كجزء من صوت مزدوج (مثل "أو"، "إو").'}, spiritual: { bibleVerse: {de: 'Seid heilig, denn ich bin heilig.', en: 'Be holy, because I am holy.', ar: 'كونوا قديسين لأني أنا قدوس.'}, bibleReference: {de: '1. Petrus 1:16', en: '1 Peter 1:16', ar: 'بطرس الأولى ١٦:١'}, fatherQuote: {de: 'Heiligkeit ist nicht das Werk eines Tages, sondern des ganzen Lebens.', en: 'Holiness is not the work of a day, but of a lifetime.', ar: 'القداسة ليست عمل يوم واحد، بل عمل حياة كاملة.'}, fatherReference: {de: 'Hl. Johannes Chrysostomos', en: 'St. John Chrysostom', ar: 'القديس يوحنا ذهبي الفم'} }},
+        ]
+    },
+     'l2-5': {
+        id: 'l2-5', order: 7, moduleId: 'm1', title: { de: 'Alphabet 7: Ⲫ bis Ϣ', en: 'Alphabet 7: Ⲫ to Ϣ', ar: 'الأبجدية 7: من Ⲫ إلى Ϣ' }, prerequisites: ['l2-4'], quizId: 'q2-5',
+        slides: [
+            { type: 'alphabet', letterId: 'phi', emoji: '💡', explanation: {de: 'Phi wird wie "f" ausgesprochen.', en: 'Phi is pronounced like "f".', ar: 'في يُنطق مثل "ف".'}, spiritual: { bibleVerse: {de: 'Dein Wort ist meines Fußes Leuchte.', en: 'Your word is a lamp for my feet.', ar: 'سراج لرجلي كلامك.'}, bibleReference: {de: 'Psalm 119:105', en: 'Psalm 119:105', ar: 'مزمور ١٠٥:١١٩'}, fatherQuote: {de: 'Jesus ist das Licht der Welt.', en: 'Jesus is the light of the world.', ar: 'يسوع هو نور العالم.'}, fatherReference: {de: 'Hl. Athanasius', en: 'St. Athanasius', ar: 'القديس أثناسيوس'} }},
+            { type: 'alphabet', letterId: 'khi', emoji: '🗓️', explanation: {de: 'Key wird normalerweise wie "ch" in "Bach" ausgesprochen.', en: 'Key is usually pronounced like "ch" in the Scottish "loch".', ar: 'كي يُنطق عادة مثل "خ".'}, spiritual: { bibleVerse: {de: 'Dies ist der Tag, den der HERR gemacht hat.', en: 'This is the day the Lord has made.', ar: 'هذا هو اليوم الذي صنعه الرب.'}, bibleReference: {de: 'Psalm 118:24', en: 'Psalm 118:24', ar: 'مزمور ٢٤:١١٨'}, fatherQuote: {de: 'Der Monat Khoiak ist der Theotokos gewidmet.', en: 'The month of Khoiak is dedicated to the Theotokos.', ar: 'شهر كيهك مكرس لوالدة الإله.'}, fatherReference: {de: 'Koptische Tradition', en: 'Coptic Tradition', ar: 'التقليد القبطي'} }},
+            { type: 'alphabet', letterId: 'epsi', emoji: '🎶', explanation: {de: 'Epsi ist ein Doppelkonsonant, "ps".', en: 'Epsi is a double consonant, "ps".', ar: 'إبسي هو حرف ساكن مزدوج، "بس".'}, spiritual: { bibleVerse: {de: 'Singt dem HERRN ein neues Lied!', en: 'Sing to the Lord a new song!', ar: 'رنموا للرب ترنيمة جديدة!'}, bibleReference: {de: 'Psalm 96:1', en: 'Psalm 96:1', ar: 'مزمور ١:٩٦'}, fatherQuote: {de: 'Wenn du singst, betest du doppelt.', en: 'He who sings, prays twice.', ar: 'من يرنم يصلي مرتين.'}, fatherReference: {de: 'Hl. Augustinus', en: 'St. Augustine', ar: 'القديس أغسطينوس'} }},
+            { type: 'alphabet', letterId: 'oou', emoji: '🗿', explanation: {de: 'Omega ist ein langer "o"-Laut.', en: 'Omega is a long "o" sound.', ar: 'أوميغا هو صوت "و" طويل.'}, spiritual: { bibleVerse: {de: 'Der Stein, den die Bauleute verworfen haben, ist zum Eckstein geworden.', en: 'The stone the builders rejected has become the cornerstone.', ar: 'الحجر الذي رفضه البناؤون هو قد صار رأس الزاوية.'}, bibleReference: {de: 'Psalm 118:22', en: 'Psalm 118:22', ar: 'مزمور ٢٢:١١٨'}, fatherQuote: {de: 'Christus ist der Fels unseres Heils.', en: 'Christ is the rock of our salvation.', ar: 'المسيح هو صخرة خلاصنا.'}, fatherReference: {de: 'Hl. Kyrill von Jerusalem', en: 'St. Cyril of Jerusalem', ar: 'القديس كيرلس الأورشليمي'} }},
+            { type: 'alphabet', letterId: 'shai', emoji: '🧒', explanation: {de: 'Shai ist der erste der sieben rein koptischen Buchstaben.', en: 'Shai is the first of the seven purely Coptic letters.', ar: 'شاي هو أول الحروف القبطية السبعة الأصيلة.'}, spiritual: { bibleVerse: {de: 'Lasst die Kinder zu mir kommen.', en: 'Let the little children come to me.', ar: 'دعوا الأولاد يأتون إليّ.'}, bibleReference: {de: 'Markus 10:14', en: 'Mark 10:14', ar: 'مرقس ١٤:١٠'}, fatherQuote: {de: 'Wir sind alle Kinder Gottes.', en: 'We are all children of God.', ar: 'نحن جميعًا أبناء الله.'}, fatherReference: {de: 'Hl. Paulus', en: 'St. Paul', ar: 'القديس بولس'} }},
+        ]
+    },
+    'l2-6': {
+        id: 'l2-6', order: 8, moduleId: 'm1', title: { de: 'Alphabet 8: Ϥ bis Ϯ', en: 'Alphabet 8: Ϥ to Ϯ', ar: 'الأبجدية 8: من Ϥ إلى Ϯ' }, prerequisites: ['l2-5'], quizId: 'q2-6',
+        slides: [
+            { type: 'alphabet', letterId: 'fai', emoji: '👜', explanation: {de: 'Fai wird wie "f" ausgesprochen.', en: 'Fai is pronounced like "f".', ar: 'فاي يُنطق مثل "ف".'}, spiritual: { bibleVerse: {de: 'Nehmt mein Joch auf euch.', en: 'Take my yoke upon you.', ar: 'احملوا نيري عليكم.'}, bibleReference: {de: 'Matthäus 11:29', en: 'Matthew 11:29', ar: 'متى ٢٩:١١'}, fatherQuote: {de: 'Tragt einer des anderen Lasten.', en: 'Carry each other’s burdens.', ar: 'احملوا بعضكم أثقال بعض.'}, fatherReference: {de: 'Galater 6:2', en: 'Galatians 6:2', ar: 'غلاطية ٢:٦'} }},
+            { type: 'alphabet', letterId: 'khai', emoji: '📥', explanation: {de: 'Khai ist ein kehliges "ch", ähnlich dem deutschen "ch" in "Bach".', en: 'Khai is a guttural "kh", similar to the German "ch" in "Bach".', ar: 'خاي هو صوت "خ" حلقي.'}, spiritual: { bibleVerse: {de: '...denn siehe, das Reich Gottes ist mitten unter euch.', en: '...because the kingdom of God is within you.', ar: '...لأن ملكوت الله داخلكم.'}, bibleReference: {de: 'Lukas 17:21', en: 'Luke 17:21', ar: 'لوقا ٢١:١٧'}, fatherQuote: {de: 'Das Herz ist ein kleines Gefäß, aber alle Dinge sind darin.', en: 'The heart is a small vessel, but all things are contained in it.', ar: 'القلب وعاء صغير، لكن كل الأشياء موجودة فيه.'}, fatherReference: {de: 'Hl. Makarius', en: 'St. Macarius', ar: 'القديس مقاريوس'} }},
+            { type: 'alphabet', letterId: 'hori', emoji: '❤️', explanation: {de: 'Hori wird wie ein deutsches "h" ausgesprochen.', en: 'Hori is pronounced like an English "h".', ar: 'هوري يُنطق مثل "ه".'}, spiritual: { bibleVerse: {de: 'Selig sind, die reinen Herzens sind.', en: 'Blessed are the pure in heart.', ar: 'طوبى للأنقياء القلب.'}, bibleReference: {de: 'Matthäus 5:8', en: 'Matthew 5:8', ar: 'متى ٨:٥'}, fatherQuote: {de: 'Gib mir dein Herz, mein Sohn.', en: 'My son, give me your heart.', ar: 'يا ابني أعطني قلبك.'}, fatherReference: {de: 'Sprüche 23:26', en: 'Proverbs 23:26', ar: 'أمثال ٢٦:٢٣'} }},
+            { type: 'alphabet', letterId: 'janja', emoji: '✋', explanation: {de: 'Jenja wird wie "j" in "Dschungel" ausgesprochen.', en: 'Jenja is pronounced like "j" in "jungle".', ar: 'جانجا يُنطق مثل "ج".'}, spiritual: { bibleVerse: {de: 'In deine Hände befehle ich meinen Geist.', en: 'Into your hands I commit my spirit.', ar: 'في يديك أستودع روحي.'}, bibleReference: {de: 'Lukas 23:46', en: 'Luke 23:46', ar: 'لوقا ٤٦:٢٣'}, fatherQuote: {de: 'Die Arbeit der Hände ist für das Gebet notwendig.', en: 'Manual labor is necessary for prayer.', ar: 'العمل اليدوي ضروري للصلاة.'}, fatherReference: {de: 'Hl. Pachomius', en: 'St. Pachomius', ar: 'القديس باخوميوس'} }},
+            { type: 'alphabet', letterId: 'chima', emoji: '✝️', explanation: {de: 'Cheema wird wie "tsch" in "Deutsch" ausgesprochen.', en: 'Cheema is pronounced like "ch" in "church".', ar: 'تشيما يُنطق مثل "تش".'}, spiritual: { bibleVerse: {de: 'Denn das Wort vom Kreuz ist eine Torheit denen, die verloren werden; uns aber, die wir selig werden, ist\'s eine Gotteskraft.', en: 'For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God.', ar: 'فإن كلمة الصليب عند الهالكين جهالة، وأما عندنا نحن المخلصين فهي قوة الله.'}, bibleReference: {de: '1. Korinther 1:18', en: '1 Corinthians 1:18', ar: 'كورنثوس الأولى ١٨:١'}, fatherQuote: {de: 'Der Herr ist meine Stärke.', en: 'The Lord is my strength.', ar: 'الرب قوتي.'}, fatherReference: {de: 'Psalm 118:14', en: 'Psalm 118:14', ar: 'مزمور ١٤:١١٨'} }},
+            { type: 'alphabet', letterId: 'ti', emoji: '🎁', explanation: {de: 'Ti ist eine Ligatur aus T und I und wird als "ti" ausgesprochen.', en: 'Ti is a ligature of T and I and is pronounced "ti".', ar: 'تي هو دمج لحرفي T و I ويُنطق "تي".'}, spiritual: { bibleVerse: {de: 'Denn die Gabe Gottes ist das ewige Leben.', en: 'For the gift of God is eternal life.', ar: 'لأن هبة الله هي الحياة الأبدية.'}, bibleReference: {de: 'Römer 6:23', en: 'Romans 6:23', ar: 'رومية ٢٣:٦'}, fatherQuote: {de: 'Gib, und es wird dir gegeben werden.', en: 'Give, and it will be given to you.', ar: 'أعطوا تعطوا.'}, fatherReference: {de: 'Lukas 6:38', en: 'Luke 6:38', ar: 'لوقا ٣٨:٦'} }},
+        ]
+    },
+    // Module 2
+    'l3-1': {
+        id: 'l3-1', order: 1, moduleId: 'm2', title: { de: 'Zahlen', en: 'Numbers', ar: 'الأرقام' }, prerequisites: ['l2-6'], quizId: 'q3-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Zahlen und Geschlecht', en: 'Numbers and Gender', ar: 'الأرقام والجنس' }, rule: { de: 'Koptische Zahlen haben oft eine maskuline und eine feminine Form. Das Geschlecht richtet sich nach dem Substantiv, das sie beschreiben. Zum Beispiel "drei Söhne" (maskulin) vs. "drei Töchter" (feminin).', en: 'Coptic numbers often have masculine and feminine forms. The gender depends on the noun they describe. For example, "three sons" (masculine) vs. "three daughters" (feminine).', ar: 'الأرقام القبطية غالبًا ما يكون لها صيغة مذكرة ومؤنثة. يعتمد الجنس على الاسم الذي يصفونه. على سبيل المثال، "ثلاثة أبناء" (مذكر) مقابل "ثلاث بنات" (مؤنث).' }, examples: [{ coptic: 'ϣⲟⲙⲧ ⲛ̀ϣⲏⲣⲓ', translit: 'shomt en-sheri', meaning: { de: 'drei Söhne', en: 'three sons', ar: 'ثلاثة أبناء' } }, { coptic: 'ϣⲟⲙϯ ⲛ̀ϣⲉⲉⲣⲓ', translit: 'shomti en-sheeri', meaning: { de: 'drei Töchter', en: 'three daughters', ar: 'ثلاث بنات' } }] },
+            { type: 'number', number: 1, copticSymbol: 'ⲁ̅', copticName: 'ⲟⲩⲁⲓ', translit: 'ouai' },
+            { type: 'number', number: 2, copticSymbol: 'ⲃ̅', copticName: 'ⲥ̀ⲛⲁⲩ', translit: 'snau' },
+            { type: 'number', number: 3, copticSymbol: 'ⲅ̅', copticName: 'ϣⲟⲙⲧ', translit: 'shomt' },
+            { type: 'number', number: 4, copticSymbol: 'ⲇ̅', copticName: 'ϥ̀ⲧⲟⲟⲩ', translit: 'fto-ou' },
+            { type: 'number', number: 5, copticSymbol: 'ⲉ̅', copticName: 'ϯ̀ⲟⲩ', translit: 'ti-ou' },
+            { type: 'number', number: 6, copticSymbol: 'ⲋ̅', copticName: 'ⲥⲟⲟⲩ', translit: 'so-ou' },
+            { type: 'number', number: 7, copticSymbol: 'ⲍ̅', copticName: 'ⲥⲁϣϥ', translit: 'sashf' },
+            { type: 'number', number: 8, copticSymbol: 'ⲏ̅', copticName: 'ϣ̀ⲙⲟⲩⲛ', translit: 'shmoun' },
+            { type: 'number', number: 9, copticSymbol: 'ⲑ̅', copticName: 'ⲯⲓⲧ', translit: 'psit' },
+            { type: 'number', number: 10, copticSymbol: 'ⲓ̅', copticName: 'ⲙⲏⲧ', translit: 'meet' },
+            { type: 'grammar', title: { de: 'Zahlen zählen', en: 'Counting with Numbers', ar: 'العد بالأرقام' }, rule: { de: 'Bei den Zahlen 1 und 2 steht die Zahl nach dem Substantiv. Ab 3 steht die Zahl vor dem Substantiv und wird mit "ⲛ̀" (en) verbunden.', en: 'For numbers 1 and 2, the number comes after the noun. From 3 onwards, the number comes before the noun and is connected with "ⲛ̀" (en).', ar: 'بالنسبة للرقمين 1 و 2، يأتي الرقم بعد الاسم. من 3 فصاعدًا، يأتي الرقم قبل الاسم ويرتبط بـ "ⲛ̀" (إن).' }, examples: [{ coptic: 'ⲟⲩⲣⲱⲙⲓ ⲛ̀ⲟⲩⲱⲧ', translit: 'ou-romi en-ouot', meaning: { de: 'ein Mann', en: 'one man', ar: 'رجل واحد' } }, { coptic: 'ⲣⲱⲙⲓ ⲥ̀ⲛⲁⲩ', translit: 'romi snau', meaning: { de: 'zwei Männer', en: 'two men', ar: 'رجلان' } }, { coptic: 'ϣⲟⲙⲧ ⲛ̀ⲣⲱⲙⲓ', translit: 'shomt en-romi', meaning: { de: 'drei Männer', en: 'three men', ar: 'ثلاثة رجال' } }] },
+            { type: 'grammar', title: { de: 'Ordnungszahlen', en: 'Ordinal Numbers', ar: 'الأعداد الترتيبية' }, rule: { de: 'Um Ordnungszahlen (erster, zweiter, dritter...) zu bilden, wird "ⲡⲓⲙⲁϩ-" (pimah-) vor die Grundzahl gesetzt.', en: 'To form ordinal numbers (first, second, third...), "ⲡⲓⲙⲁϩ-" (pimah-) is placed before the cardinal number.', ar: 'لتكوين الأعداد الترتيبية (الأول، الثاني، الثالث...)، يتم وضع "ⲡⲓⲙⲁϩ-" (بيماه-) قبل العدد الأصلي.' }, examples: [{ coptic: 'ⲡⲓⲙⲁϩⲥ̀ⲛⲁⲩ', translit: 'pimah-snau', meaning: { de: 'der zweite', en: 'the second', ar: 'الثاني' } }, { coptic: 'ⲡⲓⲙⲁϩϣⲟⲙⲧ', translit: 'pimah-shomt', meaning: { de: 'der dritte', en: 'the third', ar: 'الثالث' } }] },
+            { type: 'number', number: 20, copticSymbol: 'ⲕ̅', copticName: 'ϫⲟⲩⲱⲧ', translit: 'jouot' },
+            { type: 'number', number: 30, copticSymbol: 'ⲗ̅', copticName: 'ⲙⲁⲁⲃ', translit: 'maav' },
+            { type: 'number', number: 40, copticSymbol: 'ⲙ̅', copticName: 'ϩ̀ⲙⲉ', translit: 'hme' },
+            { type: 'number', number: 100, copticSymbol: 'ⲣ̅', copticName: 'ϣⲉ', translit: 'she' },
+            { type: 'sentence', item: { text: 'ⲡⲓϣⲟⲣⲡ ⲛ̀ⲣⲱⲙⲓ', translit: 'pishorp en-romi', meaning: { de: 'Der erste Mensch', en: 'The first man', ar: 'الإنسان الأول' } } },
+            { type: 'sentence', item: { text: 'ⲡⲓⲙⲁϩⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ', translit: 'pimah-sashf en-ehoou', meaning: { de: 'Der siebte Tag', en: 'The seventh day', ar: 'اليوم السابع' } } },
+        ]
+    },
+    'l3-2': {
+        id: 'l3-2', order: 2, moduleId: 'm2', title: { de: 'Nomen: Geschlecht & Artikel', en: 'Nouns: Gender & Articles', ar: 'الأسماء: الجنس والأدوات' }, prerequisites: ['l3-1'], quizId: 'q3-2',
+        slides: [
+            { type: 'grammar', title: { de: 'Der bestimmte Artikel (Singular)', en: 'The Definite Article (Singular)', ar: 'أداة التعريف (المفرد)' }, rule: { de: 'Es gibt "starke" Artikel (ⲡⲓ, ϯ) für Betonung und "schwache" Artikel (ⲡ̀/ⲫ, ⲧ̀/ⲑ̀) für den allgemeinen Gebrauch. Das Geschlecht des Nomens bestimmt den Artikel.', en: 'There are "strong" articles (ⲡⲓ, ϯ) for emphasis and "weak" articles (ⲡ̀/ⲫ, ⲧ̀/ⲑ̀) for general use. The gender of the noun determines the article.', ar: 'هناك أدوات "قوية" (ⲡⲓ، ϯ) للتأكيد وأدوات "ضعيفة" (ⲡ̀/ⲫ، ⲧ̀/ⲑ̀) للاستخدام العام. جنس الاسم يحدد الأداة.' }, examples: [{ coptic: 'ⲡⲓⲓⲱⲧ', translit: 'pi-iot', meaning: { de: 'dieser Vater (stark)', en: 'this very father (strong)', ar: 'هذا الآب (قوي)' } }, { coptic: 'ⲡ̀ⲣⲱⲙⲓ', translit: 'ep-romi', meaning: { de: 'der Mann (schwach)', en: 'the man (weak)', ar: 'الرجل (ضعيف)' } }] },
+            { type: 'grammar', title: { de: 'Die Vilminor-Buchstaben', en: 'The Vilminor Letters', ar: 'الحروف الفيلمينورية' }, rule: { de: 'Die schwachen Artikel ändern sich vor den "Vilminor"-Buchstaben (ⲃ, ⲓ, ⲗ, ⲙ, ⲛ, ⲟ, ⲣ). ⲡ̀ wird zu ⲫ, und ⲧ̀ wird zu ⲑ̀.', en: 'The weak articles change before "Vilminor" letters (ⲃ, ⲓ, ⲗ, ⲙ, ⲛ, ⲟ, ⲣ). ⲡ̀ becomes ⲫ, and ⲧ̀ becomes ⲑ̀.', ar: 'تتغير الأدوات الضعيفة قبل حروف "الفيلمينور" (ⲃ، ⲓ، ⲗ، ⲙ، ⲛ، ⲟ، ⲣ). ⲡ̀ تصبح ⲫ، و ⲧ̀ تصبح ⲑ̀.' }, examples: [{ coptic: 'ⲫ̀ⲣⲁⲛ', translit: 'ev-ran', meaning: { de: 'der Name', en: 'the name', ar: 'الاسم' } }, { coptic: 'ⲑ̀ⲙⲁⲁⲩ', translit: 'eth-maav', meaning: { de: 'die Mutter', en: 'the mother', ar: 'الأم' } }] },
+            { type: 'grammar', title: { de: 'Der bestimmte Artikel (Plural)', en: 'The Definite Article (Plural)', ar: 'أداة التعريف (الجمع)' }, rule: { de: 'Der allgemeine Pluralartikel ist ⲛⲓ. Der Artikel ⲛⲉⲛ wird in Konstruktionen wie "die Hände von Aaron" verwendet.', en: 'The general plural article is ⲛⲓ. The article ⲛⲉⲛ is used in constructions like "the hands of Aaron".', ar: 'أداة الجمع العامة هي ⲛⲓ. الأداة ⲛⲉⲛ تستخدم في تراكيب مثل "أيدي هارون".' }, examples: [{ coptic: 'ⲛⲓϫⲓϫ', translit: 'ni-jij', meaning: { de: 'die Hände', en: 'the hands', ar: 'الأيدي' } }, { coptic: 'ⲛⲉⲛϫⲓϫ ⲛ̀ⲁ̀ⲁⲣⲱⲛ', translit: 'nen-jij en-aaron', meaning: { de: 'die Hände Aarons', en: 'the hands of Aaron', ar: 'أيدي هارون' } }] },
+            { type: 'grammar', title: { de: 'Unregelmäßige Pluralformen', en: 'Irregular Plurals', ar: 'الجموع الشاذة' }, rule: { de: 'Einige wenige Nomen haben unregelmäßige Pluralformen, die man auswendig lernen muss.', en: 'A few nouns have irregular plural forms that must be memorized.', ar: 'بعض الأسماء لها جموع شاذة يجب حفظها.' }, examples: [{ coptic: 'ⲡ̀ⲥⲟⲛ', translit: 'pi-son', meaning: { de: 'der Bruder', en: 'the brother', ar: 'الأخ' } }, { coptic: 'ⲛⲓⲥ̀ⲛⲏⲟⲩ', translit: 'ni-sneo-u', meaning: { de: 'die Brüder', en: 'the brothers', ar: 'الإخوة' } }] },
+            { type: 'grammar', title: { de: 'Der Vokativ', en: 'The Vocative', ar: 'النداء' }, rule: { de: 'Um jemanden direkt anzusprechen (z. B. "O Herr!"), wird oft der bestimmte Artikel oder das Partikel ⲱ (o) verwendet.', en: 'To address someone directly (e.g., "O Lord!"), the definite article or the particle ⲱ (o) is often used.', ar: 'لمخاطبة شخص ما مباشرة (مثل "يا رب!"), غالبًا ما تُستخدم أداة التعريف أو أداة النداء ⲱ (أو).' }, examples: [{ coptic: 'Ⲡ̀ϭⲟⲓⲥ', translit: 'Ep-chois', meaning: { de: 'O Herr!', en: 'O Lord!', ar: 'يا رب!' } }, { coptic: 'ⲱ̀ ⲙⲁⲣⲓⲁ', translit: 'o maria', meaning: { de: 'O Maria!', en: 'O Mary!', ar: 'يا مريم!' } }] },
+            { type: 'grammar', title: { de: 'Der unbestimmte Artikel', en: 'The Indefinite Article', ar: 'أداة النكرة' }, rule: { de: 'Der unbestimmte Artikel ist ⲟⲩ für den Singular ("ein/eine") und ϩⲁⲛ für den Plural ("einige").', en: 'The indefinite article is ⲟⲩ for the singular ("a/an") and ϩⲁⲛ for the plural ("some").', ar: 'أداة النكرة هي ⲟⲩ للمفرد ("واحد/واحدة") و ϩⲁⲛ للجمع ("بعض").' }, examples: [{ coptic: 'ⲟⲩⲣⲱⲙⲓ', translit: 'ou-romi', meaning: { de: 'ein Mann', en: 'a man', ar: 'رجل' } }, { coptic: 'ϩⲁⲛⲣⲱⲙⲓ', translit: 'han-romi', meaning: { de: 'einige Männer', en: 'some men', ar: 'بعض الرجال' } }] },
+        ]
+    },
+    // Module 3
+    'l3-3': {
+        id: 'l3-3', order: 1, moduleId: 'm3', title: { de: 'Der Unbestimmte Artikel', en: 'The Indefinite Article', ar: 'أداة النكرة' }, prerequisites: ['l3-2'], quizId: 'q3-3',
+        slides: [
+            { type: 'grammar', title: { de: 'Der unbestimmte Artikel (Singular)', en: 'The Indefinite Article (Singular)', ar: 'أداة النكرة (المفرد)' }, rule: { de: 'Der unbestimmte Artikel im Koptischen ist "ⲟⲩ" (ou) für "ein/eine". Er wird für alle Geschlechter im Singular verwendet.', en: 'The indefinite article in Coptic is "ⲟⲩ" (ou) for "a/an". It is used for all genders in the singular.', ar: 'أداة النكرة في القبطية هي "ⲟⲩ" (أو) وتعني "واحد/واحدة". تستخدم لجميع الأجناس في المفرد.' }, examples: [{ coptic: 'ⲟⲩⲣⲱⲙⲓ', translit: 'ou-romi', meaning: { de: 'ein Mann', en: 'a man', ar: 'رجل' } }, { coptic: 'ⲟⲩⲥ̀ϩⲓⲙⲓ', translit: 'ou-shimi', meaning: { de: 'eine Frau', en: 'a woman', ar: 'امرأة' } }] },
+            { type: 'grammar', title: { de: 'Der unbestimmte Artikel (Plural)', en: 'The Indefinite Article (Plural)', ar: 'أداة النكرة (الجمع)' }, rule: { de: 'Der unbestimmte Artikel im Plural ist "ϩⲁⲛ" (han) und bedeutet "einige". Er wird für alle Geschlechter im Plural verwendet.', en: 'The indefinite article in the plural is "ϩⲁⲛ" (han) and means "some". It is used for all genders in the plural.', ar: 'أداة النكرة في الجمع هي "ϩⲁⲛ" (هان) وتعني "بعض". تستخدم لجميع الأجناس في الجمع.' }, examples: [{ coptic: 'ϩⲁⲛⲣⲱⲙⲓ', translit: 'han-romi', meaning: { de: 'einige Männer', en: 'some men', ar: 'بعض الرجال' } }, { coptic: 'ϩⲁⲛⲥ̀ϩⲓⲟⲙⲓ', translit: 'han-shiomi', meaning: { de: 'einige Frauen', en: 'some women', ar: 'بعض النساء' } }] },
+        ]
+    },
+    'l4-1': {
+        id: 'l4-1', order: 2, moduleId: 'm3', title: { de: 'Der bestimmte Artikel', en: 'The Definite Article', ar: 'أداة التعريف' }, prerequisites: ['l3-3'], quizId: 'q4-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Der bestimmte Artikel', en: 'The Definite Article', ar: 'أداة التعريف' }, rule: { de: 'Im Koptischen gibt es drei bestimmte Artikel: ⲡ̀ (pi) für maskuline Substantive, ⲧ̀ (ti) für feminine und ⲛⲓ (ni) für plurale.', en: 'Coptic has three definite articles: ⲡ̀ (pi) for masculine nouns, ⲧ̀ (ti) for feminine, and ⲛⲓ (ni) for plural.', ar: 'في القبطية، توجد ثلاث أدوات تعريف: ⲡ̀ (بي) للأسماء المذكرة، ⲧ̀ (تي) للمؤنثة، و ⲛⲓ (ني) للجمع.' }, examples: [{ coptic: 'ⲡ̀ⲣⲱⲙⲓ', translit: 'pi-romi', meaning: { de: 'der Mann', en: 'the man', ar: 'الرجل' } }, { coptic: 'ⲧ̀ⲥ̀ϩⲓⲙⲓ', translit: 'ti-shimi', meaning: { de: 'die Frau', en: 'the woman', ar: 'المرأة' } }, { coptic: 'ⲛⲓⲣⲱⲙⲓ', translit: 'ni-romi', meaning: { de: 'die Menschen', en: 'the people', ar: 'الناس' } }] },
+            { type: 'vocab', item: { coptic: 'ⲡ̀ⲓⲱⲧ', translit: 'pi-iot', meaning: { de: 'der Vater', en: 'the father', ar: 'الأب' }, emoji: '👨‍👧‍👦' } },
+            { type: 'vocab', item: { coptic: 'ⲧ̀ⲙⲁⲁⲩ', translit: 'ti-maav', meaning: { de: 'die Mutter', en: 'the mother', ar: 'الأم' }, emoji: '👩‍👧‍👦' } },
+            { type: 'sentence', item: { text: 'ⲡ̀ⲓⲱⲧ ⲛⲉⲙ ⲧ̀ⲙⲁⲁⲩ', translit: 'pi-iot nem ti-maav', meaning: { de: 'Der Vater und die Mutter', en: 'The father and the mother', ar: 'الأب والأم' } } }
+        ]
+    },
+     'l4-2': {
+        id: 'l4-2', order: 3, moduleId: 'm3', title: { de: 'Bestimmter Artikel vor Vokalen', en: 'Definite Article Before Vowels', ar: 'أداة التعريف قبل حروف العلة' }, prerequisites: ['l4-1'], quizId: 'q4-2',
+        slides: [
+            { type: 'grammar', title: { de: 'Artikelvarianten', en: 'Article Variations', ar: 'تنوعات أداة التعريف' }, rule: { de: 'Vor Substantiven, die mit einem Vokal beginnen, ändern sich die Artikel: ⲡ̀ wird zu ⲡ-, ⲧ̀ wird zu ⲑ-, und ⲛⲓ wird zu ⲛⲓ-.', en: 'Before nouns starting with a vowel, the articles change: ⲡ̀ becomes ⲡ-, ⲧ̀ becomes ⲑ-, and ⲛⲓ becomes ⲛⲓ-.', ar: 'قبل الأسماء التي تبدأ بحرف متحرك، تتغير الأدوات: ⲡ̀ تصبح ⲡ-، ⲧ̀ تصبح ⲑ-، و ⲛⲓ تصبح ⲛⲓ-.' }, examples: [{ coptic: 'ⲡ̀ⲁⲅⲅⲉⲗⲟⲥ', translit: 'p-angelos', meaning: { de: 'der Engel', en: 'the angel', ar: 'الملاك' } }, { coptic: 'ⲑ̀ⲁⲅⲁⲡⲏ', translit: 'th-agape', meaning: { de: 'die Liebe', en: 'the love', ar: 'المحبة' } }, { coptic: 'ⲛⲓ̀ⲁ̀ⲅⲅⲉⲗⲟⲥ', translit: 'ni-angelos', meaning: { de: 'die Engel', en: 'the angels', ar: 'الملائكة' } }] },
+        ]
+    },
+    // Module 4
+    'l5-1': {
+        id: 'l5-1', order: 1, moduleId: 'm4', title: { de: 'Verben: Präsens I', en: 'Verbs: Present Tense I', ar: 'الأفعال: المضارع الأول' }, prerequisites: ['l4-2'], quizId: 'q5-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Präsenskonjugation', en: 'Present Tense Conjugation', ar: 'تصريف المضارع' }, rule: { de: 'Das Präsens wird mit einem Präfix gebildet. Hier sind die Singularformen:', en: 'The present tense is formed with a prefix. Here are the singular forms:', ar: 'يتم تكوين زمن المضارع ببادئة. إليك صيغ المفرد:' }, examples: [
+                { coptic: 'ϯⲥⲱⲧⲉⲙ', translit: 'ti-sotem', meaning: { de: 'ich höre', en: 'I hear', ar: 'أنا أسمع' } }, 
+                { coptic: 'ⲕⲥⲱⲧⲉⲙ', translit: 'k-sotem', meaning: { de: 'du (m.) hörst', en: 'you (m.) hear', ar: 'أنت تسمع' } },
+                { coptic: 'ⲧⲉⲥⲱⲧⲉⲙ', translit: 'te-sotem', meaning: { de: 'du (f.) hörst', en: 'you (f.) hear', ar: 'أنتِ تسمعين' } },
+                { coptic: 'ϥⲥⲱⲧⲉⲙ', translit: 'f-sotem', meaning: { de: 'er hört', en: 'he hears', ar: 'هو يسمع' } },
+                { coptic: 'ⲥⲥⲱⲧⲉⲙ', translit: 's-sotem', meaning: { de: 'sie hört', en: 'she hears', ar: 'هي تسمع' } }
+             ] },
+             { type: 'grammar', title: { de: 'Präsenskonjugation (Plural)', en: 'Present Tense Conjugation (Plural)', ar: 'تصريف المضارع (الجمع)' }, rule: { de: 'Hier sind die Pluralformen:', en: 'Here are the plural forms:', ar: 'إليك صيغ الجمع:' }, examples: [
+                { coptic: 'ⲧⲉⲛⲥⲱⲧⲉⲙ', translit: 'ten-sotem', meaning: { de: 'wir hören', en: 'we hear', ar: 'نحن نسمع' } }, 
+                { coptic: 'ⲧⲉⲧⲉⲛⲥⲱⲧⲉⲙ', translit: 'teten-sotem', meaning: { de: 'ihr hört', en: 'you (pl.) hear', ar: 'أنتم تسمعون' } },
+                { coptic: 'ⲥⲉⲥⲱⲧⲉⲙ', translit: 'se-sotem', meaning: { de: 'sie hören', en: 'they hear', ar: 'هم يسمعون' } }
+             ] },
+            { type: 'sentence', item: { text: 'ϥⲛⲁⲩ ⲉ̀ⲡ̀ⲣⲱⲙⲓ', translit: 'f-nau e-pi-romi', meaning: { de: 'Er sieht den Mann', en: 'He sees the man', ar: 'هو يرى الرجل' } } },
+        ]
+    },
+    'l5-2': {
+        id: 'l5-2', order: 2, moduleId: 'm4', title: { de: 'Verben: Perfekt (Vergangenheit)', en: 'Verbs: Perfect (Past Tense)', ar: 'الأفعال: الماضي التام' }, prerequisites: ['l5-1'], quizId: 'q5-2',
+        slides: [
+            { type: 'grammar', title: { de: 'Perfekt (Aorist)', en: 'Perfect Tense (Aorist)', ar: 'زمن الماضي التام' }, rule: { de: 'Die einfache Vergangenheit wird mit dem Präfix ⲁ- (a-) vor dem Personalpronomen-Stamm und dem Verb gebildet.', en: 'The simple past tense is formed with the prefix ⲁ- (a-) before the personal pronoun stem and the verb.', ar: 'يُصاغ زمن الماضي البسيط بإضافة البادئة ⲁ- (أ-) قبل جذر الضمير الشخصي والفعل.' }, examples: [
+                { coptic: 'ⲁⲓⲥⲱⲧⲉⲙ', translit: 'a-i-sotem', meaning: { de: 'ich hörte', en: 'I heard', ar: 'أنا سمعت' } },
+                { coptic: 'ⲁⲕⲥⲱⲧⲉⲙ', translit: 'a-k-sotem', meaning: { de: 'du (m.) hörtest', en: 'you (m.) heard', ar: 'أنت سمعت' } },
+                { coptic: 'ⲁⲣⲉⲥⲱⲧⲉⲙ', translit: 'a-re-sotem', meaning: { de: 'du (f.) hörtest', en: 'you (f.) heard', ar: 'أنتِ سمعتِ' } },
+                { coptic: 'ⲁϥⲥⲱⲧⲉⲙ', translit: 'a-f-sotem', meaning: { de: 'er hörte', en: 'he heard', ar: 'هو سمع' } },
+                { coptic: 'ⲁⲥⲥⲱⲧⲉⲙ', translit: 'a-s-sotem', meaning: { de: 'sie hörte', en: 'she heard', ar: 'هي سمعت' } },
+                { coptic: 'ⲁⲛⲥⲱⲧⲉⲙ', translit: 'a-n-sotem', meaning: { de: 'wir hörten', en: 'we heard', ar: 'نحن سمعنا' } },
+                { coptic: 'ⲁⲣⲉⲧⲉⲛⲥⲱⲧⲉⲙ', translit: 'a-reten-sotem', meaning: { de: 'ihr hörtet', en: 'you (pl.) heard', ar: 'أنتم سمعتم' } },
+                { coptic: 'ⲁⲩⲥⲱⲧⲉⲙ', translit: 'a-u-sotem', meaning: { de: 'sie hörten', en: 'they heard', ar: 'هم سمعوا' } }
+            ]
+        }]
+    },
+    'l5-3': {
+        id: 'l5-3', order: 3, moduleId: 'm4', title: { de: 'Verben: Futur', en: 'Verbs: Future Tense', ar: 'الأفعال: المستقبل' }, prerequisites: ['l5-2'], quizId: 'q5-3',
+        slides: [
+            { type: 'grammar', title: { de: 'Futur I', en: 'Future Tense I', ar: 'زمن المستقبل' }, rule: { de: 'Die Zukunft wird mit dem Präfix ⲉ- (e-) vor dem Personalpronomen-Stamm und dem Verb gebildet. Der Stamm für "ich" ist -ⲓ.', en: 'The future tense is formed with the prefix ⲉ- (e-) before the personal pronoun stem and the verb. The stem for "I" is -ⲓ.', ar: 'يُصاغ زمن المستقبل بإضافة البادئة ⲉ- (إ-) قبل جذر الضمير الشخصي والفعل. جذر "أنا" هو -ⲓ.' }, examples: [
+                { coptic: 'ⲉⲓⲉⲥⲱⲧⲉⲙ', translit: 'e-ie-sotem', meaning: { de: 'ich werde hören', en: 'I will hear', ar: 'أنا سأسمع' } },
+                { coptic: 'ⲉⲕⲉⲥⲱⲧⲉⲙ', translit: 'e-k-e-sotem', meaning: { de: 'du (m.) wirst hören', en: 'you (m.) will hear', ar: 'أنت ستسمع' } },
+                { coptic: 'ⲉⲣⲉⲥⲱⲧⲉⲙ', translit: 'e-re-sotem', meaning: { de: 'du (f.) wirst hören', en: 'you (f.) will hear', ar: 'أنتِ ستسمعين' } },
+                { coptic: 'ⲉϥⲉⲥⲱⲧⲉⲙ', translit: 'e-f-e-sotem', meaning: { de: 'er wird hören', en: 'he will hear', ar: 'هو سيسمع' } },
+                { coptic: 'ⲉⲥⲉⲥⲱⲧⲉⲙ', translit: 'e-s-e-sotem', meaning: { de: 'sie wird hören', en: 'she will hear', ar: 'هي ستسمع' } },
+                { coptic: 'ⲉⲛⲉⲥⲱⲧⲉⲙ', translit: 'e-n-e-sotem', meaning: { de: 'wir werden hören', en: 'we will hear', ar: 'نحن سنسمع' } },
+                { coptic: 'ⲉⲣⲉⲧⲉⲛⲉⲥⲱⲧⲉⲙ', translit: 'e-reten-e-sotem', meaning: { de: 'ihr werdet hören', en: 'you (pl.) will hear', ar: 'أنتم ستسمعون' } },
+                { coptic: 'ⲉⲩⲉⲥⲱⲧⲉⲙ', translit: 'e-u-e-sotem', meaning: { de: 'sie werden hören', en: 'they will hear', ar: 'هم سيسمعون' } }
+            ]
+        }]
+    },
+    // Module 5
+    'l6-1': {
+        id: 'l6-1', order: 1, moduleId: 'm5', title: { de: 'Personalpronomen', en: 'Personal Pronouns', ar: 'الضمائر الشخصية' }, prerequisites: ['l5-3'], quizId: 'q6-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Unabhängige Personalpronomen', en: 'Independent Personal Pronouns', ar: 'الضمائر الشخصية المنفصلة' }, rule: { de: 'Diese Pronomen stehen für sich und werden oft am Satzanfang zur Betonung verwendet.', en: 'These pronouns stand on their own and are often used at the beginning of a sentence for emphasis.', ar: 'هذه الضمائر قائمة بذاتها وغالبًا ما تستخدم في بداية الجملة للتأكيد.' }, examples: [
+                { coptic: 'ⲁⲛⲟⲕ', translit: 'anok', meaning: { de: 'ich', en: 'I', ar: 'أنا' } }, 
+                { coptic: 'ⲛ̀ⲑⲟⲕ', translit: 'entok', meaning: { de: 'du (m.)', en: 'you (m.)', ar: 'أنت' } }, 
+                { coptic: 'ⲛ̀ⲑⲟ', translit: 'ento', meaning: { de: 'du (f.)', en: 'you (f.)', ar: 'أنتِ' } },
+                { coptic: 'ⲛ̀ⲑⲟϥ', translit: 'entof', meaning: { de: 'er', en: 'he', ar: 'هو' } },
+                { coptic: 'ⲛ̀ⲑⲟⲥ', translit: 'entos', meaning: { de: 'sie (sg.)', en: 'she', ar: 'هي' } },
+                { coptic: 'ⲁⲛⲟⲛ', translit: 'anon', meaning: { de: 'wir', en: 'we', ar: 'نحن' } },
+                { coptic: 'ⲛ̀ⲑⲱⲧⲉⲛ', translit: 'entoten', meaning: { de: 'ihr', en: 'you (pl.)', ar: 'أنتم' } },
+                { coptic: 'ⲛ̀ⲑⲱⲟⲩ', translit: 'ento-ou', meaning: { de: 'sie (pl.)', en: 'they', ar: 'هم' } }
+            ] },
+             { type: 'sentence', item: { text: 'ⲛ̀ⲑⲟϥ ⲡⲉ ⲡⲁⲓⲱⲧ', translit: 'entof pe pa-iot', meaning: { de: 'Er ist mein Vater', en: 'He is my father', ar: 'هو أبي' } } }
+        ]
+    },
+    'l6-2': {
+        id: 'l6-2', order: 2, moduleId: 'm5', title: { de: 'Possessivartikel', en: 'Possessive Articles', ar: 'أدوات الملكية' }, prerequisites: ['l6-1'], quizId: 'q6-2',
+        slides: [
+            { type: 'grammar', title: { de: '"Mein"', en: '"My"', ar: '"خاصتي"' }, rule: { de: 'Um "mein" auszudrücken, verwende ⲡⲁ- (pa-) für maskuline Substantive, ⲧⲁ- (ta-) für feminine und ⲛⲁ- (na-) für plurale.', en: 'To express "my", use ⲡⲁ- (pa-) for masculine nouns, ⲧⲁ- (ta-) for feminine, and ⲛⲁ- (na-) for plural.', ar: 'للتعبير عن الملكية "لي"، استخدم ⲡⲁ- (با-) للأسماء المذكرة، ⲧⲁ- (تا-) للمؤنثة، و ⲛⲁ- (نا-) للجمع.' }, examples: [
+                { coptic: 'ⲡⲁⲓⲱⲧ', translit: 'pa-iot', meaning: { de: 'mein Vater', en: 'my father', ar: 'أبي' } }, 
+                { coptic: 'ⲧⲁⲙⲁⲁⲩ', translit: 'ta-maav', meaning: { de: 'meine Mutter', en: 'my mother', ar: 'أمي' } },
+                { coptic: 'ⲛⲁⲥ̀ⲛⲏⲟⲩ', translit: 'na-sneo-u', meaning: { de: 'meine Brüder', en: 'my brothers', ar: 'إخوتي' } }
+            ] },
+             { type: 'grammar', title: { de: '"Dein" (m.)', en: '"Your" (m. sg.)', ar: '"خاصتك"' }, rule: { de: 'Um "dein" (zu einem Mann) auszudrücken, verwende ⲡⲉⲕ- (pek-), ⲧⲉⲕ- (tek-), ⲛⲉⲕ- (nek-).', en: 'To express "your" (to a male), use ⲡⲉⲕ- (pek-), ⲧⲉⲕ- (tek-), ⲛⲉⲕ- (nek-).', ar: 'للتعبير عن الملكية "لك" (للمذكر)، استخدم ⲡⲉⲕ- (بيك-)، ⲧⲉⲕ- (تيك-)، ⲛⲉⲕ- (نيك-).' }, examples: [
+                { coptic: 'ⲡⲉⲕⲓⲱⲧ', translit: 'pek-iot', meaning: { de: 'dein Vater', en: 'your father', ar: 'أبوك' } }, 
+                { coptic: 'ⲧⲉⲕⲙⲁⲁⲩ', translit: 'tek-maav', meaning: { de: 'deine Mutter', en: 'your mother', ar: 'أمك' } },
+            ] }
+        ]
+    },
+     'l6-3': {
+        id: 'l6-3', order: 3, moduleId: 'm5', title: { de: 'Demonstrativpronomen', en: 'Demonstrative Pronouns', ar: 'ضمائر الإشارة' }, prerequisites: ['l6-2'], quizId: 'q6-3',
+        slides: [
+            { type: 'grammar', title: { de: '"Dieser/Diese/Dieses"', en: '"This/These"', ar: '"هذا/هذه/هؤلاء"' }, rule: { de: 'Um "dies" auszudrücken, verwende ⲡⲁⲓ (pai) für m., ⲧⲁⲓ (tai) für f., und ⲛⲁⲓ (nai) für pl.', en: 'To express "this/these", use ⲡⲁⲓ (pai) for m., ⲧⲁⲓ (tai) for f., and ⲛⲁⲓ (nai) for pl.', ar: 'للتعبير عن "هذا/هذه/هؤلاء"، استخدم ⲡⲁⲓ (باي) للمذكر، ⲧⲁⲓ (تاي) للمؤنث، و ⲛⲁⲓ (ناي) للجمع.' }, examples: [
+                { coptic: 'ⲡⲁⲓ ⲡⲉ ⲡ̀ⲣⲱⲙⲓ', translit: 'pai pe pi-romi', meaning: { de: 'Dies ist der Mann', en: 'This is the man', ar: 'هذا هو الرجل' } }, 
+                { coptic: 'ⲧⲁⲓ ⲧⲉ ⲧ̀ⲥ̀ϩⲓⲙⲓ', translit: 'tai te ti-shimi', meaning: { de: 'Dies ist die Frau', en: 'This is the woman', ar: 'هذه هي المرأة' } },
+                { coptic: 'ⲛⲁⲓ ⲛⲉ ⲛⲓ̀ⲁ̀ⲅⲅⲉⲗⲟⲥ', translit: 'nai ne ni-angelos', meaning: { de: 'Dies sind die Engel', en: 'These are the angels', ar: 'هؤلاء هم الملائكة' } }
+            ] },
+        ]
+    },
+    // Module 6
+    'l7-1': {
+        id: 'l7-1', order: 1, moduleId: 'm6', title: { de: 'Adjektive', en: 'Adjectives', ar: 'الصفات' }, prerequisites: ['l6-3'], quizId: 'q7-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Verwendung von Adjektiven', en: 'Using Adjectives', ar: 'استخدام الصفات' }, rule: { de: 'Adjektive folgen im Koptischen oft dem Substantiv, das sie beschreiben. Sie können durch das Wort "ⲛ̀" (en) mit dem Substantiv verbunden werden.', en: 'In Coptic, adjectives often follow the noun they describe. They can be linked to the noun with the word "ⲛ̀" (en).', ar: 'في القبطية، غالبًا ما تتبع الصفات الاسم الذي تصفه. يمكن ربطها بالاسم بكلمة "ⲛ̀" (إن).' }, examples: [{ coptic: 'ⲡ̀ⲣⲱⲙⲓ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ', translit: 'pi-romi en-agathos', meaning: { de: 'der gute Mann', en: 'the good man', ar: 'الرجل الصالح' } }] },
+            { type: 'vocab', item: { coptic: 'ⲛⲓϣϯ', translit: 'nishti', meaning: { de: 'groß', en: 'big', ar: 'كبير' }, emoji: '🐘' } },
+            { type: 'sentence', item: { text: 'ⲡ̀ⲏⲓ ⲛ̀ⲛⲓϣϯ', translit: 'pi-ee en-nishti', meaning: { de: 'das große Haus', en: 'the big house', ar: 'البيت الكبير' } } }
+        ]
+    },
+    // Module 7
+    'l8-1': {
+        id: 'l8-1', order: 1, moduleId: 'm7', title: { de: 'Präpositionen', en: 'Prepositions', ar: 'حروف الجر' }, prerequisites: ['l7-1'], quizId: 'q8-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Einfache Präpositionen', en: 'Simple Prepositions', ar: 'حروف الجر البسيطة' }, rule: { de: 'Präpositionen stehen vor dem Substantiv und leiten eine Präpositionalphrase ein.', en: 'Prepositions come before the noun and introduce a prepositional phrase.', ar: 'تأتي حروف الجر قبل الاسم وتقدم عبارة جرية.' }, examples: [{ coptic: 'ϧⲉⲛ ⲡ̀ⲏⲓ', translit: 'khen pi-ee', meaning: { de: 'im Haus', en: 'in the house', ar: 'في البيت' } }, { coptic: 'ⲛⲉⲙ ⲡ̀ⲓⲱⲧ', translit: 'nem pi-iot', meaning: { de: 'mit dem Vater', en: 'with the father', ar: 'مع الأب' } }] },
+            { type: 'vocab', item: { coptic: 'ϧⲉⲛ', translit: 'khen', meaning: { de: 'in', en: 'in', ar: 'في' }, emoji: '📥' } },
+            { type: 'sentence', item: { text: 'ⲁⲛⲟⲕ ϧⲉⲛ ⲧ̀ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'anok khen ti-ekklesia', meaning: { de: 'Ich bin in der Kirche', en: 'I am in the church', ar: 'أنا في الكنيسة' } } }
+        ]
+    },
+    'l8-2': {
+        id: 'l8-2', order: 2, moduleId: 'm7', title: { de: 'Weitere Präpositionen', en: 'More Prepositions', ar: 'المزيد من حروف الجر' }, prerequisites: ['l8-1'], quizId: 'q8-2',
+        slides: [
+            { type: 'grammar', title: { de: 'Häufige Präpositionen', en: 'Common Prepositions', ar: 'حروف الجر الشائعة' }, rule: { de: 'Hier sind einige weitere nützliche Präpositionen.', en: 'Here are some more useful prepositions.', ar: 'إليك بعض حروف الجر المفيدة الأخرى.' }, examples: [
+                { coptic: 'ⲉ̀', translit: 'e', meaning: { de: 'zu, nach', en: 'to', ar: 'إلى' } }, 
+                { coptic: 'ⲉ̀ⲃⲟⲗ', translit: 'evol', meaning: { de: 'aus, von', en: 'from, out of', ar: 'من' } },
+                { coptic: 'ϩⲓϫⲉⲛ', translit: 'hijen', meaning: { de: 'auf', en: 'on, upon', ar: 'على' } },
+                { coptic: 'ϣⲁ', translit: 'sha', meaning: { de: 'bis', en: 'until', ar: 'حتى' } }
+            ] },
+            { type: 'sentence', item: { text: 'ϯⲛⲁ ⲉ̀ ⲧ̀ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'ti-na e ti-ekklesia', meaning: { de: 'Ich gehe zur Kirche', en: 'I go to the church', ar: 'أنا أذهب إلى الكنيسة' } } }
+        ]
+    },
+    // Module 8
+    'l9-1': {
+        id: 'l9-1', order: 1, moduleId: 'm8', title: { de: 'Fragesätze', en: 'Questions', ar: 'الجمل الاستفهامية' }, prerequisites: ['l8-2'], quizId: 'q9-1',
+        slides: [
+            { type: 'grammar', title: { de: 'Fragen stellen', en: 'Asking Questions', ar: 'طرح الأسئلة' }, rule: { de: 'Fragen werden oft mit Fragewörtern wie "ⲁϣ" (was?) oder "ⲛⲓⲙ" (wer?) am Anfang des Satzes gebildet.', en: 'Questions are often formed with interrogative words like "ⲁϣ" (what?) or "ⲛⲓⲙ" (who?) at the beginning of the sentence.', ar: 'غالبًا ما يتم تكوين الأسئلة بكلمات استفهام مثل "ⲁϣ" (ماذا؟) أو "ⲛⲓⲙ" (من؟) في بداية الجملة.' }, examples: [{ coptic: 'ⲁϣ ⲡⲉ ⲡⲁⲓ', translit: 'ash pe pai', meaning: { de: 'Was ist das?', en: 'What is this?', ar: 'ما هذا؟' } }, { coptic: 'ⲛⲓⲙ ⲡⲉ ⲡ̀ⲣⲱⲙⲓ', translit: 'nim pe pi-romi', meaning: { de: 'Wer ist der Mann?', en: 'Who is the man?', ar: 'من هو الرجل؟' } }] },
+            { type: 'sentence', item: { text: 'ⲁϣ ⲡⲉ ⲡⲉⲕⲣⲁⲛ', translit: 'ash pe pek-ran', meaning: { de: 'Wie ist dein Name?', en: 'What is your name?', ar: 'ما اسمك؟' } } }
+        ]
+    },
+    'l9-2': {
+        id: 'l9-2', order: 2, moduleId: 'm8', title: { de: 'Konjunktionen', en: 'Conjunctions', ar: 'أدوات الربط' }, prerequisites: ['l9-1'], quizId: 'q9-2',
+        slides: [
+            { type: 'grammar', title: { de: 'Sätze verbinden', en: 'Connecting Sentences', ar: 'ربط الجمل' }, rule: { de: 'Konjunktionen verbinden Wörter, Sätze oder Satzteile.', en: 'Conjunctions connect words, phrases, or clauses.', ar: 'أدوات الربط تربط الكلمات أو العبارات أو الجمل.' }, examples: [
+                { coptic: 'ⲛⲉⲙ', translit: 'nem', meaning: { de: 'und', en: 'and', ar: 'و' } }, 
+                { coptic: 'ⲁⲗⲗⲁ', translit: 'alla', meaning: { de: 'aber', en: 'but', ar: 'لكن' } },
+                { coptic: 'ϫⲉ', translit: 'je', meaning: { de: 'dass, weil', en: 'that, because', ar: 'أن، لأن' } },
+                { coptic: 'ⲏ', translit: 'e', meaning: { de: 'oder', en: 'or', ar: 'أو' } }
+            ] },
+            { type: 'sentence', item: { text: 'ⲡ̀ⲓⲱⲧ ⲛⲉⲙ ⲡ̀ϣⲏⲣⲓ', translit: 'pi-iot nem pi-sheri', meaning: { de: 'der Vater und der Sohn', en: 'the father and the son', ar: 'الآب والابن' } } },
+            { type: 'sentence', item: { text: 'ϯⲥⲱⲧⲉⲙ ϫⲉ ⲛ̀ⲑⲟⲕ ⲭⲱ ⲙ̀ⲙⲟⲥ', translit: 'ti-sotem je enthok kho emmos', meaning: { de: 'Ich höre, dass du sprichst', en: 'I hear that you are speaking', ar: 'أسمع أنك تتكلم' } } }
+        ]
+    },
+    // Module 9
+    'l10-1': {
+        id: 'l10-1', order: 1, moduleId: 'm9', title: { de: 'Konversation I', en: 'Conversation I', ar: 'الوحدة 9: المحادثة 1' }, prerequisites: ['l9-2'], quizId: 'q10-1',
+        slides: [
+            { type: 'conversation', title: { de: 'Einfache Begrüßung', en: 'Simple Greeting', ar: 'تحية بسيطة' }, participants: ['Youssef', 'Maria'], lines: [{ speaker: 'Youssef', coptic: 'ⲛⲟϥⲣⲓ', translation: { de: 'Hallo!', en: 'Hello!', ar: 'مرحباً!' } }, { speaker: 'Maria', coptic: 'ⲛⲟϥⲣⲓ', translation: { de: 'Hallo!', en: 'Hello!', ar: 'مرحباً!' } }, { speaker: 'Youssef', coptic: 'ⲁϣ ⲡⲉ ⲡⲉⲕⲣⲁⲛ', translation: { de: 'Wie ist dein Name?', en: 'What is your name?', ar: 'ما اسمك؟' } }, { speaker: 'Maria', coptic: 'ⲡⲁⲣⲁⲛ ⲡⲉ ⲙⲁⲣⲓⲁ', translation: { de: 'Mein Name ist Maria', en: 'My name is Maria', ar: 'اسمي ماريا' } }] },
+            { type: 'conversation', title: { de: 'Verabschiedung', en: 'Farewell', ar: 'وداع' }, participants: ['Person A', 'Person B'], lines: [{ speaker: 'Person A', coptic: 'ⲟⲩϫⲁⲓ ϧⲉⲛ Ⲡ̀ϭⲟⲓⲥ', translation: { de: 'Geh in Frieden!', en: 'Go in peace!', ar: 'اذهب بسلام!' } }, { speaker: 'Person B', coptic: 'ⲛⲉⲙ ⲡⲉⲕⲡ̀ⲛⲉⲩⲙⲁ', translation: { de: 'Und mit deinem Geiste.', en: 'And with your spirit.', ar: 'ومع روحك أيضًا.' } }] }
+        ]
+    },
+    // Module 10
+    'l11-1': {
+        id: 'l11-1', order: 1, moduleId: 'm10', title: { de: 'Wortschatz: In der Kirche', en: 'Vocabulary: In the Church', ar: 'مفردات: في الكنيسة' }, prerequisites: ['l10-1'], quizId: 'q11-1',
+        slides: [
+            { type: 'vocab', item: { coptic: 'ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'ekklesia', meaning: { de: 'Kirche', en: 'Church', ar: 'كنيسة' }, emoji: '⛪' } },
+            { type: 'vocab', item: { coptic: 'ⲟⲩⲏⲃ', translit: 'oueeb', meaning: { de: 'Priester', en: 'Priest', ar: 'كاهن' }, emoji: '✝️' } },
+            { type: 'vocab', item: { coptic: 'ⲇⲓⲁⲕⲱⲛ', translit: 'diakon', meaning: { de: 'Diakon', en: 'Deacon', ar: 'شماس' }, emoji: '👨‍ βοηθός' } },
+            { type: 'vocab', item: { coptic: 'ⲯⲁⲗⲙⲟⲥ', translit: 'psalmos', meaning: { de: 'Psalm', en: 'Psalm', ar: 'مزمور' }, emoji: '🎶' } },
+            { type: 'vocab', item: { coptic: 'ⲉⲩⲭⲏ', translit: 'eukhe', meaning: { de: 'Gebet', en: 'Prayer', ar: 'صلاة' }, emoji: '🙏' } },
+            { type: 'vocab', item: { coptic: 'ⲑⲩⲥⲓⲁⲥⲧⲏⲣⲓⲟⲛ', translit: 'thysiasterion', meaning: { de: 'Altar', en: 'Altar', ar: 'مذبح' }, emoji: '🕊️' } },
+            { type: 'vocab', item: { coptic: 'ⲥ̀ⲧⲟⲓⲛⲟⲩϥⲓ', translit: 'stoinoufi', meaning: { de: 'Weihrauch', en: 'Incense', ar: 'بخور' }, emoji: '💨' } },
+            { type: 'sentence', item: { text: 'ϯϣ̀ⲗⲏⲗ ϧⲉⲛ ⲧ̀ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'ti-shlel khen ti-ekklesia', meaning: { de: 'Ich bete in der Kirche', en: 'I pray in the church', ar: 'أصلي في الكنيسة' } } },
+        ]
+    },
+    // Module 11
+    'l12-1': {
+        id: 'l12-1', order: 1, moduleId: 'm11', title: { de: 'Wortschatz: Familie', en: 'Vocabulary: Family', ar: 'مفردات: العائلة' }, prerequisites: ['l11-1'], quizId: 'q12-1',
+        slides: [
+            { type: 'vocab', item: { coptic: 'ⲓⲱⲧ', translit: 'iot', meaning: { de: 'Vater', en: 'Father', ar: 'أب' }, emoji: '👨' } },
+            { type: 'vocab', item: { coptic: 'ⲙⲁⲁⲩ', translit: 'maav', meaning: { de: 'Mutter', en: 'Mother', ar: 'أم' }, emoji: '👩' } },
+            { type: 'vocab', item: { coptic: 'ⲥⲟⲛ', translit: 'son', meaning: { de: 'Bruder', en: 'Brother', ar: 'أخ' }, emoji: '👦' } },
+            { type: 'vocab', item: { coptic: 'ⲥⲱⲛⲓ', translit: 'soni', meaning: { de: 'Schwester', en: 'Sister', ar: 'أخت' }, emoji: '👧' } },
+            { type: 'vocab', item: { coptic: 'ϣⲏⲣⲓ', translit: 'sheri', meaning: { de: 'Sohn', en: 'Son', ar: 'ابن' }, emoji: '👶' } },
+            { type: 'vocab', item: { coptic: 'ϣⲉⲉⲣⲓ', translit: 'she-eri', meaning: { de: 'Tochter', en: 'Daughter', ar: 'ابنة' }, emoji: '👶‍♀️' } },
+            { type: 'vocab', item: { coptic: 'ϩⲁⲓ', translit: 'hai', meaning: { de: 'Ehemann', en: 'Husband', ar: 'زوج' }, emoji: '🤵' } },
+            { type: 'vocab', item: { coptic: 'ϩⲓⲙⲓ', translit: 'himi', meaning: { de: 'Ehefrau', en: 'Wife', ar: 'زوجة' }, emoji: '👰' } },
+            { type: 'sentence', item: { text: 'ⲡⲁⲓⲱⲧ ⲛⲉⲙ ⲧⲁⲙⲁⲁⲩ', translit: 'pa-iot nem ta-maav', meaning: { de: 'mein Vater und meine Mutter', en: 'my father and my mother', ar: 'أبي وأمي' } } },
+        ]
+    },
+    // Module 12
+    'l13-1': {
+        id: 'l13-1', order: 1, moduleId: 'm12', title: { de: 'Bibelvers: Johannes 3:16', en: 'Bible Verse: John 3:16', ar: 'آية: يوحنا 3: 16' }, prerequisites: ['l12-1'], quizId: 'q13-1',
+        slides: [
+            { type: 'reading', title: { de: 'Johannes 3:16', en: 'John 3:16', ar: 'يوحنا 3: 16' }, copticText: ['ⲡⲁⲓⲣⲏϯ ⲅⲁⲣ ⲁ̀ⲫⲛⲟⲩϯ ⲙⲉⲓ ⲙ̀ⲡⲓⲕⲟⲥⲙⲟⲥ', 'ϩⲱⲥⲧⲉ ⲡⲉϥϣⲏⲣⲓ ⲙ̀ⲙⲁⲩⲁⲧϥ ⲁϥⲧⲏⲓϥ', 'ϩⲓⲛⲁ ⲛ̀ⲧⲉ ⲟⲩⲟⲛ ⲛⲓⲃⲉⲛ ⲉⲑⲛⲁϩϯ ⲉ̀ⲣⲟϥ', 'ⲛ̀ⲧⲉϥϣ̀ⲧⲉⲙⲧⲁⲕⲟ ⲁⲗⲗⲁ ⲛ̀ⲧⲉϥϭⲓ ⲛ̀ⲟⲩⲱⲛϧ ⲛ̀ⲉ̀ⲛⲉϩ'], translation: [{ de: 'Denn so sehr hat Gott die Welt geliebt,', en: 'For God so loved the world,', ar: 'لأنه هكذا أحب الله العالم' }, { de: 'dass er seinen eingeborenen Sohn gab,', en: 'that he gave his only begotten Son,', ar: 'حتى بذل ابنه الوحيد' }, { de: 'damit jeder, der an ihn glaubt,', en: 'that whoever believes in him', ar: 'لكي لا يهلك كل من يؤمن به' }, { de: 'nicht verloren geht, sondern ewiges Leben hat.', en: 'should not perish but have eternal life.', ar: 'بل تكون له الحياة الأبدية' }] }
+        ]
+    },
+    // Module 13
+    'l14-1': {
+        id: 'l14-1', order: 1, moduleId: 'm13', title: { de: 'Konversation: Liturgie', en: 'Conversation: Liturgy', ar: 'محادثة: القداس' }, prerequisites: ['l13-1'], quizId: 'q14-1',
+        slides: [
+            { type: 'conversation', title: { de: 'Der Friedensgruß', en: 'The Kiss of Peace', ar: 'قبلة السلام' }, participants: ['Priester', 'Gemeinde'], lines: [{ speaker: 'Priester', coptic: 'ⲧ̀ϩⲓⲣⲏⲛⲏ ⲙ̀ⲡⲁⲛⲧⲱⲛ', translation: { de: 'Friede sei mit euch allen.', en: 'Peace be with you all.', ar: 'السلام لجميعكم.' } }, { speaker: 'Gemeinde', coptic: 'ⲕⲉ ⲧⲱ ⲡ̀ⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ', translation: { de: 'Und mit deinem Geiste.', en: 'And with your spirit.', ar: 'ومع روحك أيضًا.' } }] }
+        ]
+    },
+    // Module 14
+    'l15-1': {
+        id: 'l15-1', order: 1, moduleId: 'm14', title: { de: 'Das Vaterunser', en: 'The Lord\'s Prayer', ar: 'الصلاة الربانية' }, prerequisites: ['l14-1'], quizId: 'q15-1',
+        slides: [
+            { type: 'reading', title: { de: 'Das Vaterunser', en: 'The Lord\'s Prayer', ar: 'الصلاة الربانية' }, copticText: ['Πενιωτ εⲧϧⲉⲛ ⲛⲓⲫⲏⲟⲩⲓ', 'ⲙⲁⲣⲉϥⲧⲟⲩⲃⲟ ⲛ̀ϫⲉ ⲡⲉⲕⲣⲁⲛ', 'ⲙⲁⲣⲉⲥⲓ̀ ⲛ̀ϫⲉ ⲧⲉⲕⲙⲉⲧⲟⲩⲣⲟ', 'ⲡⲉⲧⲉϩⲛⲁⲕ ⲙⲁⲣⲉϥϣⲱⲡⲓ', 'ⲙ̀ⲫ̀ⲣⲏϯ ϧⲉⲛ ⲧ̀ⲫⲉ ⲛⲉⲙ ϩⲓϫⲉⲛ ⲡⲓⲕⲁϩⲓ'], translation: [{ de: 'Unser Vater im Himmel,', en: 'Our Father in heaven,', ar: 'أبانا الذي في السماوات' }, { de: 'geheiligt werde dein Name.', en: 'hallowed be your name.', ar: 'ليتقدس اسمك' }, { de: 'Dein Reich komme.', en: 'Your kingdom come.', ar: 'ليأت ملكوتك' }, { de: 'Dein Wille geschehe,', en: 'Your will be done,', ar: 'لتكن مشيئتك' }, { de: 'wie im Himmel, so auf Erden.', en: 'on earth as it is in heaven.', ar: 'كما في السماء كذلك على الأرض' }] }
+        ]
+    },
+    // Module 15
+    'l16-1': {
+        id: 'l16-1', order: 1, moduleId: 'm15', title: { de: 'Wortschatz: Farben', en: 'Vocabulary: Colors', ar: 'مفردات: الألوان' }, prerequisites: ['l12-1'], quizId: 'q16-1',
+        slides: [
+            { type: 'vocab', item: { coptic: 'ⲕⲁⲙⲉ', translit: 'kame', meaning: { de: 'schwarz', en: 'black', ar: 'أسود' }, emoji: '⚫' } },
+            { type: 'vocab', item: { coptic: 'ⲟⲩⲟⲃϣ', translit: 'ouobsh', meaning: { de: 'weiß', en: 'white', ar: 'أبيض' }, emoji: '⚪' } },
+            { type: 'vocab', item: { coptic: 'ⲕⲁϩⲣⲱ', translit: 'kahro', meaning: { de: 'rot', en: 'red', ar: 'أحمر' }, emoji: '🔴' } },
+            { type: 'vocab', item: { coptic: 'ⲭⲗⲱⲣⲟⲥ', translit: 'chloros', meaning: { de: 'grün', en: 'green', ar: 'أخضر' }, emoji: '🟢' } },
+            { type: 'vocab', item: { coptic: 'ⲓⲁⲕⲓⲛⲑⲓⲛⲟⲥ', translit: 'yakinthinos', meaning: { de: 'blau', en: 'blue', ar: 'أزرق' }, emoji: '🔵' } }
+        ]
+    },
+    'l16-2': {
+        id: 'l16-2', order: 2, moduleId: 'm15', title: { de: 'Wortschatz: Tiere', en: 'Vocabulary: Animals', ar: 'مفردات: الحيوانات' }, prerequisites: ['l16-1'], quizId: 'q16-2',
+        slides: [
+            { type: 'vocab', item: { coptic: 'ⲟⲩϩⲟⲣ', translit: 'ouhor', meaning: { de: 'Hund', en: 'dog', ar: 'كلب' }, emoji: '🐶' } },
+            { type: 'vocab', item: { coptic: 'ϣⲁⲩ', translit: 'shau', meaning: { de: 'Katze', en: 'cat', ar: 'قطة' }, emoji: '🐱' } },
+            { type: 'vocab', item: { coptic: 'ⲉϩⲥⲱ', translit: 'ehso', meaning: { de: 'Pferd', en: 'horse', ar: 'حصان' }, emoji: '🐴' } },
+            { type: 'vocab', item: { coptic: 'ⲉⲥⲱⲟⲩ', translit: 'eso-ou', meaning: { de: 'Schaf', en: 'sheep', ar: 'خروف' }, emoji: '🐑' } },
+            { type: 'vocab', item: { coptic: 'ϩⲁⲗⲁⲧ', translit: 'halat', meaning: { de: 'Vogel', en: 'bird', ar: 'طائر' }, emoji: '🐦' } }
+        ]
+    },
+    // Module 16
+    'l17-1': {
+        id: 'l17-1', order: 1, moduleId: 'm16', title: { de: 'Wortschatz: Lebensmittel', en: 'Vocabulary: Food', ar: 'مفردات: الطعام' }, prerequisites: ['l16-2'], quizId: 'q17-1',
+        slides: [
+            { type: 'vocab', item: { coptic: 'ⲱⲓⲕ', translit: 'oik', meaning: { de: 'Brot', en: 'bread', ar: 'خبز' }, emoji: '🍞' } },
+            { type: 'vocab', item: { coptic: 'ⲙⲱⲟⲩ', translit: 'mo-ou', meaning: { de: 'Wasser', en: 'water', ar: 'ماء' }, emoji: '💧' } },
+            { type: 'vocab', item: { coptic: 'ⲏⲣⲡ', translit: 'erp', meaning: { de: 'Wein', en: 'wine', ar: 'خمر' }, emoji: '🍷' } },
+            { type: 'vocab', item: { coptic: 'ⲛⲉϩ', translit: 'neh', meaning: { de: 'Öl', en: 'oil', ar: 'زيت' }, emoji: '🫒' } },
+            { type: 'vocab', item: { coptic: 'ⲉⲃⲓⲱ', translit: 'ebio', meaning: { de: 'Honig', en: 'honey', ar: 'عسل' }, emoji: '🍯' } }
+        ]
     }
-
-    acc[`sl${(index + 1).toString().padStart(2, '0')}`] = {
-        id: `sl${(index + 1).toString().padStart(2, '0')}`,
-        letterId: letterId,
-        explanation: explanation,
-        audio: { letter: 'a.mp3', word: 'abba.mp3' },
-        emoji: LETTER_EMOJIS[letterId] || '❓',
-        spiritual: spiritualContentData[letterId]
-    };
-    return acc;
-}, {} as Record<string, AlphabetSlide>);
-
-export const PRONUNCIATION_SLIDES: Record<string, PronunciationSlide> = {
-    'ps_ou': {
-        id: 'ps_ou',
-        title: { de: 'Vokal-Kombination: ⲟⲩ', en: 'Vowel Combination: ⲟⲩ', ar: 'تركيب الحروف المتحركة: ⲟⲩ' },
-        rule: { 
-            de: 'Die Buchstabenkombination ⲟⲩ wird immer wie ein langes "u" ausgesprochen, ähnlich wie "oo" im englischen Wort "moon".',
-            en: 'The letter combination ⲟⲩ is always pronounced like a long "u", similar to "oo" in the English word "moon".',
-            ar: 'تركيبة الحرفين ⲟⲩ تُنطق دائماً مثل الواو الممدودة، كما في كلمة "نور".'
-        },
-        examples: [
-            { coptic: 'ⲟⲩⲣⲟ', translit: 'ouro', meaning: { de: 'König', en: 'King', ar: 'ملك' }, audio: 'ouro.mp3' },
-            { coptic: 'ⲙⲟⲩⲧ', translit: 'mout', meaning: { de: 'tot', en: 'dead', ar: 'ميت' }, audio: 'mout.mp3' }
-        ]
-    },
-    'ps_au_eu': {
-        id: 'ps_au_eu',
-        title: { de: 'Diphthonge: ⲁⲩ & ⲉⲩ', en: 'Diphthongs: ⲁⲩ & ⲉⲩ', ar: 'الأصوات المزدوجة: ⲁⲩ و ⲉⲩ' },
-        rule: { 
-            de: 'Die Aussprache von ⲁⲩ und ⲉⲩ hängt vom nachfolgenden Laut ab. Vor stimmhaften Konsonanten (z.B. ⲃ, ⲅ, ⲇ) klingen sie wie "aw" bzw. "ew". Vor stimmlosen Konsonanten (z.B. ⲡ, ⲧ, ⲕ) und am Wortende klingen sie wie "av" bzw. "ev".',
-            en: 'The pronunciation of ⲁⲩ and ⲉⲩ depends on the following sound. Before voiced consonants (e.g., ⲃ, ⲅ, ⲇ), they sound like "av" and "ev". Before unvoiced consonants (e.g., ⲡ, ⲧ, ⲕ) and at the end of a word, they sound like "aw" and "ew".',
-            ar: 'نطق ⲁⲩ و ⲉⲩ يعتمد على الحرف التالي. قبل الحروف الصوتية (مثل ⲃ، ⲅ، ⲇ) يُنطقان "آڤ" و "إيڤ". قبل الحروف الصامتة (مثل ⲡ، ⲧ، ⲕ) وفي نهاية الكلمة، يُنطقان "آو" و "إيو".'
-        },
-        examples: [
-            { coptic: 'ⲁⲩⲧⲟⲥ', translit: 'avtos', meaning: { de: 'er selbst', en: 'he himself', ar: 'هو نفسه' }, audio: 'avtos.mp3' },
-            { coptic: 'ⲉⲩⲁⲅⲅⲉⲗⲓⲟⲛ', translit: 'evangelion', meaning: { de: 'Evangelium', en: 'Gospel', ar: 'إنجيل' }, audio: 'evangelion.mp3' }
-        ]
-    },
-    'ps_gamma': {
-        id: 'ps_gamma',
-        title: { de: 'Konsonanten-Variationen: Ⲅ', en: 'Consonant Variations: Ⲅ', ar: 'تنوع نطق الحروف الساكنة: Ⲅ' },
-        rule: { 
-            de: 'Der Buchstabe Ⲅ (Ghamma) hat drei Laute: 1. Wie "G" in "Garten" meistens. 2. Wie "N" in "singen" vor den Buchstaben ⲅ, ⲕ, ⲭ, ⲝ. 3. Ein weiches, kehliges "Gh" vor den Vokalen ⲉ, ⲏ, ⲓ, ⲩ.',
-            en: 'The letter Ⲅ (Ghamma) has three sounds: 1. Like "g" in "go" most of the time. 2. Like "n" in "sing" before the letters ⲅ, ⲕ, ⲭ, ⲝ. 3. A soft, throaty "gh" sound before the vowels ⲉ, ⲏ, ⲓ, ⲩ.',
-            ar: 'حرف Ⲅ (غما) له ثلاثة أصوات: ١. مثل الجيم المصرية في معظم الحالات. ٢. مثل النون في كلمة "إنجيل" عندما يأتي قبل الحروف ⲅ, ⲕ, ⲭ, ⲝ. ٣. صوت "غ" حلقي خفيف قبل الحروف المتحركة ⲉ, ⲏ, ⲓ, ⲩ.'
-        },
-        examples: [
-            { coptic: 'ⲁⲅⲅⲉⲗⲟⲥ', translit: 'angelos', meaning: { de: 'Engel', en: 'Angel', ar: 'ملاك' }, audio: 'angelos.mp3' },
-            { coptic: 'ⲅⲉ', translit: 'ge', meaning: { de: 'Ja', en: 'Yes', ar: 'نعم' }, audio: 'ge.mp3' }
-        ]
-    },
-    'ps_chi_theta': {
-        id: 'ps_chi_theta',
-        title: { de: 'Griechische Konsonanten: Ⲭ & Ⲑ', en: 'Greek Consonants: Ⲭ & Ⲑ', ar: 'الحروف الساكنة اليونانية: Ⲭ و Ⲑ' },
-        rule: { 
-            de: 'In Wörtern koptischen Ursprungs wird Ⲭ wie "Sch" und Ⲑ wie "T" ausgesprochen. In Wörtern griechischen Ursprungs behalten sie oft ihre ursprüngliche Aussprache: Ⲭ als "K" und Ⲑ als englisches "Th".',
-            en: 'In words of Coptic origin, Ⲭ is pronounced "sh" and Ⲑ is pronounced "t". In words of Greek origin, they often retain their original pronunciation: Ⲭ as "k" and Ⲑ as English "th".',
-            ar: 'في الكلمات ذات الأصل القبطي، يُنطق Ⲭ "ش" و Ⲑ "ت". في الكلمات ذات الأصل اليوناني، غالبًا ما يحتفظان بنطقهما الأصلي: Ⲭ مثل "ك" و Ⲑ مثل "ث".'
-        },
-        examples: [
-            { coptic: 'Ⲭⲣⲓⲥⲧⲟⲥ', translit: 'Christos', meaning: { de: 'Christus', en: 'Christ', ar: 'المسيح' }, audio: 'christos.mp3' },
-            { coptic: 'Ⲑⲉⲟⲥ', translit: 'Theos', meaning: { de: 'Gott (griech.)', en: 'God (Greek)', ar: 'الله (كلمة يونانية)' }, audio: 'theos.mp3' }
-        ]
-    },
-    'ps_special': {
-        id: 'ps_special',
-        title: { de: 'Spezialkombinationen', en: 'Special Combinations', ar: 'تركيبات خاصة' },
-        rule: { 
-            de: 'Einige Buchstaben haben im Koptischen einen einzigartigen zusammengesetzten Laut: ϫ klingt wie "Dsch" (in "Dschungel"), ϭ klingt wie "Tsch" (in "Deutsch") und ϯ klingt wie "Ti".',
-            en: 'Some letters in Coptic have a unique composite sound: ϫ sounds like "j" (in "jungle"), ϭ sounds like "ch" (in "church"), and ϯ sounds like "ti".',
-            ar: 'بعض الحروف في القبطية لها صوت مركب فريد: ϫ يُنطق "ج" (مثل "جمل")، ϭ يُنطق "تش" (مثل "تشرشل")، و ϯ يُنطق "تي".'
-        },
-        examples: [
-            { coptic: 'Ϫⲟⲉⲓⲥ', translit: 'jois', meaning: { de: 'Herr', en: 'Lord', ar: 'الرب' }, audio: 'jois.mp3' },
-            { coptic: 'ϯⲙⲉⲧⲣⲉ', translit: 'timetre', meaning: { de: 'Zeugnis', en: 'Witness', ar: 'شهادة' }, audio: 'timetre.mp3' }
-        ]
-    },
-    'ps_djinkim': {
-        id: 'ps_djinkim',
-        title: { de: 'Der Djinkim', en: 'The Djinkim', ar: 'الجنكم' },
-        rule: { 
-            de: 'Der Djinkim ist ein kleiner Strich über einem Buchstaben (z.B. `ⲛ̀`). Er zeigt an, dass vor diesem Buchstaben ein kurzes "E" gesprochen wird. Dies ist wichtig für die korrekte Silbenbildung.',
-            en: 'The Djinkim is a small stroke over a letter (e.g., `ⲛ̀`). It indicates that a short "e" sound is pronounced before that letter. This is important for correct syllabification.',
-            ar: 'الجنكم هو شرطة صغيرة فوق الحرف (مثل `ⲛ̀`). يشير إلى أن هناك صوت "إ" قصير يُنطق قبل هذا الحرف. هذا مهم لتكوين المقاطع الصوتية بشكل صحيح.'
-        },
-        examples: [
-            { coptic: 'ⲛ̀ⲧⲉ', translit: 'en-te', meaning: { de: 'von', en: 'of', ar: 'الـ' }, audio: 'ente.mp3' },
-            { coptic: 'ⲙ̀ⲫ̀ⲓⲱⲧ', translit: 'em-efiot', meaning: { de: 'des Vaters', en: 'of the Father', ar: 'الآب' }, audio: 'emefiot.mp3' }
-        ]
-    }
-};
-
-
-const slide_keys = Object.keys(ALPHABET_SLIDES);
-
-export const LEVELS: Record<string, Level> = {
-    ...slide_keys.reduce((acc, slideId, index) => {
-        const levelIndex = Math.floor(index / 4);
-        const levelId = `lev_m1_${levelIndex + 1}`;
-        if (!acc[levelId]) {
-            acc[levelId] = { id: levelId, order: levelIndex + 1, kind: 'letters', slides: [] };
-        }
-        acc[levelId].slides.push(slideId);
-        return acc;
-    }, {} as Record<string, Level>),
-    'lev_m1_9': { id: 'lev_m1_9', order: 9, kind: 'vocab', slides: ['vb01', 'vb02'] },
-    'lev_m1_10': { id: 'lev_m1_10', order: 10, kind: 'sentences', slides: ['st01', 'st02'] },
-    // Module 2 Levels
-    'lev_m2_1': { id: 'lev_m2_1', order: 1, kind: 'pronunciation', slides: ['ps_ou', 'ps_au_eu'] },
-    'lev_m2_2': { id: 'lev_m2_2', order: 2, kind: 'pronunciation', slides: ['ps_gamma', 'ps_chi_theta'] },
-    'lev_m2_3': { id: 'lev_m2_3', order: 3, kind: 'pronunciation', slides: ['ps_special', 'ps_djinkim'] }
-};
-
-export const VOCAB_ITEMS: Record<string, VocabItem> = {
-    'vb01': { id: 'vb01', coptic: 'ⲣⲁⲛ', translit: 'ran', meaning: { de: 'Name', en: 'Name', ar: 'اسم' }, emoji: '📛', audio: 'ran.mp3', tags: ['grundlagen'] },
-    'vb02': { id: 'vb02', coptic: 'ⲉⲕⲕⲗⲏⲥⲓⲁ', translit: 'ekklēsia', meaning: { de: 'Kirche', en: 'Church', ar: 'كنيسة' }, emoji: '⛪️', audio: 'ekklesia.mp3', tags: ['kirche'] },
-};
-
-export const SENTENCE_ITEMS: Record<string, SentenceItem> = {
-    'st01': { id: 'st01', text: 'Ϧⲉⲛ ⲫ̀ⲣⲁⲛ ⲙ̀Ⲫ̀ⲓⲱⲧ', translit: 'khen efran em-efiot', meaning: { de: 'Im Namen des Vaters', en: 'In the name of the Father', ar: 'باسم الآب' }, audio: 'sent1.mp3' },
-    'st02': { id: 'st02', text: 'Ⲭⲣⲓⲥⲧⲟⲥ ⲁ̀ⲛⲉⲥⲧⲏ', translit: 'Christos anestē', meaning: { de: 'Christus ist auferstanden', en: 'Christ is risen', ar: 'المسيح قام' }, audio: 'sent2.mp3' },
-};
-
-export const QUIZ_QUESTIONS: Record<string, QuizQuestion> = {
-    'qq01': { id: 'qq01', type: QuizQuestionType.MCQ, prompt: { de: 'Welcher Buchstabe ist Alpha?', en: 'Which letter is Alpha?', ar: 'أي حرف هو ألفا؟' }, media: { audio: null, image: null }, options: ['Ⲁ', 'Ⲃ', 'Ⲇ', 'Ⲉ'], answer: [0], solution: { de: 'Ⲁ ist Alpha.', en: 'Ⲁ is Alpha.', ar: 'Ⲁ هو ألفا.' } },
-    'qq02': { id: 'qq02', type: QuizQuestionType.LISTEN, prompt: { de: 'Höre den Laut und wähle den passenden Buchstaben.', en: 'Listen to the sound and choose the matching letter.', ar: 'استمع للصوت واختر الحرف المناسب.' }, media: { audio: 'd.mp3', image: null }, options: ['Ⲅ', 'Ⲇ', 'Ⲃ', 'Ⲁ'], answer: [1], solution: { de: 'Der Laut war "D", was dem Buchstaben Ⲇ (Dalda) entspricht.', en: 'The sound was "D", which corresponds to the letter Ⲇ (Dalda).', ar: 'الصوت كان "د"، وهو يوافق حرف Ⲇ (دالدا).' } },
-    'qq03': { id: 'qq03', type: QuizQuestionType.MCQ, prompt: { de: 'Was bedeutet ⲃⲁⲗ?', en: 'What does ⲃⲁⲗ mean?', ar: 'ما معنى ⲃⲁⲗ؟' }, media: { audio: null, image: null }, options: ['Auge', 'Vater', 'Sohn', 'Ja'], answer: [0], solution: { de: 'ⲃⲁⲗ (bal) bedeutet Auge.', en: 'ⲃⲁⲗ (bal) means Eye.', ar: 'ⲃⲁⲗ (bal) تعني عين.' } },
-    // Module 2 Questions
-    'qq_m2_01': { id: 'qq_m2_01', type: QuizQuestionType.MCQ, prompt: { de: 'Wie wird ⲟⲩ im Wort ⲟⲩⲣⲟ (König) ausgesprochen?', en: 'How is ⲟⲩ pronounced in the word ⲟⲩⲣⲟ (King)?', ar: 'كيف يُنطق ⲟⲩ في كلمة ⲟⲩⲣⲟ (ملك)؟' }, media: { audio: null, image: null }, options: ['o-u', 'ou (wie in "out")', 'u (wie in "du")', 'o'], answer: [2], solution: { de: 'ⲟⲩ wird immer wie ein langes "u" ausgesprochen.', en: 'ⲟⲩ is always pronounced like a long "u" (oo).', ar: 'ⲟⲩ تُنطق دائماً مثل الواو الممدودة.' } },
-    'qq_m2_02': { id: 'qq_m2_02', type: QuizQuestionType.MCQ, prompt: { de: 'Welchen Laut hat Ⲅ im Wort ⲁⲅⲅⲉⲗⲟⲥ (Engel)?', en: 'What is the sound of Ⲅ in the word ⲁⲅⲅⲉⲗⲟⲥ (Angel)?', ar: 'ما هو صوت حرف Ⲅ في كلمة ⲁⲅⲅⲉⲗⲟⲥ (ملاك)؟' }, media: { audio: null, image: null }, options: ['G', 'N', 'Gh (kehlig)', 'K'], answer: [1], solution: { de: 'Vor einem anderen ⲅ, ⲕ, ⲭ oder ⲝ wird Ⲅ als "N" ausgesprochen.', en: 'Before another ⲅ, ⲕ, ⲭ, or ⲝ, Ⲅ is pronounced as "N".', ar: 'قبل حرف ⲅ, ⲕ, ⲭ, أو ⲝ، يُنطق حرف Ⲅ مثل النون.' } },
-    'qq_m2_03': { id: 'qq_m2_03', type: QuizQuestionType.MCQ, prompt: { de: 'Welcher Buchstabe klingt wie "Tsch" in "Deutsch"?', en: 'Which letter sounds like "ch" in "church"?', ar: 'أي حرف له صوت "تش" كما في "تشرشل"؟' }, media: { audio: null, image: null }, options: ['Ϫ', 'Ϭ', 'Ϯ', 'Ⲭ'], answer: [1], solution: { de: 'Ϭ (Shima) wird wie "Tsch" ausgesprochen.', en: 'Ϭ (Shima) is pronounced "ch".', ar: 'Ϭ (شيما) يُنطق "تش".' } },
 };
 
 export const QUIZZES: Record<string, Quiz> = {
-    // Module 1 Quizzes
-    ...Array.from({ length: 10 }, (_, i) => ({
-        id: `qz_m1_${i + 1}`,
-        lessonId: `l_m1_${i + 1}`,
-        passScore: 0.8,
-        questions: [`qq01`, `qq02`, `qq03`].sort(() => 0.5 - Math.random()) // Randomize for variety
-    })).reduce((acc, quiz) => {
-        acc[quiz.id] = quiz;
-        return acc;
-    }, {} as Record<string, Quiz>),
-    // Module 2 Quizzes
-    'qz_m2_1': { id: 'qz_m2_1', lessonId: 'l_m2_1', passScore: 0.8, questions: ['qq_m2_01'] },
-    'qz_m2_2': { id: 'qz_m2_2', lessonId: 'l_m2_2', passScore: 0.8, questions: ['qq_m2_02'] },
-    'qz_m2_3': { id: 'qz_m2_3', lessonId: 'l_m2_3', passScore: 0.8, questions: ['qq_m2_03'] },
+    'q1-1': {
+        id: 'q1-1', lessonId: 'l1-1', title: { de: 'Test: Alphabet 1', en: 'Quiz: Alphabet 1', ar: 'اختبار: الأبجدية 1' }, passScore: 80,
+        questions: [
+            { id: 'q1-1-1', type: 'multiple-choice', questionText: { de: 'Was ist der Zahlenwert von Ⲁ?', en: 'What is the numeric value of Ⲁ?', ar: 'ما هي القيمة العددية لـ Ⲁ؟' }, options: [{ de: '1', en: '1', ar: '١' }, { de: '2', en: '2', ar: '٢' }, { de: '3', en: '3', ar: '٣' }], correctAnswerIndex: 0 },
+            { id: 'q1-1-2', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe ist das: ⲃ?', en: 'Which letter is this: ⲃ?', ar: 'ما هذا الحرف: ⲃ' }, options: [{ de: 'Alpha', en: 'Alpha', ar: 'ألفا' }, { de: 'Gamma', en: 'Gamma', ar: 'غما' }, { de: 'Vita', en: 'Vita', ar: 'ڤيتا' }], correctAnswerIndex: 2 },
+            { id: 'q1-1-3', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "Liebe" ist ___.', en: 'The Coptic word for "Love" is ___.', ar: 'الكلمة القبطية لـ "محبة" هي ___.' }, correctAnswer: 'ⲁⲅⲁⲡⲏ' },
+            { id: 'q1-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet das Wort "ⲃⲁⲗ"?', en: 'What does the word "ⲃⲁⲗ" mean?', ar: 'ما معنى كلمة "ⲃⲁⲗ"؟' }, options: [{ de: 'Auge', en: 'Eye', ar: 'عين' }, { de: 'Ohr', en: 'Ear', ar: 'أذن' }, { de: 'Herz', en: 'Heart', ar: 'قلب' }], correctAnswerIndex: 0 },
+            { id: 'q1-1-5', type: 'fill-in-the-blank', questionText: { de: 'Der Zahlenwert von Delta ist ___.', en: 'The numeric value of Delta is ___.', ar: 'القيمة العددية لدلتا هي ___.' }, correctAnswer: '4' },
+            { id: 'q1-1-6', type: 'multiple-choice', questionText: { de: 'Wie lautet der Großbuchstabe von Gamma?', en: 'What is the uppercase letter for Gamma?', ar: 'ما هو الحرف الكبير لغما؟' }, options: [{ de: 'Γ', en: 'Γ', ar: 'Γ' }, { de: 'Β', en: 'Β', ar: 'Β' }, { de: 'Δ', en: 'Δ', ar: 'Δ' }], correctAnswerIndex: 0 },
+            { id: 'q1-1-7', type: 'multiple-choice', questionText: { de: 'Die Aussprache von Alpha ist wie in "Vater". Richtig oder Falsch?', en: 'The pronunciation of Alpha is like in "father". True or False?', ar: 'نطق ألفا مثل "ا" في "بابا". صح أم خطأ؟' }, options: [{ de: 'Richtig', en: 'True', ar: 'صح' }, { de: 'Falsch', en: 'False', ar: 'خطأ' }], correctAnswerIndex: 0 },
+            { id: 'q1-1-8', type: 'fill-in-the-blank', questionText: { de: 'In der Offenbarung sagt Jesus: "Ich bin das Alpha und das ___".', en: 'In Revelation, Jesus says: "I am the Alpha and the ___".', ar: 'في سفر الرؤيا يقول يسوع: "أنا الألف و ___".' }, correctAnswer: 'Omega' },
+            { id: 'q1-1-9', type: 'multiple-choice', questionText: { de: 'Was bedeutet das Wort "ⲇⲁⲩⲓⲇ"?', en: 'What does the word "ⲇⲁⲩⲓⲇ" mean?', ar: 'ما معنى كلمة "ⲇⲁⲩⲓⲇ"؟' }, options: [{ de: 'König', en: 'King', ar: 'ملك' }, { de: 'Gott', en: 'God', ar: 'الله' }, { de: 'David', en: 'David', ar: 'داود' }], correctAnswerIndex: 2 },
+            { id: 'q1-1-10', type: 'fill-in-the-blank', questionText: { de: 'Der Zahlenwert von Vita ist ___.', en: 'The numeric value of Vita is ___.', ar: 'القيمة العددية لڤيتا هي ___.' }, correctAnswer: '2' },
+        ]
+    },
+    'q1-2': {
+        id: 'q1-2', lessonId: 'l1-2', title: { de: 'Test: Alphabet 2', en: 'Quiz: Alphabet 2', ar: 'اختبار: الأبجدية 2' }, passScore: 80,
+        questions: [
+            { id: 'q1-2-1', type: 'multiple-choice', questionText: { de: 'Was ist der Zahlenwert von Ⲏ?', en: 'What is the numeric value of Ⲏ?', ar: 'ما هي القيمة العددية لـ Ⲏ؟' }, options: [{ de: '6', en: '6', ar: '٦' }, { de: '7', en: '7', ar: '٧' }, { de: '8', en: '8', ar: '٨' }], correctAnswerIndex: 2 },
+            { id: 'q1-2-2', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe wird wie ein kurzes "e" ausgesprochen?', en: 'Which letter is pronounced like a short "e"?', ar: 'أي حرف يُنطق مثل "إ" قصيرة؟' }, options: [{ de: 'Ⲏ', en: 'Ⲏ', ar: 'Ⲏ' }, { de: 'Ⲉ', en: 'Ⲉ', ar: 'Ⲉ' }, { de: 'Ⲍ', en: 'Ⲍ', ar: 'Ⲍ' }], correctAnswerIndex: 1 },
+            { id: 'q1-2-3', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "Haus" ist ___.', en: 'The Coptic word for "house" is ___.', ar: 'الكلمة القبطية لـ "بيت" هي ___.' }, correctAnswer: 'ⲏⲓ' },
+            { id: 'q1-2-4', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe wird nur als Zahl verwendet?', en: 'Which letter is only used as a number?', ar: 'أي حرف يستخدم كرقم فقط؟' }, options: [{ de: 'Ⲍ', en: 'Ⲍ', ar: 'Ⲍ' }, { de: 'Ⲉ', en: 'Ⲉ', ar: 'Ⲉ' }, { de: 'Ⲋ', en: 'Ⲋ', ar: 'Ⲋ' }], correctAnswerIndex: 2 },
+            { id: 'q1-2-5', type: 'fill-in-the-blank', questionText: { de: 'Der Zahlenwert von Zeeta ist ___.', en: 'The numeric value of Zeeta is ___.', ar: 'القيمة العددية لـ زيتا هي ___.' }, correctAnswer: '7' },
+        ]
+    },
+    'q2-1': {
+        id: 'q2-1', lessonId: 'l2-1', title: { de: 'Test: Alphabet 3', en: 'Quiz: Alphabet 3', ar: 'اختبار: الأبجدية 3' }, passScore: 80,
+        questions: [
+            { id: 'q2-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet das Wort "ⲓⲱⲧ"?', en: 'What does the word "ⲓⲱⲧ" mean?', ar: 'ما معنى كلمة "ⲓⲱⲧ"؟' }, options: [ { de: 'Mutter', en: 'Mother', ar: 'أم' }, { de: 'Vater', en: 'Father', ar: 'أب' }, { de: 'Sohn', en: 'Son', ar: 'ابن' } ], correctAnswerIndex: 1 },
+            { id: 'q2-1-2', type: 'multiple-choice', questionText: { de: 'Was ist der Zahlenwert von Ⲕ?', en: 'What is the numeric value of Ⲕ?', ar: 'ما هي القيمة العددية لـ Ⲕ؟' }, options: [{ de: '10', en: '10', ar: '١٠' }, { de: '20', en: '20', ar: '٢٠' }, { de: '30', en: '30', ar: '٣٠' }], correctAnswerIndex: 1 },
+            { id: 'q2-1-3', type: 'fill-in-the-blank', questionText: { de: 'Der Buchstabe Theta (ⲑ) wird wie "__" im Englischen "thing" ausgesprochen.', en: 'The letter Theta (ⲑ) is pronounced like "__" in the English word "thing".', ar: 'حرف الثيتا (ⲑ) يُنطق مثل "__" في كلمة "ثلاثة".' }, correctAnswer: 'th' },
+            { id: 'q2-1-4', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe ist das: ⲕ?', en: 'Which letter is this: ⲕ?', ar: 'ما هذا الحرف: ⲕ' }, options: [{ de: 'Kappa', en: 'Kappa', ar: 'كبا' }, { de: 'Yota', en: 'Yota', ar: 'يوتا' }, { de: 'Theta', en: 'Theta', ar: 'ثيتا' }], correctAnswerIndex: 0 },
+            { id: 'q2-1-5', type: 'fill-in-the-blank', questionText: { de: 'Der Zahlenwert von Yota ist ___.', en: 'The numeric value of Yota is ___.', ar: 'القيمة العددية ليوتا هي ___.' }, correctAnswer: '10' },
+        ]
+    },
+     'q2-2': {
+        id: 'q2-2', lessonId: 'l2-2', title: { de: 'Test: Alphabet 4', en: 'Quiz: Alphabet 4', ar: 'اختبار: الأبجدية 4' }, passScore: 80,
+        questions: [
+            { id: 'q2-2-1', type: 'multiple-choice', questionText: { de: 'Was ist der Zahlenwert von Ⲙ?', en: 'What is the numeric value of Ⲙ?', ar: 'ما هي القيمة العددية لـ Ⲙ؟' }, options: [{ de: '30', en: '30', ar: '٣٠' }, { de: '40', en: '40', ar: '٤٠' }, { de: '50', en: '50', ar: '٥٠' }], correctAnswerIndex: 1 },
+            { id: 'q2-2-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "Zunge" ist ___.', en: 'The Coptic word for "tongue" is ___.', ar: 'الكلمة القبطية لـ "لسان" هي ___.' }, correctAnswer: 'ⲗⲁⲥ' },
+            { id: 'q2-2-3', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe steht für den Laut "n"?', en: 'Which letter represents the "n" sound?', ar: 'أي حرف يمثل صوت "ن"؟' }, options: [{ de: 'Ⲙ', en: 'Ⲙ', ar: 'Ⲙ' }, { de: 'Ⲛ', en: 'Ⲛ', ar: 'Ⲛ' }, { de: 'Ⲗ', en: 'Ⲗ', ar: 'Ⲗ' }], correctAnswerIndex: 1 },
+        ]
+    },
+     'q2-3': {
+        id: 'q2-3', lessonId: 'l2-3', title: { de: 'Test: Alphabet 5', en: 'Quiz: Alphabet 5', ar: 'اختبار: الأبجدية 5' }, passScore: 80,
+        questions: [
+            { id: 'q2-3-1', type: 'multiple-choice', questionText: { de: 'Was ist der Laut von Ⲝ?', en: 'What is the sound of Ⲝ?', ar: 'ما هو صوت Ⲝ؟' }, options: [{ de: 'ps', en: 'ps', ar: 'بس' }, { de: 'ks', en: 'ks', ar: 'كس' }, { de: 'sk', en: 'sk', ar: 'سك' }], correctAnswerIndex: 1 },
+            { id: 'q2-3-2', type: 'fill-in-the-blank', questionText: { de: 'Der Zahlenwert von Pe (Ⲡ) ist ___.', en: 'The numeric value of Pe (Ⲡ) is ___.', ar: 'القيمة العددية لـ بي (Ⲡ) هي ___.' }, correctAnswer: '80' },
+            { id: 'q2-3-3', type: 'multiple-choice', questionText: { de: 'Das Wort für "Name" ist ...', en: 'The word for "name" is ...', ar: 'كلمة "اسم" هي...' }, options: [{ de: 'ⲣⲟ', en: 'ro', ar: 'رو' }, { de: 'ⲣⲁⲛ', en: 'ran', ar: 'ران' }, { de: 'ⲣⲱⲙⲓ', en: 'romi', ar: 'رومي' }], correctAnswerIndex: 1 },
+        ]
+    },
+     'q2-4': {
+        id: 'q2-4', lessonId: 'l2-4', title: { de: 'Test: Alphabet 6', en: 'Quiz: Alphabet 6', ar: 'اختبار: الأبجدية 6' }, passScore: 80,
+        questions: [
+            { id: 'q2-4-1', type: 'multiple-choice', questionText: { de: 'Was ist der Zahlenwert von Ⲩ?', en: 'What is the numeric value of Ⲩ?', ar: 'ما هي القيمة العددية لـ Ⲩ؟' }, options: [{ de: '200', en: '200', ar: '٢٠٠' }, { de: '300', en: '300', ar: '٣٠٠' }, { de: '400', en: '400', ar: '٤٠٠' }], correctAnswerIndex: 2 },
+            { id: 'q2-4-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "hören" ist ___.', en: 'The Coptic word for "to hear" is ___.', ar: 'الكلمة القبطية لـ "يسمع" هي ___.' }, correctAnswer: 'ⲥⲱⲧⲉⲙ' },
+            { id: 'q2-4-3', type: 'multiple-choice', questionText: { de: 'Wie wird Ⲧ nach Ⲛ ausgesprochen?', en: 'How is Ⲧ pronounced after Ⲛ?', ar: 'كيف يُنطق Ⲧ بعد Ⲛ؟' }, options: [{ de: 't', en: 't', ar: 'ت' }, { de: 'd', en: 'd', ar: 'د' }, { de: 'th', en: 'th', ar: 'ث' }], correctAnswerIndex: 1 },
+        ]
+    },
+     'q2-5': {
+        id: 'q2-5', lessonId: 'l2-5', title: { de: 'Test: Alphabet 7', en: 'Quiz: Alphabet 7', ar: 'اختبار: الأبجدية 7' }, passScore: 80,
+        questions: [
+            { id: 'q2-5-1', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe klingt wie "sch"?', en: 'Which letter sounds like "sh"?', ar: 'أي حرف صوته "ش"؟' }, options: [{ de: 'Ⲭ', en: 'Ⲭ', ar: 'Ⲭ' }, { de: 'Ϣ', en: 'Ϣ', ar: 'Ϣ' }, { de: 'Ⲯ', en: 'Ⲯ', ar: 'Ⲯ' }], correctAnswerIndex: 1 },
+            { id: 'q2-5-2', type: 'fill-in-the-blank', questionText: { de: 'Das Wort "Psalm" beginnt mit dem Buchstaben ___.', en: 'The word "psalm" starts with the letter ___.', ar: 'كلمة "مزمور" تبدأ بحرف ___.' }, correctAnswer: 'Ⲯ' },
+            { id: 'q2-5-3', type: 'multiple-choice', questionText: { de: 'Was ist der Zahlenwert von Ⲱ?', en: 'What is the numeric value of Ⲱ?', ar: 'ما هي القيمة العددية لـ Ⲱ؟' }, options: [{ de: '600', en: '600', ar: '٦٠٠' }, { de: '700', en: '700', ar: '٧٠٠' }, { de: '800', en: '800', ar: '٨٠٠' }], correctAnswerIndex: 2 },
+        ]
+    },
+    'q2-6': {
+        id: 'q2-6', lessonId: 'l2-6', title: { de: 'Test: Alphabet 8', en: 'Quiz: Alphabet 8', ar: 'اختبار: الأبجدية 8' }, passScore: 80,
+        questions: [
+            { id: 'q2-6-1', type: 'multiple-choice', questionText: { de: 'Welcher Buchstabe klingt wie "tsch"?', en: 'Which letter sounds like "ch" (as in church)?', ar: 'أي حرف صوته "تش"؟' }, options: [{ de: 'Ϫ', en: 'Ϫ', ar: 'Ϫ' }, { de: 'Ϭ', en: 'Ϭ', ar: 'Ϭ' }, { de: 'Ϯ', en: 'Ϯ', ar: 'Ϯ' }], correctAnswerIndex: 1 },
+            { id: 'q2-6-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "in" ist ___.', en: 'The Coptic word for "in" is ___.', ar: 'الكلمة القبطية لـ "في" هي ___.' }, correctAnswer: 'ϧⲉⲛ' },
+            { id: 'q2-6-3', type: 'multiple-choice', questionText: { de: 'Welcher dieser Buchstaben hat keinen Zahlenwert?', en: 'Which of these letters has no numeric value?', ar: 'أي من هذه الحروف ليس له قيمة عددية؟' }, options: [{ de: 'Ϣ', en: 'Ϣ', ar: 'Ϣ' }, { de: 'Ϥ', en: 'Ϥ', ar: 'Ϥ' }, { de: 'Ϩ', en: 'Ϩ', ar: 'Ϩ' }], correctAnswerIndex: 2 },
+            { id: 'q2-6-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet das Wort "ϭⲟⲓⲥ"?', en: 'What does the word "ϭⲟⲓⲥ" mean?', ar: 'ما معنى كلمة "ϭⲟⲓⲥ"؟' }, options: [{ de: 'König', en: 'King', ar: 'ملك' }, { de: 'Herr', en: 'Lord', ar: 'الرب' }, { de: 'Priester', en: 'Priest', ar: 'كاهن' }], correctAnswerIndex: 1 },
+        ]
+    },
+    'q3-1': {
+        id: 'q3-1', lessonId: 'l3-1', title: { de: 'Test: Zahlen', en: 'Quiz: Numbers', ar: 'اختبار: الأرقام' }, passScore: 80,
+        questions: [
+            { id: 'q3-1-1', type: 'multiple-choice', questionText: { de: 'Was ist die koptische Zahl für 12?', en: 'What is the Coptic number for 12?', ar: 'ما هو الرقم القبطي لـ ١٢؟' }, options: [{ de: 'ⲙⲏⲧ', en: 'meet', ar: 'ميت' }, { de: 'ⲙⲏⲧⲥ̀ⲛⲁⲩ', en: 'meetsnau', ar: 'ميتسناف' }, { de: 'ϫⲟⲩⲱⲧ', en: 'jouot', ar: 'جوت' }], correctAnswerIndex: 1 },
+            { id: 'q3-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für 100 ist ___.', en: 'The Coptic word for 100 is ___.', ar: 'الكلمة القبطية لـ ١٠٠ هي ___.' }, correctAnswer: 'ϣⲉ' },
+            { id: 'q3-1-3', type: 'multiple-choice', questionText: { de: 'Welches Symbol steht für die Zahl 20?', en: 'Which symbol represents the number 20?', ar: 'أي رمز يمثل الرقم ٢٠؟' }, options: [{ de: 'ⲓ̅', en: 'ⲓ̅', ar: 'ⲓ̅' }, { de: 'ⲕ̅', en: 'ⲕ̅', ar: 'ⲕ̅' }, { de: 'ⲗ̅', en: 'ⲗ̅', ar: 'ⲗ̅' }], correctAnswerIndex: 1 },
+            { id: 'q3-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ"?', en: 'What does "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ" mean?', ar: 'ما معنى "ⲥⲁϣϥ ⲛ̀ⲉ̀ϩⲟⲟⲩ"؟' }, options: [{ de: 'Sieben Fische', en: 'Seven fish', ar: 'سبع سمكات' }, { de: 'Sieben Tage', en: 'Seven days', ar: 'سبعة أيام' }, { de: 'Sieben Brote', en: 'Seven loaves', ar: 'سبعة أرغفة' }], correctAnswerIndex: 1 },
+            { id: 'q3-1-5', type: 'fill-in-the-blank', questionText: { de: 'Die Zahl 72 auf Koptisch ist ___ ⲥ̀ⲛⲁⲩ.', en: 'The number 72 in Coptic is ___ ⲥ̀ⲛⲁⲩ.', ar: 'الرقم ٧٢ بالقبطية هو ___ ⲥ̀ⲛⲁⲩ.' }, correctAnswer: 'ⲥⲉⲃⲉ' },
+        ]
+    },
+    'q3-2': {
+        id: 'q3-2', lessonId: 'l3-2', title: { de: 'Test: Substantive', en: 'Quiz: Nouns', ar: 'اختبار: الأسماء' }, passScore: 80,
+        questions: [
+            { id: 'q3-2-1', type: 'multiple-choice', questionText: { de: 'Welcher Artikel zeigt ein maskulines Substantiv an?', en: 'Which article indicates a masculine noun?', ar: 'أي أداة تشير إلى اسم مذكر؟' }, options: [{ de: 'ⲧ̀', en: 'ⲧ̀', ar: 'ⲧ̀' }, { de: 'ⲡ̀', en: 'ⲡ̀', ar: 'ⲡ̀' }, { de: 'ⲛⲓ', en: 'ⲛⲓ', ar: 'ⲛⲓ' }], correctAnswerIndex: 1 },
+            { id: 'q3-2-2', type: 'fill-in-the-blank', questionText: { de: 'Der Pluralartikel im Koptischen ist ___.', en: 'The plural article in Coptic is ___.', ar: 'أداة الجمع في القبطية هي ___.' }, correctAnswer: 'ⲛⲓ' },
+            { id: 'q3-2-3', type: 'multiple-choice', questionText: { de: 'Ist das Wort "ⲥⲱⲛⲓ" (Schwester) maskulin oder feminin?', en: 'Is the word "ⲥⲱⲛⲓ" (sister) masculine or feminine?', ar: 'هل كلمة "ⲥⲱⲛⲓ" (أخت) مذكرة أم مؤنثة؟' }, options: [{ de: 'Maskulin', en: 'Masculine', ar: 'مذكر' }, { de: 'Feminin', en: 'Feminine', ar: 'مؤنث' }], correctAnswerIndex: 1 },
+            { id: 'q3-2-4', type: 'multiple-choice', questionText: { de: 'Wie sagt man "die Brüder"?', en: 'How do you say "the brothers"?', ar: 'كيف تقول "الإخوة"؟' }, options: [{ de: 'ⲡ̀ⲥⲟⲛ', en: 'pi-son', ar: 'بي-سون' }, { de: 'ⲛⲓⲥ̀ⲛⲏⲟⲩ', en: 'ni-sneo-u', ar: 'ني-سنيو' }], correctAnswerIndex: 1 },
+        ]
+    },
+    'q3-3': {
+        id: 'q3-3', lessonId: 'l3-3', title: { de: 'Test: Unbestimmter Artikel', en: 'Quiz: Indefinite Article', ar: 'اختبار: أداة النكرة' }, passScore: 80,
+        questions: [
+            { id: 'q3-3-1', type: 'multiple-choice', questionText: { de: 'Was ist der unbestimmte Artikel im Singular?', en: 'What is the indefinite article in the singular?', ar: 'ما هي أداة النكرة في المفرد؟' }, options: [{ de: 'ⲟⲩ', en: 'ou', ar: 'أو' }, { de: 'ϩⲁⲛ', en: 'han', ar: 'هان' }, { de: 'ⲡⲁ', en: 'pa', ar: 'با' }], correctAnswerIndex: 0 },
+            { id: 'q3-3-2', type: 'fill-in-the-blank', questionText: { de: 'Wie sagt man "eine Schwester" auf Koptisch?', en: 'How do you say "a sister" in Coptic?', ar: 'كيف تقول "أخت" بالقبطية؟' }, correctAnswer: 'ⲟⲩⲥⲱⲛⲓ' },
+            { id: 'q3-3-3', type: 'multiple-choice', questionText: { de: 'Welcher Artikel bedeutet "einige"?', en: 'Which article means "some"?', ar: 'أي أداة تعني "بعض"؟' }, options: [{ de: 'ⲟⲩ', en: 'ou', ar: 'أو' }, { de: 'ⲛⲓ', en: 'ni', ar: 'ني' }, { de: 'ϩⲁⲛ', en: 'han', ar: 'هان' }], correctAnswerIndex: 2 },
+            { id: 'q3-3-4', type: 'fill-in-the-blank', questionText: { de: 'Schreibe "einige Häuser" auf Koptisch.', en: 'Write "some houses" in Coptic.', ar: 'اكتب "بعض البيوت" بالقبطية.' }, correctAnswer: 'ϩⲁⲛⲏⲓ' },
+        ]
+    },
+    'q4-1': {
+        id: 'q4-1', lessonId: 'l4-1', title: { de: 'Test: Der bestimmte Artikel', en: 'Quiz: The Definite Article', ar: 'اختبار: أداة التعريف' }, passScore: 80,
+        questions: [
+            { id: 'q4-1-1', type: 'fill-in-the-blank', questionText: { de: 'Füge den korrekten Artikel für "der Mann" ein: ___ ⲣⲱⲙⲓ', en: 'Insert the correct article for "the man": ___ ⲣⲱⲙⲓ', ar: 'أدخل الأداة الصحيحة لكلمة "الرجل": ___ ⲣⲱⲙⲓ' }, correctAnswer: 'ⲡ̀' },
+            { id: 'q4-1-2', type: 'multiple-choice', questionText: { de: 'Welcher Artikel wird für weibliche Substantive verwendet?', en: 'Which article is used for feminine nouns?', ar: 'أي أداة تستخدم للأسماء المؤنثة؟' }, options: [{ de: 'ⲡ̀', en: 'ⲡ̀', ar: 'ⲡ̀' }, { de: 'ⲧ̀', en: 'ⲧ̀', ar: 'ⲧ̀' }, { de: 'ⲛⲓ', en: 'ⲛⲓ', ar: 'ⲛⲓ' }], correctAnswerIndex: 1 },
+            { id: 'q4-1-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲛⲓⲣⲱⲙⲓ"?', en: 'What does "ⲛⲓⲣⲱⲙⲓ" mean?', ar: 'ما معنى "ⲛⲓⲣⲱⲙⲓ"؟' }, options: [{ de: 'der Mann', en: 'the man', ar: 'الرجل' }, { de: 'die Frau', en: 'the woman', ar: 'المرأة' }, { de: 'die Menschen', en: 'the people', ar: 'الناس' }], correctAnswerIndex: 2 },
+            { id: 'q4-1-4', type: 'fill-in-the-blank', questionText: { de: 'Der Artikel für plurale Substantive ist ___.', en: 'The article for plural nouns is ___.', ar: 'أداة الجمع هي ___.' }, correctAnswer: 'ⲛⲓ' },
+            { id: 'q4-1-5', type: 'multiple-choice', questionText: { de: 'Was ist der korrekte Ausdruck für "die Frau"?', en: 'What is the correct phrase for "the woman"?', ar: 'ما هي العبارة الصحيحة لـ "المرأة"؟' }, options: [{ de: 'ⲡ̀ⲥ̀ϩⲓⲙⲓ', en: 'pi-shimi', ar: 'بي سيمي' }, { de: 'ⲧ̀ⲥ̀ϩⲓⲙⲓ', en: 'ti-shimi', ar: 'تي سيمي' }, { de: 'ⲛⲓⲥ̀ϩⲓⲙⲓ', en: 'ni-shimi', ar: 'ني سيمي' }], correctAnswerIndex: 1 },
+            { id: 'q4-1-6', type: 'fill-in-the-blank', questionText: { de: 'Schreibe "der Vater" auf Koptisch: ___ ⲓⲱⲧ', en: 'Write "the father" in Coptic: ___ ⲓⲱⲧ', ar: 'اكتب "الأب" بالقبطية: ___ ⲓⲱⲧ' }, correctAnswer: 'ⲡ̀' },
+            { id: 'q4-1-7', type: 'multiple-choice', questionText: { de: 'Welcher Artikel ist maskulin?', en: 'Which article is masculine?', ar: 'أي أداة هي للمذكر؟' }, options: [{ de: 'ⲡ̀', en: 'ⲡ̀', ar: 'ⲡ̀' }, { de: 'ⲧ̀', en: 'ⲧ̀', ar: 'ⲧ̀' }, { de: 'ⲛⲓ', en: 'ⲛⲓ', ar: 'ⲛⲓ' }], correctAnswerIndex: 0 },
+            { id: 'q4-1-8', type: 'fill-in-the-blank', questionText: { de: 'Füge den korrekten Artikel ein: ___ ⲙⲁⲁⲩ (die Mutter)', en: 'Insert the correct article: ___ ⲙⲁⲁⲩ (the mother)', ar: 'أدخل الأداة الصحيحة: ___ ⲙⲁⲁⲩ (الأم)' }, correctAnswer: 'ⲧ̀' },
+        ]
+    },
+     'q4-2': {
+        id: 'q4-2', lessonId: 'l4-2', title: { de: 'Test: Artikel vor Vokalen', en: 'Quiz: Articles Before Vowels', ar: 'اختبار: أدوات التعريف قبل حروف العلة' }, passScore: 80,
+        questions: [
+            { id: 'q4-2-1', type: 'multiple-choice', questionText: { de: 'Wie ändert sich ⲧ̀ vor einem Vokal?', en: 'How does ⲧ̀ change before a vowel?', ar: 'كيف تتغير ⲧ̀ قبل حرف متحرك؟' }, options: [{ de: 'ⲑ-', en: 'ⲑ-', ar: 'ⲑ-' }, { de: 'ⲡ-', en: 'ⲡ-', ar: 'ⲡ-' }, { de: 'ⲛⲓ-', en: 'ⲛⲓ-', ar: 'ⲛⲓ-' }], correctAnswerIndex: 0 },
+            { id: 'q4-2-2', type: 'fill-in-the-blank', questionText: { de: 'Der Artikel für "der Engel" ist ___.', en: 'The article for "the angel" is ___.', ar: 'أداة "الملاك" هي ___.' }, correctAnswer: 'ⲡ̀' },
+            { id: 'q4-2-3', type: 'multiple-choice', questionText: { de: 'Was ist korrekt für "die Engel"?', en: 'What is correct for "the angels"?', ar: 'ما هو الصحيح لـ "الملائكة"؟' }, options: [{ de: 'ⲛ̀ⲁ̀ⲅⲅⲉⲗⲟⲥ', en: 'n-angelos', ar: 'ن-أنجيلوس' }, { de: 'ⲛⲓ̀ⲁ̀ⲅⲅⲉⲗⲟⲥ', en: 'ni-angelos', ar: 'ني-أنجيلوس' }], correctAnswerIndex: 1 },
+        ]
+    },
+    'q5-1': {
+        id: 'q5-1', lessonId: 'l5-1', title: { de: 'Test: Verben I', en: 'Quiz: Verbs I', ar: 'اختبار: الأفعال 1' }, passScore: 80,
+        questions: [
+            { id: 'q5-1-1', type: 'multiple-choice', questionText: { de: 'Was ist das Präfix für "ich" im Präsens?', en: 'What is the prefix for "I" in the present tense?', ar: 'ما هي البادئة لـ "أنا" في المضارع؟' }, options: [{ de: 'ⲕ-', en: 'k-', ar: 'ك-' }, { de: 'ϯ-', en: 'ti-', ar: 'تي-' }, { de: 'ϥ-', en: 'f-', ar: 'ف-' }], correctAnswerIndex: 1 },
+            { id: 'q5-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "hören" ist ___.', en: 'The Coptic word for "to hear" is ___.', ar: 'الكلمة القبطية لـ "يسمع" هي ___.' }, correctAnswer: 'ⲥⲱⲧⲉⲙ' },
+            { id: 'q5-1-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ϥⲥⲱⲧⲉⲙ"?', en: 'What does "ϥⲥⲱⲧⲉⲙ" mean?', ar: 'ما معنى "ϥⲥⲱⲧⲉⲙ"؟' }, options: [{ de: 'ich höre', en: 'I hear', ar: 'أنا أسمع' }, { de: 'er hört', en: 'he hears', ar: 'هو يسمع' }, { de: 'sie hören', en: 'they hear', ar: 'هم يسمعون' }], correctAnswerIndex: 1 },
+            { id: 'q5-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲧⲉⲛⲥⲱⲧⲉⲙ"?', en: 'What does "ⲧⲉⲛⲥⲱⲧⲉⲙ" mean?', ar: 'ما معنى "ⲧⲉⲛⲥⲱⲧⲉⲙ"؟' }, options: [{ de: 'wir hören', en: 'we hear', ar: 'نحن نسمع' }, { de: 'ihr hört', en: 'you hear', ar: 'أنتم تسمعون' }, { de: 'sie hören', en: 'they hear', ar: 'هم يسمعون' }], correctAnswerIndex: 0 },
+            { id: 'q5-1-5', type: 'fill-in-the-blank', questionText: { de: 'Schreibe "sie hört" auf Koptisch.', en: 'Write "she hears" in Coptic.', ar: 'اكتب "هي تسمع" بالقبطية.' }, correctAnswer: 'ⲥⲥⲱⲧⲉⲙ' },
+            { id: 'q5-1-6', type: 'multiple-choice', questionText: { de: 'Welches Pronomen passt zum Präfix ⲕ-?', en: 'Which pronoun corresponds to the prefix ⲕ-?', ar: 'أي ضمير يتوافق مع البادئة ⲕ-؟' }, options: [{ de: 'ich', en: 'I', ar: 'أنا' }, { de: 'du (m.)', en: 'you (m.)', ar: 'أنت' }, { de: 'er', en: 'he', ar: 'هو' }], correctAnswerIndex: 1 },
+            { id: 'q5-1-7', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ⲥⲉ___ (sie hören)', en: 'Complete: ⲥⲉ___ (they hear)', ar: 'أكمل: ⲥⲉ___ (هم يسمعون)' }, correctAnswer: 'ⲥⲱⲧⲉⲙ' },
+        ]
+    },
+    'q5-2': {
+        id: 'q5-2', lessonId: 'l5-2', title: { de: 'Test: Perfekt', en: 'Quiz: Perfect Tense', ar: 'اختبار: الماضي' }, passScore: 80,
+        questions: [
+            { id: 'q5-2-1', type: 'multiple-choice', questionText: { de: 'Welches Präfix wird für die Vergangenheit verwendet?', en: 'Which prefix is used for the past tense?', ar: 'أي بادئة تستخدم لزمن الماضي؟' }, options: [{de: 'ϯ-', en: 'ti-', ar: 'تي-'}, {de: 'ⲁ-', en: 'a-', ar: 'أ-'}, {de: 'ⲉ-', en: 'e-', ar: 'إ-'}], correctAnswerIndex: 1 },
+            { id: 'q5-2-2', type: 'fill-in-the-blank', questionText: { de: 'Wie sagt man "ich hörte"?', en: 'How do you say "I heard"?', ar: 'كيف تقول "أنا سمعت"؟' }, correctAnswer: 'ⲁⲓⲥⲱⲧⲉⲙ' },
+            { id: 'q5-2-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲁⲩⲥⲱⲧⲉⲙ"?', en: 'What does "ⲁⲩⲥⲱⲧⲉⲙ" mean?', ar: 'ما معنى "ⲁⲩⲥⲱⲧⲉⲙ"؟' }, options: [{de: 'wir hörten', en: 'we heard', ar: 'نحن سمعنا'}, {de: 'ihr hörtet', en: 'you heard', ar: 'أنتم سمعتم'}, {de: 'sie hörten', en: 'they heard', ar: 'هم سمعوا'}], correctAnswerIndex: 2 },
+            { id: 'q5-2-4', type: 'multiple-choice', questionText: { de: 'Welches Pronomen passt zu "ⲁⲕ..."?', en: 'Which pronoun corresponds to "ⲁⲕ..."?', ar: 'أي ضمير يتوافق مع "ⲁⲕ..."؟' }, options: [{de: 'ich', en: 'I', ar: 'أنا'}, {de: 'du (m.)', en: 'you (m.)', ar: 'أنت'}, {de: 'er', en: 'he', ar: 'هو'}], correctAnswerIndex: 1 },
+        ]
+    },
+     'q5-3': {
+        id: 'q5-3', lessonId: 'l5-3', title: { de: 'Test: Futur', en: 'Quiz: Future Tense', ar: 'اختبار: المستقبل' }, passScore: 80,
+        questions: [
+            { id: 'q5-3-1', type: 'multiple-choice', questionText: { de: 'Welches Präfix wird für die Zukunft verwendet?', en: 'Which prefix is used for the future tense?', ar: 'أي بادئة تستخدم لزمن المستقبل؟' }, options: [{de: 'ϯ-', en: 'ti-', ar: 'تي-'}, {de: 'ⲁ-', en: 'a-', ar: 'أ-'}, {de: 'ⲉ-', en: 'e-', ar: 'إ-'}], correctAnswerIndex: 2 },
+            { id: 'q5-3-2', type: 'fill-in-the-blank', questionText: { de: 'Wie sagt man "er wird hören"?', en: 'How do you say "he will hear"?', ar: 'كيف تقول "هو سيسمع"؟' }, correctAnswer: 'ⲉϥⲉⲥⲱⲧⲉⲙ' },
+            { id: 'q5-3-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲉⲛⲉⲥⲱⲧⲉⲙ"?', en: 'What does "ⲉⲛⲉⲥⲱⲧⲉⲙ" mean?', ar: 'ما معنى "ⲉⲛⲉⲥⲱⲧ≉ⲙ"؟' }, options: [{de: 'wir werden hören', en: 'we will hear', ar: 'نحن سنسمع'}, {de: 'ihr werdet hören', en: 'you will hear', ar: 'أنتم ستسمعون'}, {de: 'sie werden hören', en: 'they will hear', ar: 'هم سيسمعون'}], correctAnswerIndex: 0 },
+        ]
+    },
+    'q6-1': { id: 'q6-1', lessonId: 'l6-1', title: { de: 'Test: Personalpronomen', en: 'Quiz: Personal Pronouns', ar: 'اختبار: الضمائر الشخصية' }, passScore: 80, questions: [ { id: 'q6-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲁⲛⲟⲕ"?', en: 'What does "ⲁⲛⲟⲕ" mean?', ar: 'ما معنى "ⲁⲛⲟⲕ"؟' }, options: [{de: 'Ich', en: 'I', ar: 'أنا'}, {de: 'Wir', en: 'We', ar: 'نحن'}, {de: 'Er', en: 'He', ar: 'هو'}], correctAnswerIndex: 0 }, { id: 'q6-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das Pronomen für "du (weiblich)" ist ___.', en: 'The pronoun for "you (feminine)" is ___.', ar: 'الضمير لـ "أنتِ" هو ___.' }, correctAnswer: 'ⲛ̀ⲑⲟ' }, { id: 'q6-1-3', type: 'multiple-choice', questionText: { de: 'Welches Pronomen ist "ⲛ̀ⲑⲟϥ"?', en: 'Which pronoun is "ⲛ̀ⲑⲟϥ"?', ar: 'أي ضمير هو "ⲛ̀ⲑⲟϥ"؟' }, options: [{de: 'sie', en: 'she', ar: 'هي'}, {de: 'er', en: 'he', ar: 'هو'}, {de: 'es', en: 'it', ar: 'هو/هي لغير العاقل'}], correctAnswerIndex: 1 }, { id: 'q6-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲁⲛⲟⲛ"?', en: 'What does "ⲁⲛⲟⲛ" mean?', ar: 'ما معنى "ⲁⲛⲟⲛ"؟' }, options: [{de: 'ihr', en: 'you (pl.)', ar: 'أنتم'}, {de: 'wir', en: 'we', ar: 'نحن'}, {de: 'sie (pl.)', en: 'they', ar: 'هم'}], correctAnswerIndex: 1 }, { id: 'q6-1-5', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ___ ⲡⲉ ⲡⲁⲥⲟⲛ (Du (m.) bist mein Bruder)', en: 'Complete: ___ ⲡⲉ ⲡⲁⲥⲟⲛ (You (m.) are my brother)', ar: 'أكمل: ___ ⲡⲉ ⲡⲁⲥⲟⲛ (أنت أخي)' }, correctAnswer: 'ⲛ̀ⲑⲟⲕ' }, ] },
+    'q6-2': {
+        id: 'q6-2', lessonId: 'l6-2', title: { de: 'Test: Possessivartikel', en: 'Quiz: Possessive Articles', ar: 'اختبار: أدوات الملكية' }, passScore: 80,
+        questions: [
+            { id: 'q6-2-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲡⲁⲓⲱⲧ"?', en: 'What does "ⲡⲁⲓⲱⲧ" mean?', ar: 'ما معنى "ⲡⲁⲓⲱⲧ"؟' }, options: [{ de: 'dein Vater', en: 'your father', ar: 'أبوك' }, { de: 'mein Vater', en: 'my father', ar: 'أبي' }, { de: 'sein Vater', en: 'his father', ar: 'أبوه' }], correctAnswerIndex: 1 },
+            { id: 'q6-2-2', type: 'fill-in-the-blank', questionText: { de: 'Wie sagt man "meine Mutter"?', en: 'How do you say "my mother"?', ar: 'كيف تقول "أمي"؟' }, correctAnswer: 'ⲧⲁⲙⲁⲁⲩ' },
+            { id: 'q6-2-3', type: 'multiple-choice', questionText: { de: 'Welcher Artikel wird für "dein" (zu einem Mann) mit einem maskulinen Substantiv verwendet?', en: 'Which article is used for "your" (to a male) with a masculine noun?', ar: 'أي أداة تستخدم لـ "لك" (للمذكر) مع اسم مذكر؟' }, options: [{ de: 'ⲡⲁ-', en: 'pa-', ar: 'با-' }, { de: 'ⲧⲉⲕ-', en: 'tek-', ar: 'تيك-' }, { de: 'ⲡⲉⲕ-', en: 'pek-', ar: 'بيك-' }], correctAnswerIndex: 2 },
+        ]
+    },
+    'q6-3': {
+        id: 'q6-3', lessonId: 'l6-3', title: { de: 'Test: Demonstrativpronomen', en: 'Quiz: Demonstrative Pronouns', ar: 'اختبار: ضمائر الإشارة' }, passScore: 80,
+        questions: [
+            { id: 'q6-3-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲡⲁⲓ"?', en: 'What does "ⲡⲁⲓ" mean?', ar: 'ما معنى "ⲡⲁⲓ"؟' }, options: [{ de: 'dieser (m.)', en: 'this (m.)', ar: 'هذا' }, { de: 'diese (f.)', en: 'this (f.)', ar: 'هذه' }, { de: 'diese (pl.)', en: 'these', ar: 'هؤلاء' }], correctAnswerIndex: 0 },
+            { id: 'q6-3-2', type: 'fill-in-the-blank', questionText: { de: 'Wie sagt man "diese (pl.)"?', en: 'How do you say "these (pl.)"?', ar: 'كيف تقول "هؤلاء"؟' }, correctAnswer: 'ⲛⲁⲓ' },
+            { id: 'q6-3-3', type: 'multiple-choice', questionText: { de: 'Vervollständige: ___ ⲧⲉ ⲧ̀ⲥ̀ϩⲓⲙⲓ', en: 'Complete: ___ ⲧⲉ ⲧ̀ⲥ̀ϩⲓⲙⲓ', ar: 'أكمل: ___ ⲧⲉ ⲧ̀ⲥ̀ϩⲓⲙⲓ' }, options: [{ de: 'ⲡⲁⲓ', en: 'pai', ar: 'باي' }, { de: 'ⲧⲁⲓ', en: 'tai', ar: 'تاي' }, { de: 'ⲛⲁⲓ', en: 'nai', ar: 'ناي' }], correctAnswerIndex: 1 },
+        ]
+    },
+    'q7-1': { id: 'q7-1', lessonId: 'l7-1', title: { de: 'Test: Adjektive', en: 'Quiz: Adjectives', ar: 'اختبار: الصفات' }, passScore: 80, questions: [ { id: 'q7-1-1', type: 'multiple-choice', questionText: { de: 'Wo steht das Adjektiv im Koptischen normalerweise?', en: 'Where does the adjective usually stand in Coptic?', ar: 'أين تأتي الصفة عادة في القبطية؟' }, options: [{de: 'Vor dem Substantiv', en: 'Before the noun', ar: 'قبل الاسم'}, {de: 'Nach dem Substantiv', en: 'After the noun', ar: 'بعد الاسم'}], correctAnswerIndex: 1 }, { id: 'q7-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "groß" ist ___.', en: 'The Coptic word for "big" is ___.', ar: 'الكلمة القبطية لـ "كبير" هي ___.' }, correctAnswer: 'ⲛⲓϣϯ' }, { id: 'q7-1-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲡ̀ⲣⲱⲙⲓ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ"?', en: 'What does "ⲡ̀ⲣⲱⲙⲓ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ" mean?', ar: 'ما معنى "ⲡ̀ⲣⲱⲙⲓ ⲛ̀ⲁ̀ⲅⲁⲑⲟⲥ"؟' }, options: [{de: 'der böse Mann', en: 'the evil man', ar: 'الرجل الشرير'}, {de: 'der Mann ist gut', en: 'the man is good', ar: 'الرجل صالح'}, {de: 'der gute Mann', en: 'the good man', ar: 'الرجل الصالح'}], correctAnswerIndex: 2 }, { id: 'q7-1-4', type: 'multiple-choice', questionText: { de: 'Welches Wort verbindet oft Substantiv und Adjektiv?', en: 'Which word often connects the noun and the adjective?', ar: 'أي كلمة تربط غالبًا بين الاسم والصفة؟' }, options: [{de: 'ⲡⲉ', en: 'pe', ar: 'بي'}, {de: 'ⲛ̀', en: 'en', ar: 'إن'}, {de: 'ⲅⲁⲣ', en: 'gar', ar: 'غار'}], correctAnswerIndex: 1 }, { id: 'q7-1-5', type: 'fill-in-the-blank', questionText: { de: 'Schreibe "das große Haus": ⲡ̀ⲏⲓ ⲛ̀___', en: 'Write "the big house": ⲡ̀ⲏⲓ ⲛ̀___', ar: 'اكتب "البيت الكبير": ⲡ̀ⲏⲓ ⲛ̀___' }, correctAnswer: 'ⲛⲓϣϯ' }, ] },
+    'q8-1': { id: 'q8-1', lessonId: 'l8-1', title: { de: 'Test: Präpositionen', en: 'Quiz: Prepositions', ar: 'اختبار: حروف الجر' }, passScore: 80, questions: [ { id: 'q8-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ϧⲉⲛ"?', en: 'What does "ϧⲉⲛ" mean?', ar: 'ما معنى "ϧⲉⲛ"؟' }, options: [{de: 'mit', en: 'with', ar: 'مع'}, {de: 'auf', en: 'on', ar: 'على'}, {de: 'in', en: 'in', ar: 'في'}], correctAnswerIndex: 2 }, { id: 'q8-1-2', type: 'fill-in-the-blank', questionText: { de: 'Die Präposition für "mit" ist ___.', en: 'The preposition for "with" is ___.', ar: 'حرف الجر لـ "مع" هو ___.' }, correctAnswer: 'ⲛⲉⲙ' }, { id: 'q8-1-3', type: 'multiple-choice', questionText: { de: 'Wo steht die Präposition im Verhältnis zum Substantiv?', en: 'Where does the preposition stand in relation to the noun?', ar: 'أين يأتي حرف الجر بالنسبة للاسم؟' }, options: [{de: 'Davor', en: 'Before', ar: 'قبله'}, {de: 'Danach', en: 'After', ar: 'بعده'}], correctAnswerIndex: 0 }, { id: 'q8-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ϧⲉⲛ ⲡ̀ⲏⲓ"?', en: 'What does "ϧⲉⲛ ⲡ̀ⲏⲓ" mean?', ar: 'ما معنى "ϧⲉⲛ ⲡ̀ⲏⲓ"؟' }, options: [{de: 'zum Haus', en: 'to the house', ar: 'إلى البيت'}, {de: 'im Haus', en: 'in the house', ar: 'في البيت'}, {de: 'vom Haus', en: 'from the house', ar: 'من البيت'}], correctAnswerIndex: 1 }, { id: 'q8-1-5', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ___ ⲡ̀ⲓⲱⲧ (mit dem Vater)', en: 'Complete: ___ ⲡ̀ⲓⲱⲧ (with the father)', ar: 'أكمل: ___ ⲡ̀ⲓⲱⲧ (مع الأب)' }, correctAnswer: 'ⲛⲉⲙ' }, ] },
+    'q8-2': {
+        id: 'q8-2', lessonId: 'l8-2', title: { de: 'Test: Weitere Präpositionen', en: 'Quiz: More Prepositions', ar: 'اختبار: المزيد من حروف الجر' }, passScore: 80,
+        questions: [
+            { id: 'q8-2-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet die Präposition "ⲉ̀"?', en: 'What does the preposition "ⲉ̀" mean?', ar: 'ما معنى حرف الجر "ⲉ̀"؟' }, options: [{ de: 'auf', en: 'on', ar: 'على' }, { de: 'von', en: 'from', ar: 'من' }, { de: 'zu', en: 'to', ar: 'إلى' }], correctAnswerIndex: 2 },
+            { id: 'q8-2-2', type: 'fill-in-the-blank', questionText: { de: 'Die Präposition für "auf" ist ___.', en: 'The preposition for "on" is ___.', ar: 'حرف الجر لـ "على" هو ___.' }, correctAnswer: 'ϩⲓϫⲉⲛ' },
+            { id: 'q8-2-3', type: 'multiple-choice', questionText: { de: 'Welche Präposition bedeutet "bis"?', en: 'Which preposition means "until"?', ar: 'أي حرف جر يعني "حتى"؟' }, options: [{ de: 'ⲉ̀ⲃⲟⲗ', en: 'evol', ar: 'إيڤول' }, { de: 'ϣⲁ', en: 'sha', ar: 'شا' }], correctAnswerIndex: 1 },
+        ]
+    },
+    'q9-1': { id: 'q9-1', lessonId: 'l9-1', title: { de: 'Test: Fragesätze', en: 'Quiz: Questions', ar: 'اختبار: الجمل الاستفهامية' }, passScore: 80, questions: [ { id: 'q9-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲁϣ"?', en: 'What does "ⲁϣ" mean?', ar: 'ما معنى "ⲁϣ"؟' }, options: [{de: 'Wer?', en: 'Who?', ar: 'من؟'}, {de: 'Was?', en: 'What?', ar: 'ماذا؟'}, {de: 'Wo?', en: 'Where?', ar: 'أين؟'}], correctAnswerIndex: 1 }, { id: 'q9-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das Fragewort für "wer?" ist ___.', en: 'The question word for "who?" is ___.', ar: 'كلمة الاستفهام لـ "من؟" هي ___.' }, correctAnswer: 'ⲛⲓⲙ' }, { id: 'q9-1-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲁϣ ⲡⲉ ⲡⲁⲓ"?', en: 'What does "ⲁϣ ⲡⲉ ⲡⲁⲓ" mean?', ar: 'ما معنى "ⲁϣ ⲡⲉ ⲡⲁⲓ"؟' }, options: [{de: 'Wer ist das?', en: 'Who is this?', ar: 'من هذا؟'}, {de: 'Was ist das?', en: 'What is this?', ar: 'ما هذا؟'}, {de: 'Warum ist das?', en: 'Why is this?', ar: 'لماذا هذا؟'}], correctAnswerIndex: 1 }, { id: 'q9-1-4', type: 'multiple-choice', questionText: { de: 'Wo steht das Fragewort normalerweise?', en: 'Where does the question word usually stand?', ar: 'أين تأتي كلمة الاستفهام عادة؟' }, options: [{de: 'Am Satzende', en: 'At the end of the sentence', ar: 'في نهاية الجملة'}, {de: 'In der Satzmitte', en: 'In the middle of the sentence', ar: 'في منتصف الجملة'}, {de: 'Am Satzanfang', en: 'At the beginning of the sentence', ar: 'في بداية الجملة'}], correctAnswerIndex: 2 }, { id: 'q9-1-5', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ___ ⲡⲉ ⲡ̀ⲣⲱⲙⲓ (Wer ist der Mann?)', en: 'Complete: ___ ⲡⲉ ⲡ̀ⲣⲱⲙⲓ (Who is the man?)', ar: 'أكمل: ___ ⲡⲉ ⲡ̀ⲣⲱⲙⲓ (من هو الرجل؟)' }, correctAnswer: 'ⲛⲓⲙ' }, ] },
+     'q9-2': {
+        id: 'q9-2', lessonId: 'l9-2', title: { de: 'Test: Konjunktionen', en: 'Quiz: Conjunctions', ar: 'اختبار: أدوات الربط' }, passScore: 80,
+        questions: [
+            { id: 'q9-2-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲛⲉⲙ"?', en: 'What does "ⲛⲉⲙ" mean?', ar: 'ما معنى "ⲛⲉⲙ"؟' }, options: [{ de: 'aber', en: 'but', ar: 'لكن' }, { de: 'und', en: 'and', ar: 'و' }, { de: 'oder', en: 'or', ar: 'أو' }], correctAnswerIndex: 1 },
+            { id: 'q9-2-2', type: 'fill-in-the-blank', questionText: { de: 'Die Konjunktion für "aber" ist ___.', en: 'The conjunction for "but" is ___.', ar: 'أداة الربط لـ "لكن" هي ___.' }, correctAnswer: 'ⲁⲗⲗⲁ' },
+            { id: 'q9-2-3', type: 'multiple-choice', questionText: { de: 'Welches Wort bedeutet "dass" oder "weil"?', en: 'Which word means "that" or "because"?', ar: 'أي كلمة تعني "أن" أو "لأن"؟' }, options: [{ de: 'ϫⲉ', en: 'je', ar: 'جي' }, { de: 'ⲏ', en: 'e', ar: 'إي' }], correctAnswerIndex: 0 },
+        ]
+    },
+    'q10-1': { id: 'q10-1', lessonId: 'l10-1', title: { de: 'Test: Begrüßungen', en: 'Quiz: Greetings', ar: 'اختبار: التحيات' }, passScore: 80, questions: [ { id: 'q10-1-1', type: 'multiple-choice', questionText: { de: 'Wie sagt man "Hallo" auf Koptisch?', en: 'How do you say "Hello" in Coptic?', ar: 'كيف تقول "مرحباً" بالقبطية؟' }, options: [ { de: 'ⲛⲟϥⲣⲓ', en: 'nofri', ar: 'نوفري' }, { de: 'ⲥ̀ⲙⲟⲩ', en: 'smou', ar: 'سمو' } ], correctAnswerIndex: 0 }, { id: 'q10-1-2', type: 'fill-in-the-blank', questionText: { de: 'Die Antwort auf "Geh in Frieden!" ist "Und mit deinem ___".', en: 'The response to "Go in peace!" is "And with your ___".', ar: 'الرد على "اذهب بسلام!" هو "ومع ___ أيضًا".' }, correctAnswer: 'Geiste' }, { id: 'q10-1-3', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲁϣ ⲡⲉ ⲡⲉⲕⲣⲁⲛ"?', en: 'What does "ⲁϣ ⲡⲉ ⲡⲉⲕⲣⲁⲛ" mean?', ar: 'ما معنى "ⲁϣ ⲡⲉ ⲡⲉⲕⲣⲁⲛ"؟' }, options: [{de: 'Wie geht es dir?', en: 'How are you?', ar: 'كيف حالك؟'}, {de: 'Wie ist dein Name?', en: 'What is your name?', ar: 'ما اسمك؟'}], correctAnswerIndex: 1 }, { id: 'q10-1-4', type: 'fill-in-the-blank', questionText: { de: 'Die koptische Phrase für "Geh in Frieden" ist ⲟⲩϫⲁⲓ ϧⲉⲛ ___.', en: 'The Coptic phrase for "Go in peace" is ⲟⲩϫⲁⲓ ϧⲉⲛ ___.', ar: 'العبارة القبطية لـ "اذهب بسلام" هي ⲟⲩϫⲁⲓ ϧⲉⲛ ___.' }, correctAnswer: 'Ⲡ̀ϭⲟⲓⲥ' }, { id: 'q10-1-5', type: 'multiple-choice', questionText: { de: 'Was antwortet man auf "Hallo"?', en: 'What is the response to "Hello"?', ar: 'ما هو الرد على "مرحباً"؟' }, options: [{de: 'ⲛⲟϥⲣⲓ', en: 'nofri', ar: 'نوفري'}, {de: 'ⲟⲩϫⲁⲓ', en: 'oujai', ar: 'أوجاي'}], correctAnswerIndex: 0 }, ] },
+    'q11-1': { id: 'q11-1', lessonId: 'l11-1', title: { de: 'Test: In der Kirche', en: 'Quiz: In the Church', ar: 'اختبار: في الكنيسة' }, passScore: 80, questions: [ { id: 'q11-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲉⲕⲕⲗⲏⲥⲓⲁ"?', en: 'What does "ⲉⲕⲕⲗⲏⲥⲓⲁ" mean?', ar: 'ما معنى "ⲉⲕⲕⲗⲏⲥⲓⲁ"؟' }, options: [{de: 'Haus', en: 'House', ar: 'بيت'}, {de: 'Schule', en: 'School', ar: 'مدرسة'}, {de: 'Kirche', en: 'Church', ar: 'كنيسة'}], correctAnswerIndex: 2 }, { id: 'q11-1-2', type: 'fill-in-the-blank', questionText: { de: 'Ein Priester auf Koptisch ist ___.', en: 'A priest in Coptic is ___.', ar: 'الكاهن بالقبطية هو ___.' }, correctAnswer: 'ⲟⲩⲏⲃ' }, { id: 'q11-1-3', type: 'multiple-choice', questionText: { de: 'Was ist ein "ⲯⲁⲗⲙⲟⲥ"?', en: 'What is a "ⲯⲁⲗⲙⲟⲥ"?', ar: 'ما هو "ⲯⲁⲗⲙⲟⲥ"؟' }, options: [{de: 'Psalm', en: 'Psalm', ar: 'مزمور'}, {de: 'Lied', en: 'Song', ar: 'أغنية'}, {de: 'Gebet', en: 'Prayer', ar: 'صلاة'}], correctAnswerIndex: 0 }, { id: 'q11-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲉⲩⲭⲏ"?', en: 'What does "ⲉⲩⲭⲏ" mean?', ar: 'ما معنى "ⲉⲩⲭⲏ"؟' }, options: [{de: 'Gebet', en: 'Prayer', ar: 'صلاة'}, {de: 'Glaube', en: 'Faith', ar: 'إيمان'}, {de: 'Hoffnung', en: 'Hope', ar: 'رجاء'}], correctAnswerIndex: 0 }, { id: 'q11-1-5', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ϯϣ̀ⲗⲏⲗ ϧⲉⲛ ___ (Ich bete in der Kirche)', en: 'Complete: ϯϣ̀ⲗⲏⲗ ϧⲉⲛ ___ (I pray in the church)', ar: 'أكمل: ϯϣ̀ⲗⲏⲗ ϧⲉⲛ ___ (أصلي في الكنيسة)' }, correctAnswer: 'ⲧ̀ⲉⲕⲕⲗⲏⲥⲓⲁ' }, { id: 'q11-1-6', type: 'multiple-choice', questionText: { de: 'Das koptische Wort für "Weihrauch" ist...', en: 'The Coptic word for "incense" is...', ar: 'الكلمة القبطية لـ "بخور" هي...' }, options: [{de: 'ⲥ̀ⲧⲟⲓⲛⲟⲩϥⲓ', en: 'stoinoufi', ar: 'اشتينوفي'}, {de: 'ⲇⲓⲁⲕⲱⲛ', en: 'diakon', ar: 'دياكون'}], correctAnswerIndex: 0 }, ] },
+    'q12-1': { id: 'q12-1', lessonId: 'l12-1', title: { de: 'Test: Familie', en: 'Quiz: Family', ar: 'اختبار: العائلة' }, passScore: 80, questions: [ { id: 'q12-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲓⲱⲧ"?', en: 'What does "ⲓⲱⲧ" mean?', ar: 'ما معنى "ⲓⲱⲧ"؟' }, options: [{de: 'Bruder', en: 'Brother', ar: 'أخ'}, {de: 'Vater', en: 'Father', ar: 'أب'}, {de: 'Sohn', en: 'Son', ar: 'ابن'}], correctAnswerIndex: 1 }, { id: 'q12-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "Mutter" ist ___.', en: 'The Coptic word for "mother" is ___.', ar: 'الكلمة القبطية لـ "أم" هي ___.' }, correctAnswer: 'ⲙⲁⲁⲩ' }, { id: 'q12-1-3', type: 'multiple-choice', questionText: { de: 'Was ist ein "ⲥⲟⲛ"?', en: 'What is a "ⲥⲟⲛ"?', ar: 'ما هو "ⲥⲟⲛ"؟' }, options: [{de: 'Schwester', en: 'Sister', ar: 'أخت'}, {de: 'Vater', en: 'Father', ar: 'أب'}, {de: 'Bruder', en: 'Brother', ar: 'أخ'}], correctAnswerIndex: 2 }, { id: 'q12-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ϣⲉⲉⲣⲓ"?', en: 'What does "ϣⲉⲉⲣⲓ" mean?', ar: 'ما معنى "ϣⲉⲉⲣⲓ"؟' }, options: [{de: 'Mutter', en: 'Mother', ar: 'أم'}, {de: 'Schwester', en: 'Sister', ar: 'أخت'}, {de: 'Tochter', en: 'Daughter', ar: 'ابنة'}], correctAnswerIndex: 2 }, { id: 'q12-1-5', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ⲡⲁⲓⲱⲧ ⲛⲉⲙ ___ (mein Vater und meine Mutter)', en: 'Complete: ⲡⲁⲓⲱⲧ ⲛⲉⲙ ___ (my father and my mother)', ar: 'أكمل: ⲡⲁⲓⲱⲧ ⲛⲉⲙ ___ (أبي وأمي)' }, correctAnswer: 'ⲧⲁⲙⲁⲁⲩ' }, { id: 'q12-1-6', type: 'multiple-choice', questionText: { de: 'Das Wort für "Ehemann" ist...', en: 'The word for "husband" is...', ar: 'كلمة "زوج" هي...' }, options: [{de: 'ϩⲁⲓ', en: 'hai', ar: 'هاي'}, {de: 'ϩⲓⲙⲓ', en: 'himi', ar: 'هيمي'}], correctAnswerIndex: 0 }, ] },
+    'q13-1': { id: 'q13-1', lessonId: 'l13-1', title: { de: 'Test: Johannes 3:16', en: 'Quiz: John 3:16', ar: 'اختبار: يوحنا 3: 16' }, passScore: 80, questions: [ { id: 'q13-1-1', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ⲁ̀ⲫⲛⲟⲩϯ ⲙⲉⲓ ⲙ̀ⲡⲓ___', en: 'Complete: ⲁ̀ⲫⲛⲟⲩϯ ⲙⲉⲓ ⲙ̀ⲡⲓ___', ar: 'أكمل: ⲁ̀ⲫⲛⲟⲩϯ ⲙⲉⲓ ⲙ̀ⲡⲓ___' }, correctAnswer: 'ⲕⲟⲥⲙⲟⲥ' }, { id: 'q13-1-2', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲡ̀ⲕⲟⲥⲙⲟⲥ"?', en: 'What does "ⲡ̀ⲕⲟⲥⲙⲟⲥ" mean?', ar: 'ما معنى "ⲡ̀ⲕⲟⲥⲙⲟⲥ"؟' }, options: [{de: 'Himmel', en: 'heaven', ar: 'السماء'}, {de: 'Welt', en: 'world', ar: 'العالم'}, {de: 'Mensch', en: 'man', ar: 'الإنسان'}], correctAnswerIndex: 1 }, { id: 'q13-1-3', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ⲡⲉϥϣⲏⲣⲓ ⲙ̀___ ⲁϥⲧⲏⲓϥ', en: 'Complete: ⲡⲉϥϣⲏⲣⲓ ⲙ̀___ ⲁϥⲧⲏⲓϥ', ar: 'أكمل: ⲡⲉϥϣⲏⲣⲓ ⲙ̀___ ⲁϥⲧⲏⲓϥ' }, correctAnswer: 'ⲙⲁⲩⲁⲧϥ' }, { id: 'q13-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲡⲉϥϣⲏⲣⲓ"?', en: 'What does "ⲡⲉϥϣⲏⲣⲓ" mean?', ar: 'ما معنى "ⲡⲉϥϣⲏⲣⲓ"؟' }, options: [{de: 'sein Sohn', en: 'his Son', ar: 'ابنه'}, {de: 'sein Vater', en: 'his Father', ar: 'أبوه'}, {de: 'sein Bruder', en: 'his Brother', ar: 'أخوه'}], correctAnswerIndex: 0 }, { id: 'q13-1-5', type: 'multiple-choice', questionText: { de: 'Was erhält man durch den Glauben?', en: 'What does one receive through faith?', ar: 'ماذا ينال الإنسان بالإيمان؟' }, options: [{de: 'Reichtum', en: 'riches', ar: 'الغنى'}, {de: 'ewiges Leben', en: 'eternal life', ar: 'الحياة الأبدية'}, {de: 'Macht', en: 'power', ar: 'السلطة'}], correctAnswerIndex: 1 }, ] },
+    'q14-1': { id: 'q14-1', lessonId: 'l14-1', title: { de: 'Test: Liturgie', en: 'Quiz: Liturgy', ar: 'اختبار: القداس' }, passScore: 80, questions: [ { id: 'q14-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲧ̀ϩⲓⲣⲏⲛⲏ"?', en: 'What does "ⲧ̀ϩⲓⲣⲏⲛⲏ" mean?', ar: 'ما معنى "ⲧ̀ϩⲓⲣⲏⲛⲏ"؟' }, options: [{de: 'Liebe', en: 'Love', ar: 'محبة'}, {de: 'Friede', en: 'Peace', ar: 'سلام'}, {de: 'Glaube', en: 'Faith', ar: 'إيمان'}], correctAnswerIndex: 1 }, { id: 'q14-1-2', type: 'fill-in-the-blank', questionText: { de: 'Der Priester sagt: "Friede sei mit euch ___".', en: 'The priest says: "Peace be with you ___".', ar: 'يقول الكاهن: "السلام لـ ___".' }, correctAnswer: 'allen' }, { id: 'q14-1-3', type: 'multiple-choice', questionText: { de: 'Wie antwortet die Gemeinde?', en: 'How does the congregation respond?', ar: 'بماذا يرد الشعب؟' }, options: [{de: 'ⲕⲉ ⲧⲱ ⲡ̀ⲛⲉⲩⲙⲁⲧⲓ ⲥⲟⲩ', en: 'ke to pneumati sou', ar: 'كي تو بنفماتي سو'}, {de: 'ⲁ̀ⲙⲏⲛ', en: 'amen', ar: 'آمين'}], correctAnswerIndex: 0 }, { id: 'q14-1-4', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲡ̀ⲛⲉⲩⲙⲁ"?', en: 'What does "ⲡ̀ⲛⲉⲩⲙⲁ" mean?', ar: 'ما معنى "ⲡ̀ⲛⲉⲩⲙⲁ"؟' }, options: [{de: 'Körper', en: 'Body', ar: 'جسد'}, {de: 'Seele', en: 'Soul', ar: 'نفس'}, {de: 'Geist', en: 'Spirit', ar: 'روح'}], correctAnswerIndex: 2 }, { id: 'q14-1-5', type: 'fill-in-the-blank', questionText: { de: 'Der Friedensgruß ist auch bekannt als die "___ des Friedens".', en: 'The peace greeting is also known as the "___ of peace".', ar: 'تحية السلام تعرف أيضًا بـ "___ السلام".' }, correctAnswer: 'Kuss' }, ] },
+    'q15-1': {
+        id: 'q15-1', lessonId: 'l15-1', title: { de: 'Test: Das Vaterunser', en: 'Quiz: The Lord\'s Prayer', ar: 'اختبار: الصلاة الربانية' }, passScore: 80,
+        questions: [
+            { id: 'q15-1-1', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: Πενιωτ εⲧϧⲉⲛ ___', en: 'Complete: Πενιωτ εⲧϧⲉⲛ ___', ar: 'أكمل: Πενιωτ εⲧϧⲉⲛ ___' }, correctAnswer: 'ⲛⲓⲫⲏⲟⲩⲓ' },
+            { id: 'q15-1-2', type: 'multiple-choice', questionText: { de: 'Was bedeutet "Πενιωτ"?', en: 'What does "Πενιωτ" mean?', ar: 'ما معنى "Πενιωτ"؟' }, options: [{ de: 'Mein Vater', en: 'My Father', ar: 'أبي' }, { de: 'Unser Vater', en: 'Our Father', ar: 'أبانا' }, { de: 'Dein Vater', en: 'Your Father', ar: 'أبوك' }], correctAnswerIndex: 1 },
+            { id: 'q15-1-3', type: 'multiple-choice', questionText: { de: 'Wo ist unser Vater laut dem Gebet?', en: 'Where is our Father according to the prayer?', ar: 'أين أبونا حسب الصلاة؟' }, options: [{ de: 'Auf Erden', en: 'On Earth', ar: 'على الأرض' }, { de: 'Im Himmel', en: 'In heaven', ar: 'في السماء' }], correctAnswerIndex: 1 },
+            { id: 'q15-1-4', type: 'fill-in-the-blank', questionText: { de: 'Vervollständige: ⲙⲁⲣⲉϥⲧⲟⲩⲃⲟ ⲛ̀ϫⲉ ⲡⲉⲕ___', en: 'Complete: ⲙⲁⲣⲉϥⲧⲟⲩⲃⲟ ⲛ̀ϫⲉ ⲡⲉⲕ___', ar: 'أكمل: ⲙⲁⲣⲉϥⲧⲟⲩⲃⲟ ⲛ̀ϫⲉ ⲡⲉⲕ___' }, correctAnswer: 'ⲣⲁⲛ' },
+            { id: 'q15-1-5', type: 'multiple-choice', questionText: { de: 'Was soll kommen?', en: 'What should come?', ar: 'ماذا يجب أن يأتي؟' }, options: [{ de: 'Dein Reich', en: 'Your kingdom', ar: 'ملكوتك' }, { de: 'Dein Brot', en: 'Your bread', ar: 'خبزك' }], correctAnswerIndex: 0 },
+        ]
+    },
+     'q16-1': {
+        id: 'q16-1', lessonId: 'l16-1', title: { de: 'Test: Farben', en: 'Quiz: Colors', ar: 'اختبار: الألوان' }, passScore: 80,
+        questions: [
+            { id: 'q16-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲕⲁⲙⲉ"?', en: 'What does "ⲕⲁⲙⲉ" mean?', ar: 'ما معنى "ⲕⲁⲙⲉ"؟' }, options: [{ de: 'weiß', en: 'white', ar: 'أبيض' }, { de: 'schwarz', en: 'black', ar: 'أسود' }, { de: 'rot', en: 'red', ar: 'أحمر' }], correctAnswerIndex: 1 },
+            { id: 'q16-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "weiß" ist ___.', en: 'The Coptic word for "white" is ___.', ar: 'الكلمة القبطية لـ "أبيض" هي ___.' }, correctAnswer: 'ⲟⲩⲟⲃϣ' },
+            { id: 'q16-1-3', type: 'multiple-choice', questionText: { de: 'Welche Farbe ist "ⲭⲗⲱⲣⲟⲥ"?', en: 'Which color is "ⲭⲗⲱⲣⲟⲥ"?', ar: 'أي لون هو "ⲭⲗⲱⲣⲟⲥ"؟' }, options: [{ de: 'blau', en: 'blue', ar: 'أزرق' }, { de: 'rot', en: 'red', ar: 'أحمر' }, { de: 'grün', en: 'green', ar: 'أخضر' }], correctAnswerIndex: 2 },
+        ]
+    },
+    'q16-2': {
+        id: 'q16-2', lessonId: 'l16-2', title: { de: 'Test: Tiere', en: 'Quiz: Animals', ar: 'اختبار: الحيوانات' }, passScore: 80,
+        questions: [
+            { id: 'q16-2-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲟⲩϩⲟⲣ"?', en: 'What does "ⲟⲩϩⲟⲣ" mean?', ar: 'ما معنى "ⲟⲩϩⲟⲣ"؟' }, options: [{ de: 'Katze', en: 'cat', ar: 'قطة' }, { de: 'Hund', en: 'dog', ar: 'كلب' }, { de: 'Pferd', en: 'horse', ar: 'حصان' }], correctAnswerIndex: 1 },
+            { id: 'q16-2-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "Schaf" ist ___.', en: 'The Coptic word for "sheep" is ___.', ar: 'الكلمة القبطية لـ "خروف" هي ___.' }, correctAnswer: 'ⲉⲥⲱⲟⲩ' },
+            { id: 'q16-2-3', type: 'multiple-choice', questionText: { de: 'Welches Tier ist "ϩⲁⲗⲁⲧ"?', en: 'Which animal is "ϩⲁⲗⲁⲧ"?', ar: 'أي حيوان هو "ϩⲁⲗⲁⲧ"؟' }, options: [{ de: 'Vogel', en: 'bird', ar: 'طائر' }, { de: 'Fisch', en: 'fish', ar: 'سمكة' }, { de: 'Löwe', en: 'lion', ar: 'أسد' }], correctAnswerIndex: 0 },
+        ]
+    },
+    'q17-1': {
+        id: 'q17-1', lessonId: 'l17-1', title: { de: 'Test: Lebensmittel', en: 'Quiz: Food', ar: 'اختبار: الطعام' }, passScore: 80,
+        questions: [
+            { id: 'q17-1-1', type: 'multiple-choice', questionText: { de: 'Was bedeutet "ⲱⲓⲕ"?', en: 'What does "ⲱⲓⲕ" mean?', ar: 'ما معنى "ⲱⲓⲕ"؟' }, options: [{ de: 'Wasser', en: 'water', ar: 'ماء' }, { de: 'Brot', en: 'bread', ar: 'خبز' }, { de: 'Wein', en: 'wine', ar: 'خمر' }], correctAnswerIndex: 1 },
+            { id: 'q17-1-2', type: 'fill-in-the-blank', questionText: { de: 'Das koptische Wort für "Wasser" ist ___.', en: 'The Coptic word for "water" is ___.', ar: 'الكلمة القبطية لـ "ماء" هي ___.' }, correctAnswer: 'ⲙⲱⲟⲩ' },
+            { id: 'q17-1-3', type: 'multiple-choice', questionText: { de: 'Was ist "ⲉⲃⲓⲱ"?', en: 'What is "ⲉⲃⲓⲱ"?', ar: 'ما هو "ⲉⲃⲓⲱ"؟' }, options: [{ de: 'Öl', en: 'oil', ar: 'زيت' }, { de: 'Salz', en: 'salt', ar: 'ملح' }, { de: 'Honig', en: 'honey', ar: 'عسل' }], correctAnswerIndex: 2 },
+        ]
+    }
 };
-
-
-export const LESSONS: Record<string, Lesson> = {
-    // Module 1 Lessons
-    ...Array.from({ length: 8 }, (_, i) => {
-        const letters = letter_keys.slice(i * 4, (i + 1) * 4).map(id => LETTERS[id].uppercase).join('-');
-        return {
-            id: `l_m1_${i + 1}`,
-            moduleId: 'm01',
-            order: i + 1,
-            type: LessonType.ALPHABET,
-            title: { de: `Buchstaben ${i * 4 + 1}-${(i + 1) * 4} (${letters})`, en: `Letters ${i * 4 + 1}-${(i + 1) * 4} (${letters})`, ar: `الحروف ${i * 4 + 1}-${(i + 1) * 4} (${letters})` },
-            levels: [`lev_m1_${i + 1}`],
-            quizId: `qz_m1_${i + 1}`,
-            prerequisites: i > 0 ? [`l_m1_${i}`] : []
-        };
-    }).reduce((acc, lesson) => {
-        acc[lesson.id] = lesson;
-        return acc;
-    }, {} as Record<string, Lesson>),
-    'l_m1_9': { id: 'l_m1_9', moduleId: 'm01', order: 9, type: LessonType.VOCAB, title: { de: 'Grund-Vokabeln', en: 'Basic Vocabulary', ar: 'المفردات الأساسية' }, levels: ['lev_m1_9'], quizId: 'qz_m1_9', prerequisites: ['l_m1_8'] },
-    'l_m1_10': { id: 'l_m1_10', moduleId: 'm01', order: 10, type: LessonType.SENTENCES, title: { de: 'Einfache Sätze', en: 'Simple Sentences', ar: 'جمل بسيطة' }, levels: ['lev_m1_10'], quizId: 'qz_m1_10', prerequisites: ['l_m1_9'] },
-    // Module 2 Lessons
-    'l_m2_1': { id: 'l_m2_1', moduleId: 'm02', order: 1, type: LessonType.PRONUNCIATION, title: { de: 'Vokal-Kombinationen', en: 'Vowel Combinations', ar: 'تركيبات الحروف المتحركة' }, levels: ['lev_m2_1'], quizId: 'qz_m2_1', prerequisites: ['l_m1_10'] },
-    'l_m2_2': { id: 'l_m2_2', moduleId: 'm02', order: 2, type: LessonType.PRONUNCIATION, title: { de: 'Konsonanten-Variationen', en: 'Consonant Variations', ar: 'تنوع نطق الحروف الساكنة' }, levels: ['lev_m2_2'], quizId: 'qz_m2_2', prerequisites: ['l_m2_1'] },
-    'l_m2_3': { id: 'l_m2_3', moduleId: 'm02', order: 3, type: LessonType.PRONUNCIATION, title: { de: 'Spezialkombinationen & Djinkim', en: 'Special Combinations & Djinkim', ar: 'التركيبات الخاصة والجنكم' }, levels: ['lev_m2_3'], quizId: 'qz_m2_3', prerequisites: ['l_m2_2'] },
-};
-
-const module1_lessons = Object.values(LESSONS).filter(l => l.moduleId === 'm01').sort((a, b) => a.order - b.order).map(l => l.id);
-const module2_lessons = Object.values(LESSONS).filter(l => l.moduleId === 'm02').sort((a, b) => a.order - b.order).map(l => l.id);
 
 export const MODULES: Record<string, Module> = {
-    'm01': {
-        id: 'm01',
-        order: 1,
-        title: { de: 'Alphabet', en: 'Alphabet', ar: 'الأبجدية' },
-        lessons: module1_lessons
-    },
-    'm02': {
-        id: 'm02',
-        order: 2,
-        title: { de: 'Aussprache', en: 'Pronunciation', ar: 'النطق' },
-        lessons: module2_lessons
-    },
+    'm1': { id: 'm1', order: 1, title: { de: 'Modul 1: Das Koptische Alphabet', en: 'Module 1: The Coptic Alphabet', ar: 'الوحدة 1: الأبجدية القبطية' }, lessons: ['l1-1', 'l1-2', 'l2-1', 'l2-2', 'l2-3', 'l2-4', 'l2-5', 'l2-6'] },
+    'm2': { id: 'm2', order: 2, title: { de: 'Modul 2: Grundlagen: Zahlen & Substantive', en: 'Module 2: Basics: Numbers & Nouns', ar: 'الوحدة 2: الأساسيات: الأرقام والأسماء' }, lessons: ['l3-1', 'l3-2'] },
+    'm3': { id: 'm3', order: 3, title: { de: 'Modul 3: Artikel', en: 'Module 3: Articles', ar: 'الوحدة 3: أدوات التعريف والتنكير' }, lessons: ['l3-3', 'l4-1', 'l4-2'] },
+    'm4': { id: 'm4', order: 4, title: { de: 'Modul 4: Verben', en: 'Module 4: Verbs', ar: 'الوحدة 4: الأفعال' }, lessons: ['l5-1', 'l5-2', 'l5-3'] },
+    'm5': { id: 'm5', order: 5, title: { de: 'Modul 5: Pronomen', en: 'Module 5: Pronouns', ar: 'الوحدة 5: الضمائر' }, lessons: ['l6-1', 'l6-2', 'l6-3'] },
+    'm6': { id: 'm6', order: 6, title: { de: 'Modul 6: Adjektive', en: 'Module 6: Adjectives', ar: 'الوحدة 6: الصفات' }, lessons: ['l7-1'] },
+    'm7': { id: 'm7', order: 7, title: { de: 'Modul 7: Präpositionen', en: 'Module 7: Prepositions', ar: 'الوحدة 7: حروف الجر' }, lessons: ['l8-1', 'l8-2'] },
+    'm8': { id: 'm8', order: 8, title: { de: 'Modul 8: Satzbau', en: 'Module 8: Sentence Structure', ar: 'الوحدة 8: تركيب الجمل' }, lessons: ['l9-1', 'l9-2'] },
+    'm9': { id: 'm9', order: 9, title: { de: 'Modul 9: Konversation I', en: 'Module 9: Conversation I', ar: 'الوحدة 9: المحادثة 1' }, lessons: ['l10-1'] },
+    'm10': { id: 'm10', order: 10, title: { de: 'Modul 10: Wortschatz I - Kirche', en: 'Module 10: Vocabulary I - Church', ar: 'الوحدة 10: مفردات 1 - الكنيسة' }, lessons: ['l11-1'] },
+    'm11': { id: 'm11', order: 11, title: { de: 'Modul 11: Wortschatz II - Familie', en: 'Module 11: Vocabulary II - Family', ar: 'الوحدة 11: مفردات 2 - العائلة' }, lessons: ['l12-1'] },
+    'm12': { id: 'm12', order: 12, title: { de: 'Modul 12: Bibelverse', en: 'Module 12: Bible Verses', ar: 'الوحدة 12: آيات من الكتاب المقدس' }, lessons: ['l13-1'] },
+    'm13': { id: 'm13', order: 13, title: { de: 'Modul 13: Konversation II - Liturgie', en: 'Module 13: Conversation II - Liturgy', ar: 'الوحدة 13: محادثة 2 - القداس' }, lessons: ['l14-1'] },
+    'm14': { id: 'm14', order: 14, title: { de: 'Modul 14: Gebete', en: 'Module 14: Prayers', ar: 'الوحدة 14: الصلوات' }, lessons: ['l15-1'] },
+    'm15': { id: 'm15', order: 15, title: { de: 'Modul 15: Wortschatz III', en: 'Module 15: Vocabulary III', ar: 'الوحدة 15: مفردات 3' }, lessons: ['l16-1', 'l16-2'] },
+    'm16': { id: 'm16', order: 16, title: { de: 'Modul 16: Wortschatz IV', en: 'Module 16: Vocabulary IV', ar: 'الوحدة 16: مفردات 4' }, lessons: ['l17-1'] }
 };

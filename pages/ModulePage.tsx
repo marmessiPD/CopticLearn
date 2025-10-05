@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MODULES, LESSONS, QUIZZES } from '../constants/data';
 import { useAppContext } from '../context/AppContext';
@@ -10,10 +9,27 @@ const LockIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     </svg>
 );
 
+const CheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" {...props}>
+        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg>
+);
+
 const ModulePage: React.FC = () => {
     const { moduleId } = useParams<{ moduleId: string }>();
     const { t, progress, role } = useAppContext();
     const module = moduleId ? MODULES[moduleId] : undefined;
+    const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+
+    useEffect(() => {
+        try {
+            const completedLessonsRaw = localStorage.getItem('coptic_completed_lessons');
+            const completed = completedLessonsRaw ? JSON.parse(completedLessonsRaw) : [];
+            setCompletedLessons(completed);
+        } catch (error) {
+            console.error("Failed to parse completed lessons from localStorage", error);
+        }
+    }, [moduleId]);
 
     if (!module) {
         return <div>{t({ de: 'Modul nicht gefunden', en: 'Module not found', ar: 'الوحدة غير موجودة' })}</div>;
@@ -42,6 +58,7 @@ const ModulePage: React.FC = () => {
             <div className="space-y-4">
                 {lessons.map((lesson, index) => {
                     const unlocked = isLessonUnlocked(lesson.id);
+                    const isCompleted = completedLessons.includes(lesson.id);
                     return (
                         <div key={lesson.id}>
                             <Link 
@@ -61,7 +78,13 @@ const ModulePage: React.FC = () => {
                                     </div>
                                     <span className="font-semibold">{t(lesson.title)}</span>
                                 </div>
-                                {!unlocked && <LockIcon />}
+                                <div className="flex-shrink-0 w-5 h-5">
+                                    {!unlocked ? (
+                                        <LockIcon />
+                                    ) : isCompleted ? (
+                                        <CheckIcon className="text-green-500" />
+                                    ) : null}
+                                </div>
                             </Link>
                         </div>
                     );
