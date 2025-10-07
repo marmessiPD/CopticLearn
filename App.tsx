@@ -14,7 +14,7 @@ const App: React.FC = () => {
             <HashRouter>
                 <div className="min-h-screen font-sans text-light-text dark:text-dark-text bg-light-secondary dark:bg-dark-primary">
                     <Header />
-                    <main className="p-4 sm:p-6">
+                    <main className="p-2 sm:p-4 md:p-6">
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/module/:moduleId" element={<ModulePage />} />

@@ -16,41 +16,45 @@ const GrammarRuleCard: React.FC<GrammarRuleCardProps> = ({ slide }) => {
     const { t, playSound } = useAppContext();
 
     return (
-        <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
+        <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-4 sm:p-6 max-w-2xl mx-auto">
             {/* Header */}
             <div className="text-center mb-4">
-                <h2 className="text-2xl font-bold text-coptic-blue dark:text-coptic-gold">{t(slide.title)}</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-coptic-blue dark:text-coptic-gold">{t(slide.title)}</h2>
             </div>
 
             {/* Rule */}
-            <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg mb-6">
-                <p className="text-lg">{t(slide.rule)}</p>
-            </div>
-            
+            {slide.rule && (
+                <div className="p-3 sm:p-4 bg-gray-100 dark:bg-gray-800 rounded-lg mb-6">
+                    <p className="text-sm sm:text-lg">{t(slide.rule)}</p>
+                </div>
+            )}
+
             {/* Examples */}
-            <div>
-                 <h3 className="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-300">{t({de: "Beispiele", en: "Examples", ar: "أمثلة"})}</h3>
-                 <div className="space-y-3">
-                    {slide.examples.map((example, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                            <div className="flex items-center gap-4">
-                                <span className="font-coptic text-3xl">{example.coptic}</span>
-                                <div>
-                                    <p className="font-semibold">{t(example.meaning)}</p>
-                                    <p className="text-sm italic text-gray-500 dark:text-gray-400">{example.translit}</p>
+            {slide.examples && slide.examples.length > 0 && (
+                <div>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-3 text-gray-700 dark:text-gray-300">{t({de: "Beispiele", en: "Examples", ar: "أمثلة"})}</h3>
+                    <div className="space-y-3">
+                        {slide.examples.map((example, index) => (
+                        <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg gap-3">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                                <span className="font-coptic text-2xl sm:text-3xl flex-shrink-0">{example.coptic}</span>
+                                <div className="min-w-0 flex-1">
+                                    <p className="font-semibold text-sm sm:text-base">{t(example.meaning)}</p>
+                                    <p className="text-xs sm:text-sm italic text-gray-500 dark:text-gray-400">{example.translit}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={() => playSound(t(example.meaning))}
-                                className="p-2 rounded-full text-coptic-blue dark:text-coptic-gold hover:bg-coptic-blue/10 dark:hover:bg-coptic-gold/10"
+                                className="p-2 rounded-full text-coptic-blue dark:text-coptic-gold hover:bg-coptic-blue/10 dark:hover:bg-coptic-gold/10 min-h-[44px] min-w-[44px] flex items-center justify-center self-end sm:self-auto"
                                 aria-label={t({de: "Beispiel anhören", en: "Listen to example", ar: "استمع للمثال"})}
                             >
                                 <SpeakerIcon/>
                             </button>
                         </div>
-                    ))}
-                 </div>
-            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -24,6 +24,7 @@ const QuizPage: React.FC = () => {
     const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number | string>>({});
     const [isFinished, setIsFinished] = useState(false);
     const [score, setScore] = useState(0);
+    const [wrongQuestions, setWrongQuestions] = useState<Question[]>([]);
 
     if (!quiz || !lesson) {
         return <div>{t({ de: 'Quiz nicht gefunden', en: 'Quiz not found', ar: 'الاختبار غير موجود' })}</div>;
@@ -53,21 +54,28 @@ const QuizPage: React.FC = () => {
 
     const handleSubmit = () => {
         let correctAnswers = 0;
+        const wrongQuestions: Question[] = [];
+
         quiz.questions.forEach(q => {
+            let isCorrect = false;
+
             if (q.type === 'multiple-choice') {
-                if (selectedAnswers[q.id] === q.correctAnswerIndex) {
-                    correctAnswers++;
-                }
+                isCorrect = selectedAnswers[q.id] === q.correctAnswerIndex;
             } else if (q.type === 'fill-in-the-blank') {
                 const answer = (selectedAnswers[q.id] as string) || '';
-                // Simple case-insensitive comparison
-                if (answer.trim().toLowerCase() === q.correctAnswer.toLowerCase()) {
-                    correctAnswers++;
-                }
+                isCorrect = answer.trim().toLowerCase() === q.correctAnswer.toLowerCase();
+            }
+
+            if (isCorrect) {
+                correctAnswers++;
+            } else {
+                wrongQuestions.push(q);
             }
         });
+
         const finalScore = Math.round((correctAnswers / quiz.questions.length) * 100);
         setScore(finalScore);
+        setWrongQuestions(wrongQuestions);
         updateProgress(quiz.id, finalScore);
         setIsFinished(true);
     };
@@ -133,21 +141,51 @@ const QuizPage: React.FC = () => {
     if (isFinished) {
         const passed = score >= quiz.passScore;
         return (
-            <div className="container mx-auto max-w-2xl text-center p-8 bg-light-primary dark:bg-dark-secondary rounded-lg shadow-xl">
-                <h2 className="text-3xl font-bold mb-4">{t({de: "Ergebnis", en: "Result", ar: "النتيجة"})}</h2>
-                <p className="text-5xl font-bold mb-4">{score}%</p>
-                <p className={`text-2xl font-semibold mb-6 ${passed ? 'text-green-600' : 'text-red-600'}`}>
-                    {passed 
-                        ? t({de: "Bestanden!", en: "Passed!", ar: "نجحت!"}) 
-                        : t({de: "Nicht bestanden", en: "Failed", ar: "فشلت"})}
-                </p>
-                <p className="mb-6">{t({de: `Du benötigst ${quiz.passScore}% um zu bestehen.`, en: `You need ${quiz.passScore}% to pass.`, ar: `تحتاج إلى ${quiz.passScore}% للنجاح.`})}</p>
+            <div className="container mx-auto max-w-2xl">
+                <div className="text-center p-8 bg-light-primary dark:bg-dark-secondary rounded-lg shadow-xl mb-6">
+                    <h2 className="text-3xl font-bold mb-4">{t({de: "Ergebnis", en: "Result", ar: "النتيجة"})}</h2>
+                    <p className="text-5xl font-bold mb-4">{score}%</p>
+                    <p className={`text-2xl font-semibold mb-6 ${passed ? 'text-green-600' : 'text-red-600'}`}>
+                        {passed
+                            ? t({de: "Bestanden!", en: "Passed!", ar: "نجحت!"})
+                            : t({de: "Nicht bestanden", en: "Failed", ar: "فشلت"})}
+                    </p>
+                    <p className="mb-6">{t({de: `Du benötigst ${quiz.passScore}% um zu bestehen.`, en: `You need ${quiz.passScore}% to pass.`, ar: `تحتاج إلى ${quiz.passScore}% للنجاح.`})}</p>
+                </div>
+
+                {/* Wrong Questions Section */}
+                {wrongQuestions.length > 0 && (
+                    <div className="bg-light-primary dark:bg-dark-secondary rounded-lg shadow-xl p-6 mb-6">
+                        <h3 className="text-2xl font-bold mb-4 text-red-600 dark:text-red-400">
+                            {t({de: "Falsch beantwortet", en: "Incorrect Answers", ar: "إجابات خاطئة"})}
+                        </h3>
+                        <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                            {t({de: "Bitte wiederhole diese Fragen:", en: "Please review these questions:", ar: "يرجى مراجعة هذه الأسئلة:"})}
+                        </p>
+                        <div className="space-y-4">
+                            {wrongQuestions.map((question, index) => (
+                                <div key={question.id} className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border-2 border-red-300 dark:border-red-800">
+                                    <p className="font-semibold mb-2">
+                                        {index + 1}. {t(question.questionText)}
+                                    </p>
+                                    {question.type === 'multiple-choice' && (
+                                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                                            {t({de: "Bitte sieh dir die Lektion nochmal an.", en: "Please review the lesson.", ar: "يرجى مراجعة الدرس."})}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 <div className="flex justify-center gap-4">
                      <button onClick={() => {
                         setIsFinished(false);
                         setCurrentQuestionIndex(0);
                         setSelectedAnswers({});
                         setScore(0);
+                        setWrongQuestions([]);
                         navigate(`/lesson/${lesson.id}`);
                      }} className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
                         {t({de: "Lektion wiederholen", en: "Review Lesson", ar: "مراجعة الدرس"})}

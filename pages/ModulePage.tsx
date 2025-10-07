@@ -37,17 +37,20 @@ const ModulePage: React.FC = () => {
 
     const lessons = module.lessons
         .map(id => LESSONS[id])
+        .filter(lesson => lesson !== undefined)
         .sort((a, b) => a.order - b.order);
 
     const isLessonUnlocked = (lessonId: string): boolean => {
         if (role === 'admin') return true;
         const lesson = LESSONS[lessonId];
-        if (!lesson.prerequisites || lesson.prerequisites.length === 0) {
+        if (!lesson || !lesson.prerequisites || lesson.prerequisites.length === 0) {
             return true;
         }
         return lesson.prerequisites.every(prereqLessonId => {
             const prereqLesson = LESSONS[prereqLessonId];
+            if (!prereqLesson || !prereqLesson.quizId) return true;
             const quiz = QUIZZES[prereqLesson.quizId];
+            if (!quiz) return true;
             return (progress[quiz.id] || 0) >= quiz.passScore;
         });
     };

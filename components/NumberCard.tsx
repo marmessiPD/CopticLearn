@@ -24,7 +24,6 @@ const NumberCard: React.FC<NumberCardProps> = ({ slide }) => {
             <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
                 <p className="text-lg font-semibold">{t({de: "Zahl", en: "Number", ar: "الرقم"})}: <span className="text-2xl font-bold">{slide.number}</span></p>
                 <p className="text-5xl font-coptic mt-2">{slide.copticName}</p>
-                <p className="text-xl italic text-gray-600 dark:text-gray-400 mt-1">{slide.translit}</p>
             </div>
 
             <div className="text-center mt-4">

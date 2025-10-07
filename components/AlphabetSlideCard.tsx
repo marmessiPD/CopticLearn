@@ -30,29 +30,29 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({ slide, letter }) 
     const { t, playSound } = useAppContext();
 
     return (
-        <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
+        <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-3 sm:p-6 max-w-2xl mx-auto">
             {/* Header */}
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-coptic-blue dark:text-coptic-gold">{t(letter.name)}</h2>
-                <div className="text-6xl font-coptic text-right">
+            <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-2">
+                <h2 className="text-xl sm:text-2xl font-bold text-coptic-blue dark:text-coptic-gold text-center sm:text-left">{t(letter.name)}</h2>
+                <div className="text-4xl sm:text-6xl font-coptic text-center sm:text-right">
                     <span className="text-gray-700 dark:text-gray-300">{letter.uppercase}</span>
-                    <span className="text-gray-500 dark:text-gray-400">{letter.lowercase}</span>
+                    <span className="text-gray-500 dark:text-gray-400 ml-2">{letter.lowercase}</span>
                 </div>
             </div>
 
             {/* Emoji */}
-            <div className="w-full h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg mb-4">
-                <span className="text-8xl" role="img" aria-label={t(letter.exampleWord.meaning)}>{slide.emoji}</span>
+            <div className="w-full h-32 sm:h-48 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg mb-4">
+                <span className="text-6xl sm:text-8xl" role="img" aria-label={t(letter.exampleWord.meaning)}>{slide.emoji}</span>
             </div>
             
             {/* Example Word */}
             <div className="text-center mb-4 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                <p className="text-4xl font-coptic">{letter.exampleWord.coptic}</p>
-                <p className="text-lg italic text-gray-600 dark:text-gray-400">{letter.exampleWord.translit}</p>
-                <p className="text-lg font-semibold">{t(letter.exampleWord.meaning)}</p>
+                <p className="text-3xl sm:text-4xl font-coptic">{letter.exampleWord.coptic}</p>
+                <p className="text-base sm:text-lg italic text-gray-600 dark:text-gray-400">{letter.exampleWord.translit}</p>
+                <p className="text-base sm:text-lg font-semibold">{t(letter.exampleWord.meaning)}</p>
                 <button 
                     onClick={() => playSound(t(letter.exampleWord.meaning))}
-                    className="mt-2 inline-flex items-center px-3 py-1 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue"
+                    className="mt-2 inline-flex items-center px-3 py-2 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue text-sm sm:text-base min-h-[44px] min-w-[44px]"
                     aria-label={t({de: 'Wort anhören', en: 'Listen to word', ar: 'استمع للكلمة'})}
                 >
                     <SpeakerIcon className="mr-2 rtl:ml-2 rtl:mr-0"/> {t({de: 'Wort', en: 'Word', ar: 'الكلمة'})}
@@ -60,14 +60,14 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({ slide, letter }) 
             </div>
 
             {/* Details Grid */}
-            <div className="grid grid-cols-2 gap-4 text-center mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-center mb-6">
                 <div className="p-3 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
-                    <p className="font-bold">{t({ de: 'Aussprache', en: 'Pronunciation', ar: 'النطق' })}</p>
-                    <p className="text-lg">{t(letter.pronunciation)}</p>
+                    <p className="font-bold text-sm sm:text-base">{t({ de: 'Aussprache', en: 'Pronunciation', ar: 'النطق' })}</p>
+                    <p className="text-sm sm:text-lg">{t(letter.pronunciation)}</p>
                 </div>
                 <div className="p-3 bg-green-50 dark:bg-green-900/50 rounded-lg">
-                    <p className="font-bold">{t({ de: 'Zahlenwert', en: 'Numeric Value', ar: 'القيمة العددية' })}</p>
-                    <p className="text-2xl font-mono">{letter.numeric}</p>
+                    <p className="font-bold text-sm sm:text-base">{t({ de: 'Zahlenwert', en: 'Numeric Value', ar: 'القيمة العددية' })}</p>
+                    <p className="text-xl sm:text-2xl font-mono">{letter.numeric}</p>
                 </div>
             </div>
 
@@ -76,37 +76,43 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({ slide, letter }) 
                 <div className="flex items-start gap-3 p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
                      <button 
                         onClick={() => playSound(t(letter.name))}
-                        className="flex-shrink-0 mt-1 text-coptic-blue dark:text-coptic-gold"
+                        className="flex-shrink-0 mt-1 text-coptic-blue dark:text-coptic-gold min-h-[44px] min-w-[44px] flex items-center justify-center"
                         aria-label={t({de: 'Buchstabenname anhören', en: 'Listen to letter name', ar: 'استمع لاسم الحرف'})}
                     >
                         <SpeakerIcon />
                      </button>
-                     <p>{t(slide.explanation)}</p>
+                     <p className="text-sm sm:text-base">{t(slide.explanation)}</p>
                 </div>
             </div>
 
             {/* Spiritual Content Section */}
-            <div className="mt-6 border-t-2 border-coptic-gold/20 pt-4 space-y-4">
-                <h3 className="text-center text-lg font-bold text-coptic-blue dark:text-coptic-gold">{t({de: "Spiritueller Bezug", en: "Spiritual Context", ar: "السياق الروحي"})}</h3>
-                
-                {/* Bible Verse */}
-                <div className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
-                    <BibleIcon className="flex-shrink-0 mt-1 h-5 w-5 text-coptic-blue dark:text-blue-300"/>
-                    <div>
-                        <p className="italic">"{t(slide.spiritual.bibleVerse)}"</p>
-                        <p className="text-right text-sm font-semibold mt-1">{t(slide.spiritual.bibleReference)}</p>
-                    </div>
-                </div>
+            {slide.spiritual && (
+                <div className="mt-6 border-t-2 border-coptic-gold/20 pt-4 space-y-4">
+                    <h3 className="text-center text-base sm:text-lg font-bold text-coptic-blue dark:text-coptic-gold">{t({de: "Spiritueller Bezug", en: "Spiritual Context", ar: "السياق الروحي"})}</h3>
 
-                {/* Father Quote */}
-                <div className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-900/50 rounded-lg">
-                    <FatherIcon className="flex-shrink-0 mt-1 h-5 w-5 text-green-700 dark:text-green-300"/>
-                     <div>
-                        <p className="italic">"{t(slide.spiritual.fatherQuote)}"</p>
-                        <p className="text-right text-sm font-semibold mt-1">{t(slide.spiritual.fatherReference)}</p>
-                    </div>
+                    {/* Bible Verse */}
+                    {slide.spiritual.bibleVerse && slide.spiritual.bibleReference && (
+                        <div className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
+                            <BibleIcon className="flex-shrink-0 mt-1 h-5 w-5 text-coptic-blue dark:text-blue-300"/>
+                            <div className="min-w-0 flex-1">
+                                <p className="italic text-sm sm:text-base">"{t(slide.spiritual.bibleVerse)}"</p>
+                                <p className="text-right text-xs sm:text-sm font-semibold mt-1">{t(slide.spiritual.bibleReference)}</p>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Father Quote */}
+                    {slide.spiritual.fatherQuote && slide.spiritual.fatherReference && (
+                        <div className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-900/50 rounded-lg">
+                            <FatherIcon className="flex-shrink-0 mt-1 h-5 w-5 text-green-700 dark:text-green-300"/>
+                            <div className="min-w-0 flex-1">
+                                <p className="italic text-sm sm:text-base">"{t(slide.spiritual.fatherQuote)}"</p>
+                                <p className="text-right text-xs sm:text-sm font-semibold mt-1">{t(slide.spiritual.fatherReference)}</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </div>
+            )}
         </div>
     );
 };

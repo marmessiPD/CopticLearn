@@ -16,21 +16,21 @@ const VocabCard: React.FC<VocabCardProps> = ({ item }) => {
     const { t, playSound } = useAppContext();
 
     return (
-        <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-6 max-w-md mx-auto">
-            <div className="w-full h-40 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg mb-4">
-                <span className="text-7xl" role="img" aria-label={t(item.meaning)}>{item.emoji}</span>
+        <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-4 sm:p-6 max-w-md mx-auto">
+            <div className="w-full h-32 sm:h-40 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg mb-4">
+                <span className="text-5xl sm:text-7xl" role="img" aria-label={t(item.meaning)}>{item.emoji}</span>
             </div>
             
-            <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                <p className="text-5xl font-coptic">{item.coptic}</p>
-                <p className="text-xl italic text-gray-600 dark:text-gray-400 mt-1">{item.translit}</p>
-                <p className="text-2xl font-semibold mt-2">{t(item.meaning)}</p>
+            <div className="text-center p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                <p className="text-3xl sm:text-5xl font-coptic">{item.coptic}</p>
+                <p className="text-lg sm:text-xl italic text-gray-600 dark:text-gray-400 mt-1">{item.translit}</p>
+                <p className="text-xl sm:text-2xl font-semibold mt-2">{t(item.meaning)}</p>
             </div>
 
             <div className="text-center mt-4">
                  <button 
                     onClick={() => playSound(t(item.meaning))}
-                    className="mt-2 inline-flex items-center px-4 py-2 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue"
+                    className="mt-2 inline-flex items-center px-4 py-3 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue min-h-[44px] min-w-[44px] text-sm sm:text-base"
                     aria-label={t({de: 'Wort anhören', en: 'Listen to word', ar: 'استمع للكلمة'})}
                 >
                     <SpeakerIcon className="mr-2 rtl:ml-2 rtl:mr-0"/> {t({de: 'Anhören', en: 'Listen', ar: 'استمع'})}

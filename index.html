@@ -4,8 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Koptisch Lernen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#003366" />
+    <meta name="description" content="Learn Coptic Orthodox language with interactive lessons, alphabet, grammar, and spiritual content" />
+    <meta name="keywords" content="Coptic, Orthodox, language, learning, alphabet, grammar, Bible, Church Fathers" />
+    <meta name="author" content="CopticLearn" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icon-192.svg" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="CopticLearn" />
+    
+    <title>CopticLearn - Koptisch Lernen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,18 +47,102 @@
         }
       }
     </script>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.3"
-  }
-}
-</script>
+    
+    <!-- Accessibility Styles -->
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      
+      .high-contrast {
+        --coptic-gold: #FFFF00;
+        --coptic-blue: #000080;
+        --dark-primary: #000000;
+        --dark-secondary: #1a1a1a;
+        --dark-text: #ffffff;
+        --light-primary: #ffffff;
+        --light-secondary: #f0f0f0;
+        --light-text: #000000;
+      }
+      
+      .reduce-motion * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      /* Focus styles for better accessibility */
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 2px solid #FFD700;
+        outline-offset: 2px;
+      }
+      
+      /* High contrast focus styles */
+      .high-contrast button:focus-visible,
+      .high-contrast a:focus-visible,
+      .high-contrast input:focus-visible,
+      .high-contrast select:focus-visible {
+        outline: 3px solid #FFFF00;
+        outline-offset: 3px;
+      }
+    </style>
 </head>
 <body class="bg-light-secondary dark:bg-dark-primary">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+        
+        // Handle PWA install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button or notification
+            const installButton = document.createElement('button');
+            installButton.textContent = 'Install App';
+            installButton.className = 'fixed bottom-4 right-4 bg-coptic-blue text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            installButton.onclick = () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    installButton.remove();
+                });
+            };
+            document.body.appendChild(installButton);
+        });
+        
+        // Handle PWA installed
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('PWA was installed');
+        });
+    </script>
 </body>
 </html>

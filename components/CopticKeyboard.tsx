@@ -22,28 +22,28 @@ const CopticKeyboard: React.FC<CopticKeyboardProps> = ({ onKeyPress, onBackspace
     };
 
     return (
-        <div className="bg-gray-200 dark:bg-dark-secondary p-2 rounded-lg mt-4 w-full max-w-2xl mx-auto" dir="ltr">
-            <div className="flex flex-wrap justify-center gap-1">
+        <div className="bg-gray-200 dark:bg-dark-secondary p-2 sm:p-3 rounded-lg mt-4 w-full max-w-2xl mx-auto" dir="ltr">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-2">
                 {letters.map((key) => (
                     <button
                         key={key}
                         onClick={() => handleKeyPress(key)}
-                        className="font-coptic text-2xl w-12 h-12 rounded-md bg-light-primary dark:bg-gray-600 dark:text-dark-text shadow hover:bg-gray-100 dark:hover:bg-gray-500 active:scale-95 transition-transform flex items-center justify-center"
+                        className="font-coptic text-xl sm:text-2xl w-10 h-10 sm:w-12 sm:h-12 rounded-md bg-light-primary dark:bg-gray-600 dark:text-dark-text shadow hover:bg-gray-100 dark:hover:bg-gray-500 active:scale-95 transition-transform flex items-center justify-center touch-manipulation"
                     >
                         {key}
                     </button>
                 ))}
             </div>
-            <div className="flex justify-center gap-2 mt-2">
+            <div className="flex justify-center gap-2 mt-2 sm:mt-3">
                 <button
                     onClick={() => setIsShift(!isShift)}
-                    className={`px-8 py-2 rounded-md shadow flex items-center justify-center text-lg ${isShift ? 'bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue' : 'bg-light-primary dark:bg-gray-600 dark:text-dark-text'}`}
+                    className={`px-4 sm:px-8 py-2 sm:py-3 rounded-md shadow flex items-center justify-center text-sm sm:text-lg min-h-[44px] touch-manipulation ${isShift ? 'bg-coptic-blue text-white dark:bg-coptic-gold dark:text-coptic-blue' : 'bg-light-primary dark:bg-gray-600 dark:text-dark-text'}`}
                 >
                     ↑ Shift
                 </button>
                 <button
                     onClick={onBackspace}
-                    className="px-8 py-2 rounded-md bg-light-primary dark:bg-gray-600 dark:text-dark-text shadow flex items-center justify-center text-lg"
+                    className="px-4 sm:px-8 py-2 sm:py-3 rounded-md bg-light-primary dark:bg-gray-600 dark:text-dark-text shadow flex items-center justify-center text-sm sm:text-lg min-h-[44px] touch-manipulation"
                 >
                     ⌫
                 </button>
