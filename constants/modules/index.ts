@@ -8,8 +8,6 @@ import { LESSONS as LESSONS_M3, QUIZZES as QUIZZES_M3 } from './module3';
 import { LESSONS as LESSONS_M4, QUIZZES as QUIZZES_M4 } from './module4';
 import { LESSONS as LESSONS_M5, QUIZZES as QUIZZES_M5 } from './module5';
 import { LESSONS as LESSONS_M6, QUIZZES as QUIZZES_M6 } from './module6';
-import { LESSONS as LESSONS_M7, QUIZZES as QUIZZES_M7 } from './module7';
-import { LESSONS as LESSONS_M8, QUIZZES as QUIZZES_M8 } from './module8';
 import { LESSONS as LESSONS_M9, QUIZZES as QUIZZES_M9 } from './module9';
 import { LESSONS as LESSONS_M10, QUIZZES as QUIZZES_M10 } from './module10';
 import { LESSONS as LESSONS_M11, QUIZZES as QUIZZES_M11 } from './module11';
@@ -35,8 +33,6 @@ export const LESSONS = {
   ...LESSONS_M4,
   ...LESSONS_M5,
   ...LESSONS_M6,
-  ...LESSONS_M7,
-  ...LESSONS_M8,
   ...LESSONS_M9,
   ...LESSONS_M10,
   ...LESSONS_M11,
@@ -54,8 +50,6 @@ export const QUIZZES = {
   ...QUIZZES_M4,
   ...QUIZZES_M5,
   ...QUIZZES_M6,
-  ...QUIZZES_M7,
-  ...QUIZZES_M8,
   ...QUIZZES_M9,
   ...QUIZZES_M10,
   ...QUIZZES_M11,
@@ -71,16 +65,16 @@ const MODULE_M2: Module = {
   id: 'm2',
   order: 2,
   title: { de: 'Zahlen', en: 'Numbers', ar: 'الأرقام' },
-  lessons: Object.keys(LESSONS_M2).filter((k) => k.startsWith('m2-')),
-  quizIds: [],
+  lessons: ['m2-l1', 'm2-l2', 'm2-l3'],
+  quizIds: ['q2-1', 'q2-2', 'q2-3'],
 };
 
 const MODULE_M3: Module = {
   id: 'm3',
   order: 3,
   title: { de: 'Artikel & Pronomen', en: 'Articles & Pronouns', ar: 'الأدوات والضمائر' },
-  lessons: Object.keys(LESSONS_M3).filter((k) => k.startsWith('m3-')),
-  quizIds: [],
+  lessons: ['m3-l1', 'm3-l2', 'm3-l3'],
+  quizIds: ['q3-1', 'q3-2', 'q3-3'],
 };
 
 const MODULE_M4: Module = {
@@ -102,25 +96,9 @@ const MODULE_M5: Module = {
 const MODULE_M6: Module = {
   id: 'm6',
   order: 6,
-  title: { de: 'Adverbien', en: 'Adverbs', ar: 'الظروف' },
-  lessons: Object.keys(LESSONS_M6).filter((k) => k.startsWith('m6-')),
-  quizIds: [],
-};
-
-const MODULE_M7: Module = {
-  id: 'm7',
-  order: 7,
-  title: { de: 'Konjunktionen', en: 'Conjunctions', ar: 'الأدوات' },
-  lessons: Object.keys(LESSONS_M7).filter((k) => k.startsWith('m7-')),
-  quizIds: [],
-};
-
-const MODULE_M8: Module = {
-  id: 'm8',
-  order: 8,
-  title: { de: 'Präpositionen I', en: 'Prepositions I', ar: 'حروف الجر I' },
-  lessons: Object.keys(LESSONS_M8).filter((k) => k.startsWith('m8-')),
-  quizIds: [],
+  title: { de: 'Präpositionen', en: 'Prepositions', ar: 'حروف الجر' },
+  lessons: ['m6-l1', 'm6-l2', 'm6-l3', 'm6-l4', 'm6-l5'],
+  quizIds: ['q6-1', 'q6-2', 'q6-3', 'q6-4', 'q6-5'],
 };
 
 const MODULE_M9: Module = {
@@ -194,8 +172,6 @@ export const MODULES = {
   m4: MODULE_M4,
   m5: MODULE_M5,
   m6: MODULE_M6,
-  m7: MODULE_M7,
-  m8: MODULE_M8,
   m9: MODULE_M9,
   m10: MODULE_M10,
   m11: MODULE_M11,

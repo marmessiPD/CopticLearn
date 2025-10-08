@@ -1,10 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(Select-Object Id, ProcessName, Path)",
-      "Bash(tasklist)",
-      "Bash(npm run dev:*)",
-      "Bash(npx tsc:*)"
+      "Bash(grep:*)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
