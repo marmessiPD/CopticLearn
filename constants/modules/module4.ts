@@ -149,29 +149,7 @@ export const LESSONS: Record<string, Lesson> = {
             en: "I walk, says the man",
             ar: "أنا أمشي، قال الرجل",
           },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Wandle vor mir und sei fromm.“",
-            en: '"Walk before Me and be blameless."',
-            ar: "«سِر أمامي وكن كاملاً.»",
-          },
-          bibleReference: {
-            de: "1. Mose 17:1",
-            en: "Genesis 17:1",
-            ar: "تكوين ١٧:١",
-          },
-          fatherQuote: {
-            de: "„Ein tugendhafter Wandel ist das sichtbare Gebet.“",
-            en: '"A virtuous walk is a visible prayer."',
-            ar: "السلوك الفاضل هو صلاة منظورة.",
-          },
-          fatherReference: {
-            de: "Hl. Gregor von Nyssa, zitiert bei Papandrea, *Reading the Early Church Fathers*, Kap. 3",
-            en: "St. Gregory of Nyssa, in Papandrea, *Reading the Early Church Fathers*, Ch. 3",
-            ar: "القديس غريغوريوس النيسي (باباندريا، الآباء الأوائل)",
-          },
-        },
+        }
       },
       {
         type: "sentence",
@@ -183,29 +161,7 @@ export const LESSONS: Record<string, Lesson> = {
             en: "The speaker is silent.",
             ar: "المتحدث صامت.",
           },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Ein jeglicher Mensch sei schnell zum Hören, langsam zum Reden.“",
-            en: '"Let every man be swift to hear, slow to speak."',
-            ar: "«ليكن كل إنسان مسرعاً في الاستماع، مبطئاً في التكلم.»",
-          },
-          bibleReference: {
-            de: "Jakobus 1:19",
-            en: "James 1:19",
-            ar: "يعقوب ١:١٩",
-          },
-          fatherQuote: {
-            de: "„Schweigen ist oft eine höhere Predigt als Worte.“",
-            en: '"Silence is often a higher sermon than words."',
-            ar: "الصمت كثيراً ما يكون عظة أعمق من الكلام.",
-          },
-          fatherReference: {
-            de: "Hl. Antonius, *Apophthegmata Patrum* (Bercot, *Dictionary of Early Christian Beliefs*, S. 580)",
-            en: "St. Anthony, *Apophthegmata Patrum* (Bercot, p. 580)",
-            ar: "القديس أنطونيوس، أقوال الآباء",
-          },
-        },
+        }
       },
       {
         type: "sentence",
@@ -217,29 +173,7 @@ export const LESSONS: Record<string, Lesson> = {
             en: "He goes to the place of the Church.",
             ar: "هو يذهب إلى مكان الكنيسة.",
           },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Ich freute mich über die, die zu mir sagten: Lass uns zum Hause des HERRN gehen!“",
-            en: '"I rejoiced when they said to me: Let us go to the house of the Lord!"',
-            ar: "«فرحت بالقائلين لي إلى بيت الرب نذهب.»",
-          },
-          bibleReference: {
-            de: "Psalm 122:1",
-            en: "Psalm 122:1",
-            ar: "مزمور ١٢٢:١",
-          },
-          fatherQuote: {
-            de: "„Wer zur Kirche eilt, eilt zu Christus.“",
-            en: '"He who hastens to the Church hastens to Christ."',
-            ar: "من يسرع إلى الكنيسة يسرع إلى المسيح.",
-          },
-          fatherReference: {
-            de: "Hl. Kyrill von Jerusalem, *Katechese 4* (Papandrea, Kap. 5)",
-            en: "St. Cyril of Jerusalem, Catechesis 4 (Papandrea Ch. 5)",
-            ar: "القديس كيرلس الأورشليمي، التعليم الرابع",
-          },
-        },
+        }
       },
     ],
   },
@@ -265,8 +199,8 @@ export const LESSONS: Record<string, Lesson> = {
           ar: "تكوين زمن الماضي",
         },
         rule: {
-          de: "Die Vergangenheit wird mit der Partikel ⲁ vor das Verb gebildet. Danach folgt das Personalpräfix. Beispiel: ⲁϥϫⲱ = „er sprach“.",
-          en: "The past is formed with the particle ⲁ before the verb, followed by the personal prefix. Example: ⲁϥϫⲱ = “he spoke”.",
+          de: "Die Vergangenheit wird mit der Partikel ⲁ vor das Verb gebildet. Danach folgt das Personalpräfix. Beispiel: ⲁϥϫⲱ = \"er sprach\".",
+          en: "The past is formed with the particle ⲁ before the verb, followed by the personal prefix. Example: ⲁϥϫⲱ = \"he spoke\".",
           ar: "يُصاغ الماضي بوضع الأداة ⲁ قبل الفعل، تليها البادئة الشخصية. مثال: ⲁϥϫⲱ = «هو تكلّم».",
         },
         examples: [
@@ -294,13 +228,38 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "grammar",
         title: {
+          de: "Personalpräfixe im Perfekt",
+          en: "Personal Prefixes in the Perfect",
+          ar: "البوادئ الشخصية في الماضي",
+        },
+        rule: {
+          de: "Die vollständige Konjugation: ⲁⲓ- (ich), ⲁⲕ- (du m.), ⲁⲣⲉ- (du f.), ⲁϥ- (er), ⲁⲥ- (sie), ⲁⲛ- (wir), ⲁⲣⲉⲧⲉⲛ- (ihr), ⲁⲩ- (sie pl.).",
+          en: "Full conjugation: ⲁⲓ- (I), ⲁⲕ- (you m.), ⲁⲣⲉ- (you f.), ⲁϥ- (he), ⲁⲥ- (she), ⲁⲛ- (we), ⲁⲣⲉⲧⲉⲛ- (you pl.), ⲁⲩ- (they).",
+          ar: "التصريف الكامل: ⲁⲓ- (أنا)، ⲁⲕ- (أنت م)، ⲁⲣⲉ- (أنتِ)، ⲁϥ- (هو)، ⲁⲥ- (هي)، ⲁⲛ- (نحن)، ⲁⲣⲉⲧⲉⲛ- (أنتم)، ⲁⲩ- (هم).",
+        },
+        examples: [
+          {
+            coptic: "ⲁⲛⲙⲟϣⲓ",
+            translit: "an-moshi",
+            meaning: { de: "wir gingen", en: "we went", ar: "ذهبنا" },
+          },
+          {
+            coptic: "ⲁⲩⲥⲱⲧⲉⲙ",
+            translit: "au-sotem",
+            meaning: { de: "sie hörten", en: "they heard", ar: "سمعوا" },
+          },
+        ],
+      },
+      {
+        type: "grammar",
+        title: {
           de: "Negation der Vergangenheit",
           en: "Negation of the Past",
           ar: "نفي الماضي",
         },
         rule: {
-          de: "Die Verneinung erfolgt mit ⲙ̀ⲡⲉ ... ⲁⲛ. Beispiel: ⲙ̀ⲡⲁϥϫⲱ ⲁⲛ = „er sprach nicht“.",
-          en: "Negation uses ⲙ̀ⲡⲉ ... ⲁⲛ. Example: ⲙ̀ⲡⲁϥϫⲱ ⲁⲛ = “he did not speak”.",
+          de: "Die Verneinung erfolgt mit ⲙ̀ⲡⲉ ... ⲁⲛ. Beispiel: ⲙ̀ⲡⲁϥϫⲱ ⲁⲛ = \"er sprach nicht\".",
+          en: "Negation uses ⲙ̀ⲡⲉ ... ⲁⲛ. Example: ⲙ̀ⲡⲁϥϫⲱ ⲁⲛ = \"he did not speak\".",
           ar: "يُنفى الماضي باستخدام ⲙ̀ⲡⲉ ... ⲁⲛ. مثال: ⲙ̀ⲡⲁϥϫⲱ ⲁⲛ = «هو لم يتكلم».",
         },
         examples: [
@@ -325,34 +284,53 @@ export const LESSONS: Record<string, Lesson> = {
         ],
       },
       {
+        type: "grammar",
+        title: {
+          de: "Perfekt mit Objekten",
+          en: "Perfect with Objects",
+          ar: "الماضي مع المفاعيل",
+        },
+        rule: {
+          de: "Im Perfekt können direkte Objekte mit ⲛ̀/ⲙ̀ markiert werden, genau wie im Präsens.",
+          en: "In the perfect, direct objects are marked with ⲛ̀/ⲙ̀ just as in the present.",
+          ar: "في الماضي، يُميز المفعول به بـ ⲛ̀/ⲙ̀ كما في المضارع.",
+        },
+        examples: [
+          {
+            coptic: "ⲁⲓⲥⲱⲧⲉⲙ ⲉ̀ⲡⲓⲥⲁϫⲓ",
+            translit: "ai-sotem e-pi-saji",
+            meaning: {
+              de: "ich hörte das Wort",
+              en: "I heard the word",
+              ar: "سمعت الكلمة",
+            },
+          },
+          {
+            coptic: "ⲁϥⲛⲁⲩ ⲉ̀ⲡⲓⲛⲟⲩϯ",
+            translit: "af-nau e-pi-nouti",
+            meaning: {
+              de: "er sah Gott",
+              en: "he saw God",
+              ar: "رأى الله",
+            },
+          },
+        ],
+      },
+      {
         type: "sentence",
         item: {
           text: "ⲁϥϫⲱ ⲛ̀ϫⲉ ⲡⲓⲛⲟⲩⲧⲉ",
           translit: "af-jo enje pi-noute",
           meaning: { de: "Gott sprach", en: "God spoke", ar: "تكلّم الله" },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Und Gott sprach: Es werde Licht!“",
-            en: '"And God said: Let there be light!"',
-            ar: "«وقال الله: ليكن نور!»",
-          },
-          bibleReference: {
-            de: "1. Mose 1:3",
-            en: "Genesis 1:3",
-            ar: "تكوين ١:٣",
-          },
-          fatherQuote: {
-            de: "„Das Wort Gottes ist Tat und Licht zugleich.“",
-            en: '"The Word of God is both deed and light."',
-            ar: "كلمة الله هي عمل ونور معاً.",
-          },
-          fatherReference: {
-            de: "Hl. Athanasius, *Contra Gentes* 5",
-            en: "St. Athanasius, *Against the Heathen* 5",
-            ar: "القديس أثناسيوس، ضد الوثنيين ٥",
-          },
-        },
+        }
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲁⲛⲙⲟϣⲓ ⲉ̀ⲡⲓⲏⲓ",
+          translit: "an-moshi e-pi-eei",
+          meaning: { de: "wir gingen zum Haus", en: "we went to the house", ar: "ذهبنا إلى البيت" },
+        }
       },
     ],
   },
@@ -378,8 +356,8 @@ export const LESSONS: Record<string, Lesson> = {
           ar: "تكوين زمن المستقبل",
         },
         rule: {
-          de: "Die Zukunft wird mit ⲙⲁⲣⲉ vor dem Verb gebildet. Danach folgt das Personalpräfix. Beispiel: ⲙⲁⲣⲉϥϫⲱ = „er wird sprechen“.",
-          en: "Future tense is formed with ⲙⲁⲣⲉ before the verb and the personal prefix. Example: ⲙⲁⲣⲉϥϫⲱ = “he will speak”.",
+          de: "Die Zukunft wird mit ⲙⲁⲣⲉ vor dem Verb gebildet. Danach folgt das Personalpräfix. Beispiel: ⲙⲁⲣⲉϥϫⲱ = \"er wird sprechen\".",
+          en: "Future tense is formed with ⲙⲁⲣⲉ before the verb and the personal prefix. Example: ⲙⲁⲣⲉϥϫⲱ = \"he will speak\".",
           ar: "يتكوّن المستقبل بوضع ⲙⲁⲣⲉ قبل الفعل مع البادئة الشخصية. مثال: ⲙⲁⲣⲉϥϫⲱ = «سيتكلم».",
         },
         examples: [
@@ -402,13 +380,38 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "grammar",
         title: {
+          de: "Personalpräfixe in der Zukunft",
+          en: "Personal Prefixes in Future",
+          ar: "البوادئ الشخصية في المستقبل",
+        },
+        rule: {
+          de: "Die Zukunft verwendet dieselben Personalpräfixe wie das Präsens: ⲙⲁⲣⲉ + Präfix + Verb.",
+          en: "The future uses the same personal prefixes as the present: ⲙⲁⲣⲉ + prefix + verb.",
+          ar: "المستقبل يستخدم نفس البوادئ الشخصية كالمضارع: ⲙⲁⲣⲉ + بادئة + فعل.",
+        },
+        examples: [
+          {
+            coptic: "ⲙⲁⲣⲉⲛⲙⲟϣⲓ",
+            translit: "mare-n-moshi",
+            meaning: { de: "wir werden gehen", en: "we will go", ar: "سنذهب" },
+          },
+          {
+            coptic: "ⲙⲁⲣⲟⲩⲥⲱⲧⲉⲙ",
+            translit: "mare-u-sotem",
+            meaning: { de: "sie werden hören", en: "they will hear", ar: "سيسمعون" },
+          },
+        ],
+      },
+      {
+        type: "grammar",
+        title: {
           de: "Negation der Zukunft",
           en: "Negation of the Future",
           ar: "نفي المستقبل",
         },
         rule: {
-          de: "Für die Verneinung wird ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ verwendet: ⲙ̀ⲙⲁⲣⲉϥϫⲱ ⲁⲛ = „er wird nicht sprechen“.",
-          en: "Negation uses ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ: ⲙ̀ⲙⲁⲣⲉϥϫⲱ ⲁⲛ = “he will not speak”.",
+          de: "Für die Verneinung wird ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ verwendet: ⲙ̀ⲙⲁⲣⲉϥϫⲱ ⲁⲛ = \"er wird nicht sprechen\".",
+          en: "Negation uses ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ: ⲙ̀ⲙⲁⲣⲉϥϫⲱ ⲁⲛ = \"he will not speak\".",
           ar: "يُنفى المستقبل باستخدام ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ: ⲙ̀ⲙⲁⲣⲉϥϫⲱ ⲁⲛ = «لن يتكلم».",
         },
         examples: [
@@ -433,6 +436,31 @@ export const LESSONS: Record<string, Lesson> = {
         ],
       },
       {
+        type: "grammar",
+        title: {
+          de: "Hortativ (Lasst uns...)",
+          en: "Hortative (Let us...)",
+          ar: "صيغة التحضيض",
+        },
+        rule: {
+          de: "ⲙⲁⲣⲉⲛ- wird oft als Hortativ verwendet: \"lasst uns...\" - eine Aufforderung an die erste Person Plural.",
+          en: "ⲙⲁⲣⲉⲛ- is often used as hortative: \"let us...\" - an exhortation in first person plural.",
+          ar: "ⲙⲁⲣⲉⲛ- تُستخدم كصيغة تحضيض: «لنَ...» - حث في صيغة الجمع المتكلم.",
+        },
+        examples: [
+          {
+            coptic: "ⲙⲁⲣⲉⲛϣⲗⲏⲗ",
+            translit: "maren-shleel",
+            meaning: { de: "lasst uns beten", en: "let us pray", ar: "لنصلّ" },
+          },
+          {
+            coptic: "ⲙⲁⲣⲉⲛⲙⲟϣⲓ",
+            translit: "maren-moshi",
+            meaning: { de: "lasst uns gehen", en: "let us go", ar: "لنذهب" },
+          },
+        ],
+      },
+      {
         type: "sentence",
         item: {
           text: "ⲙⲁⲣⲉϥϫⲱ ⲛ̀ϫⲉ ⲡⲓⲛⲟⲩⲧⲉ",
@@ -442,29 +470,154 @@ export const LESSONS: Record<string, Lesson> = {
             en: "God will speak",
             ar: "سيتكلّم الله",
           },
+        }
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲙⲁⲣⲉⲛⲥⲱⲧⲉⲙ ⲉ̀ⲡⲓⲗⲟⲅⲟⲥ",
+          translit: "maren-sotem e-pi-logos",
+          meaning: {
+            de: "Lasst uns auf das Wort hören",
+            en: "Let us listen to the Word",
+            ar: "لنستمع إلى الكلمة",
+          },
+        }
+      },
+    ],
+  },
+
+  "m4-l4": {
+    id: "m4-l4",
+    order: 4,
+    moduleId: "m4",
+    title: {
+      de: "Praktische Redewendungen: Einfache liturgische Antworten",
+      en: "Practical Phrases: Simple Liturgical Responses",
+      ar: "عبارات عملية: ردود طقسية بسيطة",
+    },
+    prerequisites: ["m4-l3"],
+    quizId: "q4-4",
+    slides: [
+      {
+        type: "grammar",
+        title: {
+          de: "Liturgische Grundantworten",
+          en: "Basic Liturgical Responses",
+          ar: "ردود طقسية أساسية",
         },
-        spiritual: {
-          bibleVerse: {
-            de: "„Der Himmel und die Erde werden vergehen, aber meine Worte werden nicht vergehen.“",
-            en: '"Heaven and earth will pass away, but my words will not pass away."',
-            ar: "«السماء والأرض تزولان، ولكن كلامي لا يزول.»",
-          },
-          bibleReference: {
-            de: "Markus 13:31",
-            en: "Mark 13:31",
-            ar: "مرقس ١٣:٣١",
-          },
-          fatherQuote: {
-            de: "„Das Wort, das Gott verheißen hat, bleibt ewig wahr.“",
-            en: '"The word God has promised remains eternally true."',
-            ar: "الكلمة التي وعد بها الله تبقى صادقة إلى الأبد.",
-          },
-          fatherReference: {
-            de: "Hl. Irenäus, *Adversus Haereses* 3, 8",
-            en: "St. Irenaeus, *Against Heresies* 3.8",
-            ar: "القديس إيريناوس ضد الهرطقات ٣:٨",
-          },
+        rule: {
+          de: "Diese Antworten sind grundlegend für die Teilnahme an der Liturgie.",
+          en: "These responses are fundamental for participating in the liturgy.",
+          ar: "هذه الردود أساسية للمشاركة في الطقس.",
         },
+        examples: [
+          {
+            coptic: "ⲁⲙⲏⲛ",
+            translit: "amēn",
+            meaning: { de: "Amen", en: "Amen", ar: "آمين" },
+          },
+          {
+            coptic: "ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ",
+            translit: "kyrie eleēson",
+            meaning: { de: "Herr, erbarme dich", en: "Lord, have mercy", ar: "يا رب ارحم" },
+          },
+          {
+            coptic: "ⲇⲟⲝⲁ ⲥⲓ ⲟ̀ ⲑⲉⲟⲥ",
+            translit: "doxa si o theos",
+            meaning: { de: "Ehre sei Gott", en: "Glory to God", ar: "المجد لله" },
+          },
+          {
+            coptic: "ⲡⲓⲱⲟⲩ ⲫⲁ ⲡⲓⲓⲱⲧ",
+            translit: "pi-ou fa pi-iot",
+            meaning: { de: "Ehre dem Vater", en: "Glory to the Father", ar: "المجد للآب" },
+          },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲙⲁⲣⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲡⲓⲛⲟⲩϯ",
+          translit: "maren-ousht em-pi-nouti",
+          meaning: { de: "Lasst uns Gott anbeten", en: "Let us worship God", ar: "لنسجد لله" },
+        }
+      },
+      {
+        type: "grammar",
+        title: {
+          de: "Gebetsverben",
+          en: "Prayer Verbs",
+          ar: "أفعال الصلاة",
+        },
+        rule: {
+          de: "Wichtige Verben für Gebet und Anbetung in der Liturgie.",
+          en: "Important verbs for prayer and worship in the liturgy.",
+          ar: "أفعال مهمة للصلاة والعبادة في الطقس.",
+        },
+        examples: [
+          {
+            coptic: "ϣⲗⲏⲗ",
+            translit: "shlēl",
+            meaning: { de: "beten", en: "pray", ar: "يصلي" },
+          },
+          {
+            coptic: "ⲟⲩⲱϣⲧ",
+            translit: "ousht",
+            meaning: { de: "anbeten", en: "worship", ar: "يسجد" },
+          },
+          {
+            coptic: "ⲥ̀ⲙⲟⲩ ⲉ̀ⲣⲟϥ",
+            translit: "esmou erof",
+            meaning: { de: "ihn segnen/preisen", en: "bless him/praise", ar: "يبارك / يسبّح" },
+          },
+          {
+            coptic: "ϯⲱⲟⲩ",
+            translit: "ti-ou",
+            meaning: { de: "verherrlichen", en: "glorify", ar: "يمجّد" },
+          },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ϯⲛⲁϣⲗⲏⲗ ⲙ̀ⲫ̀ⲣⲏϯ",
+          translit: "ti-na-shlēl em-frēti",
+          meaning: { de: "Ich werde in der Art beten", en: "I will pray in the manner", ar: "سأصلي بالطريقة" },
+        }
+      },
+      {
+        type: "conversation",
+        title: {
+          de: "Gebetsdialog",
+          en: "Prayer Dialogue",
+          ar: "حوار صلاة",
+        },
+        participants: ["Priest", "People"],
+        lines: [
+          {
+            speaker: "Priest",
+            coptic: "ⲙⲁⲣⲉⲛϣⲗⲏⲗ",
+            translation: { de: "Lasst uns beten", en: "Let us pray", ar: "لنصلِّ" },
+          },
+          {
+            speaker: "People",
+            coptic: "ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ",
+            translation: { de: "Herr, erbarme dich", en: "Lord, have mercy", ar: "يا رب ارحم" },
+          },
+          {
+            speaker: "Priest",
+            coptic: "ⲓⲣⲏⲛⲏ ⲡⲁⲥⲓ",
+            translation: { de: "Friede sei mit allen", en: "Peace be with all", ar: "السلام لجميعكم" },
+          },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲙⲁⲣⲉⲛⲟⲩⲱϣⲧ ⲙ̀ⲡⲓⲬⲣⲓⲥⲧⲟⲥ ⲡⲉⲛⲛⲟⲩϯ",
+          translit: "maren-ousht em-pi-Christos pen-nouti",
+          meaning: { de: "Lasst uns Christus, unseren Gott, anbeten", en: "Let us worship Christ our God", ar: "لنسجد للمسيح إلهنا" },
+        }
       },
     ],
   },
@@ -607,8 +760,8 @@ export const QUIZZES: Record<string, Quiz> = {
         id: "q4-2-2",
         type: "multiple-choice",
         questionText: {
-          de: "Wie sagt man „er sprach nicht“?",
-          en: "How do you say “he did not speak”?",
+          de: "Wie sagt man \"er sprach nicht\"?",
+          en: "How do you say \"he did not speak\"?",
           ar: "كيف تقول «لم يتكلم»؟",
         },
         options: [
@@ -658,6 +811,63 @@ export const QUIZZES: Record<string, Quiz> = {
           { de: "ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ", en: "ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ", ar: "ⲙ̀ⲙⲁⲣⲉ ... ⲁⲛ" },
           { de: "ⲙ̀ⲡⲉ ... ⲁⲛ", en: "ⲙ̀ⲡⲉ ... ⲁⲛ", ar: "ⲙ̀ⲡⲉ ... ⲁⲛ" },
           { de: "ⲛ̀ ... ⲁⲛ", en: "ⲛ̀ ... ⲁⲛ", ar: "ⲛ̀ ... ⲁⲛ" },
+        ],
+        correctAnswerIndex: 0,
+      },
+    ],
+  },
+  "q4-4": {
+    id: "q4-4",
+    lessonId: "m4-l4",
+    title: {
+      de: "Quiz: Liturgische Antworten",
+      en: "Quiz: Liturgical Responses",
+      ar: "اختبار: ردود طقسية",
+    },
+    passScore: 70,
+    questions: [
+      {
+        id: "q4-4-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Was bedeutet \"ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ\"?",
+          en: "What does \"ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ\" mean?",
+          ar: "ماذا يعني \"ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ\"؟",
+        },
+        options: [
+          { de: "Herr, erbarme dich", en: "Lord, have mercy", ar: "يا رب ارحم" },
+          { de: "Amen", en: "Amen", ar: "آمين" },
+          { de: "Lasst uns beten", en: "Let us pray", ar: "لنصلّ" },
+        ],
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "q4-4-2",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wie sagt man \"beten\" auf Koptisch?",
+          en: "How do you say \"pray\" in Coptic?",
+          ar: "كيف تقول \"يصلي\" بالقبطية؟",
+        },
+        options: [
+          { de: "ϣⲗⲏⲗ", en: "ϣⲗⲏⲗ", ar: "ϣⲗⲏⲗ" },
+          { de: "ⲟⲩⲱϣⲧ", en: "ⲟⲩⲱϣⲧ", ar: "ⲟⲩⲱϣⲧ" },
+          { de: "ϯⲱⲟⲩ", en: "ϯⲱⲟⲩ", ar: "ϯⲱⲟⲩ" },
+        ],
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "q4-4-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Was bedeutet \"ⲙⲁⲣⲉⲛϣⲗⲏⲗ\"?",
+          en: "What does \"ⲙⲁⲣⲉⲛϣⲗⲏⲗ\" mean?",
+          ar: "ماذا يعني \"ⲙⲁⲣⲉⲛϣⲗⲏⲗ\"؟",
+        },
+        options: [
+          { de: "Lasst uns beten", en: "Let us pray", ar: "لنصلِّ" },
+          { de: "Herr, erbarme dich", en: "Lord, have mercy", ar: "يا رب ارحم" },
+          { de: "Friede sei mit allen", en: "Peace be with all", ar: "السلام لجميعكم" },
         ],
         correctAnswerIndex: 0,
       },

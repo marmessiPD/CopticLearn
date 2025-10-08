@@ -30,7 +30,11 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "ⲁ̅ = 1",
             translit: "a = 1",
-            meaning: { de: "Alpha = eins", en: "Alpha = one", ar: "ألفا = واحد" },
+            meaning: {
+              de: "Alpha = eins",
+              en: "Alpha = one",
+              ar: "ألفا = واحد",
+            },
           },
           {
             coptic: "ⲓ̅ = 10",
@@ -42,7 +46,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 1,
-        emoji: "🕊️",
         copticSymbol: "ⲁ̅",
         copticName: "ⲟⲩⲁⲓ",
         translit: "ouai",
@@ -50,7 +53,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 2,
-        emoji: "✌️",
         copticSymbol: "ⲃ̅",
         copticName: "ⲥⲛⲁⲩ",
         translit: "snau",
@@ -58,7 +60,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 3,
-        emoji: "🔺",
         copticSymbol: "ⲅ̅",
         copticName: "ϣⲟⲙⲧ",
         translit: "shomt",
@@ -66,7 +67,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 4,
-        emoji: "🌍",
         copticSymbol: "ⲇ̅",
         copticName: "ϥⲧⲟⲩ",
         translit: "ftou",
@@ -74,7 +74,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 5,
-        emoji: "🖐️",
         copticSymbol: "ⲉ̅",
         copticName: "ⲉⲧⲓⲟⲩ",
         translit: "etiou",
@@ -82,7 +81,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 6,
-        emoji: "6️⃣",
         copticSymbol: "ⲋ̅",
         copticName: "ⲥⲟⲩⲟⲩ",
         translit: "souou",
@@ -90,7 +88,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 7,
-        emoji: "🌈",
         copticSymbol: "ⲍ̅",
         copticName: "ϣⲁϣϥ",
         translit: "shashf",
@@ -98,7 +95,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 8,
-        emoji: "🕯️",
         copticSymbol: "ⲏ̅",
         copticName: "ⲉϣⲙⲏⲛ",
         translit: "eshmīn",
@@ -106,7 +102,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 9,
-        emoji: "⚖️",
         copticSymbol: "ⲑ̅",
         copticName: "ⲯⲓⲧ",
         translit: "pshit",
@@ -114,7 +109,6 @@ export const LESSONS: Record<string, Lesson> = {
       {
         type: "number",
         number: 10,
-        emoji: "🔟",
         copticSymbol: "ⲓ̅",
         copticName: "ⲙⲏⲧ",
         translit: "meet",
@@ -128,28 +122,6 @@ export const LESSONS: Record<string, Lesson> = {
             de: "Einer ist Gott",
             en: "One is God",
             ar: "واحد هو الله",
-          },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Höre, Israel: Der HERR, unser Gott, ist ein einziger HERR!"",
-            en: '"Hear, O Israel: The LORD our God, the LORD is one!"',
-            ar: "«اسمع يا إسرائيل: الرب إلهنا رب واحد!»",
-          },
-          bibleReference: {
-            de: "5. Mose 6:4",
-            en: "Deuteronomy 6:4",
-            ar: "تثنية ٦:٤",
-          },
-          fatherQuote: {
-            de: "„Ein Gott, ein Glaube, eine Taufe – dies ist das Fundament der Kirche."",
-            en: '"One God, one faith, one baptism—this is the foundation of the Church."',
-            ar: "إله واحد، إيمان واحد، معمودية واحدة—هذا هو أساس الكنيسة.",
-          },
-          fatherReference: {
-            de: "Hl. Cyprian von Karthago, Über die Einheit der Kirche",
-            en: "St. Cyprian of Carthage, On the Unity of the Church",
-            ar: "القديس كبريانوس القرطاجي، عن وحدة الكنيسة",
           },
         },
       },
@@ -173,7 +145,7 @@ export const LESSONS: Record<string, Lesson> = {
         title: {
           de: "Zahlen 11–19",
           en: "Numbers 11–19",
-          ar: "الأعداد ١١–١٩"
+          ar: "الأعداد ١١–١٩",
         },
         rule: {
           de: "Die Zahlen 11-19 werden aus ⲙⲏⲧ (10) + ⲛ̀ ('und') + Grundzahl gebildet.",
@@ -184,17 +156,29 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "ⲙⲏⲧ ⲛ̀ⲟⲩⲁⲓ",
             translit: "meet en ouai",
-            meaning: { de: "elf (10 + 1)", en: "eleven (10 + 1)", ar: "أحد عشر (١٠ + ١)" },
+            meaning: {
+              de: "elf (10 + 1)",
+              en: "eleven (10 + 1)",
+              ar: "أحد عشر (١٠ + ١)",
+            },
           },
           {
             coptic: "ⲙⲏⲧ ⲛ̀ⲥⲛⲁⲩ",
             translit: "meet en snau",
-            meaning: { de: "zwölf (10 + 2)", en: "twelve (10 + 2)", ar: "اثنا عشر (١٠ + ٢)" },
+            meaning: {
+              de: "zwölf (10 + 2)",
+              en: "twelve (10 + 2)",
+              ar: "اثنا عشر (١٠ + ٢)",
+            },
           },
           {
             coptic: "ⲙⲏⲧ ⲛ̀ϣⲟⲙⲧ",
             translit: "meet en shomt",
-            meaning: { de: "dreizehn (10 + 3)", en: "thirteen (10 + 3)", ar: "ثلاثة عشر (١٠ + ٣)" },
+            meaning: {
+              de: "dreizehn (10 + 3)",
+              en: "thirteen (10 + 3)",
+              ar: "ثلاثة عشر (١٠ + ٣)",
+            },
           },
         ],
       },
@@ -213,26 +197,34 @@ export const LESSONS: Record<string, Lesson> = {
         examples: [
           {
             coptic: "ⲕ̅",
-            copticName: "ⲅⲟⲟⲩⲓ",
-            translit: "gooui",
-            meaning: { de: "zwanzig (20)", en: "twenty (20)", ar: "عشرون (٢٠)" },
+            translit: "ⲅⲟⲟⲩⲓ = gooui",
+            meaning: {
+              de: "zwanzig (20)",
+              en: "twenty (20)",
+              ar: "عشرون (٢٠)",
+            },
           },
           {
             coptic: "ⲗ̅",
-            copticName: "ⲗⲁⲃ",
-            translit: "lab",
-            meaning: { de: "dreißig (30)", en: "thirty (30)", ar: "ثلاثون (٣٠)" },
+            translit: "ⲗⲁⲃ = lab",
+            meaning: {
+              de: "dreißig (30)",
+              en: "thirty (30)",
+              ar: "ثلاثون (٣٠)",
+            },
           },
           {
             coptic: "ⲙ̅",
-            copticName: "ⲙⲁⲣⲃⲁ",
-            translit: "marba",
-            meaning: { de: "vierzig (40)", en: "forty (40)", ar: "أربعون (٤٠)" },
+            translit: "ⲙⲁⲣⲃⲁ = marba",
+            meaning: {
+              de: "vierzig (40)",
+              en: "forty (40)",
+              ar: "أربعون (٤٠)",
+            },
           },
           {
             coptic: "ⲛ̅",
-            copticName: "ⲛⲉⲙⲃ",
-            translit: "nemb",
+            translit: "ⲛⲉⲙⲃ = nemb",
             meaning: { de: "fünfzig (50)", en: "fifty (50)", ar: "خمسون (٥٠)" },
           },
         ],
@@ -252,27 +244,35 @@ export const LESSONS: Record<string, Lesson> = {
         examples: [
           {
             coptic: "ⲝ̅",
-            copticName: "ⲝⲉⲥ",
-            translit: "xes",
+            translit: "ⲝⲉⲥ = xes",
             meaning: { de: "sechzig (60)", en: "sixty (60)", ar: "ستون (٦٠)" },
           },
           {
             coptic: "ⲟ̅",
-            copticName: "ⲟⲕⲧⲟⲩ",
-            translit: "oktou",
-            meaning: { de: "siebzig (70)", en: "seventy (70)", ar: "سبعون (٧٠)" },
+            translit: "ⲟⲕⲧⲟⲩ = oktou",
+            meaning: {
+              de: "siebzig (70)",
+              en: "seventy (70)",
+              ar: "سبعون (٧٠)",
+            },
           },
           {
             coptic: "ⲡ̅",
-            copticName: "ⲡⲓⲥ",
-            translit: "pis",
-            meaning: { de: "achtzig (80)", en: "eighty (80)", ar: "ثمانون (٨٠)" },
+            translit: "ⲡⲓⲥ = pis",
+            meaning: {
+              de: "achtzig (80)",
+              en: "eighty (80)",
+              ar: "ثمانون (٨٠)",
+            },
           },
           {
             coptic: "ⲣ̅",
-            copticName: "ⲣⲁⲃⲧ",
-            translit: "rabt",
-            meaning: { de: "neunzig (90)", en: "ninety (90)", ar: "تسعون (٩٠)" },
+            translit: "ⲣⲁⲃⲧ = rabt",
+            meaning: {
+              de: "neunzig (90)",
+              en: "ninety (90)",
+              ar: "تسعون (٩٠)",
+            },
           },
         ],
       },
@@ -292,12 +292,20 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "ⲕ̅ⲅ̅",
             translit: "gooui shomt",
-            meaning: { de: "dreiundzwanzig (20 + 3)", en: "twenty-three (20 + 3)", ar: "ثلاثة وعشرون (٢٠ + ٣)" },
+            meaning: {
+              de: "dreiundzwanzig (20 + 3)",
+              en: "twenty-three (20 + 3)",
+              ar: "ثلاثة وعشرون (٢٠ + ٣)",
+            },
           },
           {
             coptic: "ⲙ̅ⲉ̅",
             translit: "marba etiou",
-            meaning: { de: "fünfundvierzig (40 + 5)", en: "forty-five (40 + 5)", ar: "خمسة وأربعون (٤٠ + ٥)" },
+            meaning: {
+              de: "fünfundvierzig (40 + 5)",
+              en: "forty-five (40 + 5)",
+              ar: "خمسة وأربعون (٤٠ + ٥)",
+            },
           },
         ],
       },
@@ -310,28 +318,6 @@ export const LESSONS: Record<string, Lesson> = {
             de: "Zwölf sind die Apostel",
             en: "Twelve are the apostles",
             ar: "اثنا عشر هم الرسل",
-          },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Und er setzte zwölf ein, damit sie bei ihm seien und damit er sie aussende."",
-            en: '"And he appointed twelve so that they might be with him and he might send them out."',
-            ar: "«وأقام اثني عشر ليكونوا معه وليرسلهم.»",
-          },
-          bibleReference: {
-            de: "Markus 3:14",
-            en: "Mark 3:14",
-            ar: "مرقس ٣:١٤",
-          },
-          fatherQuote: {
-            de: "„Die Zwölf sind das Fundament der Kirche, ausgewählt von Christus selbst."",
-            en: '"The Twelve are the foundation of the Church, chosen by Christ himself."',
-            ar: "الاثنا عشر هم أساس الكنيسة، اختارهم المسيح نفسه.",
-          },
-          fatherReference: {
-            de: "Hl. Irenäus, Gegen die Häresien III.12.5",
-            en: "St. Irenaeus, Against Heresies III.12.5",
-            ar: "القديس إيريناوس، ضد الهرطقات ٣:١٢:٥",
           },
         },
       },
@@ -365,21 +351,26 @@ export const LESSONS: Record<string, Lesson> = {
         examples: [
           {
             coptic: "ⲏⲕ",
-            copticName: "ⲏⲕ",
-            translit: "eik",
+            translit: "ⲏⲕ = eik",
             meaning: { de: "hundert", en: "hundred", ar: "مائة" },
           },
           {
             coptic: "ⲥ̅",
-            copticName: "ⲥⲛⲉⲩ",
-            translit: "sneu",
-            meaning: { de: "zweihundert (200)", en: "two hundred (200)", ar: "مائتان (٢٠٠)" },
+            translit: "ⲥⲛⲉⲩ = sneu",
+            meaning: {
+              de: "zweihundert (200)",
+              en: "two hundred (200)",
+              ar: "مائتان (٢٠٠)",
+            },
           },
           {
             coptic: "ⲧ̅",
-            copticName: "ϣⲟⲙⲧⲉⲉⲩ",
-            translit: "shomteu",
-            meaning: { de: "dreihundert (300)", en: "three hundred (300)", ar: "ثلاثمائة (٣٠٠)" },
+            translit: "ϣⲟⲙⲧⲉⲉⲩ = shomteu",
+            meaning: {
+              de: "dreihundert (300)",
+              en: "three hundred (300)",
+              ar: "ثلاثمائة (٣٠٠)",
+            },
           },
         ],
       },
@@ -398,21 +389,30 @@ export const LESSONS: Record<string, Lesson> = {
         examples: [
           {
             coptic: "ⲩ̅",
-            copticName: "ⲫⲧⲟⲩⲉⲩ",
-            translit: "ftoueu",
-            meaning: { de: "vierhundert (400)", en: "four hundred (400)", ar: "أربعمائة (٤٠٠)" },
+            translit: "ⲫⲧⲟⲩⲉⲩ = ftoueu",
+            meaning: {
+              de: "vierhundert (400)",
+              en: "four hundred (400)",
+              ar: "أربعمائة (٤٠٠)",
+            },
           },
           {
             coptic: "ⲫ̅",
-            copticName: "ⲉⲧⲓⲟⲩⲉⲩ",
-            translit: "etioueu",
-            meaning: { de: "fünfhundert (500)", en: "five hundred (500)", ar: "خمسمائة (٥٠٠)" },
+            translit: "ⲉⲧⲓⲟⲩⲉⲩ = etioueu",
+            meaning: {
+              de: "fünfhundert (500)",
+              en: "five hundred (500)",
+              ar: "خمسمائة (٥٠٠)",
+            },
           },
           {
             coptic: "ⲱ̅",
-            copticName: "ⲉϣⲙⲏⲛⲉⲩ",
-            translit: "eshmeneu",
-            meaning: { de: "achthundert (800)", en: "eight hundred (800)", ar: "ثمانمائة (٨٠٠)" },
+            translit: "ⲉϣⲙⲏⲛⲉⲩ = eshmeneu",
+            meaning: {
+              de: "achthundert (800)",
+              en: "eight hundred (800)",
+              ar: "ثمانمائة (٨٠٠)",
+            },
           },
         ],
       },
@@ -431,14 +431,16 @@ export const LESSONS: Record<string, Lesson> = {
         examples: [
           {
             coptic: "ⲁ̅̅",
-            copticName: "ⲁⲗⲗⲟⲩ",
-            translit: "allou",
-            meaning: { de: "tausend (1000)", en: "thousand (1000)", ar: "ألف (١٠٠٠)" },
+            translit: "ⲁⲗⲗⲟⲩ = allou",
+            meaning: {
+              de: "tausend (1000)",
+              en: "thousand (1000)",
+              ar: "ألف (١٠٠٠)",
+            },
           },
           {
             coptic: "ⲁ̅̅ⲟⲩⲁⲓ",
-            copticName: "ⲁⲗⲗⲟⲩ ⲛ̀ⲟⲩⲁⲓ",
-            translit: "allou en ouai",
+            translit: "ⲁⲗⲗⲟⲩ ⲛ̀ⲟⲩⲁⲓ = allou en ouai",
             meaning: {
               de: "tausendundeins (1001)",
               en: "one thousand and one (1001)",
@@ -447,8 +449,7 @@ export const LESSONS: Record<string, Lesson> = {
           },
           {
             coptic: "ⲃ̅̅",
-            copticName: "ⲁⲗⲗⲟⲩ ⲛ̀ⲥⲛⲁⲩ",
-            translit: "allou en snau",
+            translit: "ⲁⲗⲗⲟⲩ ⲛ̀ⲥⲛⲁⲩ = allou en snau",
             meaning: {
               de: "zweitausend (2000)",
               en: "two thousand (2000)",
@@ -473,7 +474,11 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "ⲟⲩⲣⲱⲙⲓ ⲛⲟⲩⲱⲧ",
             translit: "ou romi nouwt",
-            meaning: { de: "ein Mann (wörtl: ein Mann einer)", en: "one man (lit: a man one)", ar: "رجل واحد" },
+            meaning: {
+              de: "ein Mann (wörtl: ein Mann einer)",
+              en: "one man (lit: a man one)",
+              ar: "رجل واحد",
+            },
           },
           {
             coptic: "ⲣⲱⲙⲓ ⲥⲛⲁⲩ",
@@ -495,8 +500,8 @@ export const LESSONS: Record<string, Lesson> = {
           ar: "الأعداد الترتيبية",
         },
         rule: {
-          de: "„Der Erste" = ⲡⲓϣⲟⲣⲡ; für 2 und höher: ⲡⲓⲙⲁϩ + Zahl. Beispiel: ⲡⲓⲙⲁϩϣⲟⲙⲧ = der Dritte.",
-          en: ""The first" = ⲡⲓϣⲟⲣⲡ; for 2+: ⲡⲓⲙⲁϩ + number. Example: ⲡⲓⲙⲁϩϣⲟⲙⲧ = the third.",
+          de: '"Der Erste" = ⲡⲓϣⲟⲣⲡ; für 2 und höher: ⲡⲓⲙⲁϩ + Zahl. Beispiel: ⲡⲓⲙⲁϩϣⲟⲙⲧ = der Dritte.',
+          en: '"The first" = ⲡⲓϣⲟⲣⲡ; for 2+: ⲡⲓⲙⲁϩ + number. Example: ⲡⲓⲙⲁϩϣⲟⲙⲧ = the third.',
           ar: "الأول = ⲡⲓϣⲟⲣⲡ؛ من الثاني فصاعداً: ⲡⲓⲙⲁϩ + العدد. مثال: ⲡⲓⲙⲁϩϣⲟⲙⲧ = الثالث.",
         },
         examples: [
@@ -538,28 +543,6 @@ export const LESSONS: Record<string, Lesson> = {
             de: "Er stand auf am dritten Tag",
             en: "He arose on the third day",
             ar: "قام في اليوم الثالث",
-          },
-        },
-        spiritual: {
-          bibleVerse: {
-            de: "„Er wurde begraben und ist auferweckt worden am dritten Tag nach den Schriften."",
-            en: '"He was buried, and he was raised on the third day in accordance with the Scriptures."',
-            ar: "«دُفِن وقام في اليوم الثالث حسب الكتب.»",
-          },
-          bibleReference: {
-            de: "1. Korinther 15:4",
-            en: "1 Corinthians 15:4",
-            ar: "١ كورنثوس ١٥:٤",
-          },
-          fatherQuote: {
-            de: "„Die Auferstehung am dritten Tag ist der Triumph über den Tod und das Zeichen unserer Hoffnung."",
-            en: '"The resurrection on the third day is the triumph over death and the sign of our hope."',
-            ar: "القيامة في اليوم الثالث هي الانتصار على الموت وعلامة رجائنا.",
-          },
-          fatherReference: {
-            de: "Hl. Johannes Chrysostomus, Homilien über 1. Korinther",
-            en: "St. John Chrysostom, Homilies on 1 Corinthians",
-            ar: "القديس يوحنا الذهبي الفم، عظات على ١ كورنثوس",
           },
         },
       },

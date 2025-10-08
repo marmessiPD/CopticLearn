@@ -178,7 +178,7 @@ export const LESSONS: Record<string, Lesson> = {
         },
         spiritual: {
           bibleVerse: {
-            de: "„Gott ist Liebe; und wer in der Liebe bleibt, der bleibt in Gott und Gott in ihm."",
+            de: '„Gott ist Liebe; und wer in der Liebe bleibt, der bleibt in Gott und Gott in ihm.“',
             en: '"God is love, and whoever abides in love abides in God, and God abides in him."',
             ar: "«الله محبة، ومن يثبت في المحبة يثبت في الله والله فيه.»",
           },
@@ -188,7 +188,7 @@ export const LESSONS: Record<string, Lesson> = {
             ar: "١ يوحنا ٤:١٦",
           },
           fatherQuote: {
-            de: "„Die Liebe Gottes ist das Feuer, das alle Kälte der Sünde verzehrt."",
+            de: '„Die Liebe Gottes ist das Feuer, das alle Kälte der Sünde verzehrt.“',
             en: '"The love of God is the fire that consumes all the coldness of sin."',
             ar: "محبة الله هي النار التي تلتهم كل برودة الخطيئة.",
           },
@@ -372,7 +372,7 @@ export const LESSONS: Record<string, Lesson> = {
         },
         spiritual: {
           bibleVerse: {
-            de: "„Ich bin das Licht der Welt. Wer mir nachfolgt, wird nicht in der Finsternis wandeln."",
+            de: '„Ich bin das Licht der Welt. Wer mir nachfolgt, wird nicht in der Finsternis wandeln.“',
             en: '"I am the light of the world. Whoever follows me will not walk in darkness."',
             ar: "«أنا نور العالم. من يتبعني فلا يمشي في الظلمة.»",
           },
@@ -382,7 +382,7 @@ export const LESSONS: Record<string, Lesson> = {
             ar: "يوحنا ٨:١٢",
           },
           fatherQuote: {
-            de: "„Christus ist das wahre Licht, das jeden Menschen erleuchtet."",
+            de: '„Christus ist das wahre Licht, das jeden Menschen erleuchtet.“',
             en: '"Christ is the true light that enlightens every man."',
             ar: "المسيح هو النور الحقيقي الذي ينير كل إنسان.",
           },
@@ -488,29 +488,139 @@ export const LESSONS: Record<string, Lesson> = {
             en: "Christ is our God",
             ar: "المسيح هو إلهنا",
           },
+        }
+      },
+    ],
+  },
+
+  "m3-l4": {
+    id: "m3-l4",
+    order: 4,
+    moduleId: "m3",
+    title: {
+      de: "Praktische Redewendungen: Vorstellung & Begrüßung",
+      en: "Practical Phrases: Introduction & Greeting",
+      ar: "عبارات عملية: التعريف والتحية",
+    },
+    prerequisites: ["m3-l3"],
+    quizId: "q3-4",
+    slides: [
+      {
+        type: "vocab",
+        title: {
+          de: "Grundlegende Begrüßungen",
+          en: "Basic Greetings",
+          ar: "تحيات أساسية",
         },
-        spiritual: {
-          bibleVerse: {
-            de: "„Er ist das Ebenbild des unsichtbaren Gottes, der Erstgeborene aller Schöpfung."",
-            en: '"He is the image of the invisible God, the firstborn of all creation."',
-            ar: "«هو صورة الله غير المنظور، بكر كل خليقة.»",
+        items: [
+          {
+            coptic: "ⲭⲉⲣⲉ",
+            translit: "khere",
+            meaning: { de: "Sei gegrüßt / Hallo", en: "Greetings / Hello", ar: "السلام عليك / مرحباً" },
           },
-          bibleReference: {
-            de: "Kolosser 1:15",
-            en: "Colossians 1:15",
-            ar: "كولوسي ١:١٥",
+          {
+            coptic: "ⲛⲓⲙ ⲡⲉ ⲡⲉⲕⲣⲁⲛ",
+            translit: "nim pe pek-ran",
+            meaning: { de: "Wie heißt du? (m.)", en: "What is your name? (m.)", ar: "ما اسمك؟ (م)" },
           },
-          fatherQuote: {
-            de: "„Christus ist wahrer Gott und wahrer Mensch, ungeteilt und unvermischt."",
-            en: '"Christ is true God and true man, undivided and unmixed."',
-            ar: "المسيح هو إله حقيقي وإنسان حقيقي، غير منقسم وغير ممتزج.",
+          {
+            coptic: "ⲛⲓⲙ ⲡⲉ ⲡⲁⲣⲁⲛ",
+            translit: "nim pe pa-ran",
+            meaning: { de: "Wie heiße ich?", en: "What is my name?", ar: "ما اسمي؟" },
           },
-          fatherReference: {
-            de: "Hl. Kyrill von Alexandria, Gegen Nestorius",
-            en: "St. Cyril of Alexandria, Against Nestorius",
-            ar: "القديس كيرلس الإسكندري، ضد نسطوريوس",
+          {
+            coptic: "ⲡⲁⲣⲁⲛ ⲡⲉ ...",
+            translit: "pa-ran pe ...",
+            meaning: { de: "Mein Name ist ...", en: "My name is ...", ar: "اسمي هو ..." },
           },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲁⲛⲟⲕ ⲡⲉ ⲡⲓⲙⲁⲑⲏⲧⲏⲥ",
+          translit: "anok pe pi-mathētēs",
+          meaning: { de: "Ich bin der Schüler", en: "I am the student", ar: "أنا التلميذ" },
+        }
+      },
+      {
+        type: "vocab",
+        title: {
+          de: "Familienmitglieder",
+          en: "Family Members",
+          ar: "أفراد العائلة",
         },
+        items: [
+          {
+            coptic: "ⲡⲓⲓⲱⲧ",
+            translit: "pi-iot",
+            meaning: { de: "der Vater", en: "the father", ar: "الأب" },
+          },
+          {
+            coptic: "ϯⲙⲁⲩ",
+            translit: "ti-mau",
+            meaning: { de: "die Mutter", en: "the mother", ar: "الأم" },
+          },
+          {
+            coptic: "ⲡⲓⲥⲟⲛ",
+            translit: "pi-son",
+            meaning: { de: "der Bruder", en: "the brother", ar: "الأخ" },
+          },
+          {
+            coptic: "ϯⲥⲱⲛⲓ",
+            translit: "ti-soni",
+            meaning: { de: "die Schwester", en: "the sister", ar: "الأخت" },
+          },
+          {
+            coptic: "ⲡⲓϣⲏⲣⲓ",
+            translit: "pi-shiri",
+            meaning: { de: "das Kind / der Sohn", en: "the child / the son", ar: "الطفل / الابن" },
+          },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲫⲁⲓ ⲡⲉ ⲡⲁⲓⲱⲧ",
+          translit: "fai pe pa-iot",
+          meaning: { de: "Dies ist mein Vater", en: "This is my father", ar: "هذا أبي" },
+        }
+      },
+      {
+        type: "conversation",
+        title: {
+          de: "Einfacher Dialog",
+          en: "Simple Dialogue",
+          ar: "حوار بسيط",
+        },
+        lines: [
+          {
+            speaker: { de: "Person 1", en: "Person 1", ar: "الشخص 1" },
+            coptic: "ⲭⲉⲣⲉ, ⲛⲓⲙ ⲡⲉ ⲡⲉⲕⲣⲁⲛ?",
+            translit: "khere, nim pe pek-ran?",
+            meaning: { de: "Hallo, wie heißt du?", en: "Hello, what is your name?", ar: "مرحباً، ما اسمك؟" },
+          },
+          {
+            speaker: { de: "Person 2", en: "Person 2", ar: "الشخص 2" },
+            coptic: "ⲡⲁⲣⲁⲛ ⲡⲉ Ⲙⲁⲣⲕⲟⲥ",
+            translit: "pa-ran pe Markos",
+            meaning: { de: "Mein Name ist Markus", en: "My name is Mark", ar: "اسمي مرقس" },
+          },
+          {
+            speaker: { de: "Person 1", en: "Person 1", ar: "الشخص 1" },
+            coptic: "ⲁⲛⲟⲕ ⲡⲉ Ⲡⲁⲩⲗⲟⲥ",
+            translit: "anok pe Paulos",
+            meaning: { de: "Ich bin Paulus", en: "I am Paul", ar: "أنا بولس" },
+          },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "ⲛ̀ⲑⲟⲕ ⲡⲉ ⲡⲁⲥⲟⲛ",
+          translit: "enthok pe pa-son",
+          meaning: { de: "Du bist mein Bruder", en: "You are my brother", ar: "أنت أخي" },
+        }
       },
     ],
   },
@@ -685,6 +795,63 @@ export const QUIZZES: Record<string, Quiz> = {
           { de: "mit ⲁⲛ am Ende", en: "with ⲁⲛ at the end", ar: "بـ ⲁⲛ في النهاية" },
           { de: "mit ⲙ̀ am Anfang", en: "with ⲙ̀ at the beginning", ar: "بـ ⲙ̀ في البداية" },
           { de: "mit ⲛ̀ vor dem Verb", en: "with ⲛ̀ before the verb", ar: "بـ ⲛ̀ قبل الفعل" },
+        ],
+        correctAnswerIndex: 0,
+      },
+    ],
+  },
+  "q3-4": {
+    id: "q3-4",
+    lessonId: "m3-l4",
+    title: {
+      de: "Quiz: Praktische Redewendungen",
+      en: "Quiz: Practical Phrases",
+      ar: "اختبار: عبارات عملية",
+    },
+    passScore: 70,
+    questions: [
+      {
+        id: "q3-4-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wie sagt man \"Hallo\" auf Koptisch?",
+          en: "How do you say \"Hello\" in Coptic?",
+          ar: "كيف تقول \"مرحباً\" بالقبطية؟",
+        },
+        options: [
+          { de: "ⲭⲉⲣⲉ", en: "ⲭⲉⲣⲉ", ar: "ⲭⲉⲣⲉ" },
+          { de: "ⲛⲓⲙ", en: "ⲛⲓⲙ", ar: "ⲛⲓⲙ" },
+          { de: "ⲁⲛⲟⲕ", en: "ⲁⲛⲟⲕ", ar: "ⲁⲛⲟⲕ" },
+        ],
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "q3-4-2",
+        type: "multiple-choice",
+        questionText: {
+          de: "Was bedeutet \"ⲛⲓⲙ ⲡⲉ ⲡⲉⲕⲣⲁⲛ\"?",
+          en: "What does \"ⲛⲓⲙ ⲡⲉ ⲡⲉⲕⲣⲁⲛ\" mean?",
+          ar: "ماذا يعني \"ⲛⲓⲙ ⲡⲉ ⲡⲉⲕⲣⲁⲛ\"؟",
+        },
+        options: [
+          { de: "Wie heißt du?", en: "What is your name?", ar: "ما اسمك؟" },
+          { de: "Ich bin Markus", en: "I am Mark", ar: "أنا مرقس" },
+          { de: "Dies ist mein Vater", en: "This is my father", ar: "هذا أبي" },
+        ],
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "q3-4-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wie sagt man \"der Vater\" auf Koptisch?",
+          en: "How do you say \"the father\" in Coptic?",
+          ar: "كيف تقول \"الأب\" بالقبطية؟",
+        },
+        options: [
+          { de: "ⲡⲓⲓⲱⲧ", en: "ⲡⲓⲓⲱⲧ", ar: "ⲡⲓⲓⲱⲧ" },
+          { de: "ϯⲙⲁⲩ", en: "ϯⲙⲁⲩ", ar: "ϯⲙⲁⲩ" },
+          { de: "ⲡⲓⲥⲟⲛ", en: "ⲡⲓⲥⲟⲛ", ar: "ⲡⲓⲥⲟⲛ" },
         ],
         correctAnswerIndex: 0,
       },

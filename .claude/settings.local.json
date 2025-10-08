@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(grep:*)",
-      "Bash(done)"
+      "Bash(done)",
+      "Read(//c//**)"
     ],
     "deny": [],
     "ask": []

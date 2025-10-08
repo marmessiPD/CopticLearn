@@ -73,8 +73,8 @@ const MODULE_M3: Module = {
   id: 'm3',
   order: 3,
   title: { de: 'Artikel & Pronomen', en: 'Articles & Pronouns', ar: 'الأدوات والضمائر' },
-  lessons: ['m3-l1', 'm3-l2', 'm3-l3'],
-  quizIds: ['q3-1', 'q3-2', 'q3-3'],
+  lessons: ['m3-l1', 'm3-l2', 'm3-l3', 'm3-l4'],
+  quizIds: ['q3-1', 'q3-2', 'q3-3', 'q3-4'],
 };
 
 const MODULE_M4: Module = {
@@ -82,7 +82,7 @@ const MODULE_M4: Module = {
   order: 4,
   title: { de: 'Verben', en: 'Verbs', ar: 'الأفعال' },
   lessons: Object.keys(LESSONS_M4).filter((k) => k.startsWith('m4-')),
-  quizIds: [],
+  quizIds: ['q4-1', 'q4-2', 'q4-3', 'q4-4'],
 };
 
 const MODULE_M5: Module = {
@@ -90,7 +90,7 @@ const MODULE_M5: Module = {
   order: 5,
   title: { de: 'Adjektive', en: 'Adjectives', ar: 'الصفات' },
   lessons: Object.keys(LESSONS_M5).filter((k) => k.startsWith('l5-')),
-  quizIds: [],
+  quizIds: ['q5-1', 'q5-2', 'q5-3', 'q5-4', 'q5-5'],
 };
 
 const MODULE_M6: Module = {
