@@ -1,9 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep:*)",
-      "Bash(done)",
-      "Read(//c//**)"
+      "Bash(findstr:*)",
+      "Bash(git checkout:*)",
+      "Bash(git restore:*)"
     ],
     "deny": [],
     "ask": []

@@ -39,7 +39,7 @@ export interface Letter {
     lowercase: string;
     name: LocalizedString;
     pronunciation: LocalizedString;
-    numeric: number;
+    numeric: number | null;
     exampleWord: {
         coptic: string;
         translit: string;
