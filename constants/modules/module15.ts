@@ -39,22 +39,7 @@ export const LESSONS: Record<string, Lesson> = {
             { coptic: 'ⲛⲁϣⲏⲣⲓ', translit: 'na-sheri', meaning: { de: 'meine Kinder', en: 'my children', ar: 'أولادي' } }
           ]
         },
-        {
-          type: 'spiritual',
-          bibleVerse: {
-            de: 'Ehre deinen Vater und deine Mutter.',
-            en: 'Honor your father and your mother.',
-            ar: 'أكرم أباك وأمك.'
-          },
-          bibleReference: { de: '2. Mose 20:12', en: 'Exodus 20:12', ar: 'خروج ٢٠:١٢' },
-          fatherQuote: {
-            de: 'Die Familie ist die erste Kirche des Menschen.',
-            en: 'The family is a man’s first church.',
-            ar: 'الأسرة هي الكنيسة الأولى للإنسان.'
-          },
-          fatherReference: { de: 'Hl. Klemens von Alexandria', en: 'St. Clement of Alexandria', ar: 'القديس كليمندس الإسكندري' },
-          emoji: '👨‍👩‍👧'
-        }
+        
       ]
     },
   
@@ -91,7 +76,7 @@ export const LESSONS: Record<string, Lesson> = {
             translit: 'pi-soma ente pi-Christos',
             meaning: { de: 'der Leib Christi', en: 'the body of Christ', ar: 'جسد المسيح' }
           },
-          emoji: '✝️'
+          
         }
       ]
     },
@@ -122,22 +107,7 @@ export const LESSONS: Record<string, Lesson> = {
             { coptic: 'ⲟⲩⲱⲛ ⲛ̀ϥ ⲛ̀ϩⲏⲧ ⲉⲩⲟⲩⲁⲓ', translit: 'ouon nef nehit eu-ouai', meaning: { de: 'er hat ein gutes Herz', en: 'he has a good heart', ar: 'له قلب صالح' } }
           ]
         },
-        {
-          type: 'spiritual',
-          bibleVerse: {
-            de: 'Denn alles, was wir haben, kommt von Gott.',
-            en: 'For all we have comes from God.',
-            ar: 'كل ما لنا هو من الله.'
-          },
-          bibleReference: { de: '1 Chronik 29:14', en: '1 Chronicles 29:14', ar: 'أخبار الأيام الأول ٢٩:١٤' },
-          fatherQuote: {
-            de: 'Wer reich an Gott ist, besitzt alles.',
-            en: 'He who is rich in God possesses all.',
-            ar: 'من هو غني بالله يملك كل شيء.'
-          },
-          fatherReference: { de: 'Hl. Athanasius', en: 'St. Athanasius', ar: 'القديس أثناسيوس' },
-          emoji: '🙏'
-        }
+        
       ]
     },
   
@@ -174,7 +144,7 @@ export const LESSONS: Record<string, Lesson> = {
             translit: 'pai pe ep-shiiri em-Efnouti',
             meaning: { de: 'Dieser ist der Sohn Gottes', en: 'This is the Son of God', ar: 'هذا هو ابن الله' }
           },
-          emoji: '✨'
+          
         }
       ]
     }

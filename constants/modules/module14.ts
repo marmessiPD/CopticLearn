@@ -28,20 +28,6 @@ export const LESSONS: Record<string, Lesson> = {
           { coptic: 'ⲧⲱⲛ=', translit: 'twn=', meaning: { de: 'steh auf!', en: 'arise!', ar: 'انهض!' } },
           { coptic: 'ⲙⲉⲛⲣⲉ-', translit: 'menre-', meaning: { de: 'liebe!', en: 'love!', ar: 'أَحِبَّ!' } }
         ],
-        spiritual: {
-          bibleVerse: { de: '„Freut euch allezeit.“', en: '"Rejoice always."', ar: '«افْرَحُوا فِي كُلِّ حِينٍ.»' },
-          bibleReference: { de: '1Thess 5,16 (SCH2000)', en: '1 Thes 5:16', ar: '١ تسالونيكي ٥:١٦' },
-          fatherQuote: {
-            de: '„Durch die Kraft Gottes wurde die Botschaft allen Völkern verkündet.“',
-            en: '“By the power of God they proclaimed to every race of men.”',
-            ar: '«بقوة الله كرزوا لكل جنس من الناس.»'
-          },
-          fatherReference: {
-            de: 'Justin, 1 Apologie, zitiert bei Bercot, Evangelism, 1.175',
-            en: 'Justin Martyr, First Apology, cited in Bercot, Evangelism, 1.175',
-            ar: 'يوستينوس، الدفاع الأول، كما في بيركوت، التبشير، 1.175'
-          }
-        }
       },
       {
         type: 'grammar',
@@ -58,20 +44,6 @@ export const LESSONS: Record<string, Lesson> = {
           { coptic: 'ⲁⲣⲓⲟⲩⲓ / ⲁⲣⲓ- / ⲁⲣⲓⲧ=', translit: 'arioui / ari- / arit=', meaning: { de: 'mach!/tu!', en: 'make/do!', ar: 'اصنع!' } },
           { coptic: 'ⲁⲛⲓⲧ= / ⲁⲛⲓ-', translit: 'anit= / ani-', meaning: { de: 'bring!', en: 'bring!', ar: 'أْحضر!' } }
         ],
-        spiritual: {
-          bibleVerse: { de: '„Singt dem HERRN ein neues Lied.“', en: '"Sing to the LORD a new song."', ar: '«غَنُّوا لِلرَّبِّ تَرْنِيمَةً جَدِيدَةً.»' },
-          bibleReference: { de: 'Ps 96,1 (SCH2000)', en: 'Ps 96:1', ar: 'مزمور ٩٦:١' },
-          fatherQuote: {
-            de: '„Wenn wir recht das Fest halten, werden wir der Freude des Himmels würdig.“',
-            en: '“When we rightly keep the feast, we shall be counted worthy of the joy in heaven.”',
-            ar: '«عندما نحفظ العيد بحق نُحسَب مستحقّين لفرح السماء.»'
-          },
-          fatherReference: {
-            de: 'Athanasius, Festal Letters 2:7 (Akin, Fathers Know Best)',
-            en: 'Athanasius, Festal Letters 2:7 (Akin)',
-            ar: 'أثناسيوس، رسائل الأعياد ٢:٧ (آكين)'
-          }
-        }
       },
       {
         type: 'grammar',

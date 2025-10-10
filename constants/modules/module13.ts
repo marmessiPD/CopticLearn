@@ -27,20 +27,6 @@ export const LESSONS: Record<string, Lesson> = {
           { coptic: 'ⲣⲱⲙⲓ ⲛⲉⲙ ⲥⲟϭⲛⲓ', translit: 'romi nem sochni', meaning: { de: 'Mann und Freund', en: 'man and friend', ar: 'رجل وصديق' } },
           { coptic: 'ⲉⲡⲓⲇⲏ ⲁϥⲛⲁⲩ ⲉⲡⲓⲥⲁϩⲓ', translit: 'epide af-nau e-pisahi', meaning: { de: 'weil er das Zeichen sah', en: 'since he saw the sign', ar: 'لأنه رأى العلامة' } }
         ],
-        spiritual: {
-          bibleVerse: { de: '„Alle Dinge aber sollen anständig und in Ordnung geschehen.“', en: '"Let all things be done decently and in order."', ar: '«لِيَكُنْ كُلُّ شَيْءٍ بِلِيَاقَةٍ وَبِحَسَبِ التَّرْتِيبِ.»' },
-          bibleReference: { de: '1Kor 14,40 (SCH2000)', en: '1 Cor 14:40', ar: '١ كورنثوس ١٤:٤٠' },
-          fatherQuote: {
-            de: '„Die Kirche, obgleich über die ganze Welt zerstreut, bewahrt die eine Verkündigung.“',
-            en: '“The Church, though dispersed throughout the world, carefully preserves the one preaching.”',
-            ar: '«الكنيسة رغم انتشارها في العالم تحفظ الكرازة الواحدة.»'
-          },
-          fatherReference: {
-            de: 'Irenäus, Adv. haer. zitiert bei Bercot, Evangelism, 1.330–331',
-            en: 'Irenaeus, Against Heresies, cited in Bercot, Evangelism, 1.330–331',
-            ar: 'إيريناوس، ضد الهرطقات، كما في بيركوت، التبشير، 1.330–331'
-          }
-        }
       },
       {
         type: 'grammar',
@@ -53,10 +39,6 @@ export const LESSONS: Record<string, Lesson> = {
         examples: [
           { coptic: 'ⲁϥⲛⲁⲩ ⲇⲉ ⲉⲡⲓⲥⲏⲟⲩ', translit: 'af-nau de e-pisheou', meaning: { de: 'er aber sah das Licht', en: 'but he saw the light', ar: 'أمّا هو فرأى النور' } }
         ],
-        spiritual: {
-          bibleVerse: { de: '„Selig sind die Friedfertigen.“', en: '"Blessed are the peacemakers."', ar: '«طُوبَى لِصانِعِي السَّلامِ.»' },
-          bibleReference: { de: 'Mt 5,9 (SCH2000)', en: 'Mt 5:9', ar: 'متى ٥:٩' }
-        }
       },
       {
         type: 'grammar',

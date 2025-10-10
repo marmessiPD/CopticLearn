@@ -3,7 +3,21 @@
     "allow": [
       "Bash(findstr:*)",
       "Bash(git checkout:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(cat:*)",
+      "Bash(python:*)",
+      "Bash(node:*)",
+      "Bash(npx tsc:*)",
+      "Bash(dir:*)",
+      "Bash(git stash:*)",
+      "Bash(git log:*)",
+      "Read(//c//**)",
+      "Bash(for:*)",
+      "Bash(do if [ -f \"$file\" ])",
+      "Bash(then echo \"=== $file ===\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(copy:*)"
     ],
     "deny": [],
     "ask": []

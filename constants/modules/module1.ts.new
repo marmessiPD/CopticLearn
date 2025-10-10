@@ -212,6 +212,8 @@ export const LETTERS: Record<string, Letter> = {
     pronunciation: { de: 'ks (x)', en: 'ks (x)', ar: 'كس' },
     numeric: 60,
     exampleWord: { coptic: 'ⲝⲩⲗⲟⲛ', translit: 'xylon', meaning: { de: 'Holz', en: 'wood', ar: 'خشب' } },
+    en: '"Wood" & the cross as tree of life (liturgical theme).',
+    ar: '«الخَشَبُ» وَالصَّلِيبُ كَشَجَرَةِ الْحَيَاةِ (مَوْضُوعٌ لِيتُرْجِيّ).',
   },
   o: {
     id: 'o',
@@ -399,24 +401,22 @@ export const LESSONS: Record<string, Lesson> = {
         },
         spiritual: {
           bibleVerse: {
-            de: '"Ich bin das Alpha und das Omega", spricht der Herr.',
+            de: '„Ich bin das Alpha und das Omega", spricht der Herr.',
             en: '"I am the Alpha and the Omega," says the Lord.',
-            ar: '"أنا الألف والياء"، يقول الرب.',
+            ar: '«أَنَا هُوَ الأَلِفُ وَالْيَاءُ» يَقُولُ الرَّبُّ.',
+            // Schlachter2000 (Ref.):
           },
-          bibleReference: {
-            de: 'Offb 1,8 (SCH2000)',
-            en: 'Revelation 1:8',
-            ar: 'رؤيا ١: ٨',
-          },
+          bibleReference: { de: 'Offb 1,8 (SCH2000)', en: 'Revelation 1:8', ar: 'رؤيا ١: ٨' },
           fatherQuote: {
-            de: '"Wer die Liebe hat, ist fern von jeder Sünde." — Hl. Polykarp.',
-            en: '"He who has love is far from all sin." — St. Polycarp.',
-            ar: '"من له المحبة فهو بعيد عن كل خطيئة." — القديس بوليكاربوس.',
+            de: '„Wer die Liebe hat, ist fern von jeder Sünde.“ — Hl. Polykarp.',
+            en: '"Whoever has love is far from all sin." — St. Polycarp.',
+            ar: '«مَنْ كانَتْ لَهُ الْمَحَبَّةُ فَهُوَ بَعِيدٌ عَنْ كُلِّ خَطِيئَةٍ.» — القدِّيس بوليكاربوس.',
+            
           },
           fatherReference: {
-            de: 'Polykarp, zitiert bei Bercot, Early Christian Beliefs, s.v. LOVE.',
-            en: 'Polycarp, quoted in Bercot, Early Christian Beliefs, s.v. LOVE.',
-            ar: 'بوليكاربوس، مقتبس في بيركوت، معتقدات المسيحيين الأوائل، LOVE.',
+            de: 'Polykarp, zitiert bei Bercot, *Early Christian Beliefs*, s.v. LOVE.',
+            en: 'Polycarp, cited in Bercot, *Early Christian Beliefs*, s.v. LOVE.',
+            ar: 'بوليكاربوس، مُقتبس في بيركوت، *Early Christian Beliefs*، s.v. LOVE.',
           },
         },
       },
@@ -430,25 +430,18 @@ export const LESSONS: Record<string, Lesson> = {
           ar: 'ⲃ تُنطق ڤ قبل الحركة، وب خلاف ذلك؛ وفي الأعلام دائمًا ب.',
         },
         spiritual: {
-          bibleVerse: {
-            de: '"Die Leuchte des Leibes ist das Auge."',
-            en: '"The lamp of the body is the eye."',
-            ar: '"سراج الجسد هو العين."',
-          },
-          bibleReference: {
-            de: 'Lk 11,34 (SCH2000)',
-            en: 'Luke 11:34',
-            ar: 'لوقا ١١: ٣٤',
-          },
+          bibleVerse: { de: '„Die Leuchte des Leibes ist das Auge.“', en: '"The lamp of the body is the eye."', ar: '«سِرَاجُ الْجَسَدِ هُوَ الْعَيْنُ.»' },
+          bibleReference: { de: 'Lk 11,34 (SCH2000)', en: 'Luke 11:34', ar: 'لوقا ١١: ٣٤' },
           fatherQuote: {
-            de: '"Der Sohn … ist … vollkommenes väterliches Licht; er ist ganz Augen, sieht alles." — Hl. Klemens v. Alexandrien.',
-            en: '"The Son... is... perfect paternal light; he is all eyes, seeing all things." — St. Clement of Alexandria.',
-            ar: '"الابن... هو... نور أبوي كامل؛ إنه كل عيون، يرى كل شيء." — القديس إكليمندس الإسكندري.',
+            de: '„Der Sohn … ist … vollkommenes väterliches Licht; er ist ganz Augen, sieht alles.“ — Hl. Klemens v. Alexandrien.',
+            en: '"The Son ... is ... perfect paternal light; he is all eyes, sees all." — St. Clement of Alexandria.',
+            ar: '«الابْنُ ... هُوَ ... نُورٌ أَبَوِيٌّ كَامِلٌ؛ هُوَ عُيُونٌ كُلُّهُ، يَرَى كُلَّ شَيْءٍ.» — القدِّيس إكليمنضس الإسكندري.',
+            
           },
           fatherReference: {
             de: 'Clement of Alexandria, bei Bercot, s.v. CHRIST, DIVINITY OF.',
-            en: 'Clement of Alexandria, in Bercot, s.v. CHRIST, DIVINITY OF.',
-            ar: 'إكليمندس الإسكندري، في بيركوت، CHRIST, DIVINITY OF.',
+            en: 'Clement of Alexandria, cited in Bercot, s.v. CHRIST, DIVINITY OF.',
+            ar: 'إكليمنضس الإسكندري، مُقتبس في بيركوت، s.v. CHRIST, DIVINITY OF.',
           },
         },
       },
@@ -462,25 +455,18 @@ export const LESSONS: Record<string, Lesson> = {
           ar: 'غ/ج بحسب الموضع؛ ن قبل ⲅ/ⲕ/ⲭ/ⲝ.',
         },
         spiritual: {
-          bibleVerse: {
-            de: '"Denn so sehr hat Gott die Welt geliebt…"',
-            en: '"For God so loved the world..."',
-            ar: '"لأنه هكذا أحب الله العالم..."',
-          },
-          bibleReference: {
-            de: 'Joh 3,16 (SCH2000)',
-            en: 'John 3:16',
-            ar: 'يوحنا ٣: ١٦',
-          },
+          bibleVerse: { de: '„Denn so sehr hat Gott die Welt geliebt…“', en: '"For God so loved the world..."', ar: '«لأَنَّهُ هٰكَذَا أَحَبَّ اللهُ الْعَالَمَ...»' },
+          bibleReference: { de: 'Joh 3,16 (SCH2000)', en: 'John 3:16', ar: 'يوحنا ٣: ١٦' },
           fatherQuote: {
-            de: '"Gottes Wille ist, dass der Gehorsame gerettet werde." — Hl. Klemens v. Alexandrien.',
-            en: '"God\'s will is that the obedient be saved." — St. Clement of Alexandria.',
-            ar: '"إرادة الله أن يخلص المطيع." — القديس إكليمندس الإسكندري.',
+            de: '„Gottes Wille ist, dass der Gehorsame gerettet werde.“ — Hl. Klemens v. Alexandrien.',
+            en: '"God's will is that the obedient be saved." — St. Clement of Alexandria.',
+            ar: '«مَشِيئَةُ اللهِ أَنْ يَخْلُصَ الْمُطِيعُ.» — القدِّيس إكليمنضس الإسكندري.',
+            
           },
           fatherReference: {
             de: 'Clement of Alexandria, bei Bercot, s.v. SALVATION.',
-            en: 'Clement of Alexandria, in Bercot, s.v. SALVATION.',
-            ar: 'إكليمندس الإسكندري، في بيركوت، SALVATION.',
+            en: 'Clement of Alexandria, cited in Bercot, s.v. SALVATION.',
+            ar: 'إكليمنضس الإسكندري، مُقتبس في بيركوت، s.v. SALVATION.',
           },
         },
       },
@@ -489,30 +475,23 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'delta',
         emoji: '👑',
         explanation: {
-          de: 'Delta: d in Eigennamen, sonst stimmhaftes th („this").',
-          en: 'Delta: d in proper names; otherwise voiced th ("this").',
+          de: 'Delta: d in Eigennamen, sonst stimmhaftes th („this“).',
+          en: 'Delta: d in proper names; otherwise voiced th (“this”).',
           ar: 'دلتا: د في الأعلام، وذ في غيرها.',
         },
         spiritual: {
-          bibleVerse: {
-            de: '"…ein Mann nach dem Herzen Gottes."',
-            en: '"...a man after God\'s own heart."',
-            ar: '"...رجل حسب قلب الله."',
-          },
-          bibleReference: {
-            de: 'Apg 13,22 (SCH2000)',
-            en: 'Acts 13:22',
-            ar: 'أعمال الرسل ١٣: ٢٢',
-          },
+          bibleVerse: { de: '„…ein Mann nach dem Herzen Gottes.“', en: '"...a man after God's own heart."', ar: '«...رَجُلاً حَسَبَ قَلْبِهِ.»' },
+          bibleReference: { de: 'Apg 13,22 (SCH2000)', en: 'Acts 13:22', ar: 'أعمال ١٣: ٢٢' },
           fatherQuote: {
-            de: '"Mans Pflicht ist der Gehorsam gegen Gott." — Hl. Klemens v. Alexandrien.',
-            en: '"Man\'s duty is obedience to God." — St. Clement of Alexandria.',
-            ar: '"واجب الإنسان هو الطاعة لله." — القديس إكليمندس الإسكندري.',
+            de: '„Mans Pflicht ist der Gehorsam gegen Gott.“ — Hl. Klemens v. Alexandrien.',
+            en: '"Man's duty is obedience to God." — St. Clement of Alexandria.',
+            ar: '«وَاجِبُ الإِنْسَانِ هُوَ الطَّاعَةُ للهِ.» — القدِّيس إكليمنضس الإسكندري.',
+            
           },
           fatherReference: {
             de: 'Clement of Alexandria, bei Bercot, s.v. SALVATION.',
-            en: 'Clement of Alexandria, in Bercot, s.v. SALVATION.',
-            ar: 'إكليمندس الإسكندري، في بيركوت، SALVATION.',
+            en: 'Clement of Alexandria, cited in Bercot, s.v. SALVATION.',
+            ar: 'إكليمنضس الإسكندري، مُقتبس في بيركوت، s.v. SALVATION.',
           },
         },
       },
@@ -537,16 +516,8 @@ export const LESSONS: Record<string, Lesson> = {
           ar: 'إي حركة قصيرة.',
         },
         spiritual: {
-          bibleVerse: {
-            de: '"…damit sie Leben haben und es im Überfluss haben."',
-            en: '"...that they may have life and have it abundantly."',
-            ar: '"...لتكون لهم حياة وليكون لهم أفضل."',
-          },
-          bibleReference: {
-            de: 'Joh 10,10 (SCH2000)',
-            en: 'John 10:10',
-            ar: 'يوحنا ١٠: ١٠',
-          },
+          bibleVerse: { de: '„…damit sie Leben haben und es im Überfluss haben.“', en: '"...that they may have life and have it abundantly."', ar: '«...لِيَكُونَ لَهُمْ حَيَاةٌ وَيَكُونَ لَهُمْ أَفْضَلُ.»' },
+          bibleReference: { de: 'Joh 10,10 (SCH2000)', en: 'John 10:10', ar: 'يوحنا ١٠: ١٠' },
         },
       },
       {
@@ -554,21 +525,13 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'so',
         emoji: '6️⃣',
         explanation: {
-          de: 'So-ou (ⲋ) dient fast ausschließlich als Zahlzeichen „6".',
+          de: 'So-ou (ⲋ) dient fast ausschließlich als Zahlzeichen „6“.',
           en: 'So-ou (ⲋ) is used almost exclusively for the numeral 6.',
           ar: 'ⲋ للرقم 6 غالبًا.',
         },
         spiritual: {
-          bibleVerse: {
-            de: '"Sechs Tage sollst du arbeiten…"',
-            en: '"Six days you shall labor..."',
-            ar: '"ستة أيام تعمل..."',
-          },
-          bibleReference: {
-            de: '2Mo 20,9 (SCH2000)',
-            en: 'Exodus 20:9',
-            ar: 'خروج ٢٠: ٩',
-          },
+          bibleVerse: { de: '„Sechs Tage sollst du arbeiten…“', en: '"Six days you shall labor..."', ar: '«سِتَّةَ أَيَّامٍ تَعْمَلُ...»' },
+          bibleReference: { de: '2Mo 20,9 (SCH2000)', en: 'Exodus 20:9', ar: 'خروج ٢٠: ٩' },
         },
       },
       {
@@ -577,16 +540,8 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '🦓',
         explanation: { de: 'Zeeta kommt aus dem Griechischen.', en: 'Zeta is of Greek origin.', ar: 'زيتا يونانية الأصل.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Trachtet zuerst nach dem Reich Gottes…"',
-            en: '"Seek first the kingdom of God..."',
-            ar: '"اطلبوا أولاً ملكوت الله..."',
-          },
-          bibleReference: {
-            de: 'Mt 6,33 (SCH2000)',
-            en: 'Matthew 6:33',
-            ar: 'متى ٦: ٣٣',
-          },
+          bibleVerse: { de: '„Trachtet zuerst nach dem Reich Gottes…“', en: '"Seek first the kingdom of God..."', ar: '«اُطْلُبُوا أَوَّلاً مَلَكُوتَ اللهِ...»' },
+          bibleReference: { de: 'Mt 6,33 (SCH2000)', en: 'Matthew 6:33', ar: 'متى ٦: ٣٣' },
         },
       },
       {
@@ -595,16 +550,8 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '🏠',
         explanation: { de: 'Eeta ist ein langer Vokal (ee).', en: 'Eta is a long vowel (ee).', ar: 'إيتا صوت طويل.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Ich aber und mein Haus, wir wollen dem HERRN dienen."',
-            en: '"But as for me and my house, we will serve the LORD."',
-            ar: '"أما أنا وبيتي فنعبد الرب."',
-          },
-          bibleReference: {
-            de: 'Jos 24,15 (SCH2000)',
-            en: 'Joshua 24:15',
-            ar: 'يشوع ٢٤: ١٥',
-          },
+          bibleVerse: { de: '„Ich aber und mein Haus, wir wollen dem HERRN dienen.“', en: '"As for me and my house, we will serve the LORD."', ar: '«أَمَّا أَنَا وَبَيْتِي فَنَعْبُدُ الرَّبَّ.»' },
+          bibleReference: { de: 'Jos 24,15 (SCH2000)', en: 'Joshua 24:15', ar: 'يشوع ٢٤: ١٥' },
         },
       },
     ],
@@ -623,21 +570,13 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'thita',
         emoji: '🌀',
         explanation: {
-          de: 'Theta wie th („thing"); nach Zischlauten oft t.',
-          en: 'Theta as th ("thing"); often t after sibilants.',
+          de: 'Theta wie th („thing“); nach Zischlauten oft t.',
+          en: 'Theta as th (“thing”); often t after sibilants.',
           ar: 'ث؛ وأحيانًا ت بعد الصفير.',
         },
         spiritual: {
-          bibleVerse: {
-            de: '"Gott ist treu."',
-            en: '"God is faithful."',
-            ar: '"الله أمين."',
-          },
-          bibleReference: {
-            de: '1Kor 1,9 (SCH2000)',
-            en: '1 Corinthians 1:9',
-            ar: '١ كورنثوس ١: ٩',
-          },
+          bibleVerse: { de: '„Gott ist treu.“', en: '"God is faithful."', ar: '«أَمِينٌ هُوَ اللهُ.»' },
+          bibleReference: { de: '1Kor 1,9 (SCH2000)', en: '1 Corinthians 1:9', ar: '١ كورنثوس ١: ٩' },
         },
       },
       {
@@ -645,36 +584,14 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'yota',
         emoji: '👨‍👧‍👦',
         explanation: { de: 'Yota ist ein kurzer i-Laut.', en: 'Iota is a short i.', ar: 'يوتا حركة قصيرة.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Im Anfang war das Wort…"',
-            en: '"In the beginning was the Word..."',
-            ar: '"في البدء كان الكلمة..."',
-          },
-          bibleReference: {
-            de: 'Joh 1,1 (SCH2000)',
-            en: 'John 1:1',
-            ar: 'يوحنا ١: ١',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Im Anfang war das Wort…“', en: '"In the beginning was the Word..."', ar: '«فِي الْبَدْءِ كَانَ الْكَلِمَةُ...»', en: 'John 1:1', ar: 'يوحنا ١: ١' }, bibleReference: { de: 'Joh 1,1 (SCH2000)', en: '"In the beginning was the Word..."', ar: '«فِي الْبَدْءِ كَانَ الْكَلِمَةُ...»', en: 'John 1:1', ar: 'يوحنا ١: ١' }, en: '"In the beginning was the Word..."', ar: '«فِي الْبَدْءِ كَانَ الْكَلِمَةُ...»', en: 'John 1:1', ar: 'يوحنا ١: ١' },
       },
       {
         type: 'alphabet',
         letterId: 'kappa',
         emoji: '🌍',
         explanation: { de: 'Kappa = k.', en: 'Kappa = k.', ar: 'ك.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Die Erde ist des HERRN…"',
-            en: '"The earth is the LORD\'S..."',
-            ar: '"للرب الأرض..."',
-          },
-          bibleReference: {
-            de: 'Ps 24,1 (SCH2000)',
-            en: 'Psalm 24:1',
-            ar: 'مزمور ٢٤: ١',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Die Erde ist des HERRN…“', en: '"The earth is the LORD's..."', ar: '«لِلرَّبِّ الأَرْضُ...»', en: 'Psalm 24:1', ar: 'مزمور ٢٤: ١' }, bibleReference: { de: 'Ps 24,1 (SCH2000)', en: '"The earth is the LORD's..."', ar: '«لِلرَّبِّ الأَرْضُ...»', en: 'Psalm 24:1', ar: 'مزمور ٢٤: ١' }, en: '"The earth is the LORD's..."', ar: '«لِلرَّبِّ الأَرْضُ...»', en: 'Psalm 24:1', ar: 'مزمور ٢٤: ١' },
       },
       {
         type: 'alphabet',
@@ -682,16 +599,8 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '👅',
         explanation: { de: 'Laula = l.', en: 'Laula = l.', ar: 'ل.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Die Zunge der Weisen bringt Heilung."',
-            en: '"The tongue of the wise brings healing."',
-            ar: '"لسان الحكماء شفاء."',
-          },
-          bibleReference: {
-            de: 'Spr 12,18 (SCH2000)',
-            en: 'Proverbs 12:18',
-            ar: 'أمثال ١٢: ١٨',
-          },
+          bibleVerse: { de: '„Die Zunge der Weisen bringt Heilung.“', en: '"The tongue of the wise brings healing."', ar: '«لِسَانُ الْحُكَمَاءِ شِفَاءٌ.»' },
+          bibleReference: { de: 'Spr 12,18 (SCH2000)', en: 'Proverbs 12:18', ar: 'أمثال ١٢: ١٨' },
         },
       },
     ],
@@ -711,25 +620,18 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '👩‍👧‍👦',
         explanation: { de: 'Mey = m.', en: 'Mu = m.', ar: 'م.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Ehre deinen Vater und deine Mutter!"',
-            en: '"Honor your father and your mother."',
-            ar: '"أكرم أباك وأمك."',
-          },
-          bibleReference: {
-            de: '2Mo 20,12 (SCH2000)',
-            en: 'Exodus 20:12',
-            ar: 'خروج ٢٠: ١٢',
-          },
+          bibleVerse: { de: '„Ehre deinen Vater und deine Mutter!"', en: '"Honor your father and your mother!"', ar: '«أَكْرِمْ أَبَاكَ وَأُمَّكَ!»' },
+          bibleReference: { de: '2Mo 20,12 (SCH2000)', en: 'Exodus 20:12', ar: 'خروج ٢٠: ١٢' },
           fatherQuote: {
-            de: '"Lasst eure Kinder Anteil an wahrer christlicher Erziehung haben." — Hl. Klemens von Rom.',
-            en: '"Let your children partake of true Christian education." — St. Clement of Rome.',
-            ar: '"دعوا أولادكم يشاركون في التربية المسيحية الحقيقية." — القديس إكليمندس الروماني.',
+            de: '„Lasst eure Kinder Anteil an wahrer christlicher Erziehung haben.“ — Hl. Klemens von Rom.',
+            en: '"Let your children share in true Christian education." — St. Clement of Rome.',
+            ar: '«دَعُوا أَوْلاَدَكُمْ يَشْتَرِكُونَ فِي التَّرْبِيَةِ الْمَسِيحِيَّةِ الْحَقِيقِيَّةِ.» — القدِّيس إكليمنضس الرُّومانِيّ.',
+            
           },
           fatherReference: {
             de: 'Clement of Rome, bei Bercot, s.v. CHILDREN.',
-            en: 'Clement of Rome, in Bercot, s.v. CHILDREN.',
-            ar: 'إكليمندس الروماني، في بيركوت، CHILDREN.',
+            en: 'Clement of Rome, cited in Bercot, s.v. CHILDREN.',
+            ar: 'إكليمنضس الرُّومانِيّ، مُقتبس في بيركوت، s.v. CHILDREN.',
           },
         },
       },
@@ -738,18 +640,7 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'ni',
         emoji: '✨',
         explanation: { de: 'Ney = n.', en: 'Nu = n.', ar: 'ن.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Gott ist Licht…"',
-            en: '"God is light..."',
-            ar: '"الله نور..."',
-          },
-          bibleReference: {
-            de: '1Joh 1,5 (SCH2000)',
-            en: '1 John 1:5',
-            ar: '١ يوحنا ١: ٥',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Gott ist Licht…“', en: '"God is light..."', ar: '«اَللهُ نُورٌ...»', en: '1 John 1:5', ar: '١ يوحنا ١: ٥' }, bibleReference: { de: '1Joh 1,5 (SCH2000)', en: '"God is light..."', ar: '«اَللهُ نُورٌ...»', en: '1 John 1:5', ar: '١ يوحنا ١: ٥' }, en: '"God is light..."', ar: '«اَللهُ نُورٌ...»', en: '1 John 1:5', ar: '١ يوحنا ١: ٥' },
       },
       {
         type: 'alphabet',
@@ -757,16 +648,8 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '🌳',
         explanation: { de: 'Exi = ks.', en: 'Xi = ks.', ar: 'كس.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Holz" & Kreuz als Lebensbaum (Motiv in Liturgie).',
-            en: '"Wood" & the Cross as the Tree of Life (liturgical theme).',
-            ar: '"الخشب" والصليب كشجرة الحياة (موضوع طقسي).',
-          },
-          bibleReference: {
-            de: 'vgl. Gal 3,13; lit. Hymnen (SCH2000)',
-            en: 'cf. Galatians 3:13; liturgical hymns',
-            ar: 'راجع غلاطية ٣: ١٣؛ ترانيم طقسية',
-          },
+          bibleVerse: { de: '„Holz" & Kreuz als Lebensbaum (Motiv in Liturgie).', en: '"Wood" & the cross as tree of life (liturgical theme).', ar: '«الخَشَبُ» وَالصَّلِيبُ كَشَجَرَةِ الْحَيَاةِ (مَوْضُوعٌ لِيتُرْجِيّ).' },
+          bibleReference: { de: 'vgl. Gal 3,13; lit. Hymnen (SCH2000)', en: 'cf. Galatians 3:13; liturgical hymns', ar: 'راجع غلاطية ٣: ١٣؛ الترانيم الليتورجية' },
         },
       },
       {
@@ -774,18 +657,7 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'o',
         emoji: '🔄',
         explanation: { de: 'O (Omikron) ist kurz.', en: 'Omicron is short.', ar: 'أوميكرون قصير.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"…werdet erneuert im Geist eures Sinnes…"',
-            en: '"...be renewed in the spirit of your mind..."',
-            ar: '"...تتجددوا بروح ذهنكم..."',
-          },
-          bibleReference: {
-            de: 'Eph 4,23 (SCH2000)',
-            en: 'Ephesians 4:23',
-            ar: 'أفسس ٤: ٢٣',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„…werdet erneuert im Geist eures Sinnes…“', en: '"...be renewed in the spirit of your mind..."', ar: '«...تَتَجَدَّدُوا بِرُوحِ ذِهْنِكُمْ...»', en: 'Ephesians 4:23', ar: 'أفسس ٤: ٢٣' }, bibleReference: { de: 'Eph 4,23 (SCH2000)', en: '"...be renewed in the spirit of your mind..."', ar: '«...تَتَجَدَّدُوا بِرُوحِ ذِهْنِكُمْ...»', en: 'Ephesians 4:23', ar: 'أفسس ٤: ٢٣' }, en: '"...be renewed in the spirit of your mind..."', ar: '«...تَتَجَدَّدُوا بِرُوحِ ذِهْنِكُمْ...»', en: 'Ephesians 4:23', ar: 'أفسس ٤: ٢٣' },
       },
     ],
   },
@@ -803,18 +675,7 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'pi',
         emoji: '🚪',
         explanation: { de: 'Pe = p.', en: 'Pi = p.', ar: 'پ.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Ich bin die Tür."',
-            en: '"I am the door."',
-            ar: '"أنا هو الباب."',
-          },
-          bibleReference: {
-            de: 'Joh 10,9 (SCH2000)',
-            en: 'John 10:9',
-            ar: 'يوحنا ١٠: ٩',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Ich bin die Tür.“', en: '"I am the door."', ar: '«أَنَا هُوَ الْبَابُ.»', en: 'John 10:9', ar: 'يوحنا ١٠: ٩' }, bibleReference: { de: 'Joh 10,9 (SCH2000)', en: '"I am the door."', ar: '«أَنَا هُوَ الْبَابُ.»', en: 'John 10:9', ar: 'يوحنا ١٠: ٩' }, en: '"I am the door."', ar: '«أَنَا هُوَ الْبَابُ.»', en: 'John 10:9', ar: 'يوحنا ١٠: ٩' },
       },
       {
         type: 'alphabet',
@@ -822,25 +683,18 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '📛',
         explanation: { de: 'Ro = r.', en: 'Rho = r.', ar: 'ر.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Ein guter Name ist köstlicher…"',
-            en: '"A good name is more desirable..."',
-            ar: '"الاسم الصالح أفضل..."',
-          },
-          bibleReference: {
-            de: 'Spr 22,1 (SCH2000)',
-            en: 'Proverbs 22:1',
-            ar: 'أمثال ٢٢: ١',
-          },
+          bibleVerse: { de: '„Ein guter Name ist köstlicher…“', en: '"A good name is more precious..."', ar: '«اَلاِسْمُ الصَّالِحُ أَفْضَلُ...»' },
+          bibleReference: { de: 'Spr 22,1 (SCH2000)', en: 'Proverbs 22:1', ar: 'أمثال ٢٢: ١' },
           fatherQuote: {
-            de: '"Christi Name wird überall geglaubt und verehrt." — Tertullian.',
-            en: '"The name of Christ is believed and venerated everywhere." — Tertullian.',
-            ar: '"اسم المسيح مؤمن به ومكرّم في كل مكان." — ترتليان.',
+            de: '„Christi Name wird überall geglaubt und verehrt.“ — Tertullian.',
+            en: '"Christ's name is believed and revered everywhere." — Tertullian.',
+            ar: '«اسْمُ الْمَسِيحِ مُؤْمَنٌ بِهِ وَمُوَقَّرٌ فِي كُلِّ مَكَانٍ.» — ترتليانوس.',
+            
           },
           fatherReference: {
             de: 'Tertullian, bei Bercot, s.v. CHRIST, DIVINITY OF.',
-            en: 'Tertullian, in Bercot, s.v. CHRIST, DIVINITY OF.',
-            ar: 'ترتليان، في بيركوت، CHRIST, DIVINITY OF.',
+            en: 'Tertullian, cited in Bercot, s.v. CHRIST, DIVINITY OF.',
+            ar: 'ترتليانوس، مُقتبس في بيركوت، s.v. CHRIST, DIVINITY OF.',
           },
         },
       },
@@ -850,25 +704,18 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '👂',
         explanation: { de: 'Seema = s.', en: 'Sigma = s.', ar: 'س.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Wer Ohren hat zu hören, der höre!"',
-            en: '"He who has ears to hear, let him hear!"',
-            ar: '"من له أذنان للسمع فليسمع!"',
-          },
-          bibleReference: {
-            de: 'Mk 4,9 (SCH2000)',
-            en: 'Mark 4:9',
-            ar: 'مرقس ٤: ٩',
-          },
+          bibleVerse: { de: '„Wer Ohren hat zu hören, der höre!“', en: '"Whoever has ears to hear, let him hear!"', ar: '«مَنْ لَهُ أُذُنَانِ لِلسَّمْعِ، فَلْيَسْمَعْ!»' },
+          bibleReference: { de: 'Mk 4,9 (SCH2000)', en: 'Mark 4:9', ar: 'مرقس ٤: ٩' },
           fatherQuote: {
-            de: '"Dem Wort gehorchen heißt: ihm glauben, ihm in nichts widerstehen." — Hl. Klemens v. Alexandrien.',
-            en: '"To obey the Word means: to believe it, to resist it in nothing." — St. Clement of Alexandria.',
-            ar: '"أن تطيع الكلمة يعني: أن تؤمن به، وألا تقاومه في شيء." — القديس إكليمندس الإسكندري.',
+            de: '„Dem Wort gehorchen heißt: ihm glauben, ihm in nichts widerstehen.“ — Hl. Klemens v. Alexandrien.',
+            en: '"To obey the Word means: to believe it, to not resist it in anything." — St. Clement of Alexandria.',
+            ar: '«أَنْ تُطِيعَ الْكَلِمَةَ يَعْنِي: أَنْ تُؤْمِنَ بِهِ، وَأَلاَّ تُقَاوِمَهُ فِي شَيْءٍ.» — القدِّيس إكليمنضس الإسكندري.',
+            
           },
           fatherReference: {
             de: 'Clement of Alexandria, bei Bercot, s.v. SALVATION/OBEDIENCE.',
-            en: 'Clement of Alexandria, in Bercot, s.v. SALVATION/OBEDIENCE.',
-            ar: 'إكليمندس الإسكندري، في بيركوت، SALVATION/OBEDIENCE.',
+            en: 'Clement of Alexandria, cited in Bercot, s.v. SALVATION/OBEDIENCE.',
+            ar: 'إكليمنضس الإسكندري، مُقتبس في بيركوت، s.v. SALVATION/OBEDIENCE.',
           },
         },
       },
@@ -877,18 +724,7 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'tav',
         emoji: '🩹',
         explanation: { de: 'Tav = t (in griech. Lehnwörtern nach ⲛ oft d).', en: 'Tau = t (often d after ⲛ in Greek loans).', ar: 'تاو = ت.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Er heilt, die zerbrochenen Herzens sind."',
-            en: '"He heals the brokenhearted."',
-            ar: '"يشفي المنكسري القلوب."',
-          },
-          bibleReference: {
-            de: 'Ps 147,3 (SCH2000)',
-            en: 'Psalm 147:3',
-            ar: 'مزمور ١٤٧: ٣',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Er heilt, die zerbrochenen Herzens sind.“', en: '"He heals the brokenhearted."', ar: '«يَشْفِي مُنْكَسِرِي الْقُلُوبِ.»', en: 'Psalm 147:3', ar: 'مزمور ١٤٧: ٣' }, bibleReference: { de: 'Ps 147,3 (SCH2000)', en: '"He heals the brokenhearted."', ar: '«يَشْفِي مُنْكَسِرِي الْقُلُوبِ.»', en: 'Psalm 147:3', ar: 'مزمور ١٤٧: ٣' }, en: '"He heals the brokenhearted."', ar: '«يَشْفِي مُنْكَسِرِي الْقُلُوبِ.»', en: 'Psalm 147:3', ar: 'مزمور ١٤٧: ٣' },
       },
     ],
   },
@@ -910,18 +746,7 @@ export const LESSONS: Record<string, Lesson> = {
           en: 'Epsilon (ⲩ): i; after ⲁ/ⲉ = v; after ⲟ = u.',
           ar: 'ⲩ: i؛ وبعد ⲁ/ⲉ = v؛ وبعد ⲟ = u.',
         },
-        spiritual: {
-          bibleVerse: {
-            de: '"Seid heilig, denn ich bin heilig."',
-            en: '"Be holy, for I am holy."',
-            ar: '"كونوا قديسين لأني أنا قدوس."',
-          },
-          bibleReference: {
-            de: '1Petr 1,16 (SCH2000)',
-            en: '1 Peter 1:16',
-            ar: '١ بطرس ١: ١٦',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Seid heilig, denn ich bin heilig.“', en: '"Be holy, for I am holy."', ar: '«كُونُوا قِدِّيسِينَ لأَنِّي أَنَا قُدُّوسٌ.»', en: '1 Peter 1:16', ar: '١ بطرس ١: ١٦' }, bibleReference: { de: '1Petr 1,16 (SCH2000)', en: '"Be holy, for I am holy."', ar: '«كُونُوا قِدِّيسِينَ لأَنِّي أَنَا قُدُّوسٌ.»', en: '1 Peter 1:16', ar: '١ بطرس ١: ١٦' }, en: '"Be holy, for I am holy."', ar: '«كُونُوا قِدِّيسِينَ لأَنِّي أَنَا قُدُّوسٌ.»', en: '1 Peter 1:16', ar: '١ بطرس ١: ١٦' },
       },
       {
         type: 'alphabet',
@@ -929,25 +754,18 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '💡',
         explanation: { de: 'Phi = f.', en: 'Phi = f.', ar: 'ف.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Dein Wort ist meines Fußes Leuchte."',
-            en: '"Your word is a lamp to my feet."',
-            ar: '"كلامك مصباح لرجلي."',
-          },
-          bibleReference: {
-            de: 'Ps 119,105 (SCH2000)',
-            en: 'Psalm 119:105',
-            ar: 'مزمور ١١٩: ١٠٥',
-          },
+          bibleVerse: { de: '„Dein Wort ist meines Fußes Leuchte.“', en: '"Your word is a lamp to my feet."', ar: '«كَلاَمُكَ سِرَاجٌ لِرِجْلِي.»' },
+          bibleReference: { de: 'Ps 119,105 (SCH2000)', en: 'Psalm 119:105', ar: 'مزمور ١١٩: ١٠٥' },
           fatherQuote: {
-            de: '"Die Kirche ist der siebenarmige Leuchter, der das Licht Christi trägt…" — Hl. Irenäus.',
+            de: '„Die Kirche ist der siebenarmige Leuchter, der das Licht Christi trägt…“ — Hl. Irenäus.',
             en: '"The Church is the seven-branched lampstand that bears the light of Christ..." — St. Irenaeus.',
-            ar: '"الكنيسة هي المنارة السباعية التي تحمل نور المسيح..." — القديس إيريناوس.',
+            ar: '«الْكَنِيسَةُ هِيَ الْمَنَارَةُ ذَاتُ السَّبْعَةِ أَذْرُعٍ الَّتِي تَحْمِلُ نُورَ الْمَسِيحِ...» — القدِّيس إيرينيئوس.',
+            
           },
           fatherReference: {
             de: 'Irenaeus, bei Bercot, s.v. CHURCH.',
-            en: 'Irenaeus, in Bercot, s.v. CHURCH.',
-            ar: 'إيريناوس، في بيركوت، CHURCH.',
+            en: 'Irenaeus, cited in Bercot, s.v. CHURCH.',
+            ar: 'إيرينيئوس، مُقتبس في بيركوت، s.v. CHURCH.',
           },
         },
       },
@@ -956,22 +774,11 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'khi',
         emoji: '🗓️',
         explanation: {
-          de: 'Key (Ⲭ): in Koptisch = k; in griech. Lehnwörtern „sch" vor Frontvokalen, sonst „kh".',
+          de: 'Key (Ⲭ): in Koptisch = k; in griech. Lehnwörtern „sch“ vor Frontvokalen, sonst „kh“.',
           en: 'Key (Ⲭ): k in Coptic; Greek loans: sh before front vowels, else kh.',
           ar: 'Ⲭ: ك (قبطي)؛ ش/خ (يوناني).',
         },
-        spiritual: {
-          bibleVerse: {
-            de: '"Dies ist der Tag, den der HERR gemacht hat."',
-            en: '"This is the day the LORD has made."',
-            ar: '"هذا هو اليوم الذي صنعه الرب."',
-          },
-          bibleReference: {
-            de: 'Ps 118,24 (SCH2000)',
-            en: 'Psalm 118:24',
-            ar: 'مزمور ١١٨: ٢٤',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Dies ist der Tag, den der HERR gemacht hat.“', en: '"This is the day that the LORD has made."', ar: '«هٰذَا هُوَ الْيَوْمُ الَّذِي صَنَعَهُ الرَّبُّ.»', en: 'Psalm 118:24', ar: 'مزمور ١١٨: ٢٤' }, bibleReference: { de: 'Ps 118,24 (SCH2000)', en: '"This is the day that the LORD has made."', ar: '«هٰذَا هُوَ الْيَوْمُ الَّذِي صَنَعَهُ الرَّبُّ.»', en: 'Psalm 118:24', ar: 'مزمور ١١٨: ٢٤' }, en: '"This is the day that the LORD has made."', ar: '«هٰذَا هُوَ الْيَوْمُ الَّذِي صَنَعَهُ الرَّبُّ.»', en: 'Psalm 118:24', ar: 'مزمور ١١٨: ٢٤' },
       },
       {
         type: 'alphabet',
@@ -979,25 +786,18 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '🎶',
         explanation: { de: 'Epsi (Psi) = ps.', en: 'Psi = ps.', ar: 'بس.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Singt dem HERRN ein neues Lied!"',
-            en: '"Sing to the LORD a new song!"',
-            ar: '"رنموا للرب ترنيمة جديدة!"',
-          },
-          bibleReference: {
-            de: 'Ps 96,1 (SCH2000)',
-            en: 'Psalm 96:1',
-            ar: 'مزمور ٩٦: ١',
-          },
+          bibleVerse: { de: '„Singt dem HERRN ein neues Lied!“', en: '"Sing to the LORD a new song!"', ar: '«رَنِّمُوا لِلرَّبِّ تَرْنِيمَةً جَدِيدَةً!»' },
+          bibleReference: { de: 'Ps 96,1 (SCH2000)', en: 'Psalm 96:1', ar: 'مزمور ٩٦: ١' },
           fatherQuote: {
-            de: '"Fort mit Liebesliedern; unsere Lieder seien Hymnen für Gott." — Hl. Klemens v. Alexandrien.',
+            de: '„Fort mit Liebesliedern; unsere Lieder seien Hymnen für Gott.“ — Hl. Klemens v. Alexandrien.',
             en: '"Away with love songs; let our songs be hymns to God." — St. Clement of Alexandria.',
-            ar: '"بعيدًا عن أغاني الحب؛ لتكن أغانينا تسابيح لله." — القديس إكليمندس الإسكندري.',
+            ar: '«بَعِيدًا عَنْ أَغَانِي الْحُبِّ؛ لِتَكُنْ أَغَانِينَا تَرَانِيمَ للهِ.» — القدِّيس إكليمنضس الإسكندري.',
+            
           },
           fatherReference: {
             de: 'Clement of Alexandria, bei Bercot, s.v. HYMNS.',
-            en: 'Clement of Alexandria, in Bercot, s.v. HYMNS.',
-            ar: 'إكليمندس الإسكندري، في بيركوت، HYMNS.',
+            en: 'Clement of Alexandria, cited in Bercot, s.v. HYMNS.',
+            ar: 'إكليمنضس الإسكندري، مُقتبس في بيركوت، s.v. HYMNS.',
           },
         },
       },
@@ -1018,16 +818,8 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '🗿',
         explanation: { de: 'Omega = langes o.', en: 'Omega = long o.', ar: 'واو طويلة.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Der Stein, den die Bauleute verworfen haben…"',
-            en: '"The stone the builders rejected..."',
-            ar: '"الحجر الذي رفضه البناؤون..."',
-          },
-          bibleReference: {
-            de: 'Ps 118,22 (SCH2000)',
-            en: 'Psalm 118:22',
-            ar: 'مزمور ١١٨: ٢٢',
-          },
+          bibleVerse: { de: '„Der Stein, den die Bauleute verworfen haben…“', en: '"The stone that the builders rejected..."', ar: '«الْحَجَرُ الَّذِي رَفَضَهُ الْبَنَّاؤُونَ...»' },
+          bibleReference: { de: 'Ps 118,22 (SCH2000)', en: 'Psalm 118:22', ar: 'مزمور ١١٨: ٢٢' },
         },
       },
       {
@@ -1036,25 +828,18 @@ export const LESSONS: Record<string, Lesson> = {
         emoji: '🧒',
         explanation: { de: 'Shai = sch.', en: 'Shai = sh.', ar: 'ش.' },
         spiritual: {
-          bibleVerse: {
-            de: '"Lasst die Kinder zu mir kommen."',
-            en: '"Let the children come to me."',
-            ar: '"دعوا الأولاد يأتون إلي."',
-          },
-          bibleReference: {
-            de: 'Mk 10,14 (SCH2000)',
-            en: 'Mark 10:14',
-            ar: 'مرقس ١٠: ١٤',
-          },
+          bibleVerse: { de: '„Lasst die Kinder zu mir kommen.“', en: '"Let the children come to me."', ar: '«دَعُوا الأَوْلاَدَ يَأْتُونَ إِلَيَّ.»' },
+          bibleReference: { de: 'Mk 10,14 (SCH2000)', en: 'Mark 10:14', ar: 'مرقس ١٠: ١٤' },
           fatherQuote: {
-            de: '"Lasst eure Kinder an wahrer christlicher Erziehung teilhaben." — Hl. Klemens von Rom.',
-            en: '"Let your children partake of true Christian education." — St. Clement of Rome.',
-            ar: '"دعوا أولادكم يشاركون في التربية المسيحية الحقيقية." — القديس إكليمندس الروماني.',
+            de: '„Lasst eure Kinder an wahrer christlicher Erziehung teilhaben.“ — Hl. Klemens von Rom.',
+            en: '"Let your children partake in true Christian education." — St. Clement of Rome.',
+            ar: '«دَعُوا أَوْلاَدَكُمْ يَشْتَرِكُونَ فِي التَّرْبِيَةِ الْمَسِيحِيَّةِ الْحَقِيقِيَّةِ.» — القدِّيس إكليمنضس الرُّومانِيّ.',
+            
           },
           fatherReference: {
             de: 'Clement of Rome, bei Bercot, s.v. CHILDREN.',
-            en: 'Clement of Rome, in Bercot, s.v. CHILDREN.',
-            ar: 'إكليمندس الروماني، في بيركوت، CHILDREN.',
+            en: 'Clement of Rome, cited in Bercot, s.v. CHILDREN.',
+            ar: 'إكليمنضس الرُّومانِيّ، مُقتبس في بيركوت، s.v. CHILDREN.',
           },
         },
       },
@@ -1063,36 +848,14 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'fai',
         emoji: '👜',
         explanation: { de: 'Fai = f.', en: 'Fai = f.', ar: 'ف.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Nehmt mein Joch auf euch…"',
-            en: '"Take my yoke upon you..."',
-            ar: '"احملوا نيري عليكم..."',
-          },
-          bibleReference: {
-            de: 'Mt 11,29 (SCH2000)',
-            en: 'Matthew 11:29',
-            ar: 'متى ١١: ٢٩',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Nehmt mein Joch auf euch…“', en: '"Take my yoke upon you..."', ar: '«اِحْمِلُوا نِيرِي عَلَيْكُمْ...»', en: 'Matthew 11:29', ar: 'متى ١١: ٢٩' }, bibleReference: { de: 'Mt 11,29 (SCH2000)', en: '"Take my yoke upon you..."', ar: '«اِحْمِلُوا نِيرِي عَلَيْكُمْ...»', en: 'Matthew 11:29', ar: 'متى ١١: ٢٩' }, en: '"Take my yoke upon you..."', ar: '«اِحْمِلُوا نِيرِي عَلَيْكُمْ...»', en: 'Matthew 11:29', ar: 'متى ١١: ٢٩' },
       },
       {
         type: 'alphabet',
         letterId: 'khai',
         emoji: '📥',
         explanation: { de: 'Khai = raues ch.', en: 'Khai = guttural kh.', ar: 'خ.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Das Reich Gottes ist inwendig in euch."',
-            en: '"The kingdom of God is within you."',
-            ar: '"ملكوت الله داخلكم."',
-          },
-          bibleReference: {
-            de: 'Lk 17,21 (SCH2000)',
-            en: 'Luke 17:21',
-            ar: 'لوقا ١٧: ٢١',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Das Reich Gottes ist inwendig in euch.“', en: '"The kingdom of God is within you."', ar: '«مَلَكُوتُ اللهِ دَاخِلَكُمْ.»', en: 'Luke 17:21', ar: 'لوقا ١٧: ٢١' }, bibleReference: { de: 'Lk 17,21 (SCH2000)', en: '"The kingdom of God is within you."', ar: '«مَلَكُوتُ اللهِ دَاخِلَكُمْ.»', en: 'Luke 17:21', ar: 'لوقا ١٧: ٢١' }, en: '"The kingdom of God is within you."', ar: '«مَلَكُوتُ اللهِ دَاخِلَكُمْ.»', en: 'Luke 17:21', ar: 'لوقا ١٧: ٢١' },
       },
     ],
   },
@@ -1110,72 +873,28 @@ export const LESSONS: Record<string, Lesson> = {
         letterId: 'hori',
         emoji: '❤️',
         explanation: { de: 'Hori = h.', en: 'Hori = h.', ar: 'هـ.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Selig sind, die reinen Herzens sind…"',
-            en: '"Blessed are the pure in heart..."',
-            ar: '"طوبى لأنقياء القلب..."',
-          },
-          bibleReference: {
-            de: 'Mt 5,8 (SCH2000)',
-            en: 'Matthew 5:8',
-            ar: 'متى ٥: ٨',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Selig sind, die reinen Herzens sind…"', en: '"Blessed are the pure in heart..."', ar: '«طُوبَى لأَنْقِيَاءِ الْقَلْبِ...»' }, bibleReference: { de: 'Mt 5,8 (SCH2000)', en: 'Matthew 5:8', ar: 'متى ٥: ٨' } },
       },
       {
         type: 'alphabet',
         letterId: 'janja',
         emoji: '✋',
         explanation: { de: 'Jenja: j vor ⲉ/ⲏ/ⲓ/ⲩ; sonst hartes g.', en: 'Jenja: j before front vowels; else hard g.', ar: 'ج/ج صلبة حسب الموضع.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"In deine Hände befehle ich meinen Geist."',
-            en: '"Into your hands I commit my spirit."',
-            ar: '"في يديك أستودع روحي."',
-          },
-          bibleReference: {
-            de: 'Lk 23,46 (SCH2000)',
-            en: 'Luke 23:46',
-            ar: 'لوقا ٢٣: ٤٦',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„In deine Hände befehle ich meinen Geist."', en: '"Into your hands I commit my spirit."', ar: '«فِي يَدَيْكَ أَسْتَوْدِعُ رُوحِي.»' }, bibleReference: { de: 'Lk 23,46 (SCH2000)', en: 'Luke 23:46', ar: 'لوقا ٢٣: ٤٦' } },
       },
       {
         type: 'alphabet',
         letterId: 'chima',
         emoji: '✝️',
         explanation: { de: 'Cheema = tsch.', en: 'Cheema = tch.', ar: 'تش.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Das Wort vom Kreuz… Gottes Kraft."',
-            en: '"The word of the cross... the power of God."',
-            ar: '"كلمة الصليب... قوة الله."',
-          },
-          bibleReference: {
-            de: '1Kor 1,18 (SCH2000)',
-            en: '1 Corinthians 1:18',
-            ar: '١ كورنثوس ١: ١٨',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Das Wort vom Kreuz… Gottes Kraft."', en: '"The word of the cross... God\'s power."', ar: '«كَلِمَةُ الصَّلِيبِ... قُوَّةُ اللهِ.»' }, bibleReference: { de: '1Kor 1,18 (SCH2000)', en: '1 Corinthians 1:18', ar: '١ كورنثوس ١: ١٨' } },
       },
       {
         type: 'alphabet',
         letterId: 'ti',
         emoji: '🎁',
         explanation: { de: 'Ti (Ligatur) = ti.', en: 'Ti (ligature) = ti.', ar: 'تي.' },
-        spiritual: {
-          bibleVerse: {
-            de: '"Denn die Gabe Gottes ist das ewige Leben."',
-            en: '"For the gift of God is eternal life."',
-            ar: '"لأن هبة الله هي حياة أبدية."',
-          },
-          bibleReference: {
-            de: 'Röm 6,23 (SCH2000)',
-            en: 'Romans 6:23',
-            ar: 'رومية ٦: ٢٣',
-          },
-        },
+        spiritual: { bibleVerse: { de: '„Denn die Gabe Gottes ist das ewige Leben."', en: '"For the gift of God is eternal life."', ar: '«لأَنَّ هِبَةَ اللهِ هِيَ حَيَاةٌ أَبَدِيَّةٌ.»' }, bibleReference: { de: 'Röm 6,23 (SCH2000)', en: 'Romans 6:23', ar: 'رومية ٦: ٢٣' } },
       },
     ],
   },

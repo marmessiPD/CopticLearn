@@ -44,16 +44,7 @@ export const LESSONS: Record<string, Lesson> = {
             translit: 'ni-romi ete senoute entootou ne emmonon erou',
             meaning: { de: 'Die Menschen, die zu Gott gehören, sind nicht allein.', en: 'The people who belong to God are not alone.', ar: 'الناس الذين ينتمون إلى الله ليسوا وحدهم.' }
           },
-          spiritual: {
-            bibleVerse: { de: '„Selig sind, die reinen Herzens sind; denn sie werden Gott schauen.“', en: '“Blessed are the pure in heart, for they shall see God.”', ar: '«طوبى لأنقياء القلب لأنهم يعاينون الله»' },
-            bibleReference: { de: 'Mt 5,8', en: 'Matt 5:8', ar: 'متى 5:8' },
-            fatherQuote: {
-              de: 'Sei beständig im Gebet und im Lesen. Zuerst rede du mit Gott, dann rede Gott mit dir.',
-              en: 'Be constant in both prayer and reading. First, speak with God; then let God speak with you.',
-              ar: 'اثبت في الصلاة والقراءة. تكلم مع الله أولًا ثم دع الله يتكلم معك.'
-            },
-            fatherReference: { de: 'Cyprian, De oratione, zitiert bei Bercot, 5.279–280.', en: 'Cyprian, De Oratione, in Bercot, pp. 279–280.', ar: 'كبريان، عن الصلاة، بركوت 279–280.' }
-          }
+          
         }
       ]
     },
@@ -87,16 +78,7 @@ export const LESSONS: Record<string, Lesson> = {
             translit: 'ep-laos ete semet-anau ep-noute ne entou nim',
             meaning: { de: 'Das Volk, das den Blick auf Gott richtet, gehört ihm ganz.', en: 'The people who look to God belong wholly to him.', ar: 'الشعب الذي ينظر إلى الله هو له كليًا.' }
           },
-          spiritual: {
-            bibleVerse: { de: '„Singt dem HERRN ein neues Lied!“', en: '“Sing to the LORD a new song!”', ar: '«رنّموا للرب ترنيمة جديدة!»' },
-            bibleReference: { de: 'Ps 96,1', en: 'Ps 96:1', ar: 'مزمور 96:1' },
-            fatherQuote: {
-              de: 'Das Gebet ist die Mauer des Glaubens, seine Waffen und Geschosse gegen den Feind.',
-              en: 'Prayer is the wall of faith, its arms and missiles against the foe.',
-              ar: 'الصلاة هي سور الإيمان وسلاحه ضد العدو.'
-            },
-            fatherReference: { de: 'Tertullian, zitiert bei Bercot, 3.691.', en: 'Tertullian, in Bercot, p. 691.', ar: 'ترتليان، بركوت 691.' }
-          }
+          
         }
       ]
     },

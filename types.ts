@@ -52,11 +52,11 @@ export interface AlphabetSlide extends BaseSlide {
     letterId: string;
     emoji: string;
     explanation: LocalizedString;
-    spiritual: {
-        bibleVerse: LocalizedString;
-        bibleReference: LocalizedString;
-        fatherQuote: LocalizedString;
-        fatherReference: LocalizedString;
+    spiritual?: {
+        bibleVerse?: LocalizedString;
+        bibleReference?: LocalizedString;
+        fatherQuote?: LocalizedString;
+        fatherReference?: LocalizedString;
     };
 }
 

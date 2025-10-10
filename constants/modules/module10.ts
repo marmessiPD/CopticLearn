@@ -42,16 +42,6 @@ export const LESSONS: Record<string, Lesson> = {
           translit: 'nai pe ni-romi ete se-proseuche em-meet',
           meaning: { de: 'Dies sind die Menschen, die täglich beten.', en: 'These are the people who pray daily.', ar: 'هؤلاء هم الناس الذين يصلّون يوميًا.' }
         },
-        spiritual: {
-          bibleVerse: { de: '„Betet ohne Unterlass.“', en: '“Pray without ceasing.”', ar: '«صلّوا بلا انقطاع»' },
-          bibleReference: { de: '1Thess 5,17', en: '1 Thess 5:17', ar: '1 تس 5:17' },
-          fatherQuote: {
-            de: 'Wenn zwei eins werden in dem, was sie erbitten, wird es ihnen werden; darum werden wir nicht erhört, weil wir nicht einmütig sind.',
-            en: 'If two agree about anything they ask, it will be done; we are not heard because we are not in agreement.',
-            ar: 'إن اتفق اثنان على شيء يطلبانه يُصنع؛ لا نُستجاب لأننا غير متحدين.'
-          },
-          fatherReference: { de: 'Origenes, zitiert bei Bercot, 9.495.', en: 'Origen, in Bercot, p. 495.', ar: 'أوريجانس، بركوت 495.' }
-        }
       }
     ]
   },
@@ -84,16 +74,6 @@ export const LESSONS: Record<string, Lesson> = {
           translit: 'mare penouti taimasteis em-penlaos',
           meaning: { de: 'Gott erbarme sich unseres Volkes.', en: 'May God have mercy on our people.', ar: 'ليترأف الله بشعبنا.' }
         },
-        spiritual: {
-          bibleVerse: { de: '„Dein Reich komme.“', en: '“Thy kingdom come.”', ar: '«ليأت ملكوتك»' },
-          bibleReference: { de: 'Mt 6,10', en: 'Matt 6:10', ar: 'متى 6:10' },
-          fatherQuote: {
-            de: 'Unser Gebet ist öffentlich und gemeinsam. Wir sagen nicht „Mein Vater“, sondern „Unser Vater“.',
-            en: 'Our prayer is public and common. We do not say “My Father” but “Our Father”.',
-            ar: 'صلاتنا جماعية. لا نقول «أبي» بل «أبانا».'
-          },
-          fatherReference: { de: 'Cyprian, zitiert bei Bercot, 5.449.', en: 'Cyprian, in Bercot, p. 449.', ar: 'كبريان، بركوت 449.' }
-        }
       }
     ]
   }

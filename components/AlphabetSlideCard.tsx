@@ -151,7 +151,7 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({
           </h3>
 
           {/* Bible Verse */}
-          {slide.spiritual.bibleVerse && slide.spiritual.bibleReference && (
+          {slide.spiritual?.bibleVerse && slide.spiritual?.bibleReference && (
             <div className="flex items-start gap-3 p-3 bg-blue-50 dark:bg-blue-900/50 rounded-lg">
               <BibleIcon className="flex-shrink-0 mt-1 h-5 w-5 text-coptic-blue dark:text-blue-300" />
               <div className="min-w-0 flex-1">
@@ -166,7 +166,7 @@ const AlphabetSlideCard: React.FC<AlphabetSlideCardProps> = ({
           )}
 
           {/* Father Quote */}
-          {slide.spiritual.fatherQuote && (
+          {slide.spiritual?.fatherQuote && slide.spiritual?.fatherReference && (
             <div className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-900/50 rounded-lg">
               <FatherIcon className="flex-shrink-0 mt-1 h-5 w-5 text-green-700 dark:text-green-300" />
               <div className="min-w-0 flex-1">
