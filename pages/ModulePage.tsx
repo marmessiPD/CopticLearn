@@ -41,7 +41,7 @@ const ModulePage: React.FC = () => {
         .sort((a, b) => a.order - b.order);
 
     const isLessonUnlocked = (lessonId: string): boolean => {
-        if (role === 'admin') return true;
+        if (role === 'servant') return true;
         const lesson = LESSONS[lessonId];
         if (!lesson || !lesson.prerequisites || lesson.prerequisites.length === 0) {
             return true;
