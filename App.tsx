@@ -12,9 +12,9 @@ const App: React.FC = () => {
     return (
         <AppProvider>
             <HashRouter>
-                <div className="min-h-screen font-sans text-light-text dark:text-dark-text bg-light-secondary dark:bg-dark-primary">
+                <div className="min-h-screen font-sans text-light-text dark:text-dark-text bg-light-secondary dark:bg-dark-primary safe-area-top safe-area-bottom">
                     <Header />
-                    <main className="p-2 sm:p-4 md:p-6">
+                    <main className="p-2 sm:p-4 md:p-6 pb-safe-area-inset-bottom">
                         <Routes>
                             <Route path="/" element={<HomePage />} />
                             <Route path="/module/:moduleId" element={<ModulePage />} />
