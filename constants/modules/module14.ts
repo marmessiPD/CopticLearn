@@ -1,4 +1,4 @@
-import type { Lesson } from '../../types';
+import type { Lesson, Quiz } from '../../types';
 
 // ===== Module 14: Imperativ & Aufforderung =====
 export const LESSONS: Record<string, Lesson> = {
@@ -62,18 +62,46 @@ export const LESSONS: Record<string, Lesson> = {
   }
 };
 
-// Optional: einfache Quiz-Gerüste
-export const QUIZZES = {
-  'q13-1': {
-    id: 'q13-1',
-    questions: [
-      { type: 'mc', prompt: 'Welche Konjunktion bedeutet „weder/noch“?', options: ['ⲟⲩⲇⲉ', 'ⲁⲗⲗⲁ', 'ⲛⲉⲙ'], answer: 0 }
-    ]
-  },
+export const QUIZZES: Record<string, Quiz> = {
   'q14-1': {
     id: 'q14-1',
+    lessonId: 'm14-l1',
+    title: { de: 'Quiz: Imperativ & Aufforderung', en: 'Quiz: Imperative & Commands', ar: 'اختبار: صيغة الأمر' },
+    passScore: 70,
     questions: [
-      { type: 'mc', prompt: 'Welche Form ist ein Imperativ mit ⲁ-?', options: ['ⲙⲟⲥⲓ', 'ⲁⲛⲁⲩ', 'ⲥⲱⲧⲉⲙ'], answer: 1 }
+      {
+        id: 'q14-1-1',
+        type: 'multiple-choice',
+        questionText: { de: 'Welche Form ist ein Imperativ mit ⲁ-?', en: 'Which form is an imperative with ⲁ-?', ar: 'أيّ شكل هو أمر مع ⲁ-؟' },
+        options: [
+          { de: 'ⲙⲟⲥⲓ', en: 'ⲙⲟⲥⲓ', ar: 'ⲙⲟⲥⲓ' },
+          { de: 'ⲁⲛⲁⲩ', en: 'ⲁⲛⲁⲩ', ar: 'ⲁⲛⲁⲩ' },
+          { de: 'ⲥⲱⲧⲉⲙ', en: 'ⲥⲱⲧⲉⲙ', ar: 'ⲥⲱⲧⲉⲙ' }
+        ],
+        correctAnswerIndex: 1
+      },
+      {
+        id: 'q14-1-2',
+        type: 'multiple-choice',
+        questionText: { de: 'Welche Form ist ein unveränderter Imperativ?', en: 'Which form is an unchanged imperative?', ar: 'أيّ شكل هو أمر غير متبدّل؟' },
+        options: [
+          { de: 'ⲁⲛⲁⲩ', en: 'ⲁⲛⲁⲩ', ar: 'ⲁⲛⲁⲩ' },
+          { de: 'ⲙⲟⲥⲓ', en: 'ⲙⲟⲥⲓ', ar: 'ⲙⲟⲥⲓ' },
+          { de: 'ⲁⲟⲩⲟⲩⲙ', en: 'ⲁⲟⲩⲟⲩⲙ', ar: 'ⲁⲟⲩⲟⲩⲙ' }
+        ],
+        correctAnswerIndex: 1
+      },
+      {
+        id: 'q14-1-3',
+        type: 'multiple-choice',
+        questionText: { de: 'Was bedeutet ⲁⲟⲩⲟⲩⲙ?', en: 'What does ⲁⲟⲩⲟⲩⲙ mean?', ar: 'ماذا يعني ⲁⲟⲩⲟⲩⲙ؟' },
+        options: [
+          { de: 'sieh!', en: 'see!', ar: 'انظر!' },
+          { de: 'iss!', en: 'eat!', ar: 'كُل!' },
+          { de: 'geh!', en: 'walk!', ar: 'امشِ!' }
+        ],
+        correctAnswerIndex: 1
+      }
     ]
   }
 };

@@ -334,8 +334,8 @@ export const LETTERS: Record<string, Letter> = {
     },
     numeric: 400,
     exampleWord: {
-      coptic: "ⲟⲩⲁⲡ",
-      translit: "ouap",
+      coptic: "ⲉⲑⲟⲩⲁⲃ",
+      translit: "ethouap",
       meaning: { de: "heilig", en: "holy", ar: "قدوس" },
     },
   },

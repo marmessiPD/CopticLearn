@@ -33,6 +33,10 @@ const Header: React.FC = () => {
     const [showAccessibilityMenu, setShowAccessibilityMenu] = useState(false);
     const [highContrast, setHighContrast] = useState(false);
     const [reducedMotion, setReducedMotion] = useState(false);
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [pendingRole, setPendingRole] = useState<UserRole>('user');
 
     const handleThemeChange = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
@@ -46,6 +50,38 @@ const Header: React.FC = () => {
             setReducedMotion(!reducedMotion);
             document.documentElement.classList.toggle('reduce-motion');
         }
+    };
+
+    const handleRoleChange = (newRole: UserRole) => {
+        if (newRole === 'admin' && role !== 'admin') {
+            // Benutzer möchte Admin werden - Passwort-Modal öffnen
+            setPendingRole(newRole);
+            setShowPasswordModal(true);
+            setPassword('');
+            setPasswordError('');
+        } else {
+            // Direkte Änderung für User oder Diener, oder Admin möchte zurückwechseln
+            setRole(newRole);
+        }
+    };
+
+    const handlePasswordSubmit = () => {
+        const ADMIN_PASSWORD = 'Jesus_is_LORD';
+        
+        if (password === ADMIN_PASSWORD) {
+            setRole(pendingRole);
+            setShowPasswordModal(false);
+            setPassword('');
+            setPasswordError('');
+        } else {
+            setPasswordError('Falsches Passwort. Bitte versuchen Sie es erneut.');
+        }
+    };
+
+    const handlePasswordModalClose = () => {
+        setShowPasswordModal(false);
+        setPassword('');
+        setPasswordError('');
     };
 
     const ThemeIcon = () => {
@@ -120,7 +156,7 @@ const Header: React.FC = () => {
                 
                 <select 
                     value={role} 
-                    onChange={(e) => setRole(e.target.value as UserRole)} 
+                    onChange={(e) => handleRoleChange(e.target.value as UserRole)} 
                     className="bg-transparent dark:bg-dark-primary rounded p-1 text-xs sm:text-sm min-h-[44px] touch-manipulation"
                     aria-label="Select user role"
                 >
@@ -129,6 +165,53 @@ const Header: React.FC = () => {
                     <option value="admin">Admin</option>
                 </select>
             </div>
+
+            {/* Passwort-Modal */}
+            {showPasswordModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-light-primary dark:bg-dark-secondary rounded-lg shadow-xl p-6 max-w-md w-full">
+                        <h2 className="text-xl font-bold mb-4 text-light-text dark:text-dark-text">
+                            Admin-Zugang
+                        </h2>
+                        <p className="text-sm text-light-text dark:text-dark-text mb-4">
+                            Bitte geben Sie das Admin-Passwort ein:
+                        </p>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                                setPasswordError('');
+                            }}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    handlePasswordSubmit();
+                                }
+                            }}
+                            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-dark-primary text-light-text dark:text-dark-text mb-2 focus:outline-none focus:ring-2 focus:ring-coptic-blue"
+                            placeholder="Passwort eingeben"
+                            autoFocus
+                        />
+                        {passwordError && (
+                            <p className="text-red-500 text-sm mb-4">{passwordError}</p>
+                        )}
+                        <div className="flex gap-3 justify-end">
+                            <button
+                                onClick={handlePasswordModalClose}
+                                className="px-4 py-2 bg-gray-300 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-500 transition-colors min-h-[44px] touch-manipulation"
+                            >
+                                Abbrechen
+                            </button>
+                            <button
+                                onClick={handlePasswordSubmit}
+                                className="px-4 py-2 bg-coptic-blue text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[44px] touch-manipulation"
+                            >
+                                Bestätigen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </header>
     );
 };

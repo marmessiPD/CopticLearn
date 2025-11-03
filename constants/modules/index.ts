@@ -161,7 +161,7 @@ const MODULE_M16: Module = {
   id: 'm16',
   order: 16,
   title: { de: 'Vergleiche', en: 'Comparisons', ar: 'المقارنات' },
-  lessons: Object.keys(LESSONS_M16).filter((k) => k.startsWith('l16-')),
+  lessons: Object.keys(LESSONS_M16).filter((k) => k.startsWith('m16-')),
   quizIds: [],
 };
 

@@ -45,7 +45,7 @@ const SentenceCard: React.FC<SentenceCardProps> = ({ item }) => {
       <div className="text-center mt-6">
         <button
           style={{ display: DISABLE_AUDIO ? "none" : undefined }}
-          onClick={() => !DISABLE_AUDIO && playSound()}
+          onClick={() => !DISABLE_AUDIO && playSound(item.text)}
           className="mt-2 inline-flex items-center px-4 py-2 bg-coptic-blue text-white rounded-full hover:bg-opacity-80 dark:bg-coptic-gold dark:text-coptic-blue"
           aria-label={t({
             de: "Satz anhÃ¶ren",

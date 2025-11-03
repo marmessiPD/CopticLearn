@@ -1,5 +1,5 @@
 // FIX: Create LessonPage component to resolve module error.
-import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { LESSONS, LETTERS } from "../constants/data";
 import { useAppContext } from "../context/AppContext";
@@ -15,18 +15,15 @@ import {
   ConversationSlide,
 } from "../types";
 import { useTouchGestures } from "../hooks/useTouchGestures";
-
-// Lazy load components for better performance
-const AlphabetSlideCard = lazy(() => import("../components/AlphabetSlideCard"));
-const VocabCard = lazy(() => import("../components/VocabCard"));
-const SentenceCard = lazy(() => import("../components/SentenceCard"));
-const PronunciationRuleCard = lazy(
-  () => import("../components/PronunciationRuleCard")
-);
-const NumberCard = lazy(() => import("../components/NumberCard"));
-const GrammarRuleCard = lazy(() => import("../components/GrammarRuleCard"));
-const ReadingCard = lazy(() => import("../components/ReadingCard"));
-const ConversationCard = lazy(() => import("../components/ConversationCard"));
+import ErrorBoundary from "../components/ErrorBoundary";
+import AlphabetSlideCard from "../components/AlphabetSlideCard";
+import VocabCard from "../components/VocabCard";
+import SentenceCard from "../components/SentenceCard";
+import PronunciationRuleCard from "../components/PronunciationRuleCard";
+import NumberCard from "../components/NumberCard";
+import GrammarRuleCard from "../components/GrammarRuleCard";
+import ReadingCard from "../components/ReadingCard";
+import ConversationCard from "../components/ConversationCard";
 
 const ArrowLeftIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
@@ -236,6 +233,12 @@ const LessonPage: React.FC = () => {
   const isFirstSlide = currentSlideIndex === 0;
   const isLastSlide = currentSlideIndex === lesson.slides.length - 1;
 
+  // Render slide content wrapped in ErrorBoundary
+  const SlideContent = () => {
+    if (!currentSlide) return null;
+    return <>{renderSlide(currentSlide)}</>;
+  };
+
   return (
     <div className="container mx-auto max-w-4xl px-2 sm:px-4">
       <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-2">
@@ -257,20 +260,9 @@ const LessonPage: React.FC = () => {
       </div>
 
       <div className="relative" ref={slideContainerRef}>
-        <Suspense
-          fallback={
-            <div className="bg-light-primary dark:bg-dark-secondary rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
-              <div className="animate-pulse">
-                <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
-                <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
-                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded"></div>
-              </div>
-            </div>
-          }
-        >
-          {renderSlide(currentSlide)}
-        </Suspense>
+        <ErrorBoundary>
+          <SlideContent />
+        </ErrorBoundary>
 
         {/* Navigation hints */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 opacity-50">

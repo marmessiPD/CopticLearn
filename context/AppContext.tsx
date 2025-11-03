@@ -10,11 +10,11 @@ interface AppContextType {
     setRole: (role: UserRole) => void;
     progress: Record<string, number>; // quizId: score
     updateProgress: (quizId: string, score: number) => void;
-    t: (localeString: { de: string; en: string; ar: string }) => string;
+    t: (localeString: { de: string; en: string; ar: string } | undefined | null) => string;
     playSound: (text: string) => void;
 }
 
-const AppContext = createContext<AppContextType | undefined>(undefined);
+export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [language, setLanguage] = useState<Language>('de');
@@ -83,8 +83,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         setProgress(prev => ({ ...prev, [quizId]: score }));
     };
 
-    const t = (localeString: { de: string; en: string; ar: string }): string => {
-        return localeString[language];
+    const t = (localeString: { de: string; en: string; ar: string } | undefined | null): string => {
+        if (!localeString) {
+            console.warn('Translation function called with undefined/null localeString');
+            return '';
+        }
+        return localeString[language] || localeString.en || localeString.de || localeString.ar || '';
     };
 
     const value = useMemo(() => ({
@@ -109,7 +113,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
 export const useAppContext = () => {
     const context = useContext(AppContext);
-    if (context === undefined) {
+    if (!context) {
         throw new Error('useAppContext must be used within an AppProvider');
     }
     return context;

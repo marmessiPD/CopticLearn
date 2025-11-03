@@ -65,7 +65,7 @@ export const LESSONS: Record<string, Lesson> = {
         ]
       },
       {
-        type: 'review',
+        type: 'grammar',
         title: { de: 'Übungszusammenfassung', en: 'Practice Review', ar: 'مراجعة تطبيقية' },
         rule: {
           de: 'Übung: Übersetze kurze Sätze unter Verwendung von Präfixen und Suffixen.',

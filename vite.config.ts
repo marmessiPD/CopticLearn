@@ -8,8 +8,18 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 9583,
         host: '0.0.0.0',
+        hmr: {
+          clientPort: 9583,
+        },
+        watch: {
+          usePolling: false,
+        },
       },
-      plugins: [react()],
+      plugins: [
+        react({
+          fastRefresh: true,
+        })
+      ],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
