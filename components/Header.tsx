@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import { Language, Theme } from '../types';
-import RoleSwitch from './RoleSwitch';
 
 // Icons
 const HomeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
@@ -141,8 +140,6 @@ const Header: React.FC = () => {
                 
                 {session ? (
                     <>
-                        <RoleSwitch />
-                        
                         <div className="flex items-center gap-2 text-sm">
                             <UserIcon className="h-5 w-5" />
                             <span className="hidden sm:inline">

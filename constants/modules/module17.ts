@@ -134,7 +134,6 @@ export const LESSONS: Record<string, Lesson> = {
 export const QUIZZES: Record<string, Quiz> = {
   "q17-1": {
     id: "q17-1",
-    lessonId: "m17",
     title: {
       de: "Mini‑Quiz: Zweite Tempusreihe",
       en: "Mini‑quiz: Second tense series",
@@ -159,13 +158,13 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q17-1-2",
-        type: "fill-in-the-blank",
+        type: "cloze",
         questionText: {
-          de: 'Ergänze die 2. Futurform: „er wird …" ⲁⲫⲛⲁ‑ ___',
-          en: 'Complete the second future: "he will …" ⲁⲫⲛⲁ‑ ___',
+          de: "Ergänze die 2. Futurform: „er wird …“ ⲁⲫⲛⲁ‑ ___",
+          en: "Complete the second future: “he will …” ⲁⲫⲛⲁ‑ ___",
           ar: "أكمل المستقبل الثاني: «سـ…» ⲁⲫⲛⲁ‑ ___",
         },
-        correctAnswer: "ⲥⲱⲧⲙ",
+        answer: "ⲥⲱⲧⲙ",
       },
       {
         id: "q17-1-3",
@@ -196,7 +195,7 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q17-1-4",
-        type: "matching" as any,
+        type: "matching",
         pairs: [
           {
             left: "ⲁⲕⲥⲱⲡ ⲩⲱⲛ;",
@@ -223,10 +222,10 @@ export const QUIZZES: Record<string, Quiz> = {
             },
           },
         ],
-      } as any,
+      },
       {
         id: "q17-1-5",
-        type: "production" as any,
+        type: "production",
         prompt: {
           de: "Übersetze ins Koptische (2. Vergangenheit): „Wir wissen, dass du gekommen bist.“",
           en: "Translate to Coptic (second past): “We know that you came.”",

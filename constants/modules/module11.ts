@@ -204,14 +204,40 @@ export const QUIZZES: Record<string, Quiz> = {
         correctAnswer: "ⲓ",
       },
       {
+        id: "q11-1-3",
+        type: "matching" as any,
+        pairs: [
+          {
+            left: "ouoh",
+            right: {
+              de: "und (zwischen Phrasen)",
+              en: "and (phrases)",
+              ar: "و",
+            },
+          },
+          { left: "alla", right: { de: "aber", en: "but", ar: "لكن" } },
+          {
+            left: "m/pote",
+            right: {
+              de: "damit nicht / لئلا",
+              en: "lest/perhaps",
+              ar: "لئلا / ربما",
+            },
+          },
+        ],
+      },
+      {
         id: "q11-1-4",
-        type: "fill-in-the-blank",
-        questionText: {
+        type: "production" as any,
+        prompt: {
           de: "Forme: „Er sagte, dass er kommen wird“ (Konjunktiv).",
           en: "Produce: 'He said that he will come' (subjunctive).",
           ar: "كوِّن: «قال إنه سيأتي» بصيغة التابع.",
         },
-        correctAnswer: "ⲁϥϫⲱ ⲛ̄ⲛⲁⲛ ⲛⲧⲉϥⲓ",
+        correctAnswer: {
+          coptic: "ⲁϥϫⲱ ⲛ̄ⲛⲁⲛ ⲛⲧⲉϥⲓ",
+          translit: "af‑jw nan ntef‑i",
+        },
       },
       {
         id: "q11-1-5",
@@ -267,14 +293,40 @@ export const QUIZZES: Record<string, Quiz> = {
         correctAnswer: "ⲥⲱⲧⲙ",
       },
       {
+        id: "q11-2-3",
+        type: "matching" as any,
+        pairs: [
+          {
+            left: "sante‑",
+            right: {
+              de: "kombinierte Form",
+              en: "combined form",
+              ar: "صيغة مركبة",
+            },
+          },
+          {
+            left: "sate‑",
+            right: { de: "Kurzform", en: "short form", ar: "صيغة مختصرة" },
+          },
+          {
+            left: "nte‑",
+            right: {
+              de: "vor Nomen (Subj.)",
+              en: "before noun (subj.)",
+              ar: "قبل الاسم",
+            },
+          },
+        ],
+      },
+      {
         id: "q11-2-4",
-        type: "fill-in-the-blank",
-        questionText: {
+        type: "production" as any,
+        prompt: {
           de: "Übersetze: „Warte, bis er spricht.“",
           en: "Translate: 'Wait till he speaks.'",
           ar: "ترجم: «انتظر حتى يتكلم.»",
         },
-        correctAnswer: "ⲥⲁⲛⲧⲉϥϫⲱ",
+        correctAnswer: { coptic: "ⲥⲁⲛⲧⲉϥϫⲱ", translit: "santef‑jw" },
       },
       {
         id: "q11-2-5",

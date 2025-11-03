@@ -8,6 +8,7 @@ export interface User {
   id: string;
   forename: string;
   surname: string;
+  email: string;
   role: UserRole;
   createdAt: string;
   passwordHash: string; // Stored hashed password
@@ -45,14 +46,7 @@ export type Slide =
   | NumberSlide
   | GrammarSlide
   | ReadingSlide
-  | ConversationSlide
-  | DoSlide
-  | DiscoverSlide
-  | ExplainSlide
-  | DrillSlide
-  | QuizRefSlide
-  | ExerciseSlide
-  | TheologySlide;
+  | ConversationSlide;
 
 export interface BaseSlide {
   type:
@@ -63,14 +57,7 @@ export interface BaseSlide {
     | "number"
     | "grammar"
     | "reading"
-    | "conversation"
-    | "do"
-    | "discover"
-    | "explain"
-    | "drill"
-    | "quizRef"
-    | "exercise"
-    | "theology";
+    | "conversation";
 }
 
 export interface Letter {
@@ -175,53 +162,6 @@ export interface ConversationSlide extends BaseSlide {
   title: LocalizedString;
   participants: string[];
   lines: ConversationLine[];
-}
-
-export interface DoSlide extends BaseSlide {
-  type: "do";
-  minutes?: number;
-  tasks?: string[];
-}
-
-export interface DiscoverSlide extends BaseSlide {
-  type: "discover";
-  prompt: string;
-}
-
-export interface ExplainSlide extends BaseSlide {
-  type: "explain";
-  text?: string;
-}
-
-export interface DrillSlide extends BaseSlide {
-  type: "drill";
-  mode: "guided" | "semi" | "free";
-  items?: (string | string[])[];
-}
-
-export interface QuizRefSlide extends BaseSlide {
-  type: "quizRef";
-  quizId: string;
-}
-
-export interface ExerciseTask {
-  prompt: LocalizedString;
-  answer: string;
-}
-
-export interface ExerciseSlide extends BaseSlide {
-  type: "exercise";
-  title: LocalizedString;
-  tasks?: ExerciseTask[];
-}
-
-export interface TheologySlide extends BaseSlide {
-  type: "theology";
-  title: LocalizedString;
-  content: LocalizedString;
-  meta?: {
-    emoji?: string;
-  };
 }
 
 export interface Quiz {

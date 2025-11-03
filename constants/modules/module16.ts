@@ -214,7 +214,6 @@ export const LESSONS: Record<string, Lesson> = {
 export const QUIZZES: Record<string, Quiz> = {
   "q16-1": {
     id: "q16-1",
-    lessonId: "m16",
     title: {
       de: "Mini‑Quiz: Infinitiv‑Strukturen",
       en: "Mini‑quiz: Infinitive structures",
@@ -243,13 +242,13 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q16-1-2",
-        type: "fill-in-the-blank",
+        type: "cloze",
         questionText: {
-          de: 'Ergänze: „Es ist möglich zu hören" ⲟⲩⲟⲛ ___',
-          en: 'Complete: "it is possible to listen" ⲟⲩⲟⲛ ___',
+          de: "Ergänze: „Es ist möglich zu hören“ ⲟⲩⲟⲛ ___",
+          en: "Complete: “it is possible to listen” ⲟⲩⲟⲛ ___",
           ar: "أكمل: «يمكن أن يسمع» ⲟⲩⲟⲛ ___",
         },
-        correctAnswer: "ⲉϣⲟⲙ",
+        answer: "ⲉϣⲟⲙ",
       },
       {
         id: "q16-1-3",
@@ -272,7 +271,7 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q16-1-4",
-        type: "matching" as any,
+        type: "matching",
         pairs: [
           {
             left: "ⲉⲣⲉϥ‑ⲥⲱⲧⲙ",
@@ -291,17 +290,17 @@ export const QUIZZES: Record<string, Quiz> = {
             right: { de: "noch nicht", en: "not yet", ar: "ليس بعد" },
           },
         ],
-      } as any,
+      },
       {
         id: "q16-1-5",
-        type: "production" as any,
+        type: "production",
         prompt: {
-          de: 'Forme: „Er ließ uns sprechen" mit Kausativ.',
-          en: 'Produce: "He made us speak" using the causative.',
+          de: "Forme: „Er ließ uns sprechen“ mit Kausativ.",
+          en: "Produce: “He made us speak” using the causative.",
           ar: "كوّن: «جعلنا نتكلم» باستعمال السببي.",
         },
         correctAnswer: { coptic: "ⲉⲣⲉ= ⲛⲁⲛ ⲥⲁⲅⲓ", translit: "ere= nan sagi" },
-      } as any,
+      },
     ],
   },
 };

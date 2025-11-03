@@ -4,7 +4,6 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useCallback,
   ReactNode,
 } from "react";
 import { Language, Theme, UserRole } from "../types";
@@ -22,12 +21,11 @@ interface AppContextType {
   t: (localeString: { de: string; en: string; ar: string }) => string;
   playSound: (text: string) => void;
   session: Session | null;
-  login: (password: string) => Promise<{ success: boolean; error?: string }>;
-  logout: () => void;
-  switchRole: (
-    password: string,
-    targetRole: UserRole
+  login: (
+    email: string,
+    password: string
   ) => Promise<{ success: boolean; error?: string }>;
+  logout: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -73,79 +71,58 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     };
   }, []);
 
-  const playSound = useCallback(
-    (text: string) => {
-      const synth = window.speechSynthesis;
-      if (!synth) {
-        console.error("Speech Synthesis not supported");
-        return;
-      }
+  const playSound = (text: string) => {
+    const synth = window.speechSynthesis;
+    if (!synth) {
+      console.error("Speech Synthesis not supported");
+      return;
+    }
 
-      const utterance = new SpeechSynthesisUtterance(text);
-      const langMap = {
-        de: "de-DE",
-        en: "en-US",
-        ar: "ar-SA",
-      };
-      const targetLang = langMap[language];
-      utterance.lang = targetLang;
+    const utterance = new SpeechSynthesisUtterance(text);
+    const langMap = {
+      de: "de-DE",
+      en: "en-US",
+      ar: "ar-SA",
+    };
+    const targetLang = langMap[language];
+    utterance.lang = targetLang;
 
-      const voice =
-        voices.find((v) => v.lang === targetLang) ||
-        voices.find((v) => v.lang.startsWith(language));
-      if (voice) {
-        utterance.voice = voice;
-      }
+    const voice =
+      voices.find((v) => v.lang === targetLang) ||
+      voices.find((v) => v.lang.startsWith(language));
+    if (voice) {
+      utterance.voice = voice;
+    }
 
-      synth.cancel();
-      synth.speak(utterance);
-    },
-    [language, voices]
-  );
+    synth.cancel();
+    synth.speak(utterance);
+  };
 
-  const updateProgress = useCallback((quizId: string, score: number) => {
+  const updateProgress = (quizId: string, score: number) => {
     setProgress((prev) => ({ ...prev, [quizId]: score }));
-  }, []);
+  };
 
-  const t = useCallback(
-    (localeString: { de: string; en: string; ar: string }): string => {
-      return localeString[language];
-    },
-    [language]
-  );
+  const t = (localeString: { de: string; en: string; ar: string }): string => {
+    return localeString[language];
+  };
 
-  const login = useCallback(
-    async (password: string): Promise<{ success: boolean; error?: string }> => {
-      const result = await authService.login(password);
-      if (result.success && result.session) {
-        setSession(result.session);
-        setRole(result.session.role);
-      }
-      return result;
-    },
-    []
-  );
+  const login = async (
+    email: string,
+    password: string
+  ): Promise<{ success: boolean; error?: string }> => {
+    const result = await authService.login(email, password);
+    if (result.success && result.session) {
+      setSession(result.session);
+      setRole(result.session.role);
+    }
+    return result;
+  };
 
-  const logout = useCallback(() => {
+  const logout = () => {
     authService.logout();
     setSession(null);
     setRole("user");
-  }, []);
-
-  const switchRole = useCallback(
-    async (
-      password: string,
-      targetRole: UserRole
-    ): Promise<{ success: boolean; error?: string }> => {
-      const result = await authService.switchRole(password, targetRole);
-      if (result.success && result.session) {
-        setSession(result.session);
-        setRole(result.session.role);
-      }
-      return result;
-    },
-    []
-  );
+  };
 
   // Sync role with session
   useEffect(() => {
@@ -169,21 +146,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       session,
       login,
       logout,
-      switchRole,
     }),
-    [
-      language,
-      theme,
-      role,
-      progress,
-      session,
-      updateProgress,
-      t,
-      playSound,
-      login,
-      logout,
-      switchRole,
-    ]
+    [language, theme, role, progress, voices, session]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

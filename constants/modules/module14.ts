@@ -13,9 +13,12 @@ export const LESSONS: Record<string, Lesson> = {
       en: "Adverbs & Time: telling time, days, months; comparisons",
       ar: "الظروف والوقت: الساعة، الأيام، الشهور؛ المقارنة",
     },
-    order: 1,
-    prerequisites: [],
-    quizId: "m14-q1",
+    description: {
+      de: "Adverbien der Zeit/Ort/Art, Uhrzeit (Stunden/Tageszeiten), Wochentage & Monate des koptischen Kalenders, einfache Vergleiche.",
+      en: "Adverbs of time/place/manner, telling the hour & periods, days and Coptic months, basic comparisons.",
+      ar: "ظروف الزمان/المكان/الطريقة، قراءة الساعة، فترات اليوم، أيام الأسبوع وشهور القبط، والمقارنة الأساسية.",
+    },
+    duration: "40–55 min",
     slides: [
       {
         type: "grammar",
@@ -33,29 +36,23 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ⲋ",
             translit: "vnau najp 6",
-            meaning: {
-              de: "die sechste Stunde",
-              en: "the sixth hour",
-              ar: "الساعة السادسة",
-            },
+            de: "die sechste Stunde",
+            en: "the sixth hour",
+            ar: "الساعة السادسة",
           },
           {
             coptic: "ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ⲑⲓⲑ",
             translit: "qen vnau najp 9",
-            meaning: {
-              de: "in der neunten Stunde",
-              en: "in the ninth hour",
-              ar: "في الساعة التاسعة",
-            },
+            de: "in der neunten Stunde",
+            en: "in the ninth hour",
+            ar: "في الساعة التاسعة",
           },
           {
             coptic: "ⲣⲟⲩϩⲓ ⲛⲉⲙ ⲥⲱⲣⲡ ⲛⲉⲙ ⲙⲉⲣⲓ",
             translit: "rouhi nem swrp nem meri",
-            meaning: {
-              de: "Abend und Morgen und Mittag",
-              en: "evening and morning and midday",
-              ar: "مساء وصباح وظهيرة",
-            },
+            de: "Abend und Morgen und Mittag",
+            en: "evening and morning and midday",
+            ar: "مساء وصباح وظهيرة",
           },
         ],
       },
@@ -75,29 +72,23 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "ⲡⲓⲟⲩⲁⲓ ⲛ̀ⲧⲉ ⲡⲱⲛⲓ",
             translit: "piouai nte pōni",
-            meaning: {
-              de: "(am) Sonntag im Paoni",
-              en: "Sunday in Paoni",
-              ar: "الأحد في باؤوني",
-            },
+            de: "(am) Sonntag im Paoni",
+            en: "Sunday in Paoni",
+            ar: "الأحد في باؤوني",
           },
           {
             coptic: "ⲡⲓⲥⲁⲥϥ / ⲡⲕⲁⲃⲃⲁⲧⲟⲛ",
             translit: "pisasf / pkabbaton",
-            meaning: {
-              de: "Samstag / Sabbat",
-              en: "Saturday / Sabbath",
-              ar: "السبت / السبت",
-            },
+            de: "Samstag / Sabbat",
+            en: "Saturday / Sabbath",
+            ar: "السبت / السبت",
           },
           {
             coptic: "ⲡⲓⲕⲟⲩϫⲓ",
             translit: "pikouji",
-            meaning: {
-              de: "der kleine (13. Monat)",
-              en: "the \"little\" (13th month)",
-              ar: "الصغير (الشهر ١٣)",
-            },
+            de: "der kleine (13. Monat)",
+            en: "the “little” (13th month)",
+            ar: "الصغير (الشهر ١٣)",
           },
         ],
       },
@@ -117,34 +108,49 @@ export const LESSONS: Record<string, Lesson> = {
           {
             coptic: "]ⲥⲉⲛⲓ ⲉⲕⲟⲩⲛ ⲉ]ⲃⲁⲕⲏ",
             translit: "]seni eqoun e]baki",
-            meaning: {
-              de: "ich gehe hinein in die Stadt",
-              en: "I am going inside to the city",
-              ar: "أنا ذاهب إلى داخل المدينة",
-            },
+            de: "ich gehe hinein in die Stadt",
+            en: "I am going inside to the city",
+            ar: "أنا ذاهب إلى داخل المدينة",
           },
           {
             coptic: "ⲧⲉⲛⲛⲁⲥⲉ ⲛⲁⲛ ⲉϩⲣⲓ ⲉ !ⲏⲗⲏⲙ",
             translit: "tennase nan ehrī e Iērēlm",
-            meaning: {
-              de: "wir gehen hinauf nach Jerusalem",
-              en: "we are going up to Jerusalem",
-              ar: "نصعد إلى أورشليم",
-            },
+            de: "wir gehen hinauf nach Jerusalem",
+            en: "we are going up to Jerusalem",
+            ar: "نصعد إلى أورشليم",
           },
         ],
       },
       {
         type: "sentence",
-        item: {
-          text: "ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ⲥⲛⲁⲩ ⲁⲓⲥⲱⲧⲙ",
-          translit: "qen vnau najp 2 aisōtm",
-          meaning: {
+        title: {
+          de: "Alltagssätze (Zeit & Ort)",
+          en: "Everyday sentences",
+          ar: "جُمَل يومية",
+        },
+        lines: [
+          {
+            coptic: "ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ⲥⲛⲁⲩ ⲁⲓⲥⲱⲧⲙ",
+            translit: "qen vnau najp 2 aisōtm",
             de: "in der zweiten Stunde habe ich gehört",
             en: "I listened in the second hour",
             ar: "في الساعة الثانية سمعتُ",
           },
-        },
+          {
+            coptic: "ⲙ̀ⲫⲟⲟⲩ ⲟⲩⲟⲛ ⲟⲩⲥⲟⲡ",
+            translit: "mvoou ouon ousop",
+            de: "heute gibt es eine Zeit",
+            en: "today there is a time/appointment",
+            ar: "اليوم يوجد موعد",
+          },
+          {
+            coptic: "ⲟⲩⲛⲁⲥⲙⲟⲩ ⲉⲡⲓⲙⲁϩⲟⲩⲧ ⲛ̀ⲧⲉ ⲡⲁⲱⲛⲓ",
+            translit: "ounasmu e-pi-mahout nte paōni",
+            de: "ich werde im Monat Paoni feiern",
+            en: "I will celebrate in Paoni",
+            ar: "سأحتفل في باؤوني",
+          },
+        ],
       },
     ],
   },
@@ -160,37 +166,90 @@ export const QUIZZES: Record<string, Quiz> = {
       ar: "اختبار قصير",
     },
     passScore: 80,
-    items: [
+    questions: [
       {
-        type: "mc",
-        prompt: "die sechste Stunde auf Bohairisch?",
-        choices: ["ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ϥ", "ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ 3", "ⲟⲩⲟⲛ ⲛ̀ⲁϫⲡ"],
-        answer: 0,
-      },
-      {
-        type: "match",
-        prompt: "Ordne Tageszeit ↔️ Adverb.",
-        pairs: [
-          ["ⲥⲱⲣⲡ", "Morgen"],
-          ["ⲣⲟⲩϩⲓ", "Abend"],
-          ["ⲙⲉⲣⲓ", "Mittag"],
+        id: "m14-q1-1",
+        type: "multiple-choice",
+        prompt: {
+          de: "„die sechste Stunde“ auf Bohairisch?",
+          en: "“the sixth hour” in Bohairic?",
+          ar: "«الساعة السادسة» بالبهيري؟",
+        },
+        options: [
+          {
+            id: "a",
+            text: { de: "ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ϥ", en: "vnau najp 6", ar: "ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ϥ" },
+            correct: true,
+          },
+          {
+            id: "b",
+            text: {
+              de: "ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ 3",
+              en: "qen vnau najp 3",
+              ar: "ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ 3",
+            },
+          },
+          {
+            id: "c",
+            text: { de: "ⲟⲩⲟⲛ ⲛ̀ⲁϫⲡ", en: "ouon najp", ar: "ⲟⲩⲟⲛ ⲛ̀ⲁϫⲡ" },
+          },
         ],
       },
       {
-        type: "gap",
-        prompt: "Ergänze mit Bewegungsadverb: Ich gehe ... in die Stadt",
+        id: "m14-q1-2",
+        type: "matching",
+        prompt: {
+          de: "Ordne Tageszeit ↔️ Adverb.",
+          en: "Match period ↔️ adverb.",
+          ar: "طابِق الفترة مع الظرف.",
+        },
+        pairs: [
+          { left: "ⲥⲱⲣⲡ", right: "Morgen" },
+          { left: "ⲣⲟⲩϩⲓ", right: "Abend" },
+          { left: "ⲙⲉⲣⲓ", right: "Mittag" },
+        ],
+      },
+      {
+        id: "m14-q1-3",
+        type: "cloze",
+        prompt: {
+          de: "Ergänze mit Bewegungsadverb: „Ich gehe ⟨…⟩ in die Stadt“ → ]ⲥⲉⲛⲓ ⟨…⟩ ⲉ]ⲃⲁⲕⲏ.",
+          en: "Add motion adverb: “I am going ⟨…⟩ to the city”.",
+          ar: 'أضف ظرف حركة: "أنا ذاهب ⟨…⟩ إلى المدينة".',
+        },
         answer: "ⲉⲕⲟⲩⲛ",
       },
       {
-        type: "mc",
-        prompt: "Welcher Name ist ein koptischer Monat?",
-        choices: ["ⲡⲁⲱⲛⲓ (Paoni)", "ⲡⲁⲣⲁⲥⲕⲉⲩⲏ", "ⲡⲁⲣⲁⲃⲟⲗⲏ"],
-        answer: 0,
+        id: "m14-q1-4",
+        type: "multiple-choice",
+        prompt: {
+          de: "Welcher Name ist ein koptischer Monat?",
+          en: "Which is a Coptic month?",
+          ar: "أيٌّ هو شهر قبطي؟",
+        },
+        options: [
+          {
+            id: "a",
+            text: { de: "ⲡⲁⲱⲛⲓ (Paoni)", en: "Paoni", ar: "ⲡⲁⲱⲛⲓ" },
+            correct: true,
+          },
+          {
+            id: "b",
+            text: { de: "ⲡⲁⲣⲁⲥⲕⲉⲩⲏ", en: "Paraskeuē", ar: "]ⲡⲁⲣⲁⲥⲕⲉⲩⲏ" },
+          },
+          { id: "c", text: { de: "ⲡⲁⲣⲁⲃⲟⲗⲏ", en: "parabolē", ar: "ⲡⲁⲣⲁⲃⲟⲗⲏ" } },
+        ],
       },
       {
-        type: "produce",
-        prompt: "Schreibe zwei Sätze: Heute um die neunte Stunde... und Wir gehen hinauf nach Kairo...",
-        rubric: "ⲙ̀ⲫⲟⲟⲩ ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ⲑⲓⲑ ⲁⲓⲥⲱⲧⲙ. ⲧⲉⲛⲛⲁⲥⲉ ⲛⲁⲛ ⲉϩⲣⲓ ⲉⲕⲁⲓⲣⲟ.",
+        id: "m14-q1-5",
+        type: "production",
+        prompt: {
+          de: "Schreibe zwei Sätze: (1) “Heute um die neunte Stunde …”; (2) „Wir gehen hinauf nach Kairo…“",
+          en: "Write two sentences: (1) “Today at the ninth hour …”; (2) “We are going up to Cairo …”",
+          ar: "اكتب جملتين: (١) «اليوم في الساعة التاسعة…»؛ (٢) «نصعد إلى القاهرة…»",
+        },
+        sampleSolution:
+          "ⲙ̀ⲫⲟⲟⲩ ⲕⲉⲛ ⲫⲛⲁⲩ ⲛ̀ⲁϫⲡ ⲑⲓⲑ ⲁⲓⲥⲱⲧⲙ. ⲧⲉⲛⲛⲁⲥⲉ ⲛⲁⲛ ⲉϩⲣⲓ ⲉⲕⲁⲓⲣⲟ.",
       },
     ],
   },

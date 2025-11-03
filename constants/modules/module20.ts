@@ -6,11 +6,7 @@ export const LESSONS: Record<string, Lesson> = {
     id: "m20-l1",
     moduleId: "m20",
     order: 1,
-    title: {
-      de: "Capstone: Lese‑/Hörverständnis & Produktion",
-      en: "Capstone: Reading/Listening Comprehension & Production",
-      ar: "الختام: فهم القراءة/الاستماع والإنتاج",
-    },
+    title: "Capstone: Lese‑/Hörverständnis & Produktion",
     prerequisites: [
       "m1-l1",
       "m2-l1",
@@ -36,37 +32,11 @@ export const LESSONS: Record<string, Lesson> = {
     slides: [
       {
         type: "grammar",
-        title: {
-          de: "Capstone‑Hinweise",
-          en: "Capstone Guidelines",
-          ar: "إرشادات الختام",
-        },
-        rule: {
-          de: "Du arbeitest jetzt mit zusammenhängenden Texten (biblisch/liturgisch) und Dialogen. Ziele: (1) Formen erkennen (Tempusreihen, Relativ, Pronomen), (2) Besitz/Frageformen sicher anwenden, (3) frei sprechen/schreiben.",
-          en: "You now work with connected texts (biblical/liturgical) and dialogues. Goals: (1) recognize forms (tense series, relative, pronouns), (2) apply possession/question forms securely, (3) speak/write freely.",
-          ar: "تعمل الآن مع نصوص مترابطة (كتابية/طقسية) وحوارات. الأهداف: (1) التعرف على الأشكال (سلاسل الأزمنة، النسبي، الضمائر)، (2) تطبيق الملكية/أشكال الأسئلة بثقة، (3) التحدث/الكتابة بحرية.",
-        },
+        title: "Capstone‑Hinweise",
+        body: "Du arbeitest jetzt mit zusammenhängenden Texten (biblisch/liturgisch) und Dialogen. Ziele: (1) Formen erkennen (Tempusreihen, Relativ, Pronomen), (2) Besitz/Frageformen sicher anwenden, (3) frei sprechen/schreiben.",
         examples: [
-          {
-            coptic:
-              "Strategie: erst Artikel/Pronomen, dann Verbform (1st/2nd/3rd), danach Präpositionalgruppen farb‑markieren.",
-            translit: "",
-            meaning: {
-              de: "Strategie: erst Artikel/Pronomen, dann Verbform (1st/2nd/3rd), danach Präpositionalgruppen farb‑markieren.",
-              en: "Strategy: first article/pronouns, then verb form (1st/2nd/3rd), then color-mark prepositional groups.",
-              ar: "الاستراتيجية: أولاً الأدوات/الضمائر، ثم شكل الفعل (الأول/الثاني/الثالث)، ثم تحديد مجموعات الجر بالألوان.",
-            },
-          },
-          {
-            coptic:
-              "Beim Übersetzen natürlich und idiomatisch bleiben (nicht Wort‑für‑Wort).",
-            translit: "",
-            meaning: {
-              de: "Beim Übersetzen natürlich und idiomatisch bleiben (nicht Wort‑für‑Wort).",
-              en: "Stay natural and idiomatic when translating (not word-for-word).",
-              ar: "كن طبيعياً ومعبراً عند الترجمة (وليس كلمة بكلمة).",
-            },
-          },
+          "Strategie: erst Artikel/Pronomen, dann Verbform (1st/2nd/3rd), danach Präpositionalgruppen farb‑markieren.",
+          "Beim Übersetzen natürlich und idiomatisch bleiben (nicht Wort‑für‑Wort).",
         ],
       },
       {
@@ -78,16 +48,16 @@ export const LESSONS: Record<string, Lesson> = {
         distractors: [],
         explanation:
           "Nutze aus Modul 18 Interrogativa + aus Modul 19 Besitz (ⲡⲁ/ⲧⲁ/ⲛⲁ).",
-      } as any,
+      },
       {
         type: "sentence",
         prompt:
-          "Micro‑Projekt B (Liturgie‑Phrase bauen): ‚Dir (sg.) ist die Kraft und die Herrlichkeit' (mische Kopula + Possessiv‑Pronomen).",
+          "Micro‑Projekt B (Liturgie‑Phrase bauen): ‚Dir (sg.) ist die Kraft und die Herrlichkeit‘ (mische Kopula + Possessiv‑Pronomen).",
         correct: "ⲉⲣⲟⲕ ⲡⲉ ⲡⲓⲃⲟⲏⲑⲉⲓⲁ · yⲟⲕ ⲧⲉ ⲡⲓϫⲟⲙ · ⲡⲉ ⲡⲓⲱⲟⲩ ⲛⲁⲓ.",
         distractors: ["ⲡⲓϫⲟⲙ ⲡⲉ yⲟⲕ (Wortstellung vertauscht)"],
         explanation:
           "Possessiv‑Pronomen + passende Kopula; bei fem. Nomen (ϫⲟⲙ) → ⲧⲉ.",
-      } as any,
+      },
       {
         type: "sentence",
         prompt:
@@ -96,7 +66,7 @@ export const LESSONS: Record<string, Lesson> = {
         distractors: [],
         explanation:
           "Achte auf ⲉⲧ‑/ⲛⲉⲧ‑, auf 1./2. Tempusreihe und auf ⲙⲙⲟ= / ⲉⲣⲟ=.",
-      } as any,
+      },
     ],
   },
 };
@@ -104,13 +74,6 @@ export const LESSONS: Record<string, Lesson> = {
 export const QUIZZES: Record<string, Quiz> = {
   "m20-q1": {
     id: "m20-q1",
-    lessonId: "m20-l1",
-    title: {
-      de: "Capstone Quiz: Gesamtprüfung",
-      en: "Capstone Quiz: Comprehensive Test",
-      ar: "اختبار الختام: الامتحان الشامل",
-    },
-    passScore: 80,
     moduleId: "m20",
     items: [
       // Mix aus 30 Items (Lesen, Grammatik, Produktion)
@@ -125,8 +88,8 @@ export const QUIZZES: Record<string, Quiz> = {
         answer: 0,
       },
       {
-        type: "match",
-        prompt: "Ordne ‚haben'‑Aussagen zu.",
+        type: "matching",
+        prompt: "Ordne ‚haben‘‑Aussagen zu.",
         pairs: [
           ["ⲟⲩⲟⲛ ⲛⲧⲓ …", "ich habe …"],
           ["ⲙⲙⲟⲛ ⲛⲧⲁⲕ …", "du (m.) hast nicht …"],
@@ -135,9 +98,10 @@ export const QUIZZES: Record<string, Quiz> = {
         ],
       },
       {
-        type: "gap",
+        type: "cloze",
         prompt: "Setze das Fragewort ein (Ort/Zeit).",
-        answer: "ⲉⲱⲛ|ⲛⲁⲩ|ⲉⲛⲁⲩ",
+        text: "_____ ⲡⲉ ⲡⲓⲙⲁ; · _____ ⲁⲕⲉⲣⲅⲁⲍⲉ;",
+        solutions: { 0: "ⲉⲱⲛ", 1: "ⲛⲁⲩ|ⲉⲛⲁⲩ" },
       },
       {
         type: "multiple-choice",
@@ -179,11 +143,14 @@ export const QUIZZES: Record<string, Quiz> = {
         answer: 0,
       },
       {
-        type: "produce",
+        type: "production",
         prompt:
           "Kurzer Absatz (4–5 Sätze): Erzähle, was du gestern getan hast; benutze mindestens (a) eine Besitzkonstruktion, (b) eine Frage, (c) eine Interjektion.",
-        rubric:
-          "Kohärent, korrekte Tempora/2nd‑Tense wo nötig, Genitiv und Frage/Interjektion idiomatisch.",
+        rubric: {
+          full: "Kohärent, korrekte Tempora/2nd‑Tense wo nötig, Genitiv und Frage/Interjektion idiomatisch.",
+          partial: "Sinn klar; 1–2 Formenfehler.",
+          none: "Unvollständig oder stark fehlerhaft.",
+        },
       },
     ],
   },

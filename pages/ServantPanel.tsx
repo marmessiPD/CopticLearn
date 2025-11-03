@@ -95,6 +95,9 @@ const ServantPanel: React.FC = () => {
                                         {t({ de: 'Nachname', en: 'Surname', ar: 'اسم العائلة' })}
                                     </th>
                                     <th className="px-4 py-3 text-left text-sm font-semibold">
+                                        {t({ de: 'E-Mail', en: 'Email', ar: 'البريد الإلكتروني' })}
+                                    </th>
+                                    <th className="px-4 py-3 text-left text-sm font-semibold">
                                         {t({ de: 'Rolle', en: 'Role', ar: 'الدور' })}
                                     </th>
                                     <th className="px-4 py-3 text-left text-sm font-semibold">
@@ -107,6 +110,7 @@ const ServantPanel: React.FC = () => {
                                     <tr key={user.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                                         <td className="px-4 py-3 text-sm">{user.forename}</td>
                                         <td className="px-4 py-3 text-sm">{user.surname}</td>
+                                        <td className="px-4 py-3 text-sm">{user.email}</td>
                                         <td className="px-4 py-3 text-sm">
                                             <select
                                                 value={user.role}

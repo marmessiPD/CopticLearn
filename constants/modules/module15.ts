@@ -191,7 +191,6 @@ export const LESSONS: Record<string, Lesson> = {
 export const QUIZZES: Record<string, Quiz> = {
   "q15-1": {
     id: "q15-1",
-    lessonId: "m15",
     title: {
       de: "Mini‑Quiz: Imperativ/Optativ/Konditional",
       en: "Mini‑quiz: Imperative/Optative/Conditional",
@@ -216,13 +215,13 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q15-1-2",
-        type: "fill-in-the-blank",
+        type: "cloze",
         questionText: {
-          de: 'Ergänze den Optativ: „Lasst uns lieben" ⲙⲁⲣⲉⲛ‑ ___',
-          en: 'Complete the optative: "let us love" ⲙⲁⲣⲉⲛ‑ ___',
+          de: "Ergänze den Optativ: „Lasst uns lieben“ ⲙⲁⲣⲉⲛ‑ ___",
+          en: "Complete the optative: “let us love” ⲙⲁⲣⲉⲛ‑ ___",
           ar: "أكمل الرغبية: «لنحبّ» ⲙⲁⲣⲉⲛ‑ ___",
         },
-        correctAnswer: "ⲙⲉⲛⲣⲉ",
+        answer: "ⲙⲉⲛⲣⲉ",
       },
       {
         id: "q15-1-3",
@@ -253,7 +252,7 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q15-1-4",
-        type: "matching" as any,
+        type: "matching",
         pairs: [
           {
             left: "ⲁⲛⲁⲩ",
@@ -268,17 +267,17 @@ export const QUIZZES: Record<string, Quiz> = {
             right: { de: "Konditional", en: "Conditional", ar: "شرطي" },
           },
         ],
-      } as any,
+      },
       {
         id: "q15-1-5",
-        type: "production" as any,
+        type: "production",
         prompt: {
           de: "Bilde: „Bitte, fürchte dich nicht!“ (negativer Imperativ mit ϩⲱⲥ).",
           en: "Produce: “Please, do not fear!” (negative imperative with ϩⲱⲥ).",
           ar: "كوّن: «من فضلك لا تخف!» (أمر منفي مع ϩⲱⲥ).",
         },
         correctAnswer: { coptic: "ⲙⲡⲉⲣϩⲱⲥ", translit: "mper‑hōs" },
-      } as any,
+      },
     ],
   },
 };
