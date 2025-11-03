@@ -8,17 +8,8 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 9583,
         host: '0.0.0.0',
-        hmr: {
-          protocol: 'ws',
-          host: 'localhost',
-          port: 9583,
-        },
       },
-      plugins: [
-        react({
-          jsxRuntime: 'automatic',
-        }),
-      ],
+      plugins: [react()],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
@@ -26,8 +17,7 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
-        },
-        dedupe: ['react', 'react-dom'],
+        }
       },
       build: {
         target: 'es2015',
@@ -48,7 +38,6 @@ export default defineConfig(({ mode }) => {
       },
       optimizeDeps: {
         include: ['react', 'react-dom', 'react-router-dom'],
-        exclude: [],
       },
     };
 });

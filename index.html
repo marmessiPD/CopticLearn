@@ -16,13 +16,37 @@
     <!-- Apple Touch Icons -->
     <link rel="apple-touch-icon" href="/icon-192.svg" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="CopticLearn" />
     
     <title>CopticLearn - Koptisch Lernen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+Coptic&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Noto Sans', 'sans-serif'],
+              coptic: ['Noto Sans Coptic', 'sans-serif'],
+            },
+            colors: {
+              'coptic-gold': '#FFD700',
+              'coptic-blue': '#003366',
+              'dark-primary': '#1a202c',
+              'dark-secondary': '#2d3748',
+              'dark-text': '#edf2f7',
+              'light-primary': '#ffffff',
+              'light-secondary': '#f7fafc',
+              'light-text': '#2d3748',
+            }
+          }
+        }
+      }
+    </script>
     
     <!-- Accessibility Styles -->
     <style>
@@ -71,41 +95,6 @@
       .high-contrast select:focus-visible {
         outline: 3px solid #FFFF00;
         outline-offset: 3px;
-      }
-      
-      /* Safe area insets for iOS notch and home indicator */
-      :root {
-        --safe-area-inset-top: env(safe-area-inset-top, 0px);
-        --safe-area-inset-right: env(safe-area-inset-right, 0px);
-        --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
-        --safe-area-inset-left: env(safe-area-inset-left, 0px);
-      }
-      
-      .safe-area-top {
-        padding-top: var(--safe-area-inset-top);
-      }
-      
-      .safe-area-bottom {
-        padding-bottom: var(--safe-area-inset-bottom);
-      }
-      
-      .safe-area-left {
-        padding-left: var(--safe-area-inset-left);
-      }
-      
-      .safe-area-right {
-        padding-right: var(--safe-area-inset-right);
-      }
-      
-      .pb-safe-area-inset-bottom {
-        padding-bottom: max(1.5rem, var(--safe-area-inset-bottom));
-      }
-      
-      body {
-        padding-top: var(--safe-area-inset-top);
-        padding-left: var(--safe-area-inset-left);
-        padding-right: var(--safe-area-inset-right);
-        padding-bottom: var(--safe-area-inset-bottom);
       }
     </style>
 </head>

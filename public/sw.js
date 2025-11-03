@@ -23,83 +23,34 @@ self.addEventListener('install', (event) => {
 
 // Fetch event - serve from cache when offline
 self.addEventListener('fetch', (event) => {
-  const requestUrl = event.request.url;
-  
-  // Skip intercepting:
-  // 1. WebSocket connections (Vite HMR)
-  // 2. External CDN requests (Tailwind, Google Fonts, etc.)
-  // 3. Non-GET requests (POST, PUT, DELETE, etc.)
-  if (requestUrl.startsWith('ws://') || 
-      requestUrl.startsWith('wss://') ||
-      requestUrl.includes('cdn.tailwindcss.com') ||
-      requestUrl.includes('fonts.googleapis.com') ||
-      requestUrl.includes('fonts.gstatic.com') ||
-      event.request.method !== 'GET') {
-    // Let the browser handle these requests normally
-    return;
-  }
-
-  const url = new URL(event.request.url);
-  
-  // Only intercept same-origin GET requests
-  if (url.origin !== self.location.origin) {
-    // For other external GET requests, let browser handle them
-    return;
-  }
-
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // Return cached version if available
+        // Return cached version or fetch from network
         if (response) {
           return response;
         }
         
-        // Fetch from network
         return fetch(event.request).then((response) => {
           // Check if we received a valid response
-          if (!response || response.status !== 200) {
+          if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
 
-          // Only cache same-origin responses
-          if (response.type === 'basic' || response.type === 'cors') {
-            // Clone the response
-            const responseToCache = response.clone();
+          // Clone the response
+          const responseToCache = response.clone();
 
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-          }
+          caches.open(CACHE_NAME)
+            .then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
 
           return response;
         }).catch(() => {
-          // If network fails, show offline page for navigation requests
-          if (event.request.destination === 'document' || 
-              event.request.mode === 'navigate') {
-            return caches.match('/').then((cachedPage) => {
-              return cachedPage || new Response('Offline', { 
-                status: 200,
-                headers: { 'Content-Type': 'text/html' }
-              });
-            });
+          // If both cache and network fail, show offline page for navigation requests
+          if (event.request.destination === 'document') {
+            return caches.match('/');
           }
-          // For non-navigation requests, return a proper error response
-          return new Response('Network error', { 
-            status: 408,
-            statusText: 'Request Timeout'
-          });
-        });
-      })
-      .catch(() => {
-        // Fallback: try to fetch directly
-        return fetch(event.request).catch(() => {
-          // Last resort: return error response
-          return new Response('Network error', { 
-            status: 408,
-            statusText: 'Request Timeout'
-          });
         });
       })
   );
