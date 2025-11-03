@@ -226,4 +226,4 @@ export const MODULES = {
 };
 
 // Type exports
-export type { Module, Lesson, Quiz, Letter } from '../types';
+export type { Module, Lesson, Quiz, Letter } from '../../types';

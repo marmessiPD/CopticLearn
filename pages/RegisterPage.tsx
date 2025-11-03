@@ -1,25 +1,19 @@
 // pages/RegisterPage.tsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import { authService } from '../services/authService';
-import { UserRole } from '../types';
 
 const RegisterPage: React.FC = () => {
-    const { type } = useParams<{ type?: string }>();
     const { t, login, session } = useAppContext();
     const navigate = useNavigate();
     
     const [forename, setForename] = useState('');
     const [surname, setSurname] = useState('');
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [servantSecret, setServantSecret] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
-    const isServantRegistration = type === 'servant';
 
     // Redirect if already logged in
     useEffect(() => {
@@ -33,7 +27,7 @@ const RegisterPage: React.FC = () => {
         setError('');
 
         // Validation
-        if (!forename.trim() || !surname.trim() || !email.trim() || !password) {
+        if (!forename.trim() || !surname.trim() || !password) {
             setError(t({ de: 'Bitte füllen Sie alle Felder aus', en: 'Please fill in all fields', ar: 'يرجى ملء جميع الحقول' }));
             return;
         }
@@ -50,19 +44,15 @@ const RegisterPage: React.FC = () => {
 
         setLoading(true);
 
-        const role: UserRole = isServantRegistration ? 'servant' : 'user';
         const result = await authService.register({
             forename,
             surname,
-            email,
             password,
-            role,
-            servantSecret: isServantRegistration ? servantSecret : undefined
         });
 
         if (result.success) {
             // Auto-login after registration
-            const loginResult = await login(email, password);
+            const loginResult = await login(password);
             if (loginResult.success) {
                 navigate('/', { replace: true });
             } else {
@@ -82,9 +72,7 @@ const RegisterPage: React.FC = () => {
         <div className="container mx-auto max-w-md px-4 py-8">
             <div className="bg-light-primary dark:bg-dark-secondary rounded-lg shadow-lg p-6">
                 <h2 className="text-2xl font-bold mb-6 text-center">
-                    {isServantRegistration
-                        ? t({ de: 'Servant-Registrierung', en: 'Servant Registration', ar: 'تسجيل الخادم' })
-                        : t({ de: 'Registrieren', en: 'Register', ar: 'التسجيل' })}
+                    {t({ de: 'Registrieren', en: 'Register', ar: 'التسجيل' })}
                 </h2>
 
                 {error && (
@@ -125,21 +113,6 @@ const RegisterPage: React.FC = () => {
                     </div>
 
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-2">
-                            {t({ de: 'E-Mail', en: 'Email', ar: 'البريد الإلكتروني' })}
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-primary text-light-text dark:text-dark-text min-h-[44px]"
-                            autoComplete="email"
-                        />
-                    </div>
-
-                    <div>
                         <label htmlFor="password" className="block text-sm font-medium mb-2">
                             {t({ de: 'Passwort', en: 'Password', ar: 'كلمة المرور' })}
                         </label>
@@ -168,23 +141,6 @@ const RegisterPage: React.FC = () => {
                             autoComplete="new-password"
                         />
                     </div>
-
-                    {isServantRegistration && (
-                        <div>
-                            <label htmlFor="servantSecret" className="block text-sm font-medium mb-2">
-                                {t({ de: 'Servant-Geheimnis', en: 'Servant Secret', ar: 'سر الخادم' })}
-                            </label>
-                            <input
-                                id="servantSecret"
-                                type="password"
-                                value={servantSecret}
-                                onChange={(e) => setServantSecret(e.target.value)}
-                                required
-                                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-primary text-light-text dark:text-dark-text min-h-[44px]"
-                                placeholder={t({ de: 'Geheimnis für Servant-Registrierung', en: 'Secret for servant registration', ar: 'سر التسجيل كخادم' })}
-                            />
-                        </div>
-                    )}
 
                     <button
                         type="submit"

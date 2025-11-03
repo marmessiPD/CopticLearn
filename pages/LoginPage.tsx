@@ -7,7 +7,6 @@ const LoginPage: React.FC = () => {
     const { login, t, session } = useAppContext();
     const navigate = useNavigate();
     const location = useLocation();
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -26,7 +25,7 @@ const LoginPage: React.FC = () => {
         setError('');
         setLoading(true);
 
-        const result = await login(email, password);
+        const result = await login(password);
         if (result.success) {
             navigate(from, { replace: true });
         } else {
@@ -53,21 +52,6 @@ const LoginPage: React.FC = () => {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-2">
-                            {t({ de: 'E-Mail', en: 'Email', ar: 'البريد الإلكتروني' })}
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-dark-primary text-light-text dark:text-dark-text min-h-[44px]"
-                            autoComplete="email"
-                        />
-                    </div>
-
                     <div>
                         <label htmlFor="password" className="block text-sm font-medium mb-2">
                             {t({ de: 'Passwort', en: 'Password', ar: 'كلمة المرور' })}
@@ -100,15 +84,6 @@ const LoginPage: React.FC = () => {
                         className="text-coptic-blue dark:text-coptic-gold hover:underline"
                     >
                         {t({ de: 'Noch kein Konto? Registrieren', en: 'No account? Register', ar: 'ليس لديك حساب؟ سجل' })}
-                    </Link>
-                </div>
-
-                <div className="mt-4 text-center">
-                    <Link
-                        to="/register/servant"
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                    >
-                        {t({ de: 'Servant-Registrierung', en: 'Servant Registration', ar: 'تسجيل الخادم' })}
                     </Link>
                 </div>
             </div>

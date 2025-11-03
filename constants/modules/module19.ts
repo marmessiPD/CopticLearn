@@ -6,8 +6,11 @@ export const LESSONS: Record<string, Lesson> = {
     id: "m19-l1",
     moduleId: "m19",
     order: 1,
-    title:
-      "Besitz ausdrücken: pa/ta/na, ⲛ/ⲙ/ⲛⲧⲉ, ⲟⲩⲟⲛ (haben), Possessiv‑Pronomen, besessene Nomen",
+    title: {
+      de: "Besitz ausdrücken: pa/ta/na, ⲛ/ⲙ/ⲛⲧⲉ, ⲟⲩⲟⲛ (haben), Possessiv‑Pronomen, besessene Nomen",
+      en: "Expressing Possession: pa/ta/na, ⲛ/ⲙ/ⲛⲧⲉ, ⲟⲩⲟⲛ (to have), Possessive Pronouns, Construct Nouns",
+      ar: "التعبير عن الملكية: pa/ta/na، ⲛ/ⲙ/ⲛⲧⲉ، ⲟⲩⲟⲛ (يملك)، الضمائر الملكية، الأسماء المبنية",
+    },
     prerequisites: ["m2-l1", "m5-l1", "m8-l1", "m10-l1", "m15-l1"],
     quizId: "m19-q1",
     slides: [
@@ -22,40 +25,148 @@ export const LESSONS: Record<string, Lesson> = {
       },
       {
         type: "grammar",
-        title: "Possessiv‑Konstruktion (Genitiv) mit ⲛ/ⲙ bzw. ⲛⲧⲉ",
-        body: "Zwischen zwei Nomen steht ⲛ/ⲙ als Genitiv; bei indefinitem Erstnomen und oft allgemein auch ⲛⲧⲉ. Zweites Nomen trägt Artikel.",
+        title: {
+          de: "Possessiv‑Konstruktion (Genitiv) mit ⲛ/ⲙ bzw. ⲛⲧⲉ",
+          en: "Possessive Construction (Genitive) with ⲛ/ⲙ or ⲛⲧⲉ",
+          ar: "بناء الملكية (المضاف) مع ⲛ/ⲙ أو ⲛⲧⲉ",
+        },
+        rule: {
+          de: "Zwischen zwei Nomen steht ⲛ/ⲙ als Genitiv; bei indefinitem Erstnomen und oft allgemein auch ⲛⲧⲉ. Zweites Nomen trägt Artikel.",
+          en: "Between two nouns ⲛ/ⲙ stands as genitive; with indefinite first noun and often generally also ⲛⲧⲉ. Second noun carries the article.",
+          ar: "بين اسمين يقف ⲛ/ⲙ كمضاف؛ مع الاسم الأول غير المحدد وغالباً أيضاً ⲛⲧⲉ. الاسم الثاني يحمل الأداة.",
+        },
         examples: [
-          "ⲡⲓⲟⲓⲕ ⲛⲧⲉ ⲡⲓⲣⲱⲙⲓ — „das Haus des Mannes“",
-          "ⲟⲩⲥⲏⲣⲓ ⲛⲧⲉ ⲧⲓⲥⲏⲙⲏ — „eine Tochter der Frau“",
+          {
+            coptic: "ⲡⲓⲟⲓⲕ ⲛⲧⲉ ⲡⲓⲣⲱⲙⲓ",
+            translit: "pioik nte piromi",
+            meaning: {
+              de: "das Haus des Mannes",
+              en: "the house of the man",
+              ar: "بيت الرجل",
+            },
+          },
+          {
+            coptic: "ⲟⲩⲥⲏⲣⲓ ⲛⲧⲉ ⲧⲓⲥⲏⲙⲏ",
+            translit: "ousēri nte tisēmē",
+            meaning: {
+              de: "eine Tochter der Frau",
+              en: "a daughter of the woman",
+              ar: "ابنة المرأة",
+            },
+          },
         ],
       },
       {
         type: "grammar",
-        title: "Pronominale Form von ⲛⲧⲉ (‚von mir/dir/…‘)",
-        body: "Stamm ⲛⲧ= + Personal‑Suffix: ⲛⲧⲓ (‚von mir‘), ⲛⲧⲁⲕ, ⲛⲧⲉ, ⲛⲧⲁⲫ, ⲛⲧⲁⲥ, ⲛⲧⲁⲛ, ⲛⲧⲱⲧⲛ, ⲛⲧⲱⲟⲩ.",
+        title: {
+          de: "Pronominale Form von ⲛⲧⲉ (‚von mir/dir/…')",
+          en: "Pronominal Form of ⲛⲧⲉ ('from me/you/...')",
+          ar: "الصيغة الضميرية لـ ⲛⲧⲉ («مني/منك/...»)",
+        },
+        rule: {
+          de: "Stamm ⲛⲧ= + Personal‑Suffix: ⲛⲧⲓ (‚von mir'), ⲛⲧⲁⲕ, ⲛⲧⲉ, ⲛⲧⲁⲫ, ⲛⲧⲁⲥ, ⲛⲧⲁⲛ, ⲛⲧⲱⲧⲛ, ⲛⲧⲱⲟⲩ.",
+          en: "Stem ⲛⲧ= + personal suffix: ⲛⲧⲓ ('from me'), ⲛⲧⲁⲕ, ⲛⲧⲉ, ⲛⲧⲁⲫ, ⲛⲧⲁⲥ, ⲛⲧⲁⲛ, ⲛⲧⲱⲧⲛ, ⲛⲧⲱⲟⲩ.",
+          ar: "الجذر ⲛⲧ= + لاحقة شخصية: ⲛⲧⲓ («مني»)، ⲛⲧⲁⲕ، ⲛⲧⲉ، ⲛⲧⲁⲫ، ⲛⲧⲁⲥ، ⲛⲧⲁⲛ، ⲛⲧⲱⲧⲛ، ⲛⲧⲱⲟⲩ.",
+        },
         examples: [
-          "ⲡⲓⲟⲩⲓⲕ ⲛⲧⲁⲫ — „sein Brot“ (= ‚das Brot von ihm‘)",
-          "ⲡⲓⲟⲩⲟⲩⲛⲓ ⲛⲧⲓ — „mein Licht“",
+          {
+            coptic: "ⲡⲓⲟⲩⲓⲕ ⲛⲧⲁⲫ",
+            translit: "piouik ntaf",
+            meaning: {
+              de: "sein Brot (= ‚das Brot von ihm')",
+              en: "his bread (= 'the bread from him')",
+              ar: "خبزه (= «الخبز منه»)",
+            },
+          },
+          {
+            coptic: "ⲡⲓⲟⲩⲟⲩⲛⲓ ⲛⲧⲓ",
+            translit: "piouoni nti",
+            meaning: { de: "mein Licht", en: "my light", ar: "نوري" },
+          },
         ],
       },
       {
         type: "grammar",
-        title: "Haben mit ⲟⲩⲟⲛ / Negation ⲙⲙⲟⲛ",
-        body: "Existenziell ‚es gibt‘ → mit pronominalem ⲛⲧ= als ‚es gibt bei/zu mir‘ = ‚ich habe‘. Negation mit ⲙⲙⲟⲛ (option. ⲙⲙⲁⲩ).",
+        title: {
+          de: "Haben mit ⲟⲩⲟⲛ / Negation ⲙⲙⲟⲛ",
+          en: "To Have with ⲟⲩⲟⲛ / Negation ⲙⲙⲟⲛ",
+          ar: "الملكية مع ⲟⲩⲟⲛ / النفي ⲙⲙⲟⲛ",
+        },
+        rule: {
+          de: "Existenziell ‚es gibt' → mit pronominalem ⲛⲧ= als ‚es gibt bei/zu mir' = ‚ich habe'. Negation mit ⲙⲙⲟⲛ (option. ⲙⲙⲁⲩ).",
+          en: "Existential 'there is' → with pronominal ⲛⲧ= as 'there is at/with me' = 'I have'. Negation with ⲙⲙⲟⲛ (option. ⲙⲙⲁⲩ).",
+          ar: "الوجودية «هناك» → مع ⲛⲧ= الضميرية كـ «هناك عندي/معي» = «أملك». النفي مع ⲙⲙⲟⲛ (اختياري ⲙⲙⲁⲩ).",
+        },
         examples: [
-          "ⲟⲩⲟⲛ ⲛⲧⲓ ϩⲙⲙⲟⲓ — „ich habe (für mich) …“",
-          "ⲙⲙⲟⲛ ⲛⲧⲉ — „du (f.) hast nicht …“",
-          "ⲙⲙⲟⲛ] ϩⲁⲓ — „ich habe keinen Ehemann“",
+          {
+            coptic: "ⲟⲩⲟⲛ ⲛⲧⲓ ϩⲙⲙⲟⲓ",
+            translit: "ouon nti hmmoi",
+            meaning: {
+              de: "ich habe (für mich) …",
+              en: "I have (for me) ...",
+              ar: "أملك (لي) ...",
+            },
+          },
+          {
+            coptic: "ⲙⲙⲟⲛ ⲛⲧⲉ",
+            translit: "mmon nte",
+            meaning: {
+              de: "du (f.) hast nicht …",
+              en: "you (f.) do not have ...",
+              ar: "أنت (مؤ.) لا تملك ...",
+            },
+          },
+          {
+            coptic: "ⲙⲙⲟⲛ] ϩⲁⲓ",
+            translit: "mmon] hai",
+            meaning: {
+              de: "ich habe keinen Ehemann",
+              en: "I have no husband",
+              ar: "ليس لدي زوج",
+            },
+          },
         ],
       },
       {
         type: "grammar",
-        title: "Possessiv‑Pronomen (‚meins/deins/… ist …‘)",
-        body: "Prädikativ ‚mein/dein/… ist …‘ mit Formen: mask. vⲟⲓ, fem. yⲟⲓ, pl. nⲟⲩⲓ usw.; plus passende Kopula (ⲡⲉ/ⲧⲉ/ⲛⲉ). Auch prenominal: ⲃⲁ/ⲓⲁ/ⲛⲁ ‚der/die/das eine von …‘.",
+        title: {
+          de: "Possessiv‑Pronomen (‚meins/deins/… ist …')",
+          en: "Possessive Pronouns ('mine/yours/... is ...')",
+          ar: "الضمائر الملكية («لي/لك/... هو ...»)",
+        },
+        rule: {
+          de: "Prädikativ ‚mein/dein/… ist …' mit Formen: mask. vⲟⲓ, fem. yⲟⲓ, pl. nⲟⲩⲓ usw.; plus passende Kopula (ⲡⲉ/ⲧⲉ/ⲛⲉ). Auch prenominal: ⲃⲁ/ⲓⲁ/ⲛⲁ ‚der/die/das eine von …'.",
+          en: "Predicative 'my/yours/... is ...' with forms: masc. vⲟⲓ, fem. yⲟⲓ, pl. nⲟⲩⲓ etc.; plus appropriate copula (ⲡⲉ/ⲧⲉ/ⲛⲉ). Also prenominal: ⲃⲁ/ⲓⲁ/ⲛⲁ 'the one of ...'.",
+          ar: "الخبرية «لي/لك/... هو ...» بأشكال: مذكر vⲟⲓ، مؤنث yⲟⲓ، جمع nⲟⲩⲓ إلخ؛ زائد الرابط المناسب (ⲡⲉ/ⲧⲉ/ⲛⲉ). أيضاً قبل الاسم: ⲃⲁ/ⲓⲁ/ⲛⲁ «الواحد من ...».",
+        },
         examples: [
-          "vⲟⲓ ⲡⲉ ⲡⲓⲧⲟⲧⲥ — „der Stuhl ist meiner“",
-          "yⲟⲕ ⲧⲉ ⲡⲓϫⲟⲙ — „die Kraft ist deine“",
-          "ⲁⲃⲃⲁ ⲡⲁⲕⲱⲙ ⲃⲁ ⲧⲉ ⲕⲟⲓⲛⲱⲛⲓⲁ — „Abba Pachom von der Gemeinschaft“",
+          {
+            coptic: "vⲟⲓ ⲡⲉ ⲡⲓⲧⲟⲧⲥ",
+            translit: "voi pe pitots",
+            meaning: {
+              de: "der Stuhl ist meiner",
+              en: "the chair is mine",
+              ar: "الكرسي لي",
+            },
+          },
+          {
+            coptic: "yⲟⲕ ⲧⲉ ⲡⲓϫⲟⲙ",
+            translit: "yok te pijom",
+            meaning: {
+              de: "die Kraft ist deine",
+              en: "the power is yours",
+              ar: "القوة لك",
+            },
+          },
+          {
+            coptic: "ⲁⲃⲃⲁ ⲡⲁⲕⲱⲙ ⲃⲁ ⲧⲉ ⲕⲟⲓⲛⲱⲛⲓⲁ",
+            translit: "abba pakōm ba te koinōnia",
+            meaning: {
+              de: "Abba Pachom von der Gemeinschaft",
+              en: "Abba Pachom of the community",
+              ar: "أبا باخوم من الجماعة",
+            },
+          },
         ],
       },
       {
@@ -72,16 +183,16 @@ export const LESSONS: Record<string, Lesson> = {
         prompt: "Übersetze natürlich: „Unser Brot ist weiß.“",
         correct: "ⲡⲉⲛⲟⲩⲓⲕ ⲛⲟⲩⲁⲃ ⲡⲉ.",
         distractors: ["ⲡⲉⲛⲟⲩⲓⲕ ⲛⲟⲩⲁⲃ ⲧⲉ.", "ⲡⲉⲛⲟⲩⲓⲕ ⲛⲟⲩⲁⲃ ⲛⲉ."],
-        explanation: "‚Brot‘ ist mask.; Kopula ⲡⲉ.",
-      },
+        explanation: "‚Brot' ist mask.; Kopula ⲡⲉ.",
+      } as any,
       {
         type: "sentence",
         prompt:
           "Bilde: „Ich habe keine Zeit.“ (verwende ⲙⲙⲟⲛ + pronominales ⲛⲧ=)",
         correct: "ⲙⲙⲟⲛ ⲛⲧⲓ ϩⲓ ⲟⲩⲛⲟⲩ.",
         distractors: ["ⲙⲙⲟⲛ] ⲟⲩⲛⲟⲩ.", "ⲟⲩⲟⲛ ⲛⲧⲓ ⲙⲛ ⲟⲩⲛⲟⲩ."],
-        explanation: "Negatives ‚haben‘ mit ⲙⲙⲟⲛ + pronominale ⲛⲧ=‑Form.",
-      },
+        explanation: "Negatives ‚haben' mit ⲙⲙⲟⲛ + pronominale ⲛⲧ=‑Form.",
+      } as any,
     ],
   },
 };
@@ -89,6 +200,13 @@ export const LESSONS: Record<string, Lesson> = {
 export const QUIZZES: Record<string, Quiz> = {
   "m19-q1": {
     id: "m19-q1",
+    lessonId: "m19-l1",
+    title: {
+      de: "Quiz: Besitz & Possessiv",
+      en: "Quiz: Possession & Possessive",
+      ar: "اختبار: الملكية والضمائر الملكية",
+    },
+    passScore: 80,
     moduleId: "m19",
     items: [
       {
@@ -96,13 +214,9 @@ export const QUIZZES: Record<string, Quiz> = {
         prompt: "Wähle die korrekte Übersetzung von „sein Vater“",
         options: ["ⲡⲉⲫⲙⲁⲩ", "ⲧⲉⲫⲙⲁⲩ", "ⲡⲉⲫⲓⲱⲧ"],
         answer: 2,
-        feedback: {
-          correct: "Richtig: ⲓⲱⲧ ist maskulin → ⲡ‑Serie.",
-          incorrect: "Denke an das Genus des BESITZ‑Objekts.",
-        },
-      },
+      } as any,
       {
-        type: "matching",
+        type: "match",
         prompt: "Ordne ⲛⲧ=‑Pronominalformen (‚von X‘).",
         pairs: [
           ["ⲛⲧⲓ", "von mir"],
@@ -113,10 +227,9 @@ export const QUIZZES: Record<string, Quiz> = {
         ],
       },
       {
-        type: "cloze",
+        type: "gap",
         prompt: "Setze ⲛ/ⲙ oder ⲛⲧⲉ ein.",
-        text: "ⲟⲩⲥⲏⲣⲓ ___ ⲧⲓⲥⲏⲙⲏ · ⲡⲓⲟⲓⲕ ___ ⲡⲓⲣⲱⲙⲓ",
-        solutions: { 0: "ⲛⲧⲉ", 1: "ⲛⲧⲉ|ⲛ" },
+        answer: "ⲛⲧⲉ|ⲛ",
       },
       {
         type: "multiple-choice",
@@ -125,20 +238,15 @@ export const QUIZZES: Record<string, Quiz> = {
         answer: 0,
       },
       {
-        type: "cloze",
+        type: "gap",
         prompt: "Setze die richtige Kopula (ⲡⲉ/ⲧⲉ/ⲛⲉ): ___ ⲡⲓⲧⲟⲧⲥ vⲟⲓ.",
-        text: "___ ⲡⲓⲧⲟⲧⲥ vⲟⲓ.",
-        solutions: { 0: "ⲡⲉ" },
+        answer: "ⲡⲉ",
       },
       {
-        type: "production",
+        type: "produce",
         prompt:
-          "Schreibe zwei Sätze: (1) „Das Buch ist meines.“ (2) „Der König der Stadt.“",
-        rubric: {
-          full: "(1) vⲟⲓ ⲡⲉ ⲡⲓⲃⲓⲃⲗⲟⲥ / ⲡⲓⲙⲉⲧⲣⲉⲙⲉ; (2) ⲡⲓⲟⲩⲣⲟ ⲛⲧⲉ ⲧⲓⲃⲁⲕⲏ.",
-          partial: "Form weitgehend korrekt; kleine Grammatikfehler.",
-          none: "Falsche Konstruktionen; Bedeutung unklar.",
-        },
+          'Schreibe zwei Sätze: (1) "Das Buch ist meines." (2) "Der König der Stadt."',
+        rubric: "(1) vⲟⲓ ⲡⲉ ⲡⲓⲃⲓⲃⲗⲟⲥ / ⲡⲓⲙⲉⲧⲣⲉⲙⲉ; (2) ⲡⲓⲟⲩⲣⲟ ⲛⲧⲉ ⲧⲓⲃⲁⲕⲏ.",
       },
     ],
   },

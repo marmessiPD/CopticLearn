@@ -17,7 +17,8 @@
       "Bash(then echo \"=== $file ===\")",
       "Bash(fi)",
       "Bash(done)",
-      "Bash(copy:*)"
+      "Bash(copy:*)",
+      "Bash(do)"
     ],
     "deny": [],
     "ask": []

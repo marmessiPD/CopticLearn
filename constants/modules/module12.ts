@@ -203,28 +203,14 @@ export const QUIZZES: Record<string, Quiz> = {
         correctAnswerIndex: 0,
       },
       {
-        id: "m12-q1-4",
-        type: "matching" as any,
-        questionText: {
-          de: "Ordne zu (Form → Gebrauch).",
-          en: "Match form to use.",
-          ar: "طابِق الصيغة بالاستخدام.",
-        },
-        pairs: [
-          { left: "ⲙⲡⲉ‑", right: "Negation des Perfekts/Plusquamperfekts" },
-          { left: "ⲛⲁ‑", right: "Imperfekt (past ongoing)" },
-          { left: "ⲉ‑ / ⲉⲣⲉ‑", right: "Circumstantial (während/als)" },
-        ],
-      },
-      {
         id: "m12-q1-5",
-        type: "production" as any,
+        type: "fill-in-the-blank",
         questionText: {
-          de: "Übersetze ins Bohairische: „Als das Kind las, schrieb ich.“ (nutze Circumstantial für „als“ und Präsens/Perfekt passend)",
-          en: "Translate into Bohairic: “As the child was reading, I wrote.” (use circumstantial for “as”)",
-          ar: 'ترجم إلى البهيري: "بينما كان الطفل يقرأ، كتبتُ".',
+          de: "Übersetze ins Bohairische: Als das Kind las, schrieb ich. (nutze Circumstantial)",
+          en: "Translate into Bohairic: As the child was reading, I wrote. (use circumstantial)",
+          ar: "ترجم إلى البهيري: بينما كان الطفل يقرأ، كتبتُ.",
         },
-        sampleSolution: "ⲉⲣⲉ ⲡⲓϣⲏⲣⲓ ⲕⲁⲧⲁⲛⲁⲩ, ⲁⲓⲥⲃⲱⲧ.",
+        correctAnswer: "ⲉⲣⲉ ⲡⲓϣⲏⲣⲓ ⲕⲁⲧⲁⲛⲁⲩ, ⲁⲓⲥⲃⲱⲧ.",
       },
     ],
   },

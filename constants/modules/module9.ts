@@ -313,10 +313,7 @@ export const QUIZZES: Record<string, Quiz> = {
           en: "Translate: 'the bread that you (m.) brought'",
           ar: "ترجم: «الخبز الذي جلبتَه»",
         },
-        correctAnswer: {
-          coptic: "ⲡⲓⲟⲩⲱⲓⲕ ⲉⲧⲁⲕⲓⲛⲓ",
-          translit: "pi‑ouōik etak‑ini",
-        },
+        correctAnswer: "ⲡⲓⲟⲩⲱⲓⲕ ⲉⲧⲁⲕⲓⲛⲓ",
       },
       {
         id: "q9-2-5",

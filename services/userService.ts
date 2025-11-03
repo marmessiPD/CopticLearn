@@ -18,11 +18,6 @@ export const userService = {
         return users.find(u => u.id === id) || null;
     },
 
-    getUserByEmail(email: string): User | null {
-        const users = this.getAllUsers();
-        return users.find(u => u.email.toLowerCase() === email.toLowerCase()) || null;
-    },
-
     updateUserRole(userId: string, newRole: UserRole): { success: boolean; error?: string } {
         try {
             const users = this.getAllUsers();

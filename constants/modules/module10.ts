@@ -258,42 +258,13 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q10-1-4",
-        type: "production" as any,
-        prompt: {
+        type: "fill-in-the-blank",
+        questionText: {
           de: "Schreibe auf Koptisch: „Sie لا يعملون عادةً يوم الأحد.“",
           en: "Write in Coptic: 'They do not usually work on Sunday.'",
           ar: "اكتب بالقبطية: «هم لا يعملون عادةً يوم الأحد».",
         },
-        correctAnswer: {
-          coptic: "ⲙⲡⲁⲩⲉⲣϩⲱⲃ ⲉⲃⲟⲗ ϩⲓ ⲡⲓⲕⲩⲣⲓⲁⲕⲏ",
-          translit: "mpau‑erhōb ebol hi pikyriakē",
-        },
-      },
-      {
-        id: "q10-1-5",
-        type: "matching" as any,
-        pairs: [
-          {
-            left: "mpai‑",
-            right: {
-              de: "1. Pers. Sg. (neg.)",
-              en: "1st sg. (neg.)",
-              ar: "المفرد ١ (نفي)",
-            },
-          },
-          {
-            left: "mpaf‑",
-            right: {
-              de: "3. Pers. m. (neg.)",
-              en: "3rd m. (neg.)",
-              ar: "مذكر (نفي)",
-            },
-          },
-          {
-            left: "mpa‑re‑",
-            right: { de: "Vorsubjekt", en: "pre‑subject", ar: "قبل الفاعل" },
-          },
-        ],
+        correctAnswer: "ⲙⲡⲁⲩⲉⲣϩⲱⲃ ⲉⲃⲟⲗ ϩⲓ ⲡⲓⲕⲩⲣⲓⲁⲕⲏ",
       },
     ],
   },
@@ -350,42 +321,13 @@ export const QUIZZES: Record<string, Quiz> = {
       },
       {
         id: "q10-2-4",
-        type: "production" as any,
-        prompt: {
+        type: "fill-in-the-blank",
+        questionText: {
           de: "Übersetze: „Ich werde die Stadt sehen.“",
           en: "Translate: 'I will see the city.'",
           ar: "ترجم: «سأرى المدينة.»",
         },
-        correctAnswer: {
-          coptic: "ⲉⲓⲛⲁⲛⲁⲩ ⲉⲡⲓⲙⲏⲧⲓ",
-          translit: "]na‑nau epi‑mēti",
-        },
-      },
-      {
-        id: "q10-2-5",
-        type: "matching" as any,
-        pairs: [
-          {
-            left: "na‑",
-            right: { de: "1. Futur", en: "First future", ar: "المستقبل الأول" },
-          },
-          {
-            left: "ere‑",
-            right: {
-              de: "Vorsubjekt (emph. Futur)",
-              en: "pre‑subject (emph. fut.)",
-              ar: "قبل الفاعل (توكيـدي)",
-            },
-          },
-          {
-            left: "…(ⲡⲉ)",
-            right: {
-              de: "Marker der unvollk. Zukunft",
-              en: "imperfect future marker",
-              ar: "علامة المستقبل غير التام",
-            },
-          },
-        ],
+        correctAnswer: "ⲉⲓⲛⲁⲛⲁⲩ ⲉⲡⲓⲙⲏⲧⲓ",
       },
     ],
   },
