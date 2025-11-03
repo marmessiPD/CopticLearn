@@ -113,7 +113,7 @@ const VocabCard: React.FC<VocabCardProps> = ({ item }) => {
           role="img"
           aria-label={t(item.meaning)}
         >
-          {item.emoji}
+          {item.emoji || "📝"}
         </span>
       </div>
 

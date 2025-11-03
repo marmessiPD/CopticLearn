@@ -15,6 +15,7 @@ export interface Module {
     order: number;
     title: LocalizedString;
     lessons: string[]; // array of lesson IDs
+    quizIds?: string[]; // array of quiz IDs
 }
 
 export interface Lesson {
@@ -64,12 +65,14 @@ export interface VocabItem {
     coptic: string;
     translit: string;
     meaning: LocalizedString;
-    emoji: string;
+    emoji?: string;
 }
 
 export interface VocabSlide extends BaseSlide {
     type: 'vocab';
-    item: VocabItem;
+    title?: LocalizedString;
+    item?: VocabItem;
+    items?: VocabItem[];
 }
 
 export interface SentenceItem {
@@ -81,6 +84,12 @@ export interface SentenceItem {
 export interface SentenceSlide extends BaseSlide {
     type: 'sentence';
     item: SentenceItem;
+    spiritual?: {
+        bibleVerse?: LocalizedString;
+        bibleReference?: LocalizedString;
+        fatherQuote?: LocalizedString;
+        fatherReference?: LocalizedString;
+    };
 }
 
 export interface PronunciationExample {
@@ -125,20 +134,22 @@ export interface ReadingSlide extends BaseSlide {
 }
 
 export interface ConversationLine {
-    speaker: string;
+    speaker: LocalizedString;
     coptic: string;
-    translation: LocalizedString;
+    translit: string;
+    meaning: LocalizedString;
 }
 
 export interface ConversationSlide extends BaseSlide {
     type: 'conversation';
     title: LocalizedString;
-    participants: string[];
+    participants?: string[];
     lines: ConversationLine[];
 }
 
 export interface Quiz {
     id: string;
+    moduleId?: string;
     lessonId: string;
     title: LocalizedString;
     questions: Question[];
