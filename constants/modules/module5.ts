@@ -1,503 +1,919 @@
-// --- Modul 5: Verben — neue Lektionen (Bohairisch, nach Younan) ---
-// Quellen für Grammatik: Younan, *So you want to learn – A guide to Bohairic Grammar*.
-// Kirchenväter: Bercot (ed.), *Dictionary of Early Christian Beliefs*; Papandrea, *Reading the Early Church Fathers*; Akin, *The Fathers Know Best*. Zitierte Stellen sind in den Feldern fatherReference notiert.
+// Module 5 — Verben I (Bohairic): 1. Präsens (intransitiv), Negation, verschobenes Subjekt, Qualitativa im Präsens
+// Quellen: 1. Präsens & abhängige Personalpräfixe (Younan pp.62–64) • Negation an / n…an (p.66–68) • Postponed subject `nje (p.65) • Qualitative im Präsens (pp.67–68)
 
-import type { Lesson, Quiz } from '../../types';
+import type { Module, Lesson, Quiz } from "../../types";
 
 export const LESSONS: Record<string, Lesson> = {
-    // m5 — Verben (weitere Formen)
-    'l5-1': {
-      id: 'l5-1',
-      order: 1,
-      moduleId: 'm5',
-      title: { de: 'Einführung: Verbformen', en: 'Introduction: Verb Forms', ar: 'مقدمة: أشكال الفعل' },
-      prerequisites: ['m4-l3'],
-      quizId: 'q5-1',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Überblick: Verben im Bohairischen', en: 'Overview: Bohairic Verbs', ar: 'نظرة عامة: الأفعال البحيرية' },
-          rule: {
-            de: 'Bohairische Verben haben verschiedene Formen: Infinitiv, Qualitativ (Zustandsform), und konjugierte Formen. Jede Form drückt unterschiedliche Aspekte aus.',
-            en: 'Bohairic verbs have different forms: infinitive, qualitative (stative), and conjugated forms. Each expresses different aspects.',
-            ar: 'للأفعال البحيرية أشكال مختلفة: المصدر، الوصفي (الحالي)، والأشكال المصرّفة. كل شكل يعبّر عن جوانب مختلفة.'
-          },
-          examples: [
-            { coptic: 'ⲙⲟⲩ', translit: 'mou', meaning: { de: 'sterben (Infinitiv)', en: 'to die (infinitive)', ar: 'يموت (مصدر)' } },
-            { coptic: 'ⲙⲟⲩϯ', translit: 'mouti', meaning: { de: 'lebendig sein (Qualitativ)', en: 'to be alive (qualitative)', ar: 'يكون حيًا (وصفي)' } },
-            { coptic: 'ⲥⲱⲧⲡ', translit: 'sōtp', meaning: { de: 'wählen (Infinitiv)', en: 'to choose (infinitive)', ar: 'يختار (مصدر)' } }
-          ]
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Infinitiv als Nomen', en: 'Infinitive as Noun', ar: 'المصدر كاسم' },
-          rule: {
-            de: 'Der Infinitiv funktioniert als Verbalnomen und kann mit Artikeln stehen: ⲡⲓⲥⲱⲧⲉⲙ „das Hören".',
-            en: 'The infinitive functions as verbal noun and can take articles: ⲡⲓⲥⲱⲧⲉⲙ "the hearing".',
-            ar: 'يعمل المصدر كاسم فعلي ويمكن أن يأخذ أدوات: ⲡⲓⲥⲱⲧⲉⲙ «السماع».'
-          },
-          examples: [
-            { coptic: 'ⲡⲓⲥⲱⲧⲉⲙ ⲛ̀ⲧⲉ ⲡⲓⲗⲟⲅⲟⲥ', translit: 'pi-sōtem ente pi-logos', meaning: { de: 'das Hören des Wortes', en: 'the hearing of the Word', ar: 'سماع الكلمة' } },
-            { coptic: 'ⲡⲓⲙⲟⲩϣⲓ', translit: 'pi-moushi', meaning: { de: 'das Gehen', en: 'the walking', ar: 'المشي' } }
-          ]
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Verben mit Präpositionen', en: 'Verbs with Prepositions', ar: 'الأفعال مع حروف الجر' },
-          rule: {
-            de: 'Viele Verben nehmen feste Präpositionen: ⲥⲱⲧⲉⲙ ⲉ „hören auf", ϫⲱⲥⲧ ⲛ̀ⲥⲁ „suchen nach".',
-            en: 'Many verbs take fixed prepositions: ⲥⲱⲧⲉⲙ ⲉ "listen to", ϫⲱⲥⲧ ⲛ̀ⲥⲁ "seek after".',
-            ar: 'أفعال كثيرة تأخذ حروف جر ثابتة: ⲥⲱⲧⲉⲙ ⲉ «يستمع إلى»، ϫⲱⲥⲧ ⲛ̀ⲥⲁ «يبحث عن».'
-          },
-          examples: [
-            { coptic: 'ⲥⲱⲧⲉⲙ ⲉ ⲡⲓⲛⲟⲩϯ', translit: 'sōtem e pi-nouti', meaning: { de: 'auf Gott hören', en: 'listen to God', ar: 'استمع إلى الله' } },
-            { coptic: 'ϫⲱⲥⲧ ⲛ̀ⲥⲁ ϯⲙⲉⲑⲙⲏⲓ', translit: 'jōst ensa ti-methmēi', meaning: { de: 'die Wahrheit suchen', en: 'seek the truth', ar: 'ابحث عن الحق' } }
-          ]
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Häufige Verben', en: 'Common Verbs', ar: 'أفعال شائعة' },
-          rule: {
-            de: 'Grundlegende Verben für die Katechese: ⲥⲱⲧⲉⲙ (hören), ⲙⲟⲩϣⲓ (gehen), ϯ (geben), ϫⲓ (nehmen), ⲥⲁϫⲓ (sprechen).',
-            en: 'Basic verbs for catechesis: ⲥⲱⲧⲉⲙ (hear), ⲙⲟⲩϣⲓ (go), ϯ (give), ϫⲓ (take), ⲥⲁϫⲓ (speak).',
-            ar: 'أفعال أساسية للتعليم: ⲥⲱⲧⲉⲙ (يسمع)، ⲙⲟⲩϣⲓ (يذهب)، ϯ (يعطي)، ϫⲓ (يأخذ)، ⲥⲁϫⲓ (يتكلم).'
-          },
-          examples: [
-            { coptic: 'ϯ ⲙ̀ⲡⲓⲱⲓⲕ', translit: 'ti em-pi-ōik', meaning: { de: 'das Brot geben', en: 'give the bread', ar: 'يعطي الخبز' } },
-            { coptic: 'ϫⲓ ⲙ̀ⲡⲓⲁⲫⲉⲥ', translit: 'ji em-pi-afes', meaning: { de: 'die Vergebung empfangen', en: 'receive forgiveness', ar: 'يقبل المغفرة' } },
-            { coptic: 'ⲥⲁϫⲓ ⲛⲉⲙ ⲡⲓⲗⲁⲟⲥ', translit: 'saji nem pi-laos', meaning: { de: 'mit dem Volk sprechen', en: 'speak with the people', ar: 'يتكلم مع الشعب' } }
-          ]
-        },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ⲙⲁⲣⲉⲛⲥⲱⲧⲉⲙ ⲉ ⲡⲓⲗⲟⲅⲟⲥ ⲛ̀ⲧⲉ ⲡ̀ⲛⲟⲩϯ',
-            translit: 'maren-sōtem e pi-logos ente p-nouti',
-            meaning: { de: 'Lasst uns auf das Wort Gottes hören', en: 'Let us listen to the Word of God', ar: 'لنستمع إلى كلمة الله' }
-          }
-        }
-      ]
+  // L1 — 1. Präsens mit abhängigen Personalpräfixen (intransitive Verben)
+  "m5-l1": {
+    id: "m5-l1",
+    order: 1,
+    moduleId: "m5",
+    title: {
+      de: "1. Präsens (intransitiv)",
+      en: "First Present (intransitive)",
+      ar: "الحاضر الأول (لازم)",
     },
-
-    'l5-2': {
-      id: 'l5-2',
-      order: 2,
-      moduleId: 'm5',
-      title: { de: 'Qualitatives Präsens', en: 'Qualitative Present', ar: 'الحاضر الوصفي' },
-      prerequisites: ['l5-1'],
-      quizId: 'q5-2',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Funktion', en: 'Function', ar: 'الوظيفة' },
-          rule: {
-            de: 'Das qualitative Präsens beschreibt einen dauerhaften Zustand oder eine Eigenart, oft mit adjektivischem Sinn. Bildung: Personalpräfix + Verbalstamm (ohne Objektmarker).',
-            en: 'The qualitative present describes a permanent state or quality, often adjectival. Formation: personal prefix + verbal stem (no object marker).',
-            ar: 'الحاضر الوصفي يصف حالة دائمة أو صفة. التكوين: بادئة شخصية + جذر الفعل دون علامة مفعول.'
-          },
-          examples: [
-            { coptic: 'ϯⲙⲟⲩϯ', translit: 'ti-mouti', meaning: { de: 'ich bin lebendig / lebe', en: 'I am alive', ar: 'أنا حيّ' } },
-            { coptic: 'ϥ̀ⲥⲟⲧⲏⲣ', translit: 'ef-sotēr', meaning: { de: 'er ist rettend/retterhaft', en: 'he is saving', ar: 'هو مُخلِّص' } },
-            { coptic: 'ⲧⲉⲛϣⲱⲡ', translit: 'ten-shop', meaning: { de: 'wir sind anwesend', en: 'we are present', ar: 'نحن حاضِرون' } }
-          ]
+    prerequisites: ["m2-l6"],
+    quizId: "m5-q1",
+    slides: [
+      {
+        type: "grammar",
+        title: {
+          de: "Subjektpräfixe vor dem Infinitiv",
+          en: "Subject prefixes before infinitive",
+          ar: "سوابق الفاعل قبل المصدر",
         },
-        {
-          type: 'grammar',
-          title: { de: 'Formenübersicht', en: 'Personal Prefixes', ar: 'البوادئ الشخصية' },
-          rule: {
-            de: 'Bohairisch, Qualitativ: ϯ-/ⲧⲉ- (1sg/1pl ⲧⲉⲛ-), ⲕ̀-, ⲥ̀-, ϥ̀-, ⲥ̀-, ⲛ̀ⲧⲟⲧⲉⲛ- nicht verwendet; Fokus auf Einwort-Prädikat.',
-            en: 'Bohairic qualitative uses simple subject prefixes. Focus on single-word predicate.',
-            ar: 'البحيري يستخدم بادئات بسيطة مع خبر كلمة واحدة.'
-          },
-          examples: [
-            { coptic: 'ⲥ̀ⲛⲁϩ', translit: 'es-nah', meaning: { de: 'du (m.) bist weise', en: 'you (m.) are wise', ar: 'أنت حكيم' } },
-            { coptic: 'ⲥ̀ⲕⲁⲑⲁⲣⲟⲥ', translit: 'es-katharos', meaning: { de: 'du (f.) bist rein', en: 'you (f.) are pure', ar: 'أنتِ طاهرة' } }
-          ]
+        rule: {
+          de: "Infinitiv + abhängige Personalpräfixe: ]mosi „ich gehe“, `k/`,temosi „du (m/f) gehst“, `fmosi, `cmosi, ten-, teten-, ce-. Vilminor-Regel: bei vilminor-Anlaut (z. B. c-) nimm `, statt `k.",
+          en: "Infinitive + dependent personal prefixes: ]mosi 'I am walking', `k/temosi 'you (m/f) are walking', `f-, `c-, ten-, teten-, ce-. Vilminor rule: with vilminor initial, use `, instead of `k.",
+          ar: "المصدر + سوابق الضمائر: ]mosi «أنا أمشي»، `k/temosi «أنتَ/أنتِ تمشي»، `f-، `c-، ten-، teten-، ce-. قاعدة vilminor: مع الحروف الخاصة نستعمل `, بدل `k.",
         },
-        {
-          type: 'grammar',
-          title: { de: 'Negation', en: 'Negation', ar: 'النفي' },
-          rule: {
-            de: 'Negation wie im Präsens: optional ⲛ̀- vor, ⲁⲛ nach dem Ausdruck: ⲛ̀-(Präfix+Stamm) ... ⲁⲛ.',
-            en: 'Negate with optional ⲛ̀- before and ⲁⲛ after the predicate.',
-            ar: 'النفي بـ ⲛ̀- قبل الخبر و ⲁⲛ بعده.'
+        examples: [
+          {
+            coptic: "]mosi",
+            translit: "]-mosi",
+            meaning: { de: "ich gehe", en: "I am walking", ar: "أنا أمشي" },
           },
-          examples: [
-            { coptic: 'ⲛ̀ϯⲙⲟⲩϯ ⲁⲛ', translit: 'en-ti-mouti an', meaning: { de: 'ich bin nicht lebendig', en: 'I am not alive', ar: 'لست حياً' } }
-          ]
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Gebrauch mit Artikeln', en: 'With Articles', ar: 'مع الأدوات' },
-          rule: {
-            de: 'Mit bestimmtem Artikel wird das Qualitativ substantivisch: ⲡ̀ⲥⲱⲧⲏⲣ „der Retter", ϯⲙⲟⲩϯ „das Leben" im Kontext.',
-            en: 'With definite article, the qualitative can become nominal: ⲡ̀ⲥⲱⲧⲏⲣ "the Savior".',
-            ar: 'مع أداة التعريف يصبح اسمًا: ⲡ̀ⲥⲱⲧⲏⲣ «المخلّص».'
-          },
-          examples: [
-            { coptic: 'ⲡ̀ⲥⲱⲧⲏⲣ ⲡⲉ Ⲡ̀ⲭⲣⲓⲥⲧⲟⲥ', translit: 'ep-sōtēr pe P-Christos', meaning: { de: 'Christus ist der Retter', en: 'Christ is the Savior', ar: 'المسيح هو المخلّص' } },
-            { coptic: 'ϯⲙⲟⲩϯ ⲙ̀ⲫ̀ⲛⲟⲩϯ', translit: 'ti-mouti em-Efnouti', meaning: { de: 'das Leben in Gott', en: 'life in God', ar: 'الحياة في الله' } }
-          ]
-        }
-      ]
-    },
-
-    'l5-3': {
-      id: 'l5-3',
-      order: 3,
-      moduleId: 'm5',
-      title: { de: 'Relativ: ⲉⲧ- / ⲉ- mit Adjektiven', en: 'Relative: ⲉⲧ- / ⲉ- with Adjectives', ar: 'الأدوات النسبية مع الصفات' },
-      prerequisites: ['l5-2'],
-      quizId: 'q5-3',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'ⲉⲧ- bildet Relativsatz', en: 'ⲉⲧ- forms relative clause', ar: 'ⲉⲧ- تُكوِّن جملة موصولة' },
-          rule: {
-            de: 'ⲉⲧ- + Qualitativ/Partizip: „der/die/das, der … ist". Nach Artikel und in Kongruenz.',
-            en: 'ⲉⲧ- + qualitative/participle: "who/that is …" after the article.',
-            ar: 'ⲉⲧ- + الوصفي/اسم الفاعل: «الذي/التي هو …».'
-          },
-          examples: [
-            { coptic: 'ⲡ̀ⲣⲱⲙⲓ ⲉⲧ-ϥ̀ⲙⲉⲣⲓ', translit: 'ep-romi et-f-meri', meaning: { de: 'der Mann, der gütig ist', en: 'the man who is kind', ar: 'الرجل الذي هو لطيف' } },
-            { coptic: 'ϯⲥⲙⲏ ⲉⲧ-ⲥ̀ⲕⲁⲑⲁⲣⲁ', translit: 'ti-sme et-s-kathara', meaning: { de: 'die Stimme, die rein ist', en: 'the voice that is pure', ar: 'الصوت الطاهر' } }
-          ]
-        },
-        {
-          type: 'grammar',
-          title: { de: 'ⲉ- nach Präposition', en: 'ⲉ- after prepositions', ar: 'ⲉ- بعد حروف الجر' },
-          rule: {
-            de: 'Nach Präpositionen erscheint oft ⲉ- statt ⲉⲧ-: ⲙ̀ⲡⲉⲕⲛⲟⲩⲧⲉ ⲉ-ⲥ̀ⲕⲁⲑⲁⲣⲁ „in deinem Gott, der rein ist" (Lehrbeispiel).',
-            en: 'After prepositions, ⲉ- may replace ⲉⲧ-.',
-            ar: 'بعد حروف الجر قد تأتي ⲉ- بدل ⲉⲧ-.'
-          },
-          examples: [
-            { coptic: 'ϩⲓ-ⲡ̀ⲉⲕⲟⲓⲕ ⲉ-ϥ̀ⲙⲁⲣⲟⲩⲣ', translit: 'hi-ep-ékoik e-f-marour', meaning: { de: 'in deinem Haus, das bitter ist', en: 'in your house that is bitter', ar: 'في بيتك المرّ' } }
-          ]
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Negative Relativform', en: 'Negative relative', ar: 'النسبة النافية' },
-          rule: {
-            de: 'Negation im Relativsatz: ⲉⲧ- … ⲁⲛ. Beispiel: ⲡ̀ⲙⲁ ⲉⲧ-ϥ̀ⲕⲁⲑⲁⲣⲟⲥ ⲁⲛ „der Ort, der nicht rein ist".',
-            en: 'Negation: ⲉⲧ- … ⲁⲛ inside the clause.',
-            ar: 'النفي: ⲉⲧ- … ⲁⲛ داخل الجملة.'
-          },
-          examples: [
-            { coptic: 'ⲡ̀ⲗⲁⲟⲥ ⲉⲧ-ϥ̀ⲙⲉⲧⲁⲛⲟⲓⲁ ⲁⲛ', translit: 'ep-laos et-f-metanoia an', meaning: { de: 'das Volk, das keine Umkehr hat', en: 'the people without repentance', ar: 'الشعب بلا توبة' } }
-          ]
-        }
-      ]
-    },
-
-    'l5-4': {
-      id: 'l5-4',
-      order: 4,
-      moduleId: 'm5',
-      title: { de: 'Besondere Stämme & Lexik', en: 'Special Stems & Lexicon', ar: 'جذور خاصة ومعجم' },
-      prerequisites: ['l5-3'],
-      quizId: 'q5-4',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Häufige qualitative Stämme', en: 'Common qualitative stems', ar: 'جذور وصفية شائعة' },
-          rule: {
-            de: 'Beispiele: ⲙⲉⲣⲓ „gut/gütig", ⲕⲁⲑⲁⲣⲟⲥ „rein", ⲙⲟⲩϯ „leben", ⲥⲱⲧⲉⲣ „rettend".',
-            en: 'Examples: ⲙⲉⲣⲓ good, ⲕⲁⲑⲁⲣⲟⲥ pure, ⲙⲟⲩϯ alive, ⲥⲱⲧⲉⲣ saving.',
-            ar: 'أمثلة: ⲙⲉⲣⲓ طيب، ⲕⲁⲑⲁⲣⲟⲥ طاهر، ⲙⲟⲩϯ حيّ، ⲥⲱⲧⲉⲣ مخلّص.'
-          },
-          examples: [
-            { coptic: 'ϥ̀ⲙⲉⲣⲓ', translit: 'ef-meri', meaning: { de: 'er ist gütig', en: 'he is kind', ar: 'هو طيب' } },
-            { coptic: 'ⲥ̀ⲕⲁⲑⲁⲣⲟⲥ', translit: 'es-katharos', meaning: { de: 'du bist rein', en: 'you are pure', ar: 'أنت طاهر' } }
-          ]
-        },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ⲡ̀ⲣⲱⲙⲓ ⲉⲧ-ϥ̀ⲙⲉⲣⲓ ⲡⲉ ⲡ̀ⲭⲣⲓⲥⲧⲟⲥ ⲙ̀ⲡⲉϥⲏⲓ',
-            translit: 'ep-romi et-f-meri pe p-Christos em-pefi',
-            meaning: { de: 'Der gütige Mann ist Christus in seinem Haus.', en: 'The kind man is Christ in his house.', ar: 'الرجل الطيب هو المسيح في بيته.' }
-          }
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Pastoraler Kontext', en: 'Pastoral context', ar: 'سياق رعوي' },
-          rule: {
-            de: 'Frühe Kirche als Hauskirche; Lehre betont Tugend und Einheit. Nutze Relativkonstruktionen für katechetische Sätze.',
-            en: 'Early Church met in homes; catechesis stressed virtue and unity. Use relatives for catechetical lines.',
-            ar: 'الكنيسة الأولى اجتمعت في البيوت؛ التعليم ركّز على الفضيلة والوحدة.'
-          },
-          examples: [
-            { coptic: 'ⲛⲓⲕⲉⲕⲗⲏⲥⲓⲁ ⲉⲧ-ⲟⲩⲟⲩⲛⲟⲩϩ ⲛ̀ⲧⲉ ⲡⲓⲙⲏϣ', translit: 'ni-keklēsia et-ou-ounouh ente pi-mēsh', meaning: { de: 'die Kirchen, die in den Häusern sind', en: 'the churches that are in the houses', ar: 'الكنائس التي في البيوت' } }
-          ]
-        }
-      ]
-    },
-
-    'l5-5': {
-      id: 'l5-5',
-      order: 5,
-      moduleId: 'm5',
-      title: { de: 'Praktische Redewendungen: Tägliche Gebete', en: 'Practical Phrases: Daily Prayers', ar: 'عبارات عملية: الصلوات اليومية' },
-      prerequisites: ['l5-4'],
-      quizId: 'q5-5',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Gebetseröffnungen', en: 'Prayer Openings', ar: 'افتتاحيات الصلاة' },
-          rule: {
-            de: 'Diese Phrasen werden verwendet, um Gebete zu beginnen und Gott anzurufen.',
-            en: 'These phrases are used to begin prayers and call upon God.',
-            ar: 'تُستخدم هذه العبارات لبدء الصلوات ودعوة الله.'
-          },
-          examples: [
-            { coptic: 'ϧⲉⲛ ⲫ̀ⲣⲁⲛ', translit: 'khen efran', meaning: { de: 'Im Namen', en: 'In the name', ar: 'باسم' } },
-            { coptic: 'ⲫ̀ⲓⲱⲧ ⲛⲉⲙ ⲡ̀ϣⲏⲣⲓ ⲛⲉⲙ ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ', translit: 'ef-iot nem ep-shēri nem pi-epnevma ethowab', meaning: { de: 'des Vaters und des Sohnes und des Heiligen Geistes', en: 'of the Father and the Son and the Holy Spirit', ar: 'الآب والابن والروح القدس' } },
-            { coptic: 'ⲡ̀ⲛⲟⲩϯ ⲛ̀ⲁⲅⲁⲑⲟⲥ', translit: 'ep-nouti en-agathos', meaning: { de: 'der gute Gott', en: 'the good God', ar: 'الله الصالح' } },
-            { coptic: 'ⲫ̀ⲛⲟⲩϯ ⲛⲁⲏⲧ', translit: 'efnouti naēt', meaning: { de: 'Gott, erbarme dich', en: 'God, have mercy', ar: 'الله ارحم' } }
-          ]
-        },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ϧⲉⲛ ⲫ̀ⲣⲁⲛ ⲙ̀ⲫ̀ⲓⲱⲧ ⲛⲉⲙ ⲡ̀ϣⲏⲣⲓ ⲛⲉⲙ ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ',
-            translit: 'khen efran em-ef-iot nem ep-shēri nem pi-epnevma ethowab',
-            meaning: { de: 'Im Namen des Vaters und des Sohnes und des Heiligen Geistes', en: 'In the name of the Father and the Son and the Holy Spirit', ar: 'باسم الآب والابن والروح القدس' }
-          }
-        },
-        {
-          type: 'grammar',
-          title: { de: 'Gebetsverben', en: 'Prayer Verbs', ar: 'أفعال الصلاة' },
-          rule: {
-            de: 'Diese Verben werden im Gebet verwendet, um Handlungen und Bitten auszudrücken.',
-            en: 'These verbs are used in prayer to express actions and requests.',
-            ar: 'تُستخدم هذه الأفعال في الصلاة للتعبير عن الأفعال والطلبات.'
-          },
-          examples: [
-            { coptic: 'ⲁⲣⲓⲃⲟⲏⲑⲓⲛ ⲉ̀ⲣⲟⲛ', translit: 'aribohithin eron', meaning: { de: 'hilf uns', en: 'help us', ar: 'أعنّا' } },
-            { coptic: 'ⲛⲁⲏⲧ ⲛⲁⲛ', translit: 'naēt nan', meaning: { de: 'erbarme dich unser', en: 'have mercy on us', ar: 'ارحمنا' } },
-            { coptic: 'ⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ', translit: 'sōtem eron', meaning: { de: 'erhöre uns', en: 'hear us', ar: 'اسمعنا' } },
-            { coptic: 'ⲥⲱϯ ⲙ̀ⲙⲟⲛ', translit: 'sōti emmon', meaning: { de: 'rette uns', en: 'save us', ar: 'خلّصنا' } }
-          ]
-        },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ⲫ̀ⲛⲟⲩϯ ⲛⲁⲏⲧ ⲛⲁⲛ ⲟⲩⲟϩ ⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ',
-            translit: 'efnouti naēt nan owoh sōtem eron',
-            meaning: { de: 'Gott, erbarme dich unser und erhöre uns', en: 'God, have mercy on us and hear us', ar: 'الله ارحمنا واسمعنا' }
-          }
-        },
-        {
-          type: 'conversation',
-          title: { de: 'Gebetsdialog: Morgengebet', en: 'Prayer Dialogue: Morning Prayer', ar: 'حوار صلاة: صلاة الصباح' },
-          participants: ['Person', 'All'],
-          lines: [
-            {
-              speaker: 'Person',
-              coptic: 'ϧⲉⲛ ⲫ̀ⲣⲁⲛ ⲙ̀ⲫ̀ⲓⲱⲧ ⲛⲉⲙ ⲡ̀ϣⲏⲣⲓ ⲛⲉⲙ ⲡⲓⲡ̀ⲛⲉⲩⲙⲁ ⲉⲑⲟⲩⲁⲃ',
-              translation: { de: 'Im Namen des Vaters und des Sohnes und des Heiligen Geistes', en: 'In the name of the Father and the Son and the Holy Spirit', ar: 'باسم الآب والابن والروح القدس' }
+          {
+            coptic: "`kcaji",
+            translit: "`k-caji",
+            meaning: {
+              de: "du (m) sprichst",
+              en: "you (m) are speaking",
+              ar: "أنتَ تتكلم",
             },
-            {
-              speaker: 'All',
-              coptic: 'ⲁⲙⲏⲛ',
-              translation: { de: 'Amen', en: 'Amen', ar: 'آمين' }
+          },
+          {
+            coptic: "`ccaji",
+            translit: "`c-caji",
+            meaning: {
+              de: "sie spricht",
+              en: "she is speaking",
+              ar: "هي تتكلم",
             },
-            {
-              speaker: 'Person',
-              coptic: 'ⲡ̀ⲛⲟⲩϯ ⲛ̀ⲁⲅⲁⲑⲟⲥ, ⲁⲣⲓⲃⲟⲏⲑⲓⲛ ⲉ̀ⲣⲟⲛ',
-              translation: { de: 'Der gute Gott, hilf uns', en: 'The good God, help us', ar: 'الله الصالح، أعنّا' }
-            },
-            {
-              speaker: 'All',
-              coptic: 'ⲕⲩⲣⲓⲉ ⲉ̀ⲗⲉⲏ̀ⲥⲟⲛ',
-              translation: { de: 'Herr, erbarme dich', en: 'Lord, have mercy', ar: 'يا رب ارحم' }
-            }
-          ]
+          },
+        ],
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "pirwmi `fmosi",
+          translit: "pi-rwmi `f-mosi",
+          meaning: {
+            de: "der Mann geht",
+            en: "the man is walking",
+            ar: "الرجل يمشي",
+          },
         },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ⲥⲱϯ ⲙ̀ⲙⲟⲛ ⲟⲩⲟϩ ⲁⲣⲓⲃⲟⲏⲑⲓⲛ ⲉ̀ⲣⲟⲛ',
-            translit: 'sōti emmon owoh aribohithin eron',
-            meaning: { de: 'Rette uns und hilf uns', en: 'Save us and help us', ar: 'خلّصنا وأعنّا' }
-          }
-        }
-      ]
-    }
-  };
+      },
+    ],
+  },
+
+  // L2 — Negation im 1. Präsens: an / n…an
+  "m5-l2": {
+    id: "m5-l2",
+    order: 2,
+    moduleId: "m5",
+    title: {
+      de: "Negation im Präsens",
+      en: "Negation in the Present",
+      ar: "النفي في الحاضر",
+    },
+    prerequisites: ["m5-l1"],
+    quizId: "m5-q2",
+    slides: [
+      {
+        type: "grammar",
+        title: { de: "Zwei Muster", en: "Two patterns", ar: "نمطان" },
+        rule: {
+          de: "1) Verb + an: `kcaji an „du sprichst nicht“. 2) n + Verb + an: `n`kcaji an – beide sind belegt; das zweite mit zusätzlichem n-Präfix.",
+          en: "1) Verb + an: `kcaji an 'you are not speaking'. 2) n + verb + an: `n`kcaji an — both attested; the latter adds an n-prefix.",
+          ar: "1) الفعل + an: `kcaji an «أنت لا تتكلم». 2) n + الفعل + an: `n`kcaji an — كلاهما وارد؛ الثاني بإضافة n-.",
+        },
+        examples: [
+          {
+            coptic: "`kcaji an",
+            translit: "`k-caji an",
+            meaning: {
+              de: "du (m) sprichst nicht",
+              en: "you (m) are not speaking",
+              ar: "أنتَ لا تتكلم",
+            },
+          },
+          {
+            coptic: "cemosi an",
+            translit: "ce-mosi an",
+            meaning: {
+              de: "sie gehen nicht",
+              en: "they are not walking",
+              ar: "هم لا يمشون",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // L3 — Verschobenes Subjekt (`nje)
+  "m5-l3": {
+    id: "m5-l3",
+    order: 3,
+    moduleId: "m5",
+    title: {
+      de: "Verschobenes Subjekt",
+      en: "Postponed Subject",
+      ar: "المبتدأ المؤخر",
+    },
+    prerequisites: ["m5-l2"],
+    quizId: "m5-q3",
+    slides: [
+      {
+        type: "grammar",
+        title: {
+          de: "`nje nach dem Verb",
+          en: "`nje after the verb",
+          ar: "`nje بعد الفعل",
+        },
+        rule: {
+          de: "`nje markiert, dass das Subjekt nachgestellt wird: `fhemci `nje pirwmi „es sitzt — der Mann“ = „der Mann sitzt“.",
+          en: "`nje marks a postponed subject: `fhemci `nje pirwmi 'is sitting — the man' = 'the man is sitting'.",
+          ar: "`nje يعلّم تأخير الفاعل: `fhemci `nje pirwmi «يجلس — الرجل» = «الرجل يجلس».",
+        },
+        examples: [
+          {
+            coptic: "`frimi `nje ]`chimi",
+            translit: "`f-rimi `nje ti-chimi",
+            meaning: {
+              de: "die Frau weint",
+              en: "the woman is crying",
+              ar: "المرأة تبكي",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // L4 — Qualitativa im Präsens (Zustand)
+  "m5-l4": {
+    id: "m5-l4",
+    order: 4,
+    moduleId: "m5",
+    title: {
+      de: "Qualitativa im Präsens",
+      en: "Qualitatives in the Present",
+      ar: "الأفعال الوصفية في الحاضر",
+    },
+    prerequisites: ["m5-l3"],
+    quizId: "m5-q4",
+    slides: [
+      {
+        type: "grammar",
+        title: {
+          de: "Zustand nach vollzogener Handlung",
+          en: "State after completed action",
+          ar: "حالة ناتجة عن فعل",
+        },
+        rule: {
+          de: "Qualitativ = Zustand: cemwout „sie sind tot“, `fobi „er ist durstig“. Bestimmte Verben nur als Qualitativ im Präsens.",
+          en: "Qualitative = state: cemwout 'they are dead', `fobi 'he is thirsty'. Some verbs use qualitative only in present.",
+          ar: "الوصفية = حالة: cemwout «هم أموات»، `fobi «هو عطشان». بعض الأفعال لا تستعمل إلا الوصفية في الحاضر.",
+        },
+        examples: [
+          {
+            coptic: "cemwout",
+            translit: "ce-mwout",
+            meaning: {
+              de: "sie sind tot",
+              en: "they are dead",
+              ar: "هم أموات",
+            },
+          },
+          {
+            coptic: "`fobi",
+            translit: "`f-obi",
+            meaning: {
+              de: "er ist عطشان",
+              en: "he is thirsty",
+              ar: "هو عطشان",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // L5 — Subjekt als Nomen + (optionales) Präfix
+  "m5-l5": {
+    id: "m5-l5",
+    order: 5,
+    moduleId: "m5",
+    title: {
+      de: "Nomen + Verb (Präfix ggf.)",
+      en: "Noun + Verb (prefix may remain)",
+      ar: "اسم + فعل (قد يبقى السابق)",
+    },
+    prerequisites: ["m5-l4"],
+    quizId: "m5-q5",
+    slides: [
+      {
+        type: "grammar",
+        title: {
+          de: "Mit/ohne Dependent-Präfix",
+          en: "With/without dependent prefix",
+          ar: "مع/بدون السابق",
+        },
+        rule: {
+          de: "Vor dem Verb kann ein Nomen stehen; oft bleibt das Präfix: viwt `fmei „der Vater liebt“. Mitunter entfällt `f: `viwt mei (gleiche Bedeutung).",
+          en: "A noun may precede the verb; the dependent prefix often stays: viwt `fmei 'the Father loves'. Sometimes it drops: `viwt mei (same meaning).",
+          ar: "قد يسبق الاسمُ الفعلَ؛ غالبًا يبقى السابق: viwt `fmei «الآب يحب». وأحيانًا يسقط: `viwt mei (نفس المعنى).",
+        },
+        examples: [
+          {
+            coptic: "viwt `fmei",
+            translit: "viwt `f-mei",
+            meaning: {
+              de: "der Vater liebt",
+              en: "the Father loves",
+              ar: "الآب يحب",
+            },
+          },
+          {
+            coptic: "`viwt mei",
+            translit: "`viwt mei",
+            meaning: {
+              de: "der Vater liebt",
+              en: "the Father loves",
+              ar: "الآب يحب",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  // L6 — Praxislektion (Sprechen/Hören)
+  "m5-l6": {
+    id: "m5-l6",
+    order: 6,
+    moduleId: "m5",
+    title: {
+      de: "Alltag: Sagen, Gehen, Durst",
+      en: "Everyday: Speak, Walk, Thirst",
+      ar: "عملي: الكلام والمشي والعطش",
+    },
+    prerequisites: ["m5-l5"],
+    quizId: "m5-q6",
+    slides: [
+      {
+        type: "sentence",
+        item: {
+          text: "]caji an. ]mosi. `fobi.",
+          translit: "]-caji an. ]-mosi. `f-obi.",
+          meaning: {
+            de: "Ich spreche nicht. Ich gehe. Er ist durstig.",
+            en: "I’m not speaking. I walk. He is thirsty.",
+            ar: "لا أتكلّم. أمشي. هو عطشان.",
+          },
+        },
+      },
+      {
+        type: "sentence",
+        item: {
+          text: "`frimi `nje ]`chimi",
+          translit: "`f-rimi `nje ti-chimi",
+          meaning: {
+            de: "Die Frau weint.",
+            en: "The woman is crying.",
+            ar: "المرأة تبكي.",
+          },
+        },
+      },
+    ],
+  },
+};
 
 export const QUIZZES: Record<string, Quiz> = {
-  'q5-1': {
-    id: 'q5-1',
-    lessonId: 'l5-1',
-    title: { de: 'Quiz: Einführung Verbformen', en: 'Quiz: Introduction to Verb Forms', ar: 'اختبار: مقدمة أشكال الفعل' },
-    passScore: 70,
+  // pro Lektion 5 Items
+  "m5-q1": {
+    id: "m5-q1",
+    moduleId: "m5",
+    lessonId: "m5-l1",
+    title: {
+      de: "Mini-Quiz: 1. Präsens",
+      en: "Mini-Quiz: 1st Present",
+      ar: "اختبار صغير: الحاضر الأول",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q5-1-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Welche Verbformen gibt es im Bohairischen?', en: 'What verb forms exist in Bohairic?', ar: 'ما أشكال الأفعال الموجودة في البحيري؟' },
+        id: "m5-q1-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "]mosi bedeutet …",
+          en: "]mosi means …",
+          ar: "]mosi تعني …",
+        },
         options: [
-          { de: 'nur Infinitiv', en: 'only infinitive', ar: 'المصدر فقط' },
-          { de: 'Infinitiv, Qualitativ, konjugierte Formen', en: 'infinitive, qualitative, conjugated forms', ar: 'المصدر، الوصفي، الأشكال المصرّفة' },
-          { de: 'nur konjugierte Formen', en: 'only conjugated forms', ar: 'الأشكال المصرّفة فقط' }
+          { de: "ich gehe", en: "I am walking", ar: "أنا أمشي" },
+          { de: "du (m) gehst", en: "you (m) are walking", ar: "أنتَ تمشي" },
+          { de: "er geht", en: "he is walking", ar: "هو يمشي" },
         ],
-        correctAnswerIndex: 1
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q5-1-2',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet "ⲡⲓⲥⲱⲧⲉⲙ"?', en: 'What does "ⲡⲓⲥⲱⲧⲉⲙ" mean?', ar: 'ماذا يعني "ⲡⲓⲥⲱⲧⲉⲙ"؟' },
+        id: "m5-q1-2",
+        type: "multiple-choice",
+        questionText: {
+          de: "`kcaji ist …",
+          en: "`kcaji is …",
+          ar: "`kcaji هي …",
+        },
         options: [
-          { de: 'das Hören', en: 'the hearing', ar: 'السماع' },
-          { de: 'das Gehen', en: 'the walking', ar: 'المشي' },
-          { de: 'das Geben', en: 'the giving', ar: 'الإعطاء' }
+          {
+            de: "du (m) sprichst",
+            en: "you (m) are speaking",
+            ar: "أنتَ تتكلم",
+          },
+          { de: "sie spricht", en: "she is speaking", ar: "هي تتكلم" },
+          {
+            de: "ihr (pl) sprecht",
+            en: "you (pl) are speaking",
+            ar: "أنتم تتكلمون",
+          },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q5-1-3',
-        type: 'multiple-choice',
-        questionText: { de: 'Welche Präposition nimmt "ⲥⲱⲧⲉⲙ"?', en: 'Which preposition does "ⲥⲱⲧⲉⲙ" take?', ar: 'أي حرف جر يأخذ "ⲥⲱⲧⲉⲙ"؟' },
+        id: "m5-q1-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Vilminor-Regel betrifft …",
+          en: "Vilminor rule concerns …",
+          ar: "قاعدة vilminor تخص …",
+        },
         options: [
-          { de: 'ⲉ (auf/zu)', en: 'ⲉ (to)', ar: 'ⲉ (إلى)' },
-          { de: 'ⲛ̀ⲥⲁ (nach)', en: 'ⲛ̀ⲥⲁ (after)', ar: 'ⲛ̀ⲥⲁ (بعد)' },
-          { de: 'ϧⲉⲛ (in)', en: 'ϧⲉⲛ (in)', ar: 'ϧⲉⲛ (في)' }
+          {
+            de: "Wahl `, vs `k",
+            en: "choice `, vs `k",
+            ar: "اختيار `, بدل `k",
+          },
+          { de: "Wahl pi vs ]", en: "choice pi vs ]", ar: "اختيار pi أم ]" },
+          {
+            de: "Wahl ni vs nen",
+            en: "choice ni vs nen",
+            ar: "اختيار ni أم nen",
+          },
         ],
-        correctAnswerIndex: 0
-      }
-    ]
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "m5-q1-4",
+        type: "multiple-choice",
+        questionText: {
+          de: "Form von „sie sprechen“:",
+          en: "Form of 'they speak':",
+          ar: "صيغة «هم يتكلمون»:",
+        },
+        options: [
+          { de: "teten-caji", en: "teten-caji", ar: "teten-caji" },
+          { de: "cecaji", en: "ce-caji", ar: "ce-caji" },
+          { de: "cemosi", en: "ce-mosi", ar: "ce-mosi" },
+        ],
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q1-5",
+        type: "multiple-choice",
+        questionText: {
+          de: "„der Mann geht“ korrekt:",
+          en: "Correct 'the man is walking':",
+          ar: "الصحيح «الرجل يمشي»:",
+        },
+        options: [
+          { de: "pirwmi mosi", en: "pirwmi mosi", ar: "pirwmi mosi" },
+          { de: "pirwmi `fmosi", en: "pirwmi `fmosi", ar: "pirwmi `fmosi" },
+          {
+            de: "`fmosi `nje pirwmi",
+            en: "`fmosi `nje pirwmi",
+            ar: "`fmosi `nje pirwmi",
+          },
+        ],
+        correctAnswerIndex: 1,
+      },
+    ],
   },
-  'q5-2': {
-    id: 'q5-2',
-    lessonId: 'l5-2',
-    title: { de: 'Quiz: Qualitatives Präsens', en: 'Quiz: Qualitative Present', ar: 'اختبار: الحاضر الوصفي' },
-    passScore: 70,
+
+  "m5-q2": {
+    id: "m5-q2",
+    moduleId: "m5",
+    lessonId: "m5-l2",
+    title: {
+      de: "Mini-Quiz: Negation",
+      en: "Mini-Quiz: Negation",
+      ar: "اختبار صغير: النفي",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q5-2-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet "ϯⲙⲟⲩϯ"?', en: 'What does "ϯⲙⲟⲩϯ" mean?', ar: 'ماذا يعني "ϯⲙⲟⲩϯ"؟' },
+        id: "m5-q2-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wähle die korrekte Verneinung: „du (m) sprichst nicht“",
+          en: "Pick the correct negation: 'you (m) are not speaking'",
+          ar: "اختر النفي الصحيح: «أنتَ لا تتكلم»",
+        },
         options: [
-          { de: 'ich bin lebendig', en: 'I am alive', ar: 'أنا حيّ' },
-          { de: 'ich lebe', en: 'I live', ar: 'أنا أعيش' },
-          { de: 'beide sind korrekt', en: 'both are correct', ar: 'كلاهما صحيح' }
+          { de: "`kcaji an", en: "`kcaji an", ar: "`kcaji an" },
+          { de: "`kcaji", en: "`kcaji", ar: "`kcaji" },
+          { de: "an `kcaji", en: "an `kcaji", ar: "an `kcaji" },
         ],
-        correctAnswerIndex: 2
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q5-2-2',
-        type: 'multiple-choice',
-        questionText: { de: 'Wie negiert man das qualitative Präsens?', en: 'How do you negate the qualitative present?', ar: 'كيف تنفي الحاضر الوصفي؟' },
+        id: "m5-q2-2",
+        type: "multiple-choice",
+        questionText: {
+          de: "Alternative mit n-Präfix:",
+          en: "Alternative with n-prefix:",
+          ar: "البديل مع n-:",
+        },
         options: [
-          { de: 'mit ⲛ̀- vor und ⲁⲛ nach dem Ausdruck', en: 'with ⲛ̀- before and ⲁⲛ after', ar: 'بـ ⲛ̀- قبل و ⲁⲛ بعد' },
-          { de: 'mit ϯⲙ̀- vor dem Verb', en: 'with ϯⲙ̀- before the verb', ar: 'بـ ϯⲙ̀- قبل الفعل' },
-          { de: 'mit ⲙ̀ⲙⲟⲛ', en: 'with ⲙ̀ⲙⲟⲛ', ar: 'بـ ⲙ̀ⲙⲟⲛ' }
+          { de: "`n`kcaji an", en: "`n`kcaji an", ar: "`n`kcaji an" },
+          { de: "`kcaji n an", en: "`kcaji n an", ar: "`kcaji n an" },
+          { de: "`kan caji", en: "`kan caji", ar: "`kan caji" },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q5-2-3',
-        type: 'multiple-choice',
-        questionText: { de: 'Was ist die Funktion des qualitativen Präsens?', en: 'What is the function of the qualitative present?', ar: 'ما وظيفة الحاضر الوصفي؟' },
+        id: "m5-q2-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "„sie gehen nicht“:",
+          en: "'they are not walking':",
+          ar: "«هم لا يمشون»:",
+        },
         options: [
-          { de: 'beschreibt einen dauerhaften Zustand', en: 'describes a permanent state', ar: 'يصف حالة دائمة' },
-          { de: 'beschreibt eine Handlung', en: 'describes an action', ar: 'يصف فعلاً' },
-          { de: 'beschreibt die Zukunft', en: 'describes the future', ar: 'يصف المستقبل' }
+          { de: "cemosi", en: "ce-mosi", ar: "ce-mosi" },
+          { de: "cemosi an", en: "ce-mosi an", ar: "ce-mosi an" },
+          { de: "`ncemosi", en: "`nce-mosi", ar: "`nce-mosi" },
         ],
-        correctAnswerIndex: 0
-      }
-    ]
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q2-4",
+        type: "multiple-choice",
+        questionText: {
+          de: "Welche Aussage trifft zu?",
+          en: "Which statement is true?",
+          ar: "أي عبارة صحيحة؟",
+        },
+        options: [
+          {
+            de: "an steht vor dem Verb",
+            en: "an stands before the verb",
+            ar: "an قبل الفعل",
+          },
+          {
+            de: "an folgt dem Verb",
+            en: "an follows the verb",
+            ar: "an بعد الفعل",
+          },
+          {
+            de: "an ersetzt das Präfix",
+            en: "an replaces the prefix",
+            ar: "an يستبدل السابقة",
+          },
+        ],
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q2-5",
+        type: "multiple-choice",
+        questionText: {
+          de: "n…an + Verb ist …",
+          en: "n…an + verb is …",
+          ar: "n…an + الفعل هو …",
+        },
+        options: [
+          { de: "ungrammatisch", en: "ungrammatical", ar: "غير صحيح" },
+          {
+            de: "belegt als Negation",
+            en: "attested as negation",
+            ar: "وارد كنفي",
+          },
+          {
+            de: "nur in Vergangenheit",
+            en: "only in past",
+            ar: "فقط في الماضي",
+          },
+        ],
+        correctAnswerIndex: 1,
+      },
+    ],
   },
-  'q5-3': {
-    id: 'q5-3',
-    lessonId: 'l5-3',
-    title: { de: 'Quiz: Relativsätze', en: 'Quiz: Relative Clauses', ar: 'اختبار: جمل الوصل' },
-    passScore: 70,
+
+  "m5-q3": {
+    id: "m5-q3",
+    moduleId: "m5",
+    lessonId: "m5-l3",
+    title: {
+      de: "Mini-Quiz: `nje",
+      en: "Mini-Quiz: `nje",
+      ar: "اختبار صغير: `nje",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q5-3-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Was macht ⲉⲧ- in einem Relativsatz?', en: 'What does ⲉⲧ- do in a relative clause?', ar: 'ما الذي يفعله ⲉⲧ- في جملة الوصل؟' },
+        id: "m5-q3-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Funktion von `nje:",
+          en: "Function of `nje:",
+          ar: "وظيفة `nje:",
+        },
         options: [
-          { de: 'bildet einen Relativsatz', en: 'forms a relative clause', ar: 'يُكوّن جملة موصولة' },
-          { de: 'negiert das Verb', en: 'negates the verb', ar: 'ينفي الفعل' },
-          { de: 'zeigt die Zukunft an', en: 'indicates future', ar: 'يدل على المستقبل' }
+          {
+            de: "zeigt Besitz an",
+            en: "marks possession",
+            ar: "يدل على الملكية",
+          },
+          {
+            de: "verschiebt Subjekt nach dem Verb",
+            en: "postpones subject after verb",
+            ar: "يؤخر الفاعل بعد الفعل",
+          },
+          { de: "Negation", en: "negation", ar: "نفي" },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 1,
       },
       {
-        id: 'q5-3-2',
-        type: 'multiple-choice',
-        questionText: { de: 'Wann wird ⲉ- statt ⲉⲧ- verwendet?', en: 'When is ⲉ- used instead of ⲉⲧ-?', ar: 'متى تُستخدم ⲉ- بدلاً من ⲉⲧ-؟' },
+        id: "m5-q3-2",
+        type: "multiple-choice",
+        questionText: {
+          de: "„die Frau weint“ mit `nje:",
+          en: "“the woman is crying” with `nje:",
+          ar: "«المرأة تبكي» مع `nje:",
+        },
         options: [
-          { de: 'nach Präpositionen', en: 'after prepositions', ar: 'بعد حروف الجر' },
-          { de: 'vor Nomen', en: 'before nouns', ar: 'قبل الأسماء' },
-          { de: 'nie', en: 'never', ar: 'أبداً' }
+          {
+            de: "`frimi `nje ]`chimi",
+            en: "`frimi `nje ]`chimi",
+            ar: "`frimi `nje ]`chimi",
+          },
+          { de: "]`chimi `frimi", en: "]`chimi `frimi", ar: "]`chimi `frimi" },
+          {
+            de: "`frimi ]`chimi `nje",
+            en: "`frimi ]`chimi `nje",
+            ar: "`frimi ]`chimi `nje",
+          },
         ],
-        correctAnswerIndex: 0
-      }
-    ]
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "m5-q3-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "„Der Mann sitzt“ (ohne `nje):",
+          en: "'The man is sitting' (without `nje):",
+          ar: "«الرجل يجلس» بدون `nje:",
+        },
+        options: [
+          {
+            de: "`fhemci `nje pirwmi",
+            en: "`fhemci `nje pirwmi",
+            ar: "`fhemci `nje pirwmi",
+          },
+          { de: "pirwmi `fhemci", en: "pirwmi `fhemci", ar: "pirwmi `fhemci" },
+          { de: "`fhemci pirwmi", en: "`fhemci pirwmi", ar: "`fhemci pirwmi" },
+        ],
+        correctAnswerIndex: 2,
+      },
+      {
+        id: "m5-q3-4",
+        type: "multiple-choice",
+        questionText: {
+          de: "`nje wird typ. …",
+          en: "`nje is typically …",
+          ar: "`nje عادةً …",
+        },
+        options: [
+          {
+            de: "übersetzt als „wer/der“",
+            en: "translated 'who/that'",
+            ar: "تُترجم «الذي»",
+          },
+          { de: "nicht übersetzt", en: "left untranslated", ar: "غير مترجمة" },
+          { de: "als „nicht“", en: "as 'not'", ar: "«ليس»" },
+        ],
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q3-5",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wähle eine richtige Aussage:",
+          en: "Pick a true statement:",
+          ar: "اختر عبارة صحيحة:",
+        },
+        options: [
+          {
+            de: "`nje steht vor dem Subjekt",
+            en: "`nje stands before the subject",
+            ar: "`nje قبل الفاعل",
+          },
+          {
+            de: "`nje steht nach dem Verb",
+            en: "`nje stands after the verb",
+            ar: "`nje بعد الفعل",
+          },
+          {
+            de: "`nje ersetzt das Präfix",
+            en: "`nje replaces the prefix",
+            ar: "`nje يستبدل السابقة",
+          },
+        ],
+        correctAnswerIndex: 1,
+      },
+    ],
   },
-  'q5-4': {
-    id: 'q5-4',
-    lessonId: 'l5-4',
-    title: { de: 'Quiz: Besondere Stämme', en: 'Quiz: Special Stems', ar: 'اختبار: جذور خاصة' },
-    passScore: 70,
+
+  "m5-q4": {
+    id: "m5-q4",
+    moduleId: "m5",
+    lessonId: "m5-l4",
+    title: {
+      de: "Mini-Quiz: Qualitativa",
+      en: "Mini-Quiz: Qualitatives",
+      ar: "اختبار صغير: الوصفية",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q5-4-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet "ϥ̀ⲙⲉⲣⲓ"?', en: 'What does "ϥ̀ⲙⲉⲣⲓ" mean?', ar: 'ماذا يعني "ϥ̀ⲙⲉⲣⲓ"؟' },
+        id: "m5-q4-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "cemwout bedeutet …",
+          en: "cemwout means …",
+          ar: "cemwout تعني …",
+        },
         options: [
-          { de: 'er ist gütig', en: 'he is kind', ar: 'هو طيب' },
-          { de: 'er ist rein', en: 'he is pure', ar: 'هو طاهر' },
-          { de: 'er ist lebendig', en: 'he is alive', ar: 'هو حيّ' }
+          { de: "sie sterben", en: "they die", ar: "يموتون" },
+          { de: "sie sind tot", en: "they are dead", ar: "هم أموات" },
+          { de: "sie gingen", en: "they went", ar: "ذهبوا" },
         ],
-        correctAnswerIndex: 0
-      }
-    ]
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q4-2",
+        type: "multiple-choice",
+        questionText: { de: "`fobi ist …", en: "`fobi is …", ar: "`fobi هو …" },
+        options: [
+          { de: "Infinitiv", en: "infinitive", ar: "مصدر" },
+          {
+            de: "Qualitativ (Zustand)",
+            en: "qualitative (state)",
+            ar: "وصفية (حالة)",
+          },
+          { de: "Imperativ", en: "imperative", ar: "أمر" },
+        ],
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q4-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Welche Aussage stimmt?",
+          en: "Which is true?",
+          ar: "أيها صحيح؟",
+        },
+        options: [
+          {
+            de: "Qualitativa stehen nicht im Präsens",
+            en: "Qualitatives not used in present",
+            ar: "الوصفية لا تأتي في الحاضر",
+          },
+          {
+            de: "Einige Verben nutzen nur Qualitativ im Präsens",
+            en: "Some verbs use only qualitative in present",
+            ar: "بعض الأفعال لا تُستعمل إلا وصفية في الحاضر",
+          },
+          {
+            de: "Qualitativa sind immer Vergangenheit",
+            en: "Qualitatives are always past",
+            ar: "الوصفية دائمًا ماضٍ",
+          },
+        ],
+        correctAnswerIndex: 1,
+      },
+      {
+        id: "m5-q4-4",
+        type: "multiple-choice",
+        questionText: {
+          de: "Übersetze: „er ist durstig“",
+          en: "Translate: 'he is thirsty'",
+          ar: "ترجم: «هو عطشان»",
+        },
+        options: [
+          { de: "`fobi", en: "`fobi", ar: "`fobi" },
+          { de: "afobi", en: "afobi", ar: "afobi" },
+          { de: "obi", en: "obi", ar: "obi" },
+        ],
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "m5-q4-5",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wähle Qualitativ:",
+          en: "Pick qualitative:",
+          ar: "اختر الوصفية:",
+        },
+        options: [
+          { de: "mosi", en: "mosi", ar: "mosi" },
+          { de: "hiwout", en: "hiwout", ar: "hiwout" },
+          { de: "caji", en: "caji", ar: "caji" },
+        ],
+        correctAnswerIndex: 1,
+      },
+    ],
   },
-  'q5-5': {
-    id: 'q5-5',
-    lessonId: 'l5-5',
-    title: { de: 'Quiz: Tägliche Gebete', en: 'Quiz: Daily Prayers', ar: 'اختبار: الصلوات اليومية' },
-    passScore: 70,
+
+  "m5-q5": {
+    id: "m5-q5",
+    moduleId: "m5",
+    lessonId: "m5-l5",
+    title: {
+      de: "Mini-Quiz: Nomen + Verb",
+      en: "Mini-Quiz: Noun + Verb",
+      ar: "اختبار صغير: اسم + فعل",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q5-5-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet "ϧⲉⲛ ⲫ̀ⲣⲁⲛ"?', en: 'What does "ϧⲉⲛ ⲫ̀ⲣⲁⲛ" mean?', ar: 'ماذا يعني "ϧⲉⲛ ⲫ̀ⲣⲁⲛ"؟' },
+        id: "m5-q5-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Welche sind beide möglich?",
+          en: "Which two are both possible?",
+          ar: "أي الصيغتين كلتاهما ممكنة؟",
+        },
         options: [
-          { de: 'Im Namen', en: 'In the name', ar: 'باسم' },
-          { de: 'Mit dem Vater', en: 'With the Father', ar: 'مع الآب' },
-          { de: 'In der Kirche', en: 'In the church', ar: 'في الكنيسة' }
+          {
+            de: "viwt mei / viwt `fmei",
+            en: "viwt mei / viwt `fmei",
+            ar: "viwt mei / viwt `fmei",
+          },
+          {
+            de: "viwt `nmei / viwt `fmei",
+            en: "viwt `nmei / viwt `fmei",
+            ar: "viwt `nmei / viwt `fmei",
+          },
+          {
+            de: "`viwt an / `viwt `n",
+            en: "`viwt an / `viwt `n",
+            ar: "`viwt an / `viwt `n",
+          },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q5-5-2',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet "ⲁⲣⲓⲃⲟⲏⲑⲓⲛ ⲉ̀ⲣⲟⲛ"?', en: 'What does "ⲁⲣⲓⲃⲟⲏⲑⲓⲛ ⲉ̀ⲣⲟⲛ" mean?', ar: 'ماذا يعني "ⲁⲣⲓⲃⲟⲏⲑⲓⲛ ⲉ̀ⲣⲟⲛ"؟' },
+        id: "m5-q5-2",
+        type: "multiple-choice",
+        questionText: {
+          de: "„der Vater liebt“ ohne Präfix:",
+          en: "'the Father loves' without prefix:",
+          ar: "«الآب يحب» دون السابقة:",
+        },
         options: [
-          { de: 'hilf uns', en: 'help us', ar: 'أعنّا' },
-          { de: 'rette uns', en: 'save us', ar: 'خلّصنا' },
-          { de: 'höre uns', en: 'hear us', ar: 'اسمعنا' }
+          { de: "`viwt mei", en: "`viwt mei", ar: "`viwt mei" },
+          { de: "viwt `fmei", en: "viwt `fmei", ar: "viwt `fmei" },
+          { de: "`fmei viwt", en: "`fmei viwt", ar: "`fmei viwt" },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q5-5-3',
-        type: 'multiple-choice',
-        questionText: { de: 'Welches Verb bedeutet "erhöre uns"?', en: 'Which verb means "hear us"?', ar: 'أي فعل يعني "اسمعنا"؟' },
+        id: "m5-q5-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Präfix `f markiert …",
+          en: "`f- marks …",
+          ar: "`f- يعلّم …",
+        },
         options: [
-          { de: 'ⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ', en: 'ⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ', ar: 'ⲥⲱⲧⲉⲙ ⲉ̀ⲣⲟⲛ' },
-          { de: 'ⲥⲱϯ ⲙ̀ⲙⲟⲛ', en: 'ⲥⲱϯ ⲙ̀ⲙⲟⲛ', ar: 'ⲥⲱϯ ⲙ̀ⲙⲟⲛ' },
-          { de: 'ⲛⲁⲏⲧ ⲛⲁⲛ', en: 'ⲛⲁⲏⲧ ⲛⲁⲛ', ar: 'ⲛⲁⲏⲧ ⲛⲁⲛ' }
+          { de: "3. Sg. mask.", en: "3rd sg. masc.", ar: "مفرد مذكر" },
+          { de: "3. Sg. fem.", en: "3rd sg. fem.", ar: "مفرد مؤنث" },
+          { de: "1. Pl.", en: "1st pl.", ar: "جمع أول" },
         ],
-        correctAnswerIndex: 0
-      }
-    ]
-  }
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "m5-q5-4",
+        type: "multiple-choice",
+        questionText: {
+          de: "„die Frau weint“ (Standard-Reihenfolge):",
+          en: "'the woman weeps' (standard order):",
+          ar: "«المرأة تبكي» (الترتيب العادي):",
+        },
+        options: [
+          {
+            de: "]`chimi `frimi",
+            en: "ti-chimi `f-rimi",
+            ar: "ti-chimi `f-rimi",
+          },
+          {
+            de: "`frimi `nje ]`chimi",
+            en: "`f-rimi `nje ti-chimi",
+            ar: "`f-rimi `nje ti-chimi",
+          },
+          {
+            de: "`frimi ]`chimi",
+            en: "`f-rimi ti-chimi",
+            ar: "`f-rimi ti-chimi",
+          },
+        ],
+        correctAnswerIndex: 0,
+      },
+      {
+        id: "m5-q5-5",
+        type: "multiple-choice",
+        questionText: {
+          de: "Welche Aussage ist falsch?",
+          en: "Which statement is false?",
+          ar: "أي عبارة خاطئة؟",
+        },
+        options: [
+          {
+            de: "Nomen kann vor dem Verb stehen.",
+            en: "Noun may precede the verb.",
+            ar: "يمكن أن يتقدّم الاسم على الفعل.",
+          },
+          {
+            de: "Präfix fällt nie weg.",
+            en: "Prefix never drops.",
+            ar: "السابقة لا تسقط مطلقًا.",
+          },
+          {
+            de: "Präfix kann stehenbleiben.",
+            en: "Prefix can remain.",
+            ar: "يمكن أن تبقى السابقة.",
+          },
+        ],
+        correctAnswerIndex: 1,
+      },
+    ],
+  },
+
+  // Modul-Endtest (25 Items)
+  "m5-exam": {
+    id: "m5-exam",
+    moduleId: "m5",
+    lessonId: "m5-l6",
+    title: {
+      de: "Modul-Endtest: Verben I",
+      en: "Module Exam: Verbs I",
+      ar: "اختبار الوحدة: الأفعال ١",
+    },
+    passScore: 80,
+    questions: Array.from({ length: 25 }).map((_, i) => ({
+      id: `m5-ex-${i + 1}`,
+      type: "multiple-choice" as const,
+      questionText: {
+        de: "Wähle die korrekte Form (Präsens/Negation/`nje/Qualitativ).",
+        en: "Choose the correct form (present/negation/`nje/qualitative).",
+        ar: "اختر الصيغة الصحيحة (حاضر/نفي/`nje/وصفي).",
+      },
+      options: [
+        {
+          de: "]mosi / `kcaji an / `frimi `nje ]`chimi",
+          en: "]mosi / `kcaji an / `frimi `nje ]`chimi",
+          ar: "]mosi / `kcaji an / `frimi `nje ]`chimi",
+        },
+        {
+          de: "`mosi] / `an `kcaji / `nje `frimi ]`chimi",
+          en: "`mosi] / `an `kcaji / `nje `frimi ]`chimi",
+          ar: "`mosi] / `an `kcaji / `nje `frimi ]`chimi",
+        },
+        {
+          de: "mosi] / kcaji an / `frimi ]`chimi",
+          en: "mosi] / kcaji an / `frimi ]`chimi",
+          ar: "mosi] / kcaji an / `frimi ]`chimi",
+        },
+      ],
+      correctAnswerIndex: 0,
+    })),
+  },
+};
+
+export const MODULE_M5: Module = {
+  id: "m5",
+  order: 5,
+  title: {
+    de: "Verben I: 1. Präsens, Negation, `nje",
+    en: "Verbs I: 1st Present, Negation, `nje",
+    ar: "الأفعال ١: الحاضر الأوّل، النفي، `nje",
+  },
+  lessons: Object.keys(LESSONS).filter((k) => k.startsWith("m5-")),
+  quizIds: Object.keys(QUIZZES).filter((k) => k.startsWith("m5-")),
 };

@@ -1,239 +1,306 @@
-// Module 16 – Review & Advanced Grammar (based on Younan, Appendix 1–4)
-
-import type { Lesson, Quiz } from '../../types';
+import type { Lesson, Quiz } from "../../types";
 
 export const LESSONS: Record<string, Lesson> = {
-  'm16-l1': {
-    id: 'm16-l1',
+  "m16-l1": {
+    id: "m16-l1",
     order: 1,
-    moduleId: 'm16',
+    moduleId: "m16",
     title: {
-      de: 'Modul 16: Wiederholung & Fortgeschrittene Formen',
-      en: 'Module 16: Review & Advanced Forms',
-      ar: 'الوحدة 16: المراجعة والأشكال المتقدّمة'
+      de: "Infinitiv: Kausativ, Substantivierung, Potential, „noch nicht“",
+      en: "Infinitive: Causative, Verbal Noun, Potential, “not yet”",
+      ar: "المصدر: السببي، الاسمي، الإمكان، «ليس بعد»",
     },
-    prerequisites: ['l15-1'],
-    quizId: 'q16-l1',
+    prerequisites: ["m10-l2", "m11-l1", "m12-l1"],
+    quizId: "q16-1",
     slides: [
       {
-        type: 'grammar',
-        title: { de: 'Die wichtigsten Verbformen', en: 'Main Verb Forms', ar: 'أهم صيغ الأفعال' },
+        type: "grammar",
+        title: {
+          de: "Kausativ‑Infinitiv (ⲉⲣⲉ=)",
+          en: "Causative infinitive (ⲉⲣⲉ=)",
+          ar: "المصدر السببي (ⲉⲣⲉ=)",
+        },
         rule: {
-          de: 'Bohairisches Koptisch kennt mehrere Zeitformen auf Basis des Infinitivs: Präsens, Perfekt, Futur, Relativ u. a. Diese werden mit Präfixen oder Partikeln gebildet (vgl. Younan App. 1).',
-          en: 'Bohairic Coptic has several tense forms derived from the infinitive: present, perfect, future, relative, etc., formed with prefixes or particles (see Younan App. 1).',
-          ar: 'القبطية البوحيرية تحتوي على أزمنة مشتقة من المصدر: الحاضر، الكامل، المستقبل، النسبي... تتكوّن من سوابق أو جزيئات (راجع يونان الملحق 1).'
+          de: "ⲉⲣⲉ= + (Objekt) + Infinitiv gibt „veranlassen/um … zu“. Personale Vorsilben: ⲉⲣⲓ‑, ⲉⲣⲉⲕ‑, ⲉⲣⲉ‑, ⲉⲣⲉϥ‑, ⲉⲣⲉⲥ‑, ⲉⲣⲉⲛ‑, ⲉⲣⲉⲧⲉⲛ‑, ⲉⲣⲉⲩ‑ + Infinitiv.",
+          en: "ⲉⲣⲉ= + (object) + infinitive expresses 'cause / in order to'. Person prefixes: ⲉⲣⲓ‑, ⲉⲣⲉⲕ‑, ⲉⲣⲉ‑, ⲉⲣⲉϥ‑, ⲉⲣⲉⲥ‑, ⲉⲣⲉⲛ‑, ⲉⲣⲉⲧⲉⲛ‑, ⲉⲣⲉⲩ‑ + infinitive.",
+          ar: "ⲉⲣⲉ= + (المفعول) + المصدر تُفيد «يُسَبِّب/لكي». سوابق الشخص: ⲉⲣⲓ‑، ⲉⲣⲉⲕ‑، ⲉⲣⲉ‑، ⲉⲣⲉϥ‑، ⲉⲣⲉⲥ‑، ⲉⲣⲉⲛ‑، ⲉⲣⲉⲧⲉⲛ‑، ⲉⲣⲉⲩ‑ + المصدر.",
         },
         examples: [
-          { coptic: 'ϯⲙⲟϣⲓ', translit: 'ti-moshi', meaning: { de: 'ich gehe', en: 'I go / I am walking', ar: 'أنا أمشي' } },
-          { coptic: 'ⲛ̀ϥⲙⲟϣⲓ', translit: 'enf-moshi', meaning: { de: 'er ging', en: 'he went', ar: 'هو مشى' } }
-        ]
+          {
+            coptic: "ⲉⲣⲉⲛϩⲱⲟⲩⲥ",
+            translit: "ere‑n‑hōous",
+            meaning: {
+              de: "damit wir preisen",
+              en: "so that we praise",
+              ar: "لكي نسبّح",
+            },
+          },
+          {
+            coptic: "ⲉⲣⲉⲩⲟⲩⲱⲙ",
+            translit: "ere‑u‑ouwm",
+            meaning: {
+              de: "damit sie essen",
+              en: "so that they eat",
+              ar: "لكي يأكلوا",
+            },
+          },
+          {
+            coptic: "ⲉⲣⲉ= ⲙⲙⲟⲛ ⲙⲙⲟⲓ ⲥⲱⲧⲙ",
+            translit: "ere= mmon m‑moi sōtm",
+            meaning: {
+              de: "veranlasste mich zu hören",
+              en: "caused me to listen",
+              ar: "سبّب أن أستمع",
+            },
+          },
+        ],
       },
       {
-        type: 'grammar',
-        title: { de: 'Nützliche Präfixe', en: 'Useful Prefixes', ar: 'السوابق المفيدة' },
+        type: "grammar",
+        title: {
+          de: "Kausativ als Verb „bewirken“",
+          en: "Causative used as verb 'to cause'",
+          ar: "ⲉⲣⲉ= كفعل «يسبّب»",
+        },
         rule: {
-          de: 'Einige Präfixe verändern die Bedeutung des Verbs (Younan App. 2): ⲙⲁ- („machen“), ⲁⲩ- („haben“ oder „vollendet“), ⲛⲉ- („werden“), ⲟⲩ- („sein“).',
-          en: 'Some prefixes modify the meaning of the verb (Younan App. 2): ⲙⲁ- (to make), ⲁⲩ- (to have / perfective marker), ⲛⲉ- (to become), ⲟⲩ- (to be).',
-          ar: 'بعض السوابق تغيّر معنى الفعل (يونان الملحق 2): ⲙⲁ- (يعمل)، ⲁⲩ- (يملك أو يُتمّ)، ⲛⲉ- (يصبح)، ⲟⲩ- (يكون).'
+          de: "ⲉⲣⲉ= kann eigenständig als „bewirken, veranlassen“ stehen: ⲉⲣⲉ= + (Objektmarker) + Objekt + Infinitiv.",
+          en: "ⲉⲣⲉ= also functions as a verb ‘to cause’: ⲉⲣⲉ= + (object marker) + object + infinitive.",
+          ar: "يمكن استعمال ⲉⲣⲉ= كفعل مستقل «يُسبّب»: ‎ⲉⲣⲉ= + (أداة مفعول) + المفعول + المصدر.",
         },
         examples: [
-          { coptic: 'ⲙⲁⲥⲱⲧⲉⲙ', translit: 'ma-sotem', meaning: { de: 'bewirken, dass jemand hört', en: 'cause to hear', ar: 'يجعل يسمع' } }
-        ]
+          {
+            coptic: "ⲉⲣⲉ= ⲛⲁⲛ ⲉⲣⲉⲛϩⲱⲟⲩⲥ",
+            translit: "ere= nan ere‑n‑hōous",
+            meaning: {
+              de: "Er bewirkte, dass wir preisen.",
+              en: "He caused us to praise.",
+              ar: "جعلنا نسبّح.",
+            },
+          },
+        ],
       },
       {
-        type: 'grammar',
-        title: { de: 'Zusammengesetzte Präpositionen', en: 'Compound Prepositions', ar: 'حروف الجر المركّبة' },
+        type: "grammar",
+        title: {
+          de: "Verbales Substantiv",
+          en: "Verbal substantive",
+          ar: "الاسم المشتق من الفعل",
+        },
         rule: {
-          de: 'Viele zusammengesetzte Präpositionen bestehen aus einfachen Präpositionen + Nomen (Younan App. 3). Beispiel: ⲛ̀ⲥⲁ = „nach“ (= ⲛ̀ + ⲥⲁ „hinter“).',
-          en: 'Many compound prepositions arise from simple prepositions plus nouns (Younan App. 3). Example: ⲛ̀ⲥⲁ = “after” (from ⲛ̀ + ⲥⲁ “behind”).',
-          ar: 'تتكوّن العديد من حروف الجر المركّبة من حروف جر بسيطة + أسماء (يونان الملحق 3). مثال: ⲛ̀ⲥⲁ = "بعد" من ⲛ̀ + ⲥⲁ "خلف".'
+          de: "Der Infinitiv kann als Substantiv verwendet werden („das Loben“, „das Gehen“) und bezieht sich auf die Handlung selbst.",
+          en: "The infinitive can function as a noun (‘the praising’, ‘the going’), referring to the action itself.",
+          ar: "يمكن أن يعمل المصدر كاسم («التسبيح»، «الذهاب») مشيرًا إلى الفعل ذاته.",
         },
         examples: [
-          { coptic: 'ⲛ̀ⲥⲁ ⲡⲓⲣⲱⲙⲓ', translit: 'ensa pi-romi', meaning: { de: 'nach dem Mann', en: 'after the man', ar: 'بعد الرجل' } }
-        ]
+          {
+            coptic: "ⲡⲓϩⲱⲟⲩⲥ",
+            translit: "pi‑hōous",
+            meaning: {
+              de: "das Lob/der Lobpreis",
+              en: "the praise",
+              ar: "التسبيح",
+            },
+          },
+        ],
       },
       {
-        type: 'grammar',
-        title: { de: 'Pronominalsuffixe', en: 'Pronominal Suffixes', ar: 'اللواحق الضميرية' },
+        type: "grammar",
+        title: {
+          de: "Potential‑Infinitiv",
+          en: "Potential infinitive",
+          ar: "المصدر الدال على الإمكان",
+        },
         rule: {
-          de: 'Die Endungen für Personalpronomen variieren (Younan App. 4). Beispiel: ϥ = „sein“, ⲟⲩϥ = „er“. Diese werden an Verben und Präpositionen gehängt.',
-          en: 'Personal-pronoun endings vary (Younan App. 4). Example: ϥ = “his”, ⲟⲩϥ = “he”. They attach to verbs and prepositions.',
-          ar: 'تنتهي الضمائر الشخصية بصيغ تختلف (يونان الملحق 4). مثال: ϥ = "له"، ⲟⲩϥ = "هو". تلحق بالأفعال وحروف الجر.'
+          de: "ⲟⲩⲟⲛ ⲉϣⲟⲙ „هناك قدرة“ → „es ist möglich (zu …)“. Negativ: ⲙⲙⲟⲛⲉϣⲟⲙ oder mit Negativ des Plusquamperfekts + ⲉϣⲟⲙ für Vergangenheit („konnte nicht …“).",
+          en: "ⲟⲩⲟⲛ ⲉϣⲟⲙ ‘there is ability’ → ‘it is possible (to …)’. Negative: ⲙⲙⲟⲛⲉϣⲟⲙ, or use the negative pluperfect + ⲉϣⲟⲙ to express past ‘could not’.",
+          ar: "ⲟⲩⲟⲛ ⲉϣⲟⲙ «هناك قدرة» ⇒ «يمكن (أن…)». النفي: ⲙⲙⲟⲛⲉϣⲟⲙ، أو نفي الماضي الأسبق + ⲉϣⲟⲙ للدلالة على «لم يستطع».",
         },
         examples: [
-          { coptic: 'ⲡⲓⲟⲩⲱϣⲓ ⲉⲣⲟϥ', translit: 'pi-ouoshi erof', meaning: { de: 'der Lobpreis für ihn', en: 'praise to him', ar: 'التسبيح له' } }
-        ]
+          {
+            coptic: "ⲟⲩⲟⲛ ⲉϣⲟⲙ ⲛⲁϣⲱⲧⲙ",
+            translit: "ouon esjōm na‑shōtm",
+            meaning: {
+              de: "Es ist möglich, zu hören.",
+              en: "It is possible to listen.",
+              ar: "من الممكن أن يسمع.",
+            },
+          },
+          {
+            coptic: "ⲙⲙⲟⲛⲉϣⲟⲙ ⲙⲙⲟϥ",
+            translit: "mmon esjōm mmof",
+            meaning: {
+              de: "Es ist nicht möglich für ihn.",
+              en: "It is not possible for him.",
+              ar: "ليس ممكنًا له.",
+            },
+          },
+          {
+            coptic: "ⲙⲡⲟⲩ ⲉϣⲟⲙ ⲛⲁⲙⲟⲛⲓ",
+            translit: "mpou esjōm na‑Amoni",
+            meaning: {
+              de: "Sie konnten ihn nicht halten.",
+              en: "They could not hold him.",
+              ar: "لم يستطيعوا أن يمسكوه.",
+            },
+          },
+        ],
       },
       {
-        type: 'grammar',
-        title: { de: 'Übungszusammenfassung', en: 'Practice Review', ar: 'مراجعة تطبيقية' },
+        type: "grammar",
+        title: { de: "„Noch nicht“", en: "Not yet", ar: "ليس بعد" },
         rule: {
-          de: 'Übung: Übersetze kurze Sätze unter Verwendung von Präfixen und Suffixen.',
-          en: 'Exercise: Translate short sentences using prefixes and suffixes.',
-          ar: 'تمرين: ترجم جملًا قصيرة باستخدام السوابق واللواحق.'
+          de: "ⲙⲡⲁⲧ= (pronominal) / ⲙⲡⲁⲧⲉ‑ (Konstrukt) → „noch nicht/ bevor“. Mit Ne‑Partikel kann Vergangenheit „hatte noch nicht“ ausgedrückt werden.",
+          en: "Use ⲙⲡⲁⲧ= (pronominal) / ⲙⲡⲁⲧⲉ‑ (construct) for ‘not yet/before’. Combine with the pluperfect particle ⲛⲉ‑ for ‘had not yet’.",
+          ar: "ⲙⲡⲁⲧ= (ضميري) / ⲙⲡⲁⲧⲉ‑ (إضافي) لمعنى «ليس بعد/قبل». مع ‎ⲛⲉ‑ تُفيد «لم يكن بعد قد…».",
         },
         examples: [
-          { coptic: 'ⲁϥⲥⲱⲧⲉⲙ ⲛ̀ϩⲏⲧϥ', translit: 'af-sotem en-heetf', meaning: { de: 'Er hörte in seinem Herzen.', en: 'He heard in his heart.', ar: 'سمع في قلبه.' } }
-        ]
-      }
-    ]
+          {
+            coptic: "ⲙⲡⲁⲧⲉⲫⲓ ⲉⲡⲁⲓⲙⲁ",
+            translit: "mpatef‑i e‑paima",
+            meaning: {
+              de: "Er war noch nicht gekommen.",
+              en: "He had not yet come.",
+              ar: "لم يكن قد أتى بعد.",
+            },
+          },
+          {
+            coptic: "ⲙⲡⲁⲧⲉ ⲡⲓⲡⲁⲣⲁⲃⲟⲗⲏ",
+            translit: "mpate pi‑parabolē",
+            meaning: {
+              de: "bevor das Gleichnis …",
+              en: "before the parable …",
+              ar: "قبل المثل…",
+            },
+          },
+        ],
+      },
+      {
+        type: "grammar",
+        title: {
+          de: "Verbketten (ⲛ/ⲉ)",
+          en: "Verb chains (ⲛ / ⲉ)",
+          ar: "سلاسل الأفعال (ⲛ/ⲉ)",
+        },
+        rule: {
+          de: "Wenn ein Verb direkt ein weiteres regiert, verbindet ⲛ das zweite Verb; steht ein anderes Wort dazwischen, steht ⲉ vor dem zweiten Verb.",
+          en: "When one verb governs another, use ⲛ before the second verb; if another word intervenes, use ⲉ.",
+          ar: "عند اقتران فعلين: تُستعمل ⲛ قبل الفعل الثاني مباشرة؛ وإذا تخلّل لفظ آخر استُعملت ⲉ قبل الفعل الثاني.",
+        },
+        examples: [
+          {
+            coptic: "ⲁⲫϩⲉⲙⲥⲓ ⲉⲧⲉⲥⲃⲱ",
+            translit: "af‑hemsi e‑tesbō",
+            meaning: {
+              de: "Er begann zu lehren.",
+              en: "He began to teach.",
+              ar: "بدأ يعلّم.",
+            },
+          },
+          {
+            coptic: "ⲧⲉⲧⲉⲛⲥⲱⲧⲙ ⲛⲉⲣⲇⲟⲕⲓⲙⲁⲍⲓⲛ",
+            translit: "teten‑sōtm ner‑dokimazin",
+            meaning: {
+              de: "Ihr wisst zu prüfen.",
+              en: "You know how to discern.",
+              ar: "أنتم تعرفون أن تمتحنوا.",
+            },
+          },
+        ],
+      },
+    ],
   },
-
-  'm16-l2': {
-    id: 'm16-l2',
-    order: 2,
-    moduleId: 'm16',
-    title: {
-      de: 'Fortgeschrittene Verbformen & Passiv',
-      en: 'Advanced Verb Forms & Passive',
-      ar: 'صيغ الأفعال المتقدمة والمنفعل'
-    },
-    prerequisites: ['m16-l1'],
-    quizId: 'q16-l2',
-    slides: [
-      {
-        type: 'grammar',
-        title: { de: 'Passiv-Konstruktionen', en: 'Passive Constructions', ar: 'التركيبات المنفعلة' },
-        rule: {
-          de: 'Bohairisches Koptisch kennt verschiedene Passiv-Konstruktionen, oft mit Partikeln wie ⲁⲩ- oder durch Kontext. Das Passiv zeigt, dass das Subjekt die Handlung erleidet.',
-          en: 'Bohairic Coptic has various passive constructions, often with particles like ⲁⲩ- or through context. The passive shows that the subject undergoes the action.',
-          ar: 'القبطية البوحيرية تحتوي على تركيبات منفعلة مختلفة، غالباً بجزيئات مثل ⲁⲩ- أو عبر السياق. المنفعل يظهر أن الفاعل يتلقى الفعل.'
-        },
-        examples: [
-          { coptic: 'ⲁⲩⲥⲱⲧⲉⲙ ⲛ̀ⲡⲓⲥⲁϫⲓ', translit: 'au-sotem en-ep-saji', meaning: { de: 'das Wort wurde gehört', en: 'the word was heard', ar: 'الكلمة سُمعت' } },
-          { coptic: 'ⲁⲩⲙⲉⲩⲓⲱⲧ ⲙ̀Ⲫϯ', translit: 'au-meuiiot em-Efnouti', meaning: { de: 'Gott wurde geliebt', en: 'God was loved', ar: 'الله أُحبّ' } }
-        ]
-      },
-      {
-        type: 'grammar',
-        title: { de: 'Kausative Verben mit ⲙⲁ-', en: 'Causative Verbs with ⲙⲁ-', ar: 'أفعال السببية بـ ⲙⲁ-' },
-        rule: {
-          de: 'Das Präfix ⲙⲁ- macht Verben kausativ: „bewirken, dass jemand etwas tut". Beispiel: ⲙⲁⲥⲱⲧⲉⲙ = „bewirken, dass jemand hört".',
-          en: 'The prefix ⲙⲁ- makes verbs causative: "cause someone to do something". Example: ⲙⲁⲥⲱⲧⲉⲙ = "cause to hear".',
-          ar: 'السابقة ⲙⲁ- تجعل الأفعال سببية: "يجعل شخصاً يفعل شيئاً". مثال: ⲙⲁⲥⲱⲧⲉⲙ = "يجعل يسمع".'
-        },
-        examples: [
-          { coptic: 'ⲙⲁⲥⲱⲧⲉⲙ ⲙ̀ⲡⲓⲗⲁⲟⲥ', translit: 'ma-sotem em-ep-laos', meaning: { de: 'das Volk zum Hören bringen', en: 'make the people hear', ar: 'يجعل الشعب يسمع' } },
-          { coptic: 'ⲙⲁⲙⲉⲩⲓⲱⲧ ⲙ̀ⲡⲓⲣⲱⲙⲓ', translit: 'ma-meuiiot em-pi-romi', meaning: { de: 'den Mann zum Lieben bringen', en: 'make the man love', ar: 'يجعل الرجل يحب' } }
-        ]
-      },
-      {
-        type: 'grammar',
-        title: { de: 'Verben mit ⲛⲉ- (werden)', en: 'Verbs with ⲛⲉ- (to become)', ar: 'أفعال مع ⲛⲉ- (يصبح)' },
-        rule: {
-          de: 'ⲛⲉ- drückt einen Zustandswechsel aus: „werden, sich verwandeln in". Wird oft mit Adjektiven kombiniert.',
-          en: 'ⲛⲉ- expresses a state change: "to become, to turn into". Often combined with adjectives.',
-          ar: 'ⲛⲉ- تعبّر عن تغيير الحالة: "يصبح/يتحول إلى". غالباً تُدمج مع الصفات.'
-        },
-        examples: [
-          { coptic: 'ⲛⲉⲟⲩⲱⲛⲓ', translit: 'ne-ouoni', meaning: { de: 'Licht werden', en: 'become light', ar: 'يصبح نوراً' } },
-          { coptic: 'ⲛⲉⲙⲉⲩⲓⲱⲧ', translit: 'ne-meuiiot', meaning: { de: 'liebend werden', en: 'become loving', ar: 'يصبح محباً' } }
-        ]
-      },
-      {
-        type: 'sentence',
-        item: {
-          text: 'ⲁⲩⲥⲱⲧⲉⲙ ⲛ̀ⲡⲓⲥⲁϫⲓ ⲛ̀ⲧⲉ ⲡ̀ϭⲟⲓⲥ',
-          translit: 'au-sotem en-ep-saji ente ep-chois',
-          meaning: { de: 'Das Wort des Herrn wurde gehört.', en: 'The word of the Lord was heard.', ar: 'كلمة الرب سُمعت.' }
-        }
-      }
-    ]
-  }
 };
 
 export const QUIZZES: Record<string, Quiz> = {
-  'q16-l1': {
-    id: 'q16-l1',
-    lessonId: 'm16-l1',
-    title: { de: 'Quiz: Wiederholung & Fortgeschrittene Formen', en: 'Quiz: Review & Advanced Forms', ar: 'اختبار: المراجعة والأشكال المتقدّمة' },
-    passScore: 70,
+  "q16-1": {
+    id: "q16-1",
+    title: {
+      de: "Mini‑Quiz: Infinitiv‑Strukturen",
+      en: "Mini‑quiz: Infinitive structures",
+      ar: "اختبار: بنى المصدر",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q16-l1-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet das Präfix ⲙⲁ-?', en: 'What does the prefix ⲙⲁ- mean?', ar: 'ماذا يعني السابقة ⲙⲁ-؟' },
+        id: "q16-1-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Welche Konstruktion drückt den Kausativ aus?",
+          en: "Which construction expresses the causative?",
+          ar: "أي تركيب يعبّر عن السببية؟",
+        },
         options: [
-          { de: 'haben', en: 'to have', ar: 'يملك' },
-          { de: 'machen / verursachen', en: 'to make / cause', ar: 'يعمل أو يُسبّب' },
-          { de: 'werden', en: 'to become', ar: 'يصبح' }
+          { de: "ⲛ + Infinitiv", en: "ⲛ + infinitive", ar: "ⲛ + مصدر" },
+          {
+            de: "ⲉⲣⲉ= + (Objekt) + Infinitiv",
+            en: "ⲉⲣⲉ= + (object) + infinitive",
+            ar: "ⲉⲣⲉ= + (مفعول) + مصدر",
+          },
+          { de: "ⲙⲡⲁⲧ=", en: "ⲙⲡⲁⲧ=", ar: "ⲙⲡⲁⲧ=" },
         ],
-        correctAnswerIndex: 1
+        correctAnswerIndex: 1,
       },
       {
-        id: 'q16-l1-2',
-        type: 'multiple-choice',
-        questionText: { de: 'ⲛ̀ⲥⲁ bedeutet…', en: 'ⲛ̀ⲥⲁ means…', ar: 'ⲛ̀ⲥⲁ تعني…' },
-        options: [
-          { de: 'vor', en: 'before', ar: 'قبل' },
-          { de: 'nach / hinter', en: 'after / behind', ar: 'بعد / خلف' },
-          { de: 'über', en: 'over', ar: 'فوق' }
-        ],
-        correctAnswerIndex: 1
+        id: "q16-1-2",
+        type: "cloze",
+        questionText: {
+          de: "Ergänze: „Es ist möglich zu hören“ ⲟⲩⲟⲛ ___",
+          en: "Complete: “it is possible to listen” ⲟⲩⲟⲛ ___",
+          ar: "أكمل: «يمكن أن يسمع» ⲟⲩⲟⲛ ___",
+        },
+        answer: "ⲉϣⲟⲙ",
       },
       {
-        id: 'q16-l1-3',
-        type: 'multiple-choice',
-        questionText: { de: 'Welches Suffix steht für „ihn"?', en: 'Which suffix means "him"?', ar: 'أي لاحقة تعني "له"؟' },
+        id: "q16-1-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wie drückt man „noch nicht“ aus?",
+          en: "How do you express ‘not yet’?",
+          ar: "كيف نعبّر عن «ليس بعد»؟",
+        },
         options: [
-          { de: 'ⲥ', en: '-s', ar: '-ⲥ' },
-          { de: 'ϥ', en: '-f', ar: '-ϥ' },
-          { de: 'ⲧⲉ', en: '-te', ar: '-ⲧⲉ' }
+          { de: "ⲙⲡⲁⲧ= / ⲙⲡⲁⲧⲉ‑", en: "ⲙⲡⲁⲧ= / ⲙⲡⲁⲧⲉ‑", ar: "ⲙⲡⲁⲧ= / ⲙⲡⲁⲧⲉ‑" },
+          {
+            de: "ⲙⲡⲉⲣ‑ + Infinitiv",
+            en: "mper‑ + infinitive",
+            ar: "ⲙⲡⲉⲣ‑ + مصدر",
+          },
+          { de: "ⲥⲁⲛ‑ + Verb", en: "san‑ + verb", ar: "ⲥⲁⲛ‑ + فعل" },
         ],
-        correctAnswerIndex: 1
+        correctAnswerIndex: 0,
       },
       {
-        id: 'q16-l1-4',
-        type: 'multiple-choice',
-        questionText: { de: 'Welche Form ist ein Beispiel für das Präsens?', en: 'Which form is an example of the present tense?', ar: 'أي صيغة هي مثال على زمن الحاضر؟' },
-        options: [
-          { de: 'ϯⲙⲟϣⲓ', en: 'ti-moshi', ar: 'ϯⲙⲟϣⲓ' },
-          { de: 'ⲛ̀ϥⲙⲟϣⲓ', en: 'enf-moshi', ar: 'ⲛ̀ϥⲙⲟϣⲓ' },
-          { de: 'ⲁϥⲙⲟϣⲓ', en: 'af-moshi', ar: 'ⲁϥⲙⲟϣⲓ' }
+        id: "q16-1-4",
+        type: "matching",
+        pairs: [
+          {
+            left: "ⲉⲣⲉϥ‑ⲥⲱⲧⲙ",
+            right: {
+              de: "damit er hört",
+              en: "so that he hears",
+              ar: "لكي يسمع",
+            },
+          },
+          {
+            left: "ⲙⲙⲟⲛⲉϣⲟⲙ",
+            right: { de: "nicht möglich", en: "not possible", ar: "غير ممكن" },
+          },
+          {
+            left: "ⲙⲡⲁⲧ=",
+            right: { de: "noch nicht", en: "not yet", ar: "ليس بعد" },
+          },
         ],
-        correctAnswerIndex: 0
       },
       {
-        id: 'q16-l1-5',
-        type: 'multiple-choice',
-        questionText: { de: 'Welche Kombination ist richtig gebildet?', en: 'Which combination is correctly formed?', ar: 'أي تركيب صحيح؟' },
-        options: [
-          { de: 'ⲛ̀ⲥⲁ ⲡⲓⲙⲁⲁⲩ = nach der Mutter', en: 'ⲛ̀ⲥⲁ pi-maav = after the mother', ar: 'ⲛ̀ⲥⲁ ⲡⲓⲙⲁⲁⲩ = بعد الأم' },
-          { de: 'ⲛ̀ⲥⲁ ⲡⲓⲣⲱⲙⲓ = vor dem Mann', en: 'ⲛ̀ⲥⲁ pi-romi = before the man', ar: 'ⲛ̀ⲥⲁ ⲡⲓⲣⲱⲙⲓ = قبل الرجل' },
-          { de: 'ⲙ̀ⲥⲁ ⲡⲓⲣⲱⲙⲓ = unter dem Mann', en: 'ⲙ̀ⲥⲁ pi-romi = under the man', ar: 'ⲙ̀ⲥⲁ ⲡⲓⲣⲱⲙⲓ = تحت الرجل' }
-        ],
-        correctAnswerIndex: 0
-      }
-    ]
+        id: "q16-1-5",
+        type: "production",
+        prompt: {
+          de: "Forme: „Er ließ uns sprechen“ mit Kausativ.",
+          en: "Produce: “He made us speak” using the causative.",
+          ar: "كوّن: «جعلنا نتكلم» باستعمال السببي.",
+        },
+        correctAnswer: { coptic: "ⲉⲣⲉ= ⲛⲁⲛ ⲥⲁⲅⲓ", translit: "ere= nan sagi" },
+      },
+    ],
   },
-  'q16-l2': {
-    id: 'q16-l2',
-    lessonId: 'm16-l2',
-    title: { de: 'Quiz: Fortgeschrittene Verbformen', en: 'Quiz: Advanced Verb Forms', ar: 'اختبار: صيغ الأفعال المتقدمة' },
-    passScore: 70,
-    questions: [
-      {
-        id: 'q16-l2-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet ⲁⲩ- in Passiv-Konstruktionen?', en: 'What does ⲁⲩ- mean in passive constructions?', ar: 'ماذا يعني ⲁⲩ- في التركيبات المنفعلة؟' },
-        options: [
-          { de: 'Passiv-Marker', en: 'passive marker', ar: 'علامة المنفعل' },
-          { de: 'Aktiv-Marker', en: 'active marker', ar: 'علامة الفاعل' },
-          { de: 'Imperativ', en: 'imperative', ar: 'أمر' }
-        ],
-        correctAnswerIndex: 0
-      },
-      {
-        id: 'q16-l2-2',
-        type: 'multiple-choice',
-        questionText: { de: 'Was macht ⲛⲉ-?', en: 'What does ⲛⲉ- do?', ar: 'ماذا يفعل ⲛⲉ-؟' },
-        options: [
-          { de: 'drückt Zustandswechsel aus (werden)', en: 'expresses state change (become)', ar: 'يعبّر عن تغيير الحالة (يصبح)' },
-          { de: 'macht Verben kausativ', en: 'makes verbs causative', ar: 'يجعل الأفعال سببية' },
-          { de: 'zeigt Passiv an', en: 'shows passive', ar: 'يدل على المنفعل' }
-        ],
-        correctAnswerIndex: 0
-      }
-    ]
-  }
 };

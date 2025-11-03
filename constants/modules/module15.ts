@@ -1,206 +1,283 @@
-// ───────────────────────────────
-// Module 15 – Different Ways of Having Things
-// Source grammar from Younan, "So You Want to Learn Coptic?" (ch. 15 § 15.1-15.5)
-// Patristic citations from Papandrea & Bercot; Bible verses Schlachter 2000
-// ───────────────────────────────
-
-import type { Lesson, Quiz } from '../../types';
+import type { Lesson, Quiz } from "../../types";
 
 export const LESSONS: Record<string, Lesson> = {
-
-    // Lesson 15-1 – Possessive Articles
-    'l15-1': {
-      id: 'l15-1',
-      order: 1,
-      moduleId: 'm15',
-      title: {
-        de: 'Besitzanzeigende Artikel',
-        en: 'Possessive Articles',
-        ar: 'أدوات الملكية'
-      },
-      prerequisites: [],
-      quizId: 'q15-1',
-      slides: [
-        {
-          type: 'grammar',
-          title: {
-            de: 'Bildung des Possessivartikels',
-            en: 'Forming the Possessive Article',
-            ar: 'تكوين أداة الملكية'
-          },
-          rule: {
-            de: 'Die Possessivartikel werden gebildet, indem die Personalpräfixe vor den Artikel gesetzt werden (ⲡ, ⲧ, ⲛ). Sie drücken „mein, dein, sein“ usw. aus.',
-            en: 'Possessive articles are formed by placing the personal prefix before the article (ⲡ, ⲧ, ⲛ) to express “my, your, his,” etc.',
-            ar: 'تُكوَّن أدوات الملكية بإضافة السابقة الشخصية قبل أداة التعريف (ⲡ، ⲧ، ⲛ) لتعبير عن "لي، لك، له" إلخ.'
-          },
-          examples: [
-            { coptic: 'ⲡⲁⲓⲱⲧ', translit: 'pa-iot', meaning: { de: 'mein Vater', en: 'my father', ar: 'أبي' } },
-            { coptic: 'ⲧⲁⲙⲁⲁⲩ', translit: 'ta-maau', meaning: { de: 'meine Mutter', en: 'my mother', ar: 'أمي' } },
-            { coptic: 'ⲛⲁϣⲏⲣⲓ', translit: 'na-sheri', meaning: { de: 'meine Kinder', en: 'my children', ar: 'أولادي' } }
-          ]
-        },
-        
-      ]
+  "m15-l1": {
+    id: "m15-l1",
+    order: 1,
+    moduleId: "m15",
+    title: {
+      de: "Imperativ, Optativ & Konditional",
+      en: "Imperative, Optative & Conditional",
+      ar: "الأمر، الصيغة الرغبية والشرطية",
     },
-  
-    // Lesson 15-2 – Possessive Construction
-    'l15-2': {
-      id: 'l15-2',
-      order: 2,
-      moduleId: 'm15',
-      title: {
-        de: 'Die Besitzkonstruktion',
-        en: 'The Possessive Construction',
-        ar: 'تركيب الملكية'
-      },
-      prerequisites: ['l15-1'],
-      quizId: 'q15-1',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Nomen + ⲛ̀ + Nomen', en: 'Noun + ⲛ̀ + Noun', ar: 'اسم + ⲛ̀ + اسم' },
-          rule: {
-            de: 'Besitz wird durch die Konstruktion „ⲡⲓ… ⲛ̀…“ angezeigt: das erste Substantiv gehört dem zweiten.',
-            en: 'Possession is shown by the construction “ⲡⲓ… ⲛ̀…” — the first noun belongs to the second.',
-            ar: 'يُعبَّر عن الملكية بتركيب "ⲡⲓ… ⲛ̀…" حيث الاسم الأول يخص الثاني.'
-          },
-          examples: [
-            { coptic: 'ⲡⲓⲏⲓ ⲛ̀ⲡ̀ⲣⲱⲙⲓ', translit: 'pi-ee en-ep-romi', meaning: { de: 'das Haus des Mannes', en: 'the house of the man', ar: 'بيت الرجل' } },
-            { coptic: 'ⲡⲓⲣⲁⲛ ⲛ̀ⲧⲉ Ⲫϯ', translit: 'pi-ran ente Efnouti', meaning: { de: 'der Name Gottes', en: 'the name of God', ar: 'اسم الله' } }
-          ]
+    prerequisites: ["m12-l1", "m13-l1", "m14-l1"],
+    quizId: "q15-1",
+    slides: [
+      {
+        type: "grammar",
+        title: {
+          de: "Imperativ (Affirmativ)",
+          en: "Imperative (affirmative)",
+          ar: "صيغة الأمر (إثبات)",
         },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ⲡⲓⲥⲱⲙⲁ ⲛ̀ⲧⲉ Ⲡⲓⲭⲣⲓⲥⲧⲟⲥ',
-            translit: 'pi-soma ente pi-Christos',
-            meaning: { de: 'der Leib Christi', en: 'the body of Christ', ar: 'جسد المسيح' }
-          },
-          
-        }
-      ]
-    },
-  
-    // Lesson 15-3 – Existential ⲟⲩⲱⲛ (“to have”)
-    'l15-3': {
-      id: 'l15-3',
-      order: 3,
-      moduleId: 'm15',
-      title: {
-        de: 'Das Existential „ⲟⲩⲱⲛ“ – Haben und Sein',
-        en: 'The Existential ⲟⲩⲱⲛ – To Have and To Be',
-        ar: 'الفعل ⲟⲩⲱⲛ (يكون/يملك)'
-      },
-      prerequisites: ['l15-2'],
-      quizId: 'q15-1',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Verwendung von ⲟⲩⲱⲛ', en: 'Use of ⲟⲩⲱⲛ', ar: 'استخدام ⲟⲩⲱⲛ' },
-          rule: {
-            de: 'ⲟⲩⲱⲛ bedeutet „es gibt“ oder „haben“. Mit ⲛ̀- zeigt man den Besitzer: „ⲟⲩⲱⲛ ⲛ̀ⲁⲓ“ = ich habe.',
-            en: 'ⲟⲩⲱⲛ means “there is” or “to have.” Add ⲛ̀- to mark the possessor: “ⲟⲩⲱⲛ ⲛ̀ⲁⲓ” = I have.',
-            ar: 'ⲟⲩⲱⲛ تعني "يوجد" أو "يملك". بإضافة ⲛ̀- يُحدد المالك: "ⲟⲩⲱⲛ ⲛ̀ⲁⲓ" = أنا عندي.'
-          },
-          examples: [
-            { coptic: 'ⲟⲩⲱⲛ ⲛ̀ⲁⲓ ⲛ̀ⲟⲩⲉⲣⲡⲉ', translit: 'ouon nai nou-erpe', meaning: { de: 'ich habe ein Haus', en: 'I have a house', ar: 'عندي بيت' } },
-            { coptic: 'ⲟⲩⲱⲛ ⲛ̀ϥ ⲛ̀ϩⲏⲧ ⲉⲩⲟⲩⲁⲓ', translit: 'ouon nef nehit eu-ouai', meaning: { de: 'er hat ein gutes Herz', en: 'he has a good heart', ar: 'له قلب صالح' } }
-          ]
+        rule: {
+          de: "Der Imperativ bildet sich aus dem Infinitiv mit vorgesetztem a‑ oder ma‑ je nach Verb. Viele Verben bilden a‑ + Infinitiv (ⲁⲛⲁⲩ „sieh!“), andere ma‑ (ⲙⲁⲟⲩⲱⲙ „iss!“).",
+          en: "The Coptic imperative is formed by prefixing a‑ or ma‑ to the infinitive, depending on the verb. Many take a‑ (ⲁⲛⲁⲩ “see!”), others ma‑ (ⲙⲁⲟⲩⲱⲙ “eat!”).",
+          ar: "تُصاغ صيغة الأمر بإضافة ‎a‑ أو ‎ma‑ قبل المصدر حسب الفعل: كثير من الأفعال تأخذ ‎a‑ (ⲁⲛⲁⲩ «انظر!»)، وأخرى ‎ma‑ (ⲙⲁⲟⲩⲱⲙ «كُل!»).",
         },
-        
-      ]
-    },
-  
-    // Lesson 15-4 – Possessive Pronouns
-    'l15-4': {
-      id: 'l15-4',
-      order: 4,
-      moduleId: 'm15',
-      title: {
-        de: 'Possessiv-Pronomen',
-        en: 'Possessive Pronouns',
-        ar: 'ضمائر الملكية'
+        examples: [
+          {
+            coptic: "ⲁⲛⲁⲩ",
+            translit: "anau",
+            meaning: { de: "Sieh!", en: "Look!", ar: "انظر!" },
+          },
+          {
+            coptic: "ⲙⲁⲟⲩⲱⲙ",
+            translit: "ma‑ouwm",
+            meaning: { de: "Iss!", en: "Eat!", ar: "كُل!" },
+          },
+          {
+            coptic: "ⲁⲣⲓⲙⲉⲑⲙⲏⲧ",
+            translit: "ari‑methmēt",
+            meaning: {
+              de: "Sei barmherzig!",
+              en: "Be merciful!",
+              ar: "كُن رحيمًا!",
+            },
+          },
+        ],
       },
-      prerequisites: ['l15-3'],
-      quizId: 'q15-1',
-      slides: [
-        {
-          type: 'grammar',
-          title: { de: 'Unabhängige Possessivpronomen', en: 'Independent Possessive Pronouns', ar: 'ضمائر الملكية المنفصلة' },
-          rule: {
-            de: 'Wenn kein Substantiv folgt, wird ⲡⲁⲓ, ⲧⲁⲓ, ⲛⲁⲓ verwendet (entspricht „meiner / meine / meine (pl.)“).',
-            en: 'When no noun follows, use ⲡⲁⲓ, ⲧⲁⲓ, ⲛⲁⲓ = “mine” (m./f./pl.).',
-            ar: 'عندما لا يتبعها اسم تُستخدم ⲡⲁⲓ، ⲧⲁⲓ، ⲛⲁⲓ بمعنى "لي" (مذكر/مؤنث/جمع).'
-          },
-          examples: [
-            { coptic: 'ⲡⲁⲓ ⲡⲉ', translit: 'pai pe', meaning: { de: 'das ist meiner', en: 'that is mine (m.)', ar: 'هذا لي' } },
-            { coptic: 'ⲧⲁⲓ ⲧⲉ', translit: 'tai te', meaning: { de: 'das ist meine (f.)', en: 'that is mine (f.)', ar: 'هذه لي' } }
-          ]
+      {
+        type: "grammar",
+        title: {
+          de: "Imperativ (Negation)",
+          en: "Negative imperative",
+          ar: "نفي الأمر",
         },
-        {
-          type: 'sentence',
-          item: {
-            text: 'ⲡⲁⲓ ⲡⲉ ⲡ̀ϣⲏⲣⲓ ⲙ̀Ⲫϯ',
-            translit: 'pai pe ep-shiiri em-Efnouti',
-            meaning: { de: 'Dieser ist der Sohn Gottes', en: 'This is the Son of God', ar: 'هذا هو ابن الله' }
+        rule: {
+          de: "Negation mit ⲙⲡⲉⲣ‑ vor dem Infinitiv: „Tu nicht …!“ → ⲙⲡⲉⲣⲥⲱⲧⲙ „hör nicht!“.",
+          en: "Negate orders with ⲙⲡⲉⲣ‑ before the infinitive: ⲙⲡⲉⲣⲥⲱⲧⲙ “do not listen!”.",
+          ar: "تُنْفَى الأوامر بوضع ‎ⲙⲡⲉⲣ‑ قبل المصدر: ‎ⲙⲡⲉⲣⲥⲱⲧⲙ «لا تسمع!».",
+        },
+        examples: [
+          {
+            coptic: "ⲙⲡⲉⲣⲟⲩⲱⲙ",
+            translit: "mper‑ouwm",
+            meaning: { de: "Iss nicht!", en: "Do not eat!", ar: "لا تأكل!" },
           },
-          
-        }
-      ]
-    }
-  };
+          {
+            coptic: "ⲁⲛⲟⲕ ⲡⲉ ⲙⲡⲉⲣϩⲱⲥ",
+            translit: "anok pe mper‑hōs",
+            meaning: {
+              de: "Ich bin es, fürchte nicht.",
+              en: "It is I; do not fear.",
+              ar: "أنا هو؛ لا تخف.",
+            },
+          },
+        ],
+      },
+      {
+        type: "grammar",
+        title: {
+          de: "Optativ (milder Befehl)",
+          en: "Optative (mild command/wish)",
+          ar: "الصيغة الرغبية (تمنٍّ/أمر لطيف)",
+        },
+        rule: {
+          de: "Der Optativ verwendet ⲙⲁⲣ‑ + abhängiges Pronomen + Infinitiv, z. B. ⲙⲁⲣⲉⲛ‑ⲑⲱⲟⲩⲥ „lasst uns preisen“.",
+          en: "Optative uses ⲙⲁⲣ‑ + dependent pronoun + infinitive, e.g., ⲙⲁⲣⲉⲛ‑ϩⲱⲟⲩⲥ “let us praise.”",
+          ar: "تُصاغ الرغبية بـ ‎ⲙⲁⲣ‑ + ضمير تابع + المصدر، مثل ‎ⲙⲁⲣⲉⲛ‑ϩⲱⲟⲩⲥ «لنسبّح».",
+        },
+        examples: [
+          {
+            coptic: "ⲙⲁⲣⲉⲛϩⲱⲟⲩⲥ",
+            translit: "maren‑hōous",
+            meaning: {
+              de: "Lasst uns preisen.",
+              en: "Let us praise.",
+              ar: "لنسبّح.",
+            },
+          },
+          {
+            coptic: "ⲙⲁⲣⲉϥⲥⲱⲧⲙ",
+            translit: "maref‑sōtm",
+            meaning: {
+              de: "Möge er hören.",
+              en: "May he listen.",
+              ar: "ليسمع.",
+            },
+          },
+        ],
+      },
+      {
+        type: "grammar",
+        title: {
+          de: "Konditional (wenn/falls)",
+          en: "Conditional (if/when)",
+          ar: "الشرط (إذا/عندما)",
+        },
+        rule: {
+          de: "Zwischen Pronomen und Verb steht ⲥⲁⲛ‑ (ⲁⲓⲥⲁⲛ‑, ⲁⲕⲥⲁⲛ‑ …) für „wenn / sobald“. Negation des Konditionals nutzt die Subjunktiv‑Negation mit dem sog. „Stamm“ (ⲁⲣⲉ⳯ⲥⲧⲉⲙ …).",
+          en: "Insert ⲥⲁⲛ‑ between the subject pronoun and the verb for ‘if/when’ (e.g., ⲁⲓⲥⲁⲛ‑, ⲁⲕⲥⲁⲛ‑ …). The negative conditional uses the subjunctive‑type negative with the verb stem.",
+          ar: "تُدخل ‎ⲥⲁⲛ‑ بين الضمير والفعل لمعنى «إذا/متى» (ⲁⲓⲥⲁⲛ‑، ⲁⲕⲥⲁⲛ‑…). نفي الشرط يستعمل نفي الصيغة التابعة مع جذر الفعل.",
+        },
+        examples: [
+          {
+            coptic: "ⲁⲓⲥⲁⲛⲥⲱⲧⲙ, ⲁⲓⲥⲱⲧⲙ",
+            translit: "aisan‑sōtm, ai‑sōtm",
+            meaning: {
+              de: "Wenn ich höre, höre ich …",
+              en: "If I listen, I listen …",
+              ar: "إن استمعتُ، أستمع…",
+            },
+          },
+          {
+            coptic: "ⲁⲣⲉ⳯ⲥⲧⲉⲙ ⲉⲣⲟⲕ ⲉⲛⲧⲁⲓⲥⲱⲧⲙ",
+            translit: "are`stem erok entai‑sōtm",
+            meaning: {
+              de: "Wenn ich dir nicht hörte …",
+              en: "If I did not listen to you …",
+              ar: "لو لم أسمع لك…",
+            },
+          },
+        ],
+      },
+      {
+        type: "grammar",
+        title: {
+          de: "Alltagssprache",
+          en: "Everyday phrases",
+          ar: "عبارات يومية",
+        },
+        rule: {
+          de: "Kurze, nutzbare Wendungen mit Imperativ/Optativ/Konditional.",
+          en: "Short useful phrases with imperative/optative/conditional.",
+          ar: "تعبيرات قصيرة نافعة بصيغة الأمر/الرغبة/الشرط.",
+        },
+        examples: [
+          {
+            coptic: "ⲙⲡⲉⲣϩⲟⲥ",
+            translit: "mper‑hos",
+            meaning: {
+              de: "Fürchte dich nicht.",
+              en: "Do not fear.",
+              ar: "لا تخف.",
+            },
+          },
+          {
+            coptic: "ⲙⲁⲣⲉⲛⲥⲱⲧⲙ ⲉⲡϭⲟⲓⲥ",
+            translit: "maren‑sōtm ep‑chois",
+            meaning: {
+              de: "Lasst uns dem Herrn gehorchen.",
+              en: "Let us obey the Lord.",
+              ar: "لنطع الرب.",
+            },
+          },
+          {
+            coptic: "ⲁⲓⲥⲁⲛϯ ⲟⲩϯⲃⲁⲛⲏ",
+            translit: "aisan‑ti ou‑tivanē",
+            meaning: {
+              de: "Wenn ich Zeit habe …",
+              en: "If I have time …",
+              ar: "إن كان لدي وقت…",
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
 
 export const QUIZZES: Record<string, Quiz> = {
-  'q15-1': {
-    id: 'q15-1',
-    lessonId: 'l15-1',
-    title: { de: 'Quiz: Besitz & Besitzartikel', en: 'Quiz: Possession & Possessive Articles', ar: 'اختبار: الملكية وأدوات الملكية' },
-    passScore: 70,
+  "q15-1": {
+    id: "q15-1",
+    title: {
+      de: "Mini‑Quiz: Imperativ/Optativ/Konditional",
+      en: "Mini‑quiz: Imperative/Optative/Conditional",
+      ar: "اختبار: الأمر/الرغبة/الشرط",
+    },
+    passScore: 80,
     questions: [
       {
-        id: 'q15-1-1',
-        type: 'multiple-choice',
-        questionText: { de: 'Wie wird "mein Vater" auf Koptisch gesagt?', en: 'How is "my father" said in Coptic?', ar: 'كيف تقول "أبي" بالقبطية؟' },
+        id: "q15-1-1",
+        type: "multiple-choice",
+        questionText: {
+          de: "Welche Form ist ein negativer Imperativ?",
+          en: "Which form is a negative imperative?",
+          ar: "أي صيغة هي أمر منفي؟",
+        },
         options: [
-          { de: 'ⲡⲁⲓⲱⲧ', en: 'ⲡⲁⲓⲱⲧ', ar: 'ⲡⲁⲓⲱⲧ' },
-          { de: 'ⲡⲉⲕⲓⲱⲧ', en: 'ⲡⲉⲕⲓⲱⲧ', ar: 'ⲡⲉⲕⲓⲱⲧ' },
-          { de: 'ⲡⲉϥⲓⲱⲧ', en: 'ⲡⲉϥⲓⲱⲧ', ar: 'ⲡⲉϥⲓⲱⲧ' }
+          { de: "ⲁⲣⲓⲥⲱⲧⲙ", en: "ari‑sōtm", ar: "ⲁⲣⲓⲥⲱⲧⲙ" },
+          { de: "ⲙⲡⲉⲣⲥⲱⲧⲙ", en: "mper‑sōtm", ar: "ⲙⲡⲉⲣⲥⲱⲧⲙ" },
+          { de: "ⲙⲁⲣⲉⲛⲥⲱⲧⲙ", en: "maren‑sōtm", ar: "ⲙⲁⲣⲉⲛⲥⲱⲧⲙ" },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 1,
       },
       {
-        id: 'q15-1-2',
-        type: 'multiple-choice',
-        questionText: { de: 'Was ist die Besitzkonstruktion mit ⲛ̀?', en: 'What is the possessive construction with ⲛ̀?', ar: 'ما تركيب الملكية بـ ⲛ̀؟' },
-        options: [
-          { de: 'Nomen + ⲛ̀ + Besitzer', en: 'noun + ⲛ̀ + possessor', ar: 'اسم + ⲛ̀ + المالك' },
-          { de: 'Besitzer + ⲛ̀ + Nomen', en: 'possessor + ⲛ̀ + noun', ar: 'المالك + ⲛ̀ + اسم' },
-          { de: 'beide sind korrekt', en: 'both are correct', ar: 'كلاهما صحيح' }
-        ],
-        correctAnswerIndex: 0
+        id: "q15-1-2",
+        type: "cloze",
+        questionText: {
+          de: "Ergänze den Optativ: „Lasst uns lieben“ ⲙⲁⲣⲉⲛ‑ ___",
+          en: "Complete the optative: “let us love” ⲙⲁⲣⲉⲛ‑ ___",
+          ar: "أكمل الرغبية: «لنحبّ» ⲙⲁⲣⲉⲛ‑ ___",
+        },
+        answer: "ⲙⲉⲛⲣⲉ",
       },
       {
-        id: 'q15-1-3',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet ⲟⲩⲱⲛ?', en: 'What does ⲟⲩⲱⲛ mean?', ar: 'ماذا يعني ⲟⲩⲱⲛ؟' },
+        id: "q15-1-3",
+        type: "multiple-choice",
+        questionText: {
+          de: "Wie bildet man den Konditional?",
+          en: "How is the conditional formed?",
+          ar: "كيف تُصاغ الجملة الشرطية؟",
+        },
         options: [
-          { de: 'es gibt/haben', en: 'there is/to have', ar: 'يوجد/يملك' },
-          { de: 'sein', en: 'to be', ar: 'يكون' },
-          { de: 'gehen', en: 'to go', ar: 'يذهب' }
+          {
+            de: "ⲙⲁⲣ‑ + Infinitiv",
+            en: "mar‑ + infinitive",
+            ar: "ⲙⲁⲣ‑ + مصدر",
+          },
+          {
+            de: "ⲥⲁⲛ‑ zwischen Pronomen und Verb",
+            en: "ⲥⲁⲛ‑ between pronoun and verb",
+            ar: "ⲥⲁⲛ‑ بين الضمير والفعل",
+          },
+          {
+            de: "ⲙⲡⲉⲣ‑ + Infinitiv",
+            en: "mper‑ + infinitive",
+            ar: "ⲙⲡⲉⲣ‑ + مصدر",
+          },
         ],
-        correctAnswerIndex: 0
+        correctAnswerIndex: 1,
       },
       {
-        id: 'q15-1-4',
-        type: 'multiple-choice',
-        questionText: { de: 'Was bedeutet "ⲡⲁⲓ ⲡⲉ"?', en: 'What does "ⲡⲁⲓ ⲡⲉ" mean?', ar: 'ماذا يعني "ⲡⲁⲓ ⲡⲉ"؟' },
-        options: [
-          { de: 'das ist meiner (m.)', en: 'that is mine (m.)', ar: 'هذا لي' },
-          { de: 'das ist deiner', en: 'that is yours', ar: 'هذا لك' },
-          { de: 'das ist seiner', en: 'that is his', ar: 'هذا له' }
+        id: "q15-1-4",
+        type: "matching",
+        pairs: [
+          {
+            left: "ⲁⲛⲁⲩ",
+            right: { de: "Imperativ", en: "Imperative", ar: "أمر" },
+          },
+          {
+            left: "ⲙⲁⲣⲉϥⲥⲱⲧⲙ",
+            right: { de: "Optativ", en: "Optative", ar: "رغبيّة" },
+          },
+          {
+            left: "ⲁⲕⲥⲁⲛⲥⲱⲧⲙ",
+            right: { de: "Konditional", en: "Conditional", ar: "شرطي" },
+          },
         ],
-        correctAnswerIndex: 0
-      }
-    ]
-  }
+      },
+      {
+        id: "q15-1-5",
+        type: "production",
+        prompt: {
+          de: "Bilde: „Bitte, fürchte dich nicht!“ (negativer Imperativ mit ϩⲱⲥ).",
+          en: "Produce: “Please, do not fear!” (negative imperative with ϩⲱⲥ).",
+          ar: "كوّن: «من فضلك لا تخف!» (أمر منفي مع ϩⲱⲥ).",
+        },
+        correctAnswer: { coptic: "ⲙⲡⲉⲣϩⲱⲥ", translit: "mper‑hōs" },
+      },
+    ],
+  },
 };

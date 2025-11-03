@@ -3,11 +3,13 @@ import { MODULE_M1, LETTERS as LETTERS_M1, LESSONS as LESSONS_M1, QUIZZES as QUI
 import type { Module } from '../../types';
 
 // Import modules from the modules subdirectory
-import { LESSONS as LESSONS_M2, QUIZZES as QUIZZES_M2 } from './module2';
-import { LESSONS as LESSONS_M3, QUIZZES as QUIZZES_M3 } from './module3';
-import { LESSONS as LESSONS_M4, QUIZZES as QUIZZES_M4 } from './module4';
-import { LESSONS as LESSONS_M5, QUIZZES as QUIZZES_M5 } from './module5';
+import { LESSONS as LESSONS_M2, QUIZZES as QUIZZES_M2, MODULE_M2 } from './module2';
+import { LESSONS as LESSONS_M3, QUIZZES as QUIZZES_M3, MODULE_M3 } from './module3';
+import { LESSONS as LESSONS_M4, QUIZZES as QUIZZES_M4, MODULE_M4 } from './module4';
+import { LESSONS as LESSONS_M5, QUIZZES as QUIZZES_M5, MODULE_M5 } from './module5';
 import { LESSONS as LESSONS_M6, QUIZZES as QUIZZES_M6 } from './module6';
+import { LESSONS as LESSONS_M7, QUIZZES as QUIZZES_M7 } from './module7';
+import { LESSONS as LESSONS_M8, QUIZZES as QUIZZES_M8 } from './module8';
 import { LESSONS as LESSONS_M9, QUIZZES as QUIZZES_M9 } from './module9';
 import { LESSONS as LESSONS_M10, QUIZZES as QUIZZES_M10 } from './module10';
 import { LESSONS as LESSONS_M11, QUIZZES as QUIZZES_M11 } from './module11';
@@ -16,6 +18,10 @@ import { LESSONS as LESSONS_M13, QUIZZES as QUIZZES_M13 } from './module13';
 import { LESSONS as LESSONS_M14, QUIZZES as QUIZZES_M14 } from './module14';
 import { LESSONS as LESSONS_M15, QUIZZES as QUIZZES_M15 } from './module15';
 import { LESSONS as LESSONS_M16, QUIZZES as QUIZZES_M16 } from './module16';
+import { LESSONS as LESSONS_M17, QUIZZES as QUIZZES_M17 } from './module17';
+import { LESSONS as LESSONS_M18, QUIZZES as QUIZZES_M18 } from './module18';
+import { LESSONS as LESSONS_M19, QUIZZES as QUIZZES_M19 } from './module19';
+import { LESSONS as LESSONS_M20, QUIZZES as QUIZZES_M20 } from './module20';
 
 // Export Module 1 content
 export { MODULE_M1, LETTERS_M1, LESSONS_M1, QUIZZES_M1 };
@@ -33,6 +39,8 @@ export const LESSONS = {
   ...LESSONS_M4,
   ...LESSONS_M5,
   ...LESSONS_M6,
+  ...LESSONS_M7,
+  ...LESSONS_M8,
   ...LESSONS_M9,
   ...LESSONS_M10,
   ...LESSONS_M11,
@@ -41,6 +49,10 @@ export const LESSONS = {
   ...LESSONS_M14,
   ...LESSONS_M15,
   ...LESSONS_M16,
+  ...LESSONS_M17,
+  ...LESSONS_M18,
+  ...LESSONS_M19,
+  ...LESSONS_M20,
 };
 
 export const QUIZZES = {
@@ -50,6 +62,8 @@ export const QUIZZES = {
   ...QUIZZES_M4,
   ...QUIZZES_M5,
   ...QUIZZES_M6,
+  ...QUIZZES_M7,
+  ...QUIZZES_M8,
   ...QUIZZES_M9,
   ...QUIZZES_M10,
   ...QUIZZES_M11,
@@ -58,40 +72,15 @@ export const QUIZZES = {
   ...QUIZZES_M14,
   ...QUIZZES_M15,
   ...QUIZZES_M16,
+  ...QUIZZES_M17,
+  ...QUIZZES_M18,
+  ...QUIZZES_M19,
+  ...QUIZZES_M20,
 };
 
 // Create module objects for modules that don't have them
-const MODULE_M2: Module = {
-  id: 'm2',
-  order: 2,
-  title: { de: 'Zahlen', en: 'Numbers', ar: 'الأرقام' },
-  lessons: ['m2-l1', 'm2-l2', 'm2-l3'],
-  quizIds: ['q2-1', 'q2-2', 'q2-3'],
-};
-
-const MODULE_M3: Module = {
-  id: 'm3',
-  order: 3,
-  title: { de: 'Artikel & Pronomen', en: 'Articles & Pronouns', ar: 'الأدوات والضمائر' },
-  lessons: ['m3-l1', 'm3-l2', 'm3-l3', 'm3-l4'],
-  quizIds: ['q3-1', 'q3-2', 'q3-3', 'q3-4'],
-};
-
-const MODULE_M4: Module = {
-  id: 'm4',
-  order: 4,
-  title: { de: 'Verben', en: 'Verbs', ar: 'الأفعال' },
-  lessons: Object.keys(LESSONS_M4).filter((k) => k.startsWith('m4-')),
-  quizIds: ['q4-1', 'q4-2', 'q4-3', 'q4-4'],
-};
-
-const MODULE_M5: Module = {
-  id: 'm5',
-  order: 5,
-  title: { de: 'Adjektive', en: 'Adjectives', ar: 'الصفات' },
-  lessons: Object.keys(LESSONS_M5).filter((k) => k.startsWith('l5-')),
-  quizIds: ['q5-1', 'q5-2', 'q5-3', 'q5-4', 'q5-5'],
-};
+// Module 2, 3, 4, 5 already have MODULE exports, so we use them
+// For modules 6-20, we create them inline
 
 const MODULE_M6: Module = {
   id: 'm6',
@@ -99,6 +88,22 @@ const MODULE_M6: Module = {
   title: { de: 'Präpositionen', en: 'Prepositions', ar: 'حروف الجر' },
   lessons: ['m6-l1', 'm6-l2', 'm6-l3', 'm6-l4', 'm6-l5'],
   quizIds: ['q6-1', 'q6-2', 'q6-3', 'q6-4', 'q6-5'],
+};
+
+const MODULE_M7: Module = {
+  id: 'm7',
+  order: 7,
+  title: { de: 'Transitive Verben & Objektmarker', en: 'Transitive Verbs & Object Markers', ar: 'الأفعال المتعدّية وعلامات المفعول' },
+  lessons: Object.keys(LESSONS_M7).filter((k) => k.startsWith('m7-')),
+  quizIds: Object.keys(QUIZZES_M7).filter((k) => k.startsWith('q7-')),
+};
+
+const MODULE_M8: Module = {
+  id: 'm8',
+  order: 8,
+  title: { de: 'Weitere Verbformen', en: 'Additional Verb Forms', ar: 'صيغ فعلية إضافية' },
+  lessons: Object.keys(LESSONS_M8).filter((k) => k.startsWith('m8-')),
+  quizIds: Object.keys(QUIZZES_M8).filter((k) => k.startsWith('q8-')),
 };
 
 const MODULE_M9: Module = {
@@ -153,7 +158,7 @@ const MODULE_M15: Module = {
   id: 'm15',
   order: 15,
   title: { de: 'Besitz', en: 'Possession', ar: 'الملكية' },
-  lessons: Object.keys(LESSONS_M15).filter((k) => k.startsWith('l15-')),
+  lessons: Object.keys(LESSONS_M15).filter((k) => k.startsWith('m15-')),
   quizIds: [],
 };
 
@@ -165,6 +170,38 @@ const MODULE_M16: Module = {
   quizIds: [],
 };
 
+const MODULE_M17: Module = {
+  id: 'm17',
+  order: 17,
+  title: { de: 'Zweite Tempusreihe', en: 'Second Tense Series', ar: 'السلسلة الزمنية الثانية' },
+  lessons: Object.keys(LESSONS_M17).filter((k) => k.startsWith('m17-')),
+  quizIds: Object.keys(QUIZZES_M17).filter((k) => k.startsWith('q17-')),
+};
+
+const MODULE_M18: Module = {
+  id: 'm18',
+  order: 18,
+  title: { de: 'Erweiterte Syntax', en: 'Advanced Syntax', ar: 'التركيب المتقدم' },
+  lessons: Object.keys(LESSONS_M18).filter((k) => k.startsWith('m18-')),
+  quizIds: Object.keys(QUIZZES_M18).filter((k) => k.startsWith('q18-')),
+};
+
+const MODULE_M19: Module = {
+  id: 'm19',
+  order: 19,
+  title: { de: 'Komplexe Sätze', en: 'Complex Sentences', ar: 'الجمل المعقدة' },
+  lessons: Object.keys(LESSONS_M19).filter((k) => k.startsWith('m19-')),
+  quizIds: Object.keys(QUIZZES_M19).filter((k) => k.startsWith('q19-')),
+};
+
+const MODULE_M20: Module = {
+  id: 'm20',
+  order: 20,
+  title: { de: 'Capstone: Lesestücke & Liturgie', en: 'Capstone: Reading & Liturgy', ar: 'الختام: القراءة والليتورجيا' },
+  lessons: Object.keys(LESSONS_M20).filter((k) => k.startsWith('m20-')),
+  quizIds: Object.keys(QUIZZES_M20).filter((k) => k.startsWith('q20-')),
+};
+
 export const MODULES = {
   m1: MODULE_M1,
   m2: MODULE_M2,
@@ -172,6 +209,8 @@ export const MODULES = {
   m4: MODULE_M4,
   m5: MODULE_M5,
   m6: MODULE_M6,
+  m7: MODULE_M7,
+  m8: MODULE_M8,
   m9: MODULE_M9,
   m10: MODULE_M10,
   m11: MODULE_M11,
@@ -180,6 +219,10 @@ export const MODULES = {
   m14: MODULE_M14,
   m15: MODULE_M15,
   m16: MODULE_M16,
+  m17: MODULE_M17,
+  m18: MODULE_M18,
+  m19: MODULE_M19,
+  m20: MODULE_M20,
 };
 
 // Type exports

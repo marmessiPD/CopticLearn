@@ -25,6 +25,7 @@ export interface Module {
   order: number;
   title: LocalizedString;
   lessons: string[]; // array of lesson IDs
+  quizIds?: string[]; // Optional: array of quiz IDs
 }
 
 export interface Lesson {
@@ -165,11 +166,34 @@ export interface ConversationSlide extends BaseSlide {
 
 export interface Quiz {
   id: string;
+  moduleId?: string; // Optional: module ID for organization
   lessonId: string;
   title: LocalizedString;
-  questions: Question[];
+  questions?: Question[]; // Standard format used by QuizPage
+  items?: QuizItem[]; // Alternative format used by some modules (legacy)
   passScore: number;
 }
+
+// Legacy quiz item format (used in modules 3, 4, etc.)
+export type QuizItem =
+  | { type: "mc"; prompt: string; choices: string[]; answer: number }
+  | { type: "match"; prompt: string; pairs: string[][] }
+  | { type: "gap"; prompt: string; answer: string }
+  | { type: "tf"; prompt: string; answer: boolean }
+  | { type: "produce"; prompt: string; rubric: string }
+  | {
+      type: "multiple-choice";
+      prompt: string;
+      options: string[];
+      answer: number;
+    }
+  | { type: "matching"; prompt: string; pairs: string[][] }
+  | {
+      type: "cloze";
+      prompt: string;
+      text: string;
+      solutions: Record<number, string>;
+    };
 
 export type Question = MultipleChoiceQuestion | FillInTheBlankQuestion;
 

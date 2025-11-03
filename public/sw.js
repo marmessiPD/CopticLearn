@@ -1,10 +1,9 @@
-const CACHE_NAME = 'coptic-learn-v1';
+const CACHE_NAME = 'coptic-learn-v2';
 const STATIC_CACHE_URLS = [
   '/',
-  '/static/js/bundle.js',
-  '/static/css/main.css',
   '/manifest.json',
-  'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+Coptic&display=swap'
+  '/icon-192.svg',
+  '/icon-512.svg'
 ];
 
 // Install event - cache static resources
