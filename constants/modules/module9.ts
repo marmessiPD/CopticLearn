@@ -1,342 +1,137 @@
-// Module 9 — Vergangenheit: Perfekt & Relatives Perfekt (nach Younan)
-// Alle Formen & Beispiele: Sameh Younan, *So You Want to Learn Coptic? A Guide to Bohairic Grammar*.
-import type { Lesson, Quiz } from "../../types";
+// --- Module 9: Relativsätze ---
+import type { Lesson, Quiz } from '../../types';
 
 export const LESSONS: Record<string, Lesson> = {
-  "m9-l1": {
-    id: "m9-l1",
-    order: 1,
-    moduleId: "m9",
-    title: {
-      de: "Perfekt (1. Vergangenheit): Formen & Gebrauch",
-      en: "Perfect Past (First Past): Forms & Use",
-      ar: "الماضي التام: الصيغ والاستخدام",
+    // M9-L1
+    'm9-l1': {
+      id: 'm9-l1',
+      order: 1,
+      moduleId: 'm9',
+      title: { de: 'Relativsätze I: ⲉ̀ⲧⲉ-Grundform', en: 'Relatives I', ar: 'جمل الوصل I' },
+      prerequisites: ['l3-4'],
+      quizId: 'q9-1',
+      slides: [
+        {
+          type: 'grammar',
+          title: { de: 'Relativpartikel ⲉ̀ⲧⲉ', en: 'Relative ⲉ̀ⲧⲉ', ar: 'أداة الوصل ⲉ̀ⲧⲉ' },
+          rule: {
+            de: 'ⲉ̀ⲧⲉ leitet Relativsätze ein. Das Bezugswort steht mit bestimmtem Artikel. Im Satz erscheint oft ein rückbezügliches Pronomen (ⲡⲉ/ⲧⲉ/ⲛⲉ oder pronominale Formen) zur Kongruenz.',
+            en: 'ⲉ̀ⲧⲉ introduces relative clauses. The head noun takes a definite article. A resumptive pronoun often appears for agreement.',
+            ar: 'ⲉ̀ⲧⲉ تُدخل جملة صلة. الاسم ذو أداة تعريف، وغالبًا يوجد ضمير عائد للمطابقة.'
+          },
+          examples: [
+            { coptic: 'ⲡ̀ⲣⲱⲙⲓ ⲉ̀ⲧⲉ ϥ̀ⲥⲱⲧⲉⲙ ⲉ̀ⲡⲉⲛⲟⲩϯ', translit: 'ep-romi ete ef-sotem e-penouti', meaning: { de: 'der Mann, der Gott hört', en: 'the man who listens to God', ar: 'الرجل الذي يسمع الله' } },
+            { coptic: 'ⲧ̀ϩⲏⲧ ⲉ̀ⲧⲉ ⲥⲉⲕⲁⲁⲓ ⲙ̀ⲙⲟⲥ', translit: 'et-heet ete se-kaai emmos', meaning: { de: 'das Herz, das sie rein machen', en: 'the heart which they purify', ar: 'القلب الذي يطهرونه' } }
+          ]
+        },
+        {
+          type: 'grammar',
+          title: { de: 'Kongruenz & Rückbezug', en: 'Agreement & Resumption', ar: 'المطابقة والضمير العائد' },
+          rule: {
+            de: 'Nach ⲉ̀ⲧⲉ steht häufig ⲡⲉ/ⲧⲉ/ⲛⲉ nach dem Prädikatnominal oder entsprechende Objekt-/Dativ-Pronomina (ⲙ̀ⲙⲟϥ, ⲛⲁϥ ...).',
+            en: 'After ⲉ̀ⲧⲉ, predicate nominals often take ⲡⲉ/ⲧⲉ/ⲛⲉ; objects/datives use pronominal clitics (ⲙ̀ⲙⲟϥ, ⲛⲁϥ ...).',
+            ar: 'بعد ⲉ̀ⲧⲉ يظهر ⲡⲉ/ⲧⲉ/ⲛⲉ مع الخبر، وللمفعول/المجرور تُستخدم لواحق مثل ⲙ̀ⲙⲟϥ، ⲛⲁϥ.'
+          },
+          examples: [
+            { coptic: 'ⲡ̀ϣⲏⲣⲓ ⲉ̀ⲧⲉ ⲡⲉ ⲛ̀ⲧⲟϥ ⲡ̀ⲣⲱⲙⲓ', translit: 'ep-sheri ete pe entof ep-romi', meaning: { de: 'der Sohn, der jener Mann ist', en: 'the son who is that man', ar: 'الابن الذي هو ذلك الرجل' } },
+            { coptic: 'ⲧ̀ⲥⲁϫⲓ ⲉ̀ⲧⲉ ϥ̀ⲥⲁϫⲓ ⲛⲁϥ', translit: 'et-saji ete ef-saji naf', meaning: { de: 'das Wort, zu dem er spricht', en: 'the word to which he speaks', ar: 'الكلمة التي يتكلم إليها' } }
+          ]
+        },
+        {
+          type: 'sentence',
+          item: {
+            text: 'ⲛⲓⲣⲱⲙⲓ ⲉ̀ⲧⲉ ⲥⲉⲛⲟⲩⲧⲉ ⲛ̀ⲧⲟⲟⲧⲟⲩ ⲛⲉ ⲙ̀ⲙⲟⲛⲟⲛ ⲉ̀ⲣⲟⲟⲩ',
+            translit: 'ni-romi ete senoute entootou ne emmonon erou',
+            meaning: { de: 'Die Menschen, die zu Gott gehören, sind nicht allein.', en: 'The people who belong to God are not alone.', ar: 'الناس الذين ينتمون إلى الله ليسوا وحدهم.' }
+          },
+          
+        }
+      ]
     },
-    prerequisites: ["m7-l1", "m8-l2"],
-    quizId: "q9-1",
-    slides: [
-      {
-        type: "grammar",
-        title: {
-          de: "Formen des Perfekts",
-          en: "Perfect Past Forms",
-          ar: "صيغ الماضي التام",
+  
+    // M9-L2
+    'm9-l2': {
+      id: 'm9-l2',
+      order: 2,
+      moduleId: 'm9',
+      title: { de: 'Relativsätze II: „der/die/das, welche(r) …“', en: 'Relatives II', ar: 'جمل الوصل II' },
+      prerequisites: ['m9-l1'],
+      quizId: 'q9-2',
+      slides: [
+        {
+          type: 'grammar',
+          title: { de: 'Komplexe Relativa', en: 'Complex Relatives', ar: 'وصلات معقدة' },
+          rule: {
+            de: 'ⲉ̀ⲧⲉ + Zeitform des Prädikats: Tempus bleibt erhalten. Bei Objekten oft ⲙ̀ⲙⲟ- + Suffix: ⲙ̀ⲙⲟϥ, ⲙ̀ⲙⲟⲥ ...',
+            en: 'ⲉ̀ⲧⲉ + predicate in its own tense. Objects often marked with ⲙ̀ⲙⲟ- + suffix.',
+            ar: 'ⲉ̀ⲧⲉ مع الفعل بزمنه. المفعول غالبًا بعلامة ⲙ̀ⲙⲟ- مع لاحقة.'
+          },
+          examples: [
+            { coptic: 'ⲡ̀ⲛⲟⲩⲧⲉ ⲉ̀ⲧⲉ ⲁϥⲑⲱⲟⲩ ⲙ̀ⲙⲟⲛ ⲡⲉ', translit: 'ep-noute ete af-thou emmon pe', meaning: { de: 'der Gott, der uns gerettet hat', en: 'the God who has saved us', ar: 'الله الذي خلّصنا' } },
+            { coptic: 'ⲧ̀ⲥⲟⲟⲩⲛ ⲉ̀ⲧⲉ ⲥⲉⲙⲟⲩⲛ ⲙ̀ⲙⲟⲥ', translit: 'et-soun ete se-moun emmos', meaning: { de: 'die Weisheit, die sie loben', en: 'the wisdom that they praise', ar: 'الحكمة التي يمدحونها' } }
+          ]
         },
-        rule: {
-          de: "Das Perfekt (1. Vergangenheitsreihe) wird mit Präfixen vor dem Infinitiv gebildet: ai-, ak-, are-, af-, ac-, an-, areten-, au-. Die Vorsubjektform ist »a«. Negation mit »ⲙⲡⲉ-« vor dem Verb.",
-          en: "The perfect (first past) uses prefixes before the infinitive: ai-, ak-, are-, af-, ac-, an-, areten-, au-. The pre‑subject form is 'a'. Negation is with 'ⲙⲡⲉ-' before the verb.",
-          ar: "يُبنى الماضي التام ببادئات قبل المصدر: ai-, ak-, are-, af-, ac-, an-, areten-, au-. صيغة ما قبل الفاعل هي «a». النفي بـ «ⲙⲡⲉ-» قبل الفعل.",
-        },
-        examples: [
-          {
-            coptic: "ⲁⲓⲙⲟⲥⲓ",
-            translit: "ai-mosi",
-            meaning: {
-              de: "ich ging/ging spazieren",
-              en: "I walked",
-              ar: "سِرتُ",
-            },
+        {
+          type: 'sentence',
+          item: {
+            text: 'ⲡ̀ⲗⲁⲟⲥ ⲉ̀ⲧⲉ ⲥⲉⲙⲉⲧⲁⲛⲁⲩ ⲉ̀ⲡ̀ⲛⲟⲩⲧⲉ ⲛⲉ ⲛ̀ⲧⲟⲟⲩ ⲛⲓⲙ',
+            translit: 'ep-laos ete semet-anau ep-noute ne entou nim',
+            meaning: { de: 'Das Volk, das den Blick auf Gott richtet, gehört ihm ganz.', en: 'The people who look to God belong wholly to him.', ar: 'الشعب الذي ينظر إلى الله هو له كليًا.' }
           },
-          {
-            coptic: "ⲁⲫⲛⲁⲩ",
-            translit: "af-nau",
-            meaning: { de: "er sah", en: "he saw", ar: "هو رأى" },
-          },
-          {
-            coptic: "ⲙⲡⲉⲣⲥⲱⲧⲙ",
-            translit: "mpe-rsotm",
-            meaning: {
-              de: "du (m.) hörtest nicht",
-              en: "you (m.) did not hear",
-              ar: "لم تَسمع",
-            },
-          },
-          {
-            coptic: "ⲁ ⲡⲓⲣⲱⲙⲓ ⲛⲁⲩ ⲉⲡⲓⲥⲱⲛⲓ",
-            translit: "a pirōmi nau episoni",
-            meaning: {
-              de: "der Mann sah den Jungen",
-              en: "the man saw the boy",
-              ar: "رأى الرجلُ الصبيَّ",
-            },
-          },
-        ],
-      },
-      {
-        type: "sentence",
-        item: {
-          text: "ⲁⲛⲉⲛⲥⲱⲧⲙ ⲉⲡⲓⲃⲉⲛⲓ",
-          translit: "anen-sōtm e-piveni",
-          meaning: {
-            de: "wir hörten die Trompete",
-            en: "we heard the trumpet",
-            ar: "سَمِعْنَا البوق",
-          },
-        },
-      },
-      {
-        type: "sentence",
-        item: {
-          text: "ⲙⲡⲁⲩⲙⲟⲩ ⲛⲁⲛ",
-          translit: "mpau-mou nan",
-          meaning: {
-            de: "sie starben nicht vor uns",
-            en: "they did not die before us",
-            ar: "لم يموتوا أمامنا",
-          },
-        },
-      },
-    ],
-  },
-
-  "m9-l2": {
-    id: "m9-l2",
-    order: 2,
-    moduleId: "m9",
-    title: {
-      de: "Relatives Perfekt & Vorsubjektform",
-      en: "Relative Perfect & Pre‑subject Form",
-      ar: "الماضي النسبي وصيغة ما قبل الفاعل",
+          
+        }
+      ]
     },
-    prerequisites: ["m9-l1"],
-    quizId: "q9-2",
-    slides: [
-      {
-        type: "grammar",
-        title: {
-          de: "Relativkonverter + Perfekt",
-          en: "Relative Converter + Perfect",
-          ar: "أداة الموصول + الماضي",
-        },
-        rule: {
-          de: "Mit dem Relativkonverter ⲉⲧⲉ-/ⲉⲣⲉ- + Perfekt wird ein Relativsatz gebildet: etai-, etak-, etare-, etaf-, etac-, etan-, etareten-, etau-. Die Negation: ⲉⲧⲉ.ⲙⲡⲉ- + Verb.",
-          en: "Relative converter ⲉⲧⲉ-/ⲉⲣⲉ- + perfect yields a relative clause: etai-, etak-, etare-, etaf-, etac-, etan-, etareten-, etau-. Negation: ⲉⲧⲉ.ⲙⲡⲉ- + verb.",
-          ar: "تكوين جملة موصولة بـ ⲉⲧⲉ-/ⲉⲣⲉ- + الماضي: etai-, etak-, etare-, etaf-, etac-, etan-, etareten-, etau-. النفي: ⲉⲧⲉ.ⲙⲡⲉ- + الفعل.",
-        },
-        examples: [
-          {
-            coptic: "ⲡⲓⲣⲱⲙⲓ ⲉⲧⲁϥⲟⲩⲱⲛ ⲙⲡⲓⲧⲟⲧⲥ",
-            translit: "pirōmi etaf-ouōn mpitots",
-            meaning: {
-              de: "der Mann, der die Tür öffnete",
-              en: "the man who opened the door",
-              ar: "الرجل الذي فتح الباب",
-            },
-          },
-          {
-            coptic: "ⲡⲓⲃⲏⲑⲉ ⲉⲧⲉ.ⲙⲡⲉⲥⲱⲧⲙ ⲛ̀ⲛⲓⲕⲁϩⲓ",
-            translit: "pibēthe ete.mpe-sōtm nnikaḥi",
-            meaning: {
-              de: "das Haus, das die Dörfer nicht hörten (= in dem man nicht hörte)",
-              en: "the house which the villages did not hear",
-              ar: "البيت الذي لم تسمعه القرى",
-            },
-          },
-          {
-            coptic: "ⲁ ⲡⲓⲛⲟⲩϯ ⲛⲁⲩ ⲉⲧⲁⲟⲩⲱⲛ ⲙⲡⲓⲙⲁ",
-            translit: "a pinouti nau etau-ouōn mpima",
-            meaning: {
-              de: "Gott sah, dass sie den Ort öffneten",
-              en: "God saw that they opened the place",
-              ar: "رأى الله أنهم فتحوا المكان",
-            },
-          },
-        ],
-      },
-      {
-        type: "grammar",
-        title: {
-          de: "Vorsubjekt‑Stellung",
-          en: "Pre‑subject placement",
-          ar: "الموقع قبل الفاعل",
-        },
-        rule: {
-          de: "Die Vorsubjektform »ⲁ« (Neg.: »ⲙⲡⲉ«) steht vor dem Subjekt, z. B. in eingebetteten Sätzen oder nach bestimmten Einleitungen.",
-          en: "The pre‑subject form 'ⲁ' (neg.: 'ⲙⲡⲉ') precedes the subject, e.g., in embedded clauses or after certain introducers.",
-          ar: "صيغة «ⲁ» (النفي «ⲙⲡⲉ») تأتي قبل الفاعل، خصوصًا في الجمل المتضمنة.",
-        },
-        examples: [
-          {
-            coptic: "ⲁ ⲡⲓⲥⲁϩ ϫⲱ ⲛⲁⲛ",
-            translit: "a pisah jw nan",
-            meaning: {
-              de: "der Priester sagte zu uns",
-              en: "the priest said to us",
-              ar: "قال الكاهن لنا",
-            },
-          },
-          {
-            coptic: "ⲙⲡⲉ ⲡⲓⲣⲱⲙⲓ ⲥⲱⲧⲙ",
-            translit: "mpe pirōmi sōtm",
-            meaning: {
-              de: "der Mann hörte nicht",
-              en: "the man did not hear",
-              ar: "لم يسمع الرجل",
-            },
-          },
-        ],
-      },
-      {
-        type: "sentence",
-        item: {
-          text: "ⲡⲓⲃⲏⲑⲉ ⲉⲧⲁⲫⲛⲁⲩ ⲉⲡⲓⲭⲱⲣⲁ",
-          translit: "pibēthe etaf-nau epi-khōra",
-          meaning: {
-            de: "das Haus, das er im Dorf sah",
-            en: "the house he saw in the village",
-            ar: "البيت الذي رآه في القرية",
-          },
-        },
-      },
-    ],
-  },
 };
 
 export const QUIZZES: Record<string, Quiz> = {
-  "q9-1": {
-    id: "q9-1",
-    lessonId: "m9-l1",
-    title: {
-      de: "Mini‑Quiz: Perfekt",
-      en: "Mini‑quiz: Perfect Past",
-      ar: "اختبار: الماضي التام",
-    },
-    passScore: 80,
+  'q9-1': {
+    id: 'q9-1',
+    lessonId: 'm9-l1',
+    title: { de: 'Quiz: Relativsätze I', en: 'Quiz: Relatives I', ar: 'اختبار: جمل الوصل I' },
+    passScore: 70,
     questions: [
       {
-        id: "q9-1-1",
-        type: "multiple-choice",
-        questionText: {
-          de: "Wähle die korrekte Perfektform: „er hörte“",
-          en: "Choose the correct perfect: 'he heard'",
-          ar: "اختر صيغة الماضي: «هو سمع»",
-        },
+        id: 'q9-1-1',
+        type: 'multiple-choice',
+        questionText: { de: 'Was macht ⲉ̀ⲧⲉ?', en: 'What does ⲉ̀ⲧⲉ do?', ar: 'ما الذي يفعله ⲉ̀ⲧⲉ؟' },
         options: [
-          { de: "ⲁⲛⲥⲱⲧⲙ", en: "anen‑sōtm", ar: "ⲁⲛⲥⲱⲧⲙ" },
-          { de: "ⲁⲫⲥⲱⲧⲙ", en: "af‑sōtm", ar: "ⲁⲫⲥⲱⲧⲙ" },
-          { de: "ⲙⲡⲁⲥⲱⲧⲙ", en: "mpa‑sōtm", ar: "ⲙⲡⲁⲥⲱⲧⲙ" },
+          { de: 'leitet Relativsätze ein', en: 'introduces relative clauses', ar: 'يُدخل جمل الوصل' },
+          { de: 'negiert das Verb', en: 'negates the verb', ar: 'ينفي الفعل' },
+          { de: 'zeigt Zukunft an', en: 'indicates future', ar: 'يدل على المستقبل' }
         ],
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 0
       },
       {
-        id: "q9-1-2",
-        type: "fill-in-the-blank",
-        questionText: {
-          de: 'Fülle die Lücke: „wir sahen" ⟶ ⲁ___ⲛⲁⲩ',
-          en: "Fill in: 'we saw' → ⲁ___ⲛⲁⲩ",
-          ar: "املأ الفراغ: «رأينا» → ⲁ___ⲛⲁⲩ",
-        },
-        correctAnswer: "ⲛ",
-      },
-      {
-        id: "q9-1-3",
-        type: "multiple-choice",
-        questionText: {
-          de: "Negation: „sie gingen nicht“",
-          en: "Negation: 'they did not go'",
-          ar: "النفي: «لم يذهبوا»",
-        },
+        id: 'q9-1-2',
+        type: 'multiple-choice',
+        questionText: { de: 'Welche Form wird für Kongruenz im Relativsatz verwendet?', en: 'Which form is used for agreement in relative clauses?', ar: 'ما الصيغة المستخدمة للمطابقة في جمل الوصل؟' },
         options: [
-          { de: "ⲙⲡⲁⲩⲃⲱⲕ", en: "mpau‑bwk", ar: "ⲙⲡⲁⲩⲃⲱⲕ" },
-          { de: "ⲙⲡⲉⲩⲃⲱⲕ", en: "mpeu‑bwk", ar: "ⲙⲡⲉⲩⲃⲱⲕ" },
-          { de: "ⲛⲁⲩⲃⲱⲕ", en: "nau‑bwk", ar: "ⲛⲁⲩⲃⲱⲕ" },
+          { de: 'rückbezügliche Pronomen (ⲡⲉ/ⲧⲉ/ⲛⲉ)', en: 'resumptive pronouns (ⲡⲉ/ⲧⲉ/ⲛⲉ)', ar: 'ضمائر عائدة (ⲡⲉ/ⲧⲉ/ⲛⲉ)' },
+          { de: 'Artikel', en: 'articles', ar: 'أدوات' },
+          { de: 'Präpositionen', en: 'prepositions', ar: 'حروف جر' }
         ],
-        correctAnswerIndex: 1,
-      },
-      {
-        id: "q9-1-4",
-        type: "fill-in-the-blank",
-        questionText: {
-          de: "Bilde: „ich öffnete die Tür“",
-          en: "Produce: 'I opened the door'",
-          ar: "كوِّن: «فتحتُ الباب»",
-        },
-        correctAnswer: "ⲁⲓⲟⲩⲱⲛ ⲙⲡⲓⲧⲟⲧⲥ",
-      },
-    ],
+        correctAnswerIndex: 0
+      }
+    ]
   },
-  "q9-2": {
-    id: "q9-2",
-    lessonId: "m9-l2",
-    title: {
-      de: "Mini‑Quiz: Relatives Perfekt",
-      en: "Mini‑quiz: Relative Perfect",
-      ar: "اختبار: الماضي النسبي",
-    },
-    passScore: 80,
+  'q9-2': {
+    id: 'q9-2',
+    lessonId: 'm9-l2',
+    title: { de: 'Quiz: Relativsätze II', en: 'Quiz: Relatives II', ar: 'اختبار: جمل الوصل II' },
+    passScore: 70,
     questions: [
       {
-        id: "q9-2-1",
-        type: "multiple-choice",
-        questionText: {
-          de: "Welche Form markiert das relative Perfekt (3. Pers. m. Sg.)?",
-          en: "Which marks the relative perfect (3rd m. sg.)?",
-          ar: "أي صيغة تدل على الماضي النسبي (مذكر مفرد)؟",
-        },
+        id: 'q9-2-1',
+        type: 'multiple-choice',
+        questionText: { de: 'Wie markiert man Objekte in Relativsätzen?', en: 'How are objects marked in relative clauses?', ar: 'كيف تُحدد المفاعيل في جمل الوصل؟' },
         options: [
-          { de: "ⲉⲧⲁϥ‑", en: "etaf‑", ar: "ⲉⲧⲁϥ‑" },
-          { de: "ⲁϥ‑", en: "af‑", ar: "ⲁϥ‑" },
-          { de: "ⲛⲁϥ‑", en: "naf‑", ar: "ⲛⲁϥ‑" },
+          { de: 'mit ⲙ̀ⲙⲟ- + Suffix', en: 'with ⲙ̀ⲙⲟ- + suffix', ar: 'بـ ⲙ̀ⲙⲟ- مع لاحقة' },
+          { de: 'mit ⲛ̀ⲧⲉ', en: 'with ⲛ̀ⲧⲉ', ar: 'بـ ⲛ̀ⲧⲉ' },
+          { de: 'mit ⲉ̀', en: 'with ⲉ̀', ar: 'بـ ⲉ̀' }
         ],
-        correctAnswerIndex: 0,
-      },
-      {
-        id: "q9-2-2",
-        type: "fill-in-the-blank",
-        questionText: {
-          de: "Negiere: ⲉⲧⲁⲛⲛⲁⲩ → ⲉⲧⲉ.ⲙⲡⲉ___ⲛⲁⲩ",
-          en: "Negate: ⲉⲧⲁⲛⲛⲁⲩ → ⲉⲧⲉ.ⲙⲡⲉ___ⲛⲁⲩ",
-          ar: "حوِّل إلى النفي",
-        },
-        correctAnswer: "ⲛ",
-      },
-      {
-        id: "q9-2-3",
-        type: "multiple-choice",
-        questionText: {
-          de: "Wähle die richtige Vorsubjektform (rel. Perfekt):",
-          en: "Choose the correct pre‑subject form (rel. perfect):",
-          ar: "اختر صيغة ما قبل الفاعل الصحيحة",
-        },
-        options: [
-          { de: "ⲁ", en: "a", ar: "ⲁ" },
-          { de: "ⲉⲧⲁ", en: "eta", ar: "ⲉⲧⲁ" },
-          { de: "ⲉⲣⲉ", en: "ere", ar: "ⲉⲣⲉ" },
-        ],
-        correctAnswerIndex: 1,
-      },
-      {
-        id: "q9-2-4",
-        type: "fill-in-the-blank",
-        questionText: {
-          de: "Übersetze: „das Brot, das du brachtest“",
-          en: "Translate: 'the bread that you (m.) brought'",
-          ar: "ترجم: «الخبز الذي جلبتَه»",
-        },
-        correctAnswer: {
-          coptic: "ⲡⲓⲟⲩⲱⲓⲕ ⲉⲧⲁⲕⲓⲛⲓ",
-          translit: "pi‑ouōik etak‑ini",
-        },
-      },
-      {
-        id: "q9-2-5",
-        type: "multiple-choice",
-        questionText: {
-          de: "Welche Negation ist korrekt? „der Mann, der nicht kam“",
-          en: "Choose the correct negation: 'the man who did not come'",
-          ar: "اختر النفي الصحيح: «الرجل الذي لم يأتِ»",
-        },
-        options: [
-          { de: "ⲡⲓⲣⲱⲙⲓ ⲉⲧⲁⲕⲓ", en: "pirōmi etak‑i", ar: "ⲡⲓⲣⲱⲙⲓ ⲉⲧⲁⲕⲓ" },
-          {
-            de: "ⲡⲓⲣⲱⲙⲓ ⲉⲧⲉ.ⲙⲡⲉⲕⲓ",
-            en: "pirōmi ete.mpe‑k‑i",
-            ar: "ⲡⲓⲣⲱⲙⲓ ⲉⲧⲉ.ⲙⲡⲉⲕⲓ",
-          },
-          { de: "ⲡⲓⲣⲱⲙⲓ ⲁⲕⲓ ⲁⲛ", en: "pirōmi ak‑i an", ar: "ⲡⲓⲣⲱⲙⲓ ⲁⲕⲓ ⲁⲛ" },
-        ],
-        correctAnswerIndex: 1,
-      },
-    ],
-  },
+        correctAnswerIndex: 0
+      }
+    ]
+  }
 };

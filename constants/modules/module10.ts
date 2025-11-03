@@ -1,392 +1,132 @@
-// Module 10 — Zukunft & Gewohnheit (nach Younan)
-import type { Lesson, Quiz } from "../../types";
+// --- Module 10: Weitere Zeiten (Gewohnheit & Verneinung) ---
+import type { Lesson, Quiz } from '../../types';
 
 export const LESSONS: Record<string, Lesson> = {
-  "m10-l1": {
-    id: "m10-l1",
+  'm10-l1': {
+    id: 'm10-l1',
     order: 1,
-    moduleId: "m10",
-    title: {
-      de: "Gewohnheit (Habitual) — bejaht & verneint",
-      en: "Habitual — affirmative & negative",
-      ar: "الاعتياد (المضارع العادي): مثبت ومنفي",
-    },
-    prerequisites: ["m5-l3", "m7-l1"],
-    quizId: "q10-1",
+    moduleId: 'm10',
+    title: { de: 'Gewohnheitsform (Habitual)', en: 'Habitual', ar: 'صيغة الاعتياد' },
+    prerequisites: ['l5-1'],
+    quizId: 'q10-1',
     slides: [
       {
-        type: "grammar",
-        title: {
-          de: "Affirmatives Habitual",
-          en: "Affirmative habitual",
-          ar: "الاعتياد المثبت",
-        },
+        type: 'grammar',
+        title: { de: 'Form & Gebrauch', en: 'Form & Use', ar: 'الصيغة والاستخدام' },
         rule: {
-          de: "Das Habitual beschreibt Gewohnheiten („er läuft (gewöhnlich)“). Es wird mit sa- + Personenkennzeichen + Infinitiv gebildet (z. B. saf‑ⲥⲱⲧⲙ „er hört (gewöhnlich)“).",
-          en: "The habitual expresses habits ('he walks/usually'). Formed with sa‑ + person + infinitive (e.g., saf‑sōtm 'he usually hears').",
-          ar: "صيغة الاعتياد تعبّر عن العادات. تُبنى بـ sa- + علامة الشخص + المصدر (مثل saf‑sōtm «هو يسمع عادةً»).",
+          de: 'Die Gewohnheitsform bezeichnet regelmäßige, übliche Handlungen. Bildung nach Younan: Partikel und Personalpräfixe vor dem Infinitiv; Zeitwert: „pflegt zu … / tut gewöhnlich …“',
+          en: 'Habitual marks customary actions. Built with particles and personal prefixes before the infinitive; sense “usually/used to …”.',
+          ar: 'تدل على الأفعال المعتادة؛ تُبنى بجزيئات وضمائر بادئة قبل المصدر؛ المعنى: «يعتاد أن…».'
         },
         examples: [
-          {
-            coptic: "ⲥⲁϥⲙⲟⲥⲓ",
-            translit: "saf‑mosi",
-            meaning: {
-              de: "er geht (gewöhnlich)",
-              en: "he (usually) walks",
-              ar: "هو يمشي عادةً",
-            },
-          },
-          {
-            coptic: "ⲥⲁⲛⲥⲱⲧⲙ",
-            translit: "san‑sōtm",
-            meaning: {
-              de: "wir hören (gewöhnlich)",
-              en: "we (usually) hear",
-              ar: "نحن نسمع عادةً",
-            },
-          },
-        ],
+          { coptic: 'ϯⲥⲱⲧⲉⲙ ⲉ̀ⲛⲓⲥⲁϫⲓ ⲛ̀ⲥⲟⲩⲧⲱⲛ', translit: 'ti-sotem e-nisaji n-souton', meaning: { de: 'ich höre gewöhnlich die Lehren', en: 'I usually listen to the teachings', ar: 'أعتادُ سماع التعاليم' } },
+          { coptic: 'ⲥⲉⲡⲣⲟⲥⲉⲩⲭⲉ ⲙ̀ⲙⲏⲧ ⲛ̀ⲑⲟⲟⲩ', translit: 'se-proseuche em-meet enthoou', meaning: { de: 'sie beten jeden Tag', en: 'they pray every day', ar: 'يصلّون كل يوم' } }
+        ]
       },
       {
-        type: "grammar",
-        title: {
-          de: "Negatives Habitual",
-          en: "Negative habitual",
-          ar: "الاعتياد المنفي",
-        },
+        type: 'grammar',
+        title: { de: 'Negativ-Gewohnheit', en: 'Negative Habitual', ar: 'النفي الاعتيادي' },
         rule: {
-          de: "Die Negation verwendet »ⲙⲡⲁ‑« (präfigiert) + Infinitiv: ⲙⲡⲁⲓ‑, ⲙⲡⲁⲕ‑, ⲙⲡⲁⲣⲉ‑, ⲙⲡⲁϥ‑, ⲙⲡⲁⲥ‑, ⲙⲡⲁⲛ‑, ⲙⲡⲁⲣⲉⲧⲉⲛ‑, ⲙⲡⲁⲩ‑. Vorsubjektform: ⲙⲡⲁⲣⲉ‑.",
-          en: "Negation uses 'ⲙⲡⲁ‑' + infinitive: mpai‑, mpak‑, mpare‑, mpaf‑, mpac‑, mpan‑, mpareten‑, mpau‑. Pre‑subject form: mpare‑.",
-          ar: "يُستخدم «ⲙⲡⲁ‑» للنفي: mpai‑, mpak‑, mpare‑, mpaf‑, mpac‑, mpan‑, mpareten‑, mpau‑. وصيغة ما قبل الفاعل: mpare‑.",
+          de: 'Negation mit ⲁⲛ nach dem Verb (und ggf. vorangestelltem ⲛ̀-). Bedeutung: „pflegt nicht zu …“.',
+          en: 'Negate with ⲁⲛ after the verb (optionally ⲛ̀- before). Meaning: “does not usually …”.',
+          ar: 'النفي بـ ⲁⲛ بعد الفعل (وممكن ⲛ̀- قبلَه). المعنى: «لا يعتاد أن…».'
         },
         examples: [
-          {
-            coptic: "ⲙⲡⲁϥⲙⲟⲥⲓ",
-            translit: "mpaf‑mosi",
-            meaning: {
-              de: "هو لا يمشي عادةً",
-              en: "he does not usually walk",
-              ar: "هو لا يمشي عادةً",
-            },
-          },
-          {
-            coptic: "ⲙⲡⲁⲛⲥⲱⲧⲙ",
-            translit: "mpan‑sōtm",
-            meaning: {
-              de: "نحن لا نسمع عادةً",
-              en: "we do not usually hear",
-              ar: "نحن لا نسمع عادةً",
-            },
-          },
-        ],
+          { coptic: 'ⲛ̀ⲧⲟⲟⲩ ⲥⲱⲧⲉⲙ ⲁⲛ ⲉ̀ⲡⲉⲕⲥⲁϫⲓ', translit: 'entou soutem an e-peksaji', meaning: { de: 'sie hören dein Wort gewöhnlich nicht', en: 'they do not usually listen to your word', ar: 'لا يعتادون سماع كلمتك' } }
+        ]
       },
       {
-        type: "sentence",
+        type: 'sentence',
         item: {
-          text: "ⲥⲁϥⲟⲩⲱⲛ ⲙⲡⲓⲧⲟⲧⲥ",
-          translit: "saf‑ouōn mpitots",
-          meaning: {
-            de: "Er öffnet (normalerweise) die Tür.",
-            en: "He usually opens the door.",
-            ar: "يفتح الباب عادةً.",
-          },
+          text: 'ⲛⲁⲓ ⲡⲉ ⲛⲓⲣⲱⲙⲓ ⲉⲧⲉ ⲥⲉⲡⲣⲟⲥⲉⲩⲭⲉ ⲙ̀ⲙⲏⲧ',
+          translit: 'nai pe ni-romi ete se-proseuche em-meet',
+          meaning: { de: 'Dies sind die Menschen, die täglich beten.', en: 'These are the people who pray daily.', ar: 'هؤلاء هم الناس الذين يصلّون يوميًا.' }
         },
-      },
-      {
-        type: "sentence",
-        item: {
-          text: "ⲙⲡⲁⲩⲣⲓⲙⲓ ⲛ̀ⲧⲉⲛⲉⲩⲟⲛⲓ",
-          translit: "mpau‑rimi nten‑euwoni",
-          meaning: {
-            de: "هم لا يبكون عادةً في الليل",
-            en: "They do not usually cry at night.",
-            ar: "هم لا يبكون عادةً في الليل",
-          },
-        },
-      },
-    ],
+      }
+    ]
   },
 
-  "m10-l2": {
-    id: "m10-l2",
+  'm10-l2': {
+    id: 'm10-l2',
     order: 2,
-    moduleId: "m10",
-    title: {
-      de: "Futuren: 1. Futur, emphatisch & unvollkommene Zukunft",
-      en: "Futures: First, Emphatic & Imperfect",
-      ar: "المستقبل: الأول والتوكيدي وغير التام",
-    },
-    prerequisites: ["m10-l1", "m5-l4"],
-    quizId: "q10-2",
+    moduleId: 'm10',
+    title: { de: 'Optativ / Wunschform & Gebetssprache', en: 'Optative & Prayer', ar: 'صيغة التمني والصلاة' },
+    prerequisites: ['m10-l1'],
+    quizId: 'q10-2',
     slides: [
       {
-        type: "grammar",
-        title: {
-          de: "1. Futur (na‑ + Infinitiv)",
-          en: "First future (na‑ + infinitive)",
-          ar: "المستقبل الأول (na- + المصدر)",
-        },
+        type: 'grammar',
+        title: { de: 'Wunsch / Bitte', en: 'Wish / Petition', ar: 'التمني / الطلب' },
         rule: {
-          de: "na wird zwischen Subjekt und Infinitiv gesetzt: ⲉⲓⲛⲁ‑, ⲕⲛⲁ‑/ⲧⲉⲛⲁ‑, ⲫⲛⲁ‑, ⲥⲛⲁ‑, ⲛⲁⲛⲁ‑, ⲧⲉⲧⲉⲛⲛⲁ‑, ⲥⲉⲛⲁ‑.",
-          en: "Insert na between subject and infinitive: ]na‑, ,na‑/tena‑, fna‑, cna‑, nanna‑, tetenna‑, cena‑.",
-          ar: "تُدخل na بين الضمير والمصدر لصياغة المستقبل الأول.",
+          de: 'Wunschkonstruktionen verwenden häufig Partikeln mit Infinitiv oder Imperativformen in liturgischer Sprache. Sinn: „möge …“.',
+          en: 'Optative often uses particles with infinitive or imperative in liturgical style. Sense: “may …”.',
+          ar: 'تستخدم جزيئات مع المصدر أو الأمر في الأسلوب الليتورجي. المعنى: «ليكن…».'
         },
         examples: [
-          {
-            coptic: "ⲉⲓⲛⲁⲓ",
-            translit: "]na‑i",
-            meaning: { de: "ich werde kommen", en: "I will come", ar: "سآتي" },
-          },
-          {
-            coptic: "ⲫⲛⲁⲥⲱⲧⲙ",
-            translit: "fna‑sōtm",
-            meaning: { de: "er wird hören", en: "he will hear", ar: "سيسمع" },
-          },
-        ],
+          { coptic: 'ⲉⲣⲉ ⲡ̀ϭⲟⲓⲥ ⲥⲉⲛⲁⲩ ⲉ̀ⲣⲟⲛ', translit: 'ere ep-chois senau eron', meaning: { de: 'Möge der Herr auf uns blicken', en: 'May the Lord look upon us', ar: 'ليت الرب ينظر إلينا' } },
+          { coptic: 'ⲙⲁⲣⲉ ⲡⲉⲛⲟⲩϯ ⲧⲟⲧⲉ ⲛⲁⲛ ⲙ̀ⲡⲉⲛⲭⲁⲣⲓⲥ', translit: 'mare penouti tote nan em-pencharis', meaning: { de: 'Gott gebe uns seine Gnade', en: 'May God give us his grace', ar: 'ليعطنا الله نعمته' } }
+        ]
       },
       {
-        type: "grammar",
-        title: {
-          de: "Emphatisches Futur",
-          en: "Emphatic future",
-          ar: "المستقبل التوكيدي",
+        type: 'sentence',
+        item: {
+          text: 'ⲙⲁⲣⲉ ⲡⲉⲛⲟⲩϯ ⲧⲁⲓⲙⲁⲥⲧⲓⲥ ⲙ̀ⲡⲉⲛⲗⲁⲟⲥ',
+          translit: 'mare penouti taimasteis em-penlaos',
+          meaning: { de: 'Gott erbarme sich unseres Volkes.', en: 'May God have mercy on our people.', ar: 'ليترأف الله بشعبنا.' }
         },
-        rule: {
-          de: "Emphatisches Futur (»es wird bestimmt …«): Formen wie ⲉⲛⲉ‑, ⲉⲣⲉⲧⲉⲛⲉ‑, ⲉⲩⲉ‑; Vorsubjekt: ⲉⲣⲉ. Wird oft in Bibel/ Liturgie gebraucht („Amen, es wird sein“).",
-          en: "Emphatic future expresses insistence/certainty: forms like ⲉⲛⲉ‑ (we will), ⲉⲣⲉⲧⲉⲛⲉ‑ (you‑pl will), ⲉⲩⲉ‑ (they will); pre‑subject: ⲉⲣⲉ‑. Liturgical: “amēn ece‑swpi” ('Amen, it shall be').",
-          ar: "المستقبل التوكيدي للتأكيد: صيغ مثل ⲉⲛⲉ‑، ⲉⲣⲉⲧⲉⲛⲉ‑، ⲉⲩⲉ‑؛ وصيغة ما قبل الفاعل: ⲉⲣⲉ‑.",
-        },
-        examples: [
-          {
-            coptic: "ⲉⲩⲉⲙⲟⲩⲧ ⲉⲣⲟϥ",
-            translit: "eue‑mout ero‑f",
-            meaning: {
-              de: "sie werden ihn nennen",
-              en: "they will call him",
-              ar: "سيسمّونه",
-            },
-          },
-          {
-            coptic: "ⲉⲣⲉ ⲡⲉⲛⲥⲱⲙⲁ ⲉⲫⲉⲥⲱⲡⲓ ϩⲓ ⲛⲓⲥⲏⲑ",
-            translit: "ere pen‑sōma efe‑sōpi hi nisēth",
-            meaning: {
-              de: "unser Leib wird in der Stadt sein",
-              en: "our body will be in the city",
-              ar: "سيكون جسدنا في المدينة",
-            },
-          },
-        ],
-      },
-      {
-        type: "grammar",
-        title: {
-          de: "Unvollkommene Zukunft",
-          en: "Imperfect future",
-          ar: "المستقبل غير التام",
-        },
-        rule: {
-          de: "„War im Begriff zu…“: Imperfekt + na‑ … (ⲡⲉ). Beispiele: ⲛⲁⲓⲛⲁ‑, ⲛⲁϥⲛⲁ‑ … + fakultatives ⲡⲉ.",
-          en: "‘Was about to…’: imperfect + na‑ … (pe). E.g., naina‑, nafna‑ … with optional pe.",
-          ar: "«كان على وشك…»: الماضي الناقص + na‑ … (ⲡⲉ) اختياري.",
-        },
-        examples: [
-          {
-            coptic: "ⲛⲁⲥⲛⲁⲙⲟⲩ ⲡⲉ",
-            translit: "nasna‑mou pe",
-            meaning: {
-              de: "كانت على وشك أن تموت",
-              en: "she was about to die",
-              ar: "كانت على وشك أن تموت",
-            },
-          },
-        ],
-      },
-    ],
-  },
+      }
+    ]
+  }
 };
 
 export const QUIZZES: Record<string, Quiz> = {
-  "q10-1": {
-    id: "q10-1",
-    lessonId: "m10-l1",
-    title: {
-      de: "Mini‑Quiz: Habitual",
-      en: "Mini‑quiz: Habitual",
-      ar: "اختبار: الاعتياد",
-    },
-    passScore: 80,
+  'q10-1': {
+    id: 'q10-1',
+    lessonId: 'm10-l1',
+    title: { de: 'Quiz: Gewohnheitsform', en: 'Quiz: Habitual', ar: 'اختبار: صيغة الاعتياد' },
+    passScore: 70,
     questions: [
       {
-        id: "q10-1-1",
-        type: "multiple-choice",
-        questionText: {
-          de: "Wähle die Habitual‑Form: „er öffnet (gewöhnlich)“",
-          en: "Choose the habitual: 'he usually opens'",
-          ar: "اختر صيغة الاعتياد: «هو يفتح عادةً»",
-        },
+        id: 'q10-1-1',
+        type: 'multiple-choice',
+        questionText: { de: 'Was drückt die Gewohnheitsform aus?', en: 'What does the habitual express?', ar: 'ماذا تعبّر صيغة الاعتياد؟' },
         options: [
-          { de: "ⲥⲁϥⲟⲩⲱⲛ", en: "saf‑ouōn", ar: "ⲥⲁϥⲟⲩⲱⲛ" },
-          { de: "ⲁϥⲟⲩⲱⲛ", en: "af‑ouōn", ar: "ⲁϥⲟⲩⲱⲛ" },
-          { de: "ⲙⲡⲁϥⲟⲩⲱⲛ", en: "mpaf‑ouōn", ar: "ⲙⲡⲁϥⲟⲩⲱⲛ" },
+          { de: 'regelmäßige, übliche Handlungen', en: 'customary, usual actions', ar: 'أفعال معتادة ومنتظمة' },
+          { de: 'einmalige Handlungen', en: 'one-time actions', ar: 'أفعال لمرة واحدة' },
+          { de: 'zukünftige Handlungen', en: 'future actions', ar: 'أفعال مستقبلية' }
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 0
       },
       {
-        id: "q10-1-2",
-        type: "multiple-choice",
-        questionText: {
-          de: "Negiere richtig: „wir hören (gewöhnlich) nicht“",
-          en: "Negate: 'we do not usually hear'",
-          ar: "حوِّل إلى النفي: «لا نسمع عادةً»",
-        },
+        id: 'q10-1-2',
+        type: 'multiple-choice',
+        questionText: { de: 'Wie negiert man die Gewohnheitsform?', en: 'How do you negate the habitual?', ar: 'كيف تنفي صيغة الاعتياد؟' },
         options: [
-          { de: "ⲙⲡⲁⲛⲥⲱⲧⲙ", en: "mpan‑sōtm", ar: "ⲙⲡⲁⲛⲥⲱⲧⲙ" },
-          { de: "ⲛⲁⲛⲥⲱⲧⲙ", en: "nan‑sōtm", ar: "ⲛⲁⲛⲥⲱⲧⲙ" },
-          { de: "ⲙⲡⲉⲛⲥⲱⲧⲙ", en: "mpen‑sōtm", ar: "ⲙⲡⲉⲛⲥⲱⲧⲙ" },
+          { de: 'mit ⲁⲛ nach dem Verb', en: 'with ⲁⲛ after the verb', ar: 'بـ ⲁⲛ بعد الفعل' },
+          { de: 'mit ϯⲙ̀- vor dem Verb', en: 'with ϯⲙ̀- before the verb', ar: 'بـ ϯⲙ̀- قبل الفعل' },
+          { de: 'mit ⲙ̀ⲙⲟⲛ', en: 'with ⲙ̀ⲙⲟⲛ', ar: 'بـ ⲙ̀ⲙⲟⲛ' }
         ],
-        correctAnswerIndex: 0,
-      },
-      {
-        id: "q10-1-3",
-        type: "fill-in-the-blank",
-        questionText: {
-          de: 'Fülle: „ihr (Pl.) tut nicht (gewöhnlich)" → ⲙⲡⲁⲣⲉⲧⲉⲛ___',
-          en: "Fill: 'you (pl.) do not usually do' → mpareten___",
-          ar: "أكمل",
-        },
-        correctAnswer: "ⲓⲣⲓ",
-      },
-      {
-        id: "q10-1-4",
-        type: "production" as any,
-        prompt: {
-          de: "Schreibe auf Koptisch: „Sie لا يعملون عادةً يوم الأحد.“",
-          en: "Write in Coptic: 'They do not usually work on Sunday.'",
-          ar: "اكتب بالقبطية: «هم لا يعملون عادةً يوم الأحد».",
-        },
-        correctAnswer: {
-          coptic: "ⲙⲡⲁⲩⲉⲣϩⲱⲃ ⲉⲃⲟⲗ ϩⲓ ⲡⲓⲕⲩⲣⲓⲁⲕⲏ",
-          translit: "mpau‑erhōb ebol hi pikyriakē",
-        },
-      },
-      {
-        id: "q10-1-5",
-        type: "matching" as any,
-        pairs: [
-          {
-            left: "mpai‑",
-            right: {
-              de: "1. Pers. Sg. (neg.)",
-              en: "1st sg. (neg.)",
-              ar: "المفرد ١ (نفي)",
-            },
-          },
-          {
-            left: "mpaf‑",
-            right: {
-              de: "3. Pers. m. (neg.)",
-              en: "3rd m. (neg.)",
-              ar: "مذكر (نفي)",
-            },
-          },
-          {
-            left: "mpa‑re‑",
-            right: { de: "Vorsubjekt", en: "pre‑subject", ar: "قبل الفاعل" },
-          },
-        ],
-      },
-    ],
+        correctAnswerIndex: 0
+      }
+    ]
   },
-
-  "q10-2": {
-    id: "q10-2",
-    lessonId: "m10-l2",
-    title: {
-      de: "Mini‑Quiz: Futuren",
-      en: "Mini‑quiz: Futures",
-      ar: "اختبار: صيغ المستقبل",
-    },
-    passScore: 80,
+  'q10-2': {
+    id: 'q10-2',
+    lessonId: 'm10-l2',
+    title: { de: 'Quiz: Optativ/Wunschform', en: 'Quiz: Optative', ar: 'اختبار: صيغة التمني' },
+    passScore: 70,
     questions: [
       {
-        id: "q10-2-1",
-        type: "multiple-choice",
-        questionText: {
-          de: "Welche Form gehört zum emphatischen Futur?",
-          en: "Which belongs to the emphatic future?",
-          ar: "أي صيغة من المستقبل التوكيدي؟",
-        },
+        id: 'q10-2-1',
+        type: 'multiple-choice',
+        questionText: { de: 'Was drückt der Optativ aus?', en: 'What does the optative express?', ar: 'ماذا يعبّر الأسلوب التمنّي؟' },
         options: [
-          { de: "ⲉⲩⲉ‑ⲥⲱⲧⲙ", en: "eue‑sōtm", ar: "ⲉⲩⲉ‑ⲥⲱⲧⲙ" },
-          { de: "ⲁϥⲥⲱⲧⲙ", en: "af‑sōtm", ar: "ⲁϥⲥⲱⲧⲙ" },
-          { de: "ⲛⲁⲩⲥⲱⲧⲙ", en: "nau‑sōtm", ar: "ⲛⲁⲩⲥⲱⲧⲙ" },
+          { de: 'Wunsch oder Bitte ("möge...")', en: 'wish or petition ("may...")', ar: 'التمني أو الطلب ("ليت...")' },
+          { de: 'Befehl', en: 'command', ar: 'أمر' },
+          { de: 'Vergangenheit', en: 'past', ar: 'ماضي' }
         ],
-        correctAnswerIndex: 0,
-      },
-      {
-        id: "q10-2-2",
-        type: "fill-in-the-blank",
-        questionText: {
-          de: '„wir werden hören" → ⲉⲛⲉ___',
-          en: "'we will (certainly) hear' → ene___",
-          ar: "«سنسمع (حتماً)» → ⲉⲛⲉ___",
-        },
-        correctAnswer: "ⲥⲱⲧⲙ",
-      },
-      {
-        id: "q10-2-3",
-        type: "multiple-choice",
-        questionText: {
-          de: "„sie waren im Begriff zu kommen“",
-          en: "‘they were about to come’",
-          ar: "«كانوا على وشك أن يأتوا»",
-        },
-        options: [
-          { de: "ⲁⲩⲓ", en: "au‑i", ar: "ⲁⲩⲓ" },
-          { de: "ⲁⲩⲛⲁⲓ ⲡⲉ", en: "auna‑i pe", ar: "ⲁⲩⲛⲁⲓ ⲡⲉ" },
-          { de: "ⲙⲡⲁⲩⲓ", en: "mpau‑i", ar: "ⲙⲡⲁⲩⲓ" },
-        ],
-        correctAnswerIndex: 1,
-      },
-      {
-        id: "q10-2-4",
-        type: "production" as any,
-        prompt: {
-          de: "Übersetze: „Ich werde die Stadt sehen.“",
-          en: "Translate: 'I will see the city.'",
-          ar: "ترجم: «سأرى المدينة.»",
-        },
-        correctAnswer: {
-          coptic: "ⲉⲓⲛⲁⲛⲁⲩ ⲉⲡⲓⲙⲏⲧⲓ",
-          translit: "]na‑nau epi‑mēti",
-        },
-      },
-      {
-        id: "q10-2-5",
-        type: "matching" as any,
-        pairs: [
-          {
-            left: "na‑",
-            right: { de: "1. Futur", en: "First future", ar: "المستقبل الأول" },
-          },
-          {
-            left: "ere‑",
-            right: {
-              de: "Vorsubjekt (emph. Futur)",
-              en: "pre‑subject (emph. fut.)",
-              ar: "قبل الفاعل (توكيـدي)",
-            },
-          },
-          {
-            left: "…(ⲡⲉ)",
-            right: {
-              de: "Marker der unvollk. Zukunft",
-              en: "imperfect future marker",
-              ar: "علامة المستقبل غير التام",
-            },
-          },
-        ],
-      },
-    ],
-  },
+        correctAnswerIndex: 0
+      }
+    ]
+  }
 };
